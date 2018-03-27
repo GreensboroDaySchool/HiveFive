@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Five.xcodeproj">
+      location = "self:/Users/marcus/Documents/Projects/Five/Hive Five.xcodeproj">
    </FileRef>
 </Workspace>
