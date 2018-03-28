@@ -1,3 +1,6 @@
+import XCTest
+@testable import Hive_Five
+
 class FiveUITests: XCTestCase {
         
     override func setUp() {

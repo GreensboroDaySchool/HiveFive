@@ -100,12 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
-				2CFCE468206B00880041EDD1 /* ViewController.swift */,
-				2CFCE46A206B00880041EDD1 /* Main.storyboard */,
 				2CFCE46D206B00880041EDD1 /* Assets.xcassets */,
-				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
-				2CFCE472206B00880041EDD1 /* Info.plist */,
 				3263D562206B0E1B00D56F66 /* HexNode.swift */,
+				2CFCE472206B00880041EDD1 /* Info.plist */,
+				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
+				2CFCE46A206B00880041EDD1 /* Main.storyboard */,
+				2CFCE468206B00880041EDD1 /* ViewController.swift */,
 			);
 			path = HiveFive;
 			sourceTree = "<group>";
@@ -306,6 +306,7 @@
 				2CFCE46B206B00880041EDD1 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */ = {
@@ -314,6 +315,7 @@
 				2CFCE470206B00880041EDD1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
