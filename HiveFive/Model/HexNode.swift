@@ -7,6 +7,10 @@
 //
 
 import Foundation
+
+/**
+ This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
+ */
 class HexNode {
     var north: HexNode?
     var northWest: HexNode?
