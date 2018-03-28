@@ -1,5 +1,5 @@
 import XCTest
-@testable import Five
+@testable import Hive_Five
 
 class FiveTests: XCTestCase {
     
