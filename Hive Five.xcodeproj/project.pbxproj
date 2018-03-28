@@ -12,8 +12,8 @@
 		2CFCE46C206B00880041EDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46A206B00880041EDD1 /* Main.storyboard */; };
 		2CFCE46E206B00880041EDD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46D206B00880041EDD1 /* Assets.xcassets */; };
 		2CFCE471206B00880041EDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */; };
-		2CFCE47C206B00880041EDD1 /* HiveFiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE47B206B00880041EDD1 /* HiveFiveTests.swift */; };
-		2CFCE487206B00880041EDD1 /* HiveFiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE486206B00880041EDD1 /* HiveFiveUITests.swift */; };
+		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
+		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
 		3263D563206B0E1B00D56F66 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3263D562206B0E1B00D56F66 /* HexNode.swift */; };
 		32D1D143206BE9A1008444F4 /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
 		32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
@@ -26,19 +26,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2CFCE478206B00880041EDD1 /* PBXContainerItemProxy */ = {
+		2CFCE4B9206C603C0041EDD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CFCE45B206B00880041EDD1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2CFCE462206B00880041EDD1;
-			remoteInfo = Five;
+			remoteInfo = "Hive Five";
 		};
-		2CFCE483206B00880041EDD1 /* PBXContainerItemProxy */ = {
+		2CFCE4C7206C60590041EDD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CFCE45B206B00880041EDD1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2CFCE462206B00880041EDD1;
-			remoteInfo = Five;
+			remoteInfo = "Hive Five";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -50,12 +50,12 @@
 		2CFCE46D206B00880041EDD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CFCE470206B00880041EDD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CFCE472206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2CFCE477206B00880041EDD1 /* Hive FiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hive FiveTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CFCE47B206B00880041EDD1 /* HiveFiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFiveTests.swift; sourceTree = "<group>"; };
-		2CFCE47D206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HiveFiveTests/Info.plist; sourceTree = SOURCE_ROOT; };
-		2CFCE482206B00880041EDD1 /* Hive FiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hive FiveUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CFCE486206B00880041EDD1 /* HiveFiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFiveUITests.swift; sourceTree = "<group>"; };
-		2CFCE488206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HiveFiveUITests/Info.plist; sourceTree = SOURCE_ROOT; };
+		2CFCE4B4206C603C0041EDD1 /* HiveFive UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_UITests.swift; sourceTree = "<group>"; };
+		2CFCE4B8206C603C0041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
+		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3263D562206B0E1B00D56F66 /* HexNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		32D1D145206BEA6F008444F4 /* QueenBee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
@@ -75,14 +75,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCE474206B00880041EDD1 /* Frameworks */ = {
+		2CFCE4B1206C603C0041EDD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCE47F206B00880041EDD1 /* Frameworks */ = {
+		2CFCE4BF206C60590041EDD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -96,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				2CFCE465206B00880041EDD1 /* HiveFive */,
-				2CFCE47A206B00880041EDD1 /* HiveFiveTests */,
-				2CFCE485206B00880041EDD1 /* HiveFiveUITests */,
+				2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */,
+				2CFCE4C3206C60590041EDD1 /* HiveFive Tests */,
 				2CFCE464206B00880041EDD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				2CFCE463206B00880041EDD1 /* Hive Five.app */,
-				2CFCE477206B00880041EDD1 /* Hive FiveTests.xctest */,
-				2CFCE482206B00880041EDD1 /* Hive FiveUITests.xctest */,
+				2CFCE4B4206C603C0041EDD1 /* HiveFive UITests.xctest */,
+				2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,22 +128,22 @@
 			path = HiveFive;
 			sourceTree = "<group>";
 		};
-		2CFCE47A206B00880041EDD1 /* HiveFiveTests */ = {
+		2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */ = {
 			isa = PBXGroup;
 			children = (
-				2CFCE47B206B00880041EDD1 /* HiveFiveTests.swift */,
-				2CFCE47D206B00880041EDD1 /* Info.plist */,
+				2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */,
+				2CFCE4B8206C603C0041EDD1 /* Info.plist */,
 			);
-			path = HiveFiveTests;
+			path = "HiveFive UITests";
 			sourceTree = "<group>";
 		};
-		2CFCE485206B00880041EDD1 /* HiveFiveUITests */ = {
+		2CFCE4C3206C60590041EDD1 /* HiveFive Tests */ = {
 			isa = PBXGroup;
 			children = (
-				2CFCE486206B00880041EDD1 /* HiveFiveUITests.swift */,
-				2CFCE488206B00880041EDD1 /* Info.plist */,
+				2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */,
+				2CFCE4C6206C60590041EDD1 /* Info.plist */,
 			);
-			path = HiveFiveUITests;
+			path = "HiveFive Tests";
 			sourceTree = "<group>";
 		};
 		32D1D144206BE9BE008444F4 /* Model */ = {
@@ -188,41 +188,41 @@
 			productReference = 2CFCE463206B00880041EDD1 /* Hive Five.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2CFCE476206B00880041EDD1 /* Hive FiveTests */ = {
+		2CFCE4B3206C603C0041EDD1 /* HiveFive UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CFCE48E206B00880041EDD1 /* Build configuration list for PBXNativeTarget "Hive FiveTests" */;
+			buildConfigurationList = 2CFCE4BB206C603C0041EDD1 /* Build configuration list for PBXNativeTarget "HiveFive UITests" */;
 			buildPhases = (
-				2CFCE473206B00880041EDD1 /* Sources */,
-				2CFCE474206B00880041EDD1 /* Frameworks */,
-				2CFCE475206B00880041EDD1 /* Resources */,
+				2CFCE4B0206C603C0041EDD1 /* Sources */,
+				2CFCE4B1206C603C0041EDD1 /* Frameworks */,
+				2CFCE4B2206C603C0041EDD1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2CFCE479206B00880041EDD1 /* PBXTargetDependency */,
+				2CFCE4BA206C603C0041EDD1 /* PBXTargetDependency */,
 			);
-			name = "Hive FiveTests";
-			productName = FiveTests;
-			productReference = 2CFCE477206B00880041EDD1 /* Hive FiveTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		2CFCE481206B00880041EDD1 /* Hive FiveUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2CFCE491206B00880041EDD1 /* Build configuration list for PBXNativeTarget "Hive FiveUITests" */;
-			buildPhases = (
-				2CFCE47E206B00880041EDD1 /* Sources */,
-				2CFCE47F206B00880041EDD1 /* Frameworks */,
-				2CFCE480206B00880041EDD1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2CFCE484206B00880041EDD1 /* PBXTargetDependency */,
-			);
-			name = "Hive FiveUITests";
-			productName = FiveUITests;
-			productReference = 2CFCE482206B00880041EDD1 /* Hive FiveUITests.xctest */;
+			name = "HiveFive UITests";
+			productName = "HiveFive UITests";
+			productReference = 2CFCE4B4206C603C0041EDD1 /* HiveFive UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		2CFCE4C1206C60590041EDD1 /* HiveFive Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CFCE4C9206C60590041EDD1 /* Build configuration list for PBXNativeTarget "HiveFive Tests" */;
+			buildPhases = (
+				2CFCE4BE206C60590041EDD1 /* Sources */,
+				2CFCE4BF206C60590041EDD1 /* Frameworks */,
+				2CFCE4C0206C60590041EDD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2CFCE4C8206C60590041EDD1 /* PBXTargetDependency */,
+			);
+			name = "HiveFive Tests";
+			productName = "HiveFive Tests";
+			productReference = 2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -238,12 +238,12 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
-					2CFCE476206B00880041EDD1 = {
+					2CFCE4B3206C603C0041EDD1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2CFCE462206B00880041EDD1;
 					};
-					2CFCE481206B00880041EDD1 = {
+					2CFCE4C1206C60590041EDD1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2CFCE462206B00880041EDD1;
@@ -264,8 +264,8 @@
 			projectRoot = "";
 			targets = (
 				2CFCE462206B00880041EDD1 /* Hive Five */,
-				2CFCE476206B00880041EDD1 /* Hive FiveTests */,
-				2CFCE481206B00880041EDD1 /* Hive FiveUITests */,
+				2CFCE4B3206C603C0041EDD1 /* HiveFive UITests */,
+				2CFCE4C1206C60590041EDD1 /* HiveFive Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,14 +281,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCE475206B00880041EDD1 /* Resources */ = {
+		2CFCE4B2206C603C0041EDD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCE480206B00880041EDD1 /* Resources */ = {
+		2CFCE4C0206C60590041EDD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -316,34 +316,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCE473206B00880041EDD1 /* Sources */ = {
+		2CFCE4B0206C603C0041EDD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CFCE47C206B00880041EDD1 /* HiveFiveTests.swift in Sources */,
+				2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CFCE47E206B00880041EDD1 /* Sources */ = {
+		2CFCE4BE206C60590041EDD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CFCE487206B00880041EDD1 /* HiveFiveUITests.swift in Sources */,
+				2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2CFCE479206B00880041EDD1 /* PBXTargetDependency */ = {
+		2CFCE4BA206C603C0041EDD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2CFCE462206B00880041EDD1 /* Hive Five */;
-			targetProxy = 2CFCE478206B00880041EDD1 /* PBXContainerItemProxy */;
+			targetProxy = 2CFCE4B9206C603C0041EDD1 /* PBXContainerItemProxy */;
 		};
-		2CFCE484206B00880041EDD1 /* PBXTargetDependency */ = {
+		2CFCE4C8206C60590041EDD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2CFCE462206B00880041EDD1 /* Hive Five */;
-			targetProxy = 2CFCE483206B00880041EDD1 /* PBXContainerItemProxy */;
+			targetProxy = 2CFCE4C7206C60590041EDD1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -504,69 +504,65 @@
 			};
 			name = Release;
 		};
-		2CFCE48F206B00880041EDD1 /* Debug */ = {
+		2CFCE4BC206C603C0041EDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WB2V923XT;
-				INFOPLIST_FILE = FiveTests/Info.plist;
+				INFOPLIST_FILE = "HiveFive UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.FiveTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.greensboroday.HiveFive-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive Five.app/Hive Five";
+				TEST_TARGET_NAME = "Hive Five";
 			};
 			name = Debug;
 		};
-		2CFCE490206B00880041EDD1 /* Release */ = {
+		2CFCE4BD206C603C0041EDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WB2V923XT;
-				INFOPLIST_FILE = FiveTests/Info.plist;
+				INFOPLIST_FILE = "HiveFive UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.FiveTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.greensboroday.HiveFive-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive Five.app/Hive Five";
+				TEST_TARGET_NAME = "Hive Five";
 			};
 			name = Release;
 		};
-		2CFCE492206B00880041EDD1 /* Debug */ = {
+		2CFCE4CA206C60590041EDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WB2V923XT;
-				INFOPLIST_FILE = FiveUITests/Info.plist;
+				INFOPLIST_FILE = "HiveFive Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.FiveUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.greensboroday.HiveFive-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Five;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive Five.app/Hive Five";
 			};
 			name = Debug;
 		};
-		2CFCE493206B00880041EDD1 /* Release */ = {
+		2CFCE4CB206C60590041EDD1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8WB2V923XT;
-				INFOPLIST_FILE = FiveUITests/Info.plist;
+				INFOPLIST_FILE = "HiveFive Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.FiveUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.greensboroday.HiveFive-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Five;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive Five.app/Hive Five";
 			};
 			name = Release;
 		};
@@ -591,20 +587,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CFCE48E206B00880041EDD1 /* Build configuration list for PBXNativeTarget "Hive FiveTests" */ = {
+		2CFCE4BB206C603C0041EDD1 /* Build configuration list for PBXNativeTarget "HiveFive UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CFCE48F206B00880041EDD1 /* Debug */,
-				2CFCE490206B00880041EDD1 /* Release */,
+				2CFCE4BC206C603C0041EDD1 /* Debug */,
+				2CFCE4BD206C603C0041EDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CFCE491206B00880041EDD1 /* Build configuration list for PBXNativeTarget "Hive FiveUITests" */ = {
+		2CFCE4C9206C60590041EDD1 /* Build configuration list for PBXNativeTarget "HiveFive Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CFCE492206B00880041EDD1 /* Debug */,
-				2CFCE493206B00880041EDD1 /* Release */,
+				2CFCE4CA206C60590041EDD1 /* Debug */,
+				2CFCE4CB206C60590041EDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,7 +1,15 @@
+//
+//  HiveFive_UITests.swift
+//  HiveFive UITests
+//
+//  Created by Marcus Zhou on 3/28/18.
+//  Copyright © 2018 Greensboro Day School. All rights reserved.
+//
+
 import XCTest
 @testable import Hive_Five
 
-class FiveUITests: XCTestCase {
+class HiveFive_UITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
