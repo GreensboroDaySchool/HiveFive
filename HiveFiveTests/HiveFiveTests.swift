@@ -1,5 +1,9 @@
 import XCTest
+<<<<<<< HEAD
 @testable import Hive_Five
+=======
+@testable import Hive_FiveTests
+>>>>>>> 722a4ba9bb9ceed87cf3fc86891eb896283b502a
 
 class FiveTests: XCTestCase {
     
