@@ -21,6 +21,8 @@
 		32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D149206BEA9F008444F4 /* Grasshopper.swift */; };
 		32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
 		32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
+		32D1D153206BEF99008444F4 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D152206BEF99008444F4 /* BoardViewController.swift */; };
+		32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D154206BEFFF008444F4 /* BoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		32D1D149206BEA9F008444F4 /* Grasshopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
 		32D1D14B206BEAAC008444F4 /* Spider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
 		32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
+		32D1D152206BEF99008444F4 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		32D1D154206BEFFF008444F4 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		2CFCE465206B00880041EDD1 /* HiveFive */ = {
 			isa = PBXGroup;
 			children = (
+				32D1D14F206BEE71008444F4 /* View */,
 				32D1D144206BE9BE008444F4 /* Model */,
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
@@ -118,6 +123,7 @@
 				2CFCE46D206B00880041EDD1 /* Assets.xcassets */,
 				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2CFCE472206B00880041EDD1 /* Info.plist */,
+				32D1D152206BEF99008444F4 /* BoardViewController.swift */,
 			);
 			path = HiveFive;
 			sourceTree = "<group>";
@@ -152,6 +158,14 @@
 				32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		32D1D14F206BEE71008444F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32D1D154206BEFFF008444F4 /* BoardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
+				32D1D153206BEF99008444F4 /* BoardViewController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
 				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
