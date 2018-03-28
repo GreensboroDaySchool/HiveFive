@@ -52,10 +52,10 @@
 		2CFCE472206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CFCE477206B00880041EDD1 /* Hive FiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hive FiveTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE47B206B00880041EDD1 /* HiveFiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFiveTests.swift; sourceTree = "<group>"; };
-		2CFCE47D206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CFCE47D206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HiveFiveTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		2CFCE482206B00880041EDD1 /* Hive FiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hive FiveUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE486206B00880041EDD1 /* HiveFiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFiveUITests.swift; sourceTree = "<group>"; };
-		2CFCE488206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CFCE488206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HiveFiveUITests/Info.plist; sourceTree = SOURCE_ROOT; };
 		3263D562206B0E1B00D56F66 /* HexNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		32D1D145206BEA6F008444F4 /* QueenBee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
