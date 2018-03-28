@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+/**
+ The actual game has no boards, but we need an invisible board that is able to traverse/modify the HexNode ADT.
+ */
+class Hive {
+    var root: HexNode
+    
+    init(root: HexNode) {
+        self.root = root
+    }
+    
+}
