@@ -15,6 +15,7 @@
 		2CFCE47C206B00880041EDD1 /* HiveFiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE47B206B00880041EDD1 /* HiveFiveTests.swift */; };
 		2CFCE487206B00880041EDD1 /* HiveFiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE486206B00880041EDD1 /* HiveFiveUITests.swift */; };
 		3263D563206B0E1B00D56F66 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3263D562206B0E1B00D56F66 /* HexNode.swift */; };
+		32D1D143206BE9A1008444F4 /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2CFCE486206B00880041EDD1 /* HiveFiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFiveUITests.swift; sourceTree = "<group>"; };
 		2CFCE488206B00880041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3263D562206B0E1B00D56F66 /* HexNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
+		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +101,13 @@
 		2CFCE465206B00880041EDD1 /* HiveFive */ = {
 			isa = PBXGroup;
 			children = (
+				32D1D144206BE9BE008444F4 /* Model */,
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
 				2CFCE46A206B00880041EDD1 /* Main.storyboard */,
 				2CFCE46D206B00880041EDD1 /* Assets.xcassets */,
 				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2CFCE472206B00880041EDD1 /* Info.plist */,
-				3263D562206B0E1B00D56F66 /* HexNode.swift */,
 			);
 			path = HiveFive;
 			sourceTree = "<group>";
@@ -126,6 +128,15 @@
 				2CFCE488206B00880041EDD1 /* Info.plist */,
 			);
 			path = HiveFiveUITests;
+			sourceTree = "<group>";
+		};
+		32D1D144206BE9BE008444F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3263D562206B0E1B00D56F66 /* HexNode.swift */,
+				32D1D142206BE9A1008444F4 /* Hive.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
+				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				3263D563206B0E1B00D56F66 /* HexNode.swift in Sources */,
 			);
