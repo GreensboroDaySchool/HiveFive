@@ -1,3 +1,4 @@
+import XCTest
 class FiveUITests: XCTestCase {
         
     override func setUp() {
