@@ -1,12 +1,9 @@
 //
-//  HexNode.swift
+//  Hive.swift
 //  Hive Five
 //
-//  Created by Jiachen Ren on 3/27/18.
+//  Created by Jiachen Ren on 3/28/18.
 //  Copyright © 2018 Greensboro Day School. All rights reserved.
 //
 
 import Foundation
-class HexNode {
-    
-}
