@@ -1,7 +1,15 @@
+//
+//  HiveFive_Tests.swift
+//  HiveFive Tests
+//
+//  Created by Marcus Zhou on 3/28/18.
+//  Copyright © 2018 Greensboro Day School. All rights reserved.
+//
+
 import XCTest
 @testable import Hive_Five
 
-class FiveTests: XCTestCase {
+class HiveFive_Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()
