@@ -33,9 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CFCE476206B00880041EDD1"
-               BuildableName = "Hive FiveTests.xctest"
-               BlueprintName = "Hive FiveTests"
+               BlueprintIdentifier = "2CFCE497206C5FDC0041EDD1"
+               BuildableName = "HiveFiveTests.xctest"
+               BlueprintName = "HiveFiveTests"
                ReferencedContainer = "container:Hive Five.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,9 +43,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CFCE481206B00880041EDD1"
-               BuildableName = "Hive FiveUITests.xctest"
-               BlueprintName = "Hive FiveUITests"
+               BlueprintIdentifier = "2CFCE4B3206C603C0041EDD1"
+               BuildableName = "HiveFive UITests.xctest"
+               BlueprintName = "HiveFive UITests"
+               ReferencedContainer = "container:Hive Five.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2CFCE4C1206C60590041EDD1"
+               BuildableName = "HiveFive Tests.xctest"
+               BlueprintName = "HiveFive Tests"
                ReferencedContainer = "container:Hive Five.xcodeproj">
             </BuildableReference>
          </TestableReference>
