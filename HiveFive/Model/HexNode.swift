@@ -84,7 +84,13 @@ struct Neighbors {
     }
 }
 
-extension Neighbors: Equatable {
+extension Neighbors: Equatable, Hashable {
+    var hashValue: Int {
+        return nodes
+            .filter({ $0 != nil })
+            .reduce(0){ $0 ^ ObjectIdentifier($1!).hashValue }
+    }
+    
     static func == (l: Neighbors, r: Neighbors) -> Bool {
         return l.equals(r)
     }

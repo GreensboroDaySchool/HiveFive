@@ -21,11 +21,6 @@ import UIKit
 
 let nodeRadius: CGFloat = 16.0
 
-//This is used to store the processed coordination
-fileprivate typealias BoardCoordinationPair = (node: HexNode, coordination: CGPoint)
-//This is used to queue the pair into the line for later processes
-fileprivate typealias QueuedNodePair = (node: HexNode, sourceCoordination: CGPoint, sourceDirection: Direction)
-
 class BoardView: UIView {
     var hive: Hive?
     
@@ -35,6 +30,19 @@ class BoardView: UIView {
 }
 
 extension BoardView {
+    fileprivate struct NodeCoordination: Hashable {
+        var node: HexNode
+        var source: Direction
+        var coordination = CGPoint.zero
+        var zIndex = 0
+        
+        //Use the node's neighbors to identify the coordination
+        var hashValue: Int { return node.neighbors.hashValue }
+        static func == (l: NodeCoordination, r: NodeCoordination) -> Bool {
+            return l.hashValue == r.hashValue
+        }
+    }
+    
     fileprivate func layoutHive() -> [BoardCoordinationPair]? {
         //Only layout when there is a hive
         guard let hive = hive else { return nil }
