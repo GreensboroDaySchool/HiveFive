@@ -36,7 +36,15 @@ class HiveFive_Tests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    
+
+    func testHexNode() {
+        let node = HexNode()
+        node.nodes[3] = node
+        assert(node.nodes[3] != nil)
+        node.northEast = node
+        assert(node.northEast != nil)
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

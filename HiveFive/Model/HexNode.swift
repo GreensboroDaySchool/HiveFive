@@ -45,4 +45,5 @@ protocol HexNode {
     
     func canMove(to newPlace: NodeLocation) -> Bool
     func move(to newPlace: NodeLocation)
+    func availableMoves() -> [HexNode]
 }

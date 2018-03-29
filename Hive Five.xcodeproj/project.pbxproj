@@ -14,7 +14,7 @@
 		2CFCE471206B00880041EDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */; };
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
-		3263D563206B0E1B00D56F66 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3263D562206B0E1B00D56F66 /* HexNode.swift */; };
+		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
 		32D1D143206BE9A1008444F4 /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
 		32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
 		32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
@@ -56,7 +56,7 @@
 		2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3263D562206B0E1B00D56F66 /* HexNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
+		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		32D1D145206BEA6F008444F4 /* QueenBee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
 		32D1D147206BEA8A008444F4 /* Beetle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beetle.swift; sourceTree = "<group>"; };
@@ -119,17 +119,11 @@
 				32D1D144206BE9BE008444F4 /* Model */,
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
 				2CFCE46D206B00880041EDD1 /* Assets.xcassets */,
-<<<<<<< HEAD
-				3263D562206B0E1B00D56F66 /* HexNode.swift */,
-				2CFCE472206B00880041EDD1 /* Info.plist */,
-				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2CFCE46A206B00880041EDD1 /* Main.storyboard */,
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
-=======
 				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2CFCE472206B00880041EDD1 /* Info.plist */,
 				32D1D152206BEF99008444F4 /* BoardViewController.swift */,
->>>>>>> 722a4ba9bb9ceed87cf3fc86891eb896283b502a
 			);
 			path = HiveFive;
 			sourceTree = "<group>";
@@ -155,8 +149,8 @@
 		32D1D144206BE9BE008444F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3263D562206B0E1B00D56F66 /* HexNode.swift */,
 				32D1D142206BE9A1008444F4 /* Hive.swift */,
+				32B109A8206C646F0065E465 /* HexNode.swift */,
 				32D1D145206BEA6F008444F4 /* QueenBee.swift */,
 				32D1D147206BEA8A008444F4 /* Beetle.swift */,
 				32D1D149206BEA9F008444F4 /* Grasshopper.swift */,
@@ -316,9 +310,9 @@
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
+				32B109A9206C646F0065E465 /* HexNode.swift in Sources */,
 				32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */,
 				32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */,
-				3263D563206B0E1B00D56F66 /* HexNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
