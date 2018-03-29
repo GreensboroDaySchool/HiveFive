@@ -37,6 +37,26 @@ struct Neighbors {
         get {return nodes[dir.rawValue]}
         set {nodes[dir.rawValue] = newValue}
     }
+    
+    /**
+     @return the direction & node tuples in which there is a neighbor present.
+     */
+    func available() -> [(dir: Direction, node: HexNode)] {
+        return nodes.enumerated().filter{$0.element != nil}
+            .map{Direction(rawValue: $0.offset)!}
+            .map{($0, self[$0]!)}
+    }
+    
+    /**
+     Offers convenience for chained access
+     */
+    mutating func remove(_ node: HexNode) -> Neighbors {
+        guard let index = nodes.index(where: {$0 === node}) else {
+            return self
+        }
+        nodes.remove(at: index)
+        return self
+    }
 
     /**
      @return whether the references to each nodes of [self] is the same as that of [other]
@@ -87,6 +107,11 @@ protocol HexNode: AnyObject {
     Moves the piece to the designated location
     */
     func move(to newPlace: Route)
+    
+    /**
+     Remove the reference to a specific node from its neighbors
+     */
+    func remove(_ node: HexNode) -> HexNode
 
     /**
     @return all possible locations in which the current node can move to by following a defined route.
@@ -97,7 +122,9 @@ protocol HexNode: AnyObject {
 extension HexNode {
     func canMove() -> Bool {
         var neighbors = self.neighbors // make a copy of the neighbors
-        for (i,neighbor) in neighbors.nodes.enumerated() { // I am not using map, reduce, etc. because clarity outweighs conciseness
+        
+        // I am not using map, reduce, etc. because clarity outweighs conciseness
+        for (i,neighbor) in neighbors.nodes.enumerated() {
             if neighbor == nil {continue}
             let dir = neighbor!.neighbors.contains(self)
             if (dir != nil) {
@@ -109,7 +136,8 @@ extension HexNode {
         var connected =  neighbors.nodes.filter{$0 != nil}.map{$0!.numConnected()}
         if (connected.count == 1) {return true} // only two pieces on the board, one of which can always move.
         for i in (0..<(connected.count - 1)) {
-            if connected[i] != connected[i+1] { // if number of connected pieces are not the same for each piece, then the structure is broken.
+            // if number of connected pieces are not the same for each piece, then the structure is broken.
+            if connected[i] != connected[i+1] {
                 return false
             }
         }
@@ -128,16 +156,27 @@ extension HexNode {
         return []
     }
 
+    /**
+     @return the number of nodes that are connected with the current node.
+     */
     func numConnected() -> Int {
-        var neighbors = self.neighbors // make a copy of neighbors
-        return 0
+        let pool = [HexNode]()
+        return numConnected(pool)
     }
     
     /**
      @param pool: the HexNodes that are already accounted for
      */
-    private func numConnected(_ pool: [HexNode]) {
-        
+    private func numConnected(_ pool: [HexNode]) -> Int {
+        let pairs = neighbors.available() // get the nodes that are present
+        let count = pairs.count // initial # of connected is the # of neighbors
+        return count + pairs.map{$0.node.remove(self).numConnected()}
+            .reduce(0) {$0 + $1}
+    }
+    
+    func remove(_ node: HexNode) -> HexNode {
+        neighbors = neighbors.remove(node)
+        return self
     }
 
     func hasNeighbor(_ other: HexNode) -> Direction? {
