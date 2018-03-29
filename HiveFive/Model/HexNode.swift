@@ -39,7 +39,13 @@ class HexNode {
         var upLeft: HexNode?
         var downRight: HexNode?
         var downLeft: HexNode?
+        var down: HexNode?
     }
     
+    var surroundings = SurroundingNodes()
+    
+}
+
+extension HexNode.SurroundingNodes {
     
 }
