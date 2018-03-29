@@ -97,12 +97,12 @@ class HiveFive_Tests: XCTestCase {
          // including the top spider, there are 6 pieces connected together
 
         //testing HexNode::canMove
-        assert(soldierAnt.canMove() == true)
-        assert(spider.canMove() == true)
-        assert(queenBee.canMove() == true)
-        assert(beetle.canMove() == false)
-        assert(grasshopper.canMove() == false)
-        assert(spider2.canMove() == true)
+        assert(soldierAnt.canDisconnect() == true)
+        assert(spider.canDisconnect() == true)
+        assert(queenBee.canDisconnect() == true)
+        assert(beetle.canDisconnect() == false)
+        assert(grasshopper.canDisconnect() == false)
+        assert(spider2.canDisconnect() == true)
 
     }
 
