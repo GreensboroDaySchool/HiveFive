@@ -38,7 +38,16 @@ class HiveFive_Tests: XCTestCase {
     }
 
     func testHexNode() {
-        let node = HexNode()
+        let node1 = Grasshopper()
+        let node2 = Spider()
+        
+        var n1 = Neighbors()
+        var n2 = Neighbors()
+        n1[.down] = node1
+        n2[.down] = node2
+        assert(!n1.equals(n2))
+        n2[.down] = node1
+        assert(n1.equals(n2))
     }
 
     func testPerformanceExample() {
