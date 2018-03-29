@@ -29,27 +29,13 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    var nodes = [HexNode?](repeating: nil, count: 6)
-    private static let dirs: [Direction:Int] = [.up : 0, .upLeft : 1, .upRight : 2, .down : 3, .downLeft : 4, .downRight: 5]
+    static let allDirections: [Direction] = (0..<6).map({ Direction(rawValue: $0)! })
+    
+    var nodes = [HexNode?](repeating: nil, count: allDirections.count)
 
     subscript(dir: Direction) -> HexNode? {
-        get {
-            return nodes[index(from: dir)]
-        }
-        set {
-            nodes[index(from: dir)] = newValue
-        }
-    }
-
-    private func index(from dir: Direction) -> Int {
-        return Neighbors.dirs[dir]!
-    }
-    
-    /**
-     WARNING: does not check bounds
-     */
-    private func dir(from index: Int) -> Direction {
-        return Neighbors.dirs.keys.map{$0}[index]
+        get { return nodes[dir.rawValue] }
+        set { nodes[dir.rawValue] = newValue }
     }
 
     /**
@@ -64,7 +50,7 @@ struct Neighbors {
      returns nil if node is not in [nodes]; returns the Direction otherwise.
     */
     func contains(_ node: HexNode) -> Direction? {
-        return nodes.enumerated().reduce(nil, {$1.element === node ? dir(from: $1.offset) : $0})
+        return nodes.enumerated().reduce(nil, {$1.element === node ? Direction(rawValue: $1.offset) : $0})
     }
 }
 
@@ -127,6 +113,14 @@ extension HexNode {
     func availableMoves() -> [Route] {
         return []
     }
+    
+    func numConnected() -> Int {
+        return 0
+    }
+    
+    func hasNeighbor(_ other: HexNode) -> Direction? {
+        return nil
+    }
 }
 
 /**
@@ -145,8 +139,8 @@ struct Instruction {
 /**
 The direction in component of the Instruction
 */
-enum Direction {
-    case up, upLeft, upRight, down, downLeft, downRight
+enum Direction: Int {
+    case up = 0, upLeft, upRight, down, downLeft, downRight
 }
 
 /**
