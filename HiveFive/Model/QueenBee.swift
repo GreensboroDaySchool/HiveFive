@@ -19,9 +19,5 @@
 
 import Foundation
 class QueenBee: HexNode {
-    var surroundings: NodeLocation
-    
-    init() {
-        
-    }
+    var neighbors = Neighbors()
 }

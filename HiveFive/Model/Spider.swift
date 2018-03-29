@@ -19,5 +19,5 @@
 
 import Foundation
 class Spider: HexNode {
-    
+    var neighbors = Neighbors()
 }

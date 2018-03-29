@@ -19,5 +19,5 @@
 
 import Foundation
 class Beetle: HexNode {
-    
+    var neighbors = Neighbors()
 }

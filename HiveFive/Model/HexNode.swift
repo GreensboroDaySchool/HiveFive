@@ -80,7 +80,21 @@ protocol HexNode: AnyObject {
 }
 
 extension HexNode {
-
+    func canMove() -> Bool {
+        return false
+    }
+    
+    func canMove(to newPlace: Route) -> Bool {
+        return false
+    }
+    
+    func move(to newPlace: Route){
+        
+    }
+    
+    func availableMoves() -> [Route] {
+        return []
+    }
 }
 
 /**
