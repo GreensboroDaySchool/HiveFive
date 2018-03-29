@@ -33,14 +33,20 @@ struct Neighbors {
 
     subscript(dir: Direction) -> HexNode? {
         get {
-            switch dir {
-            case .up: return nodes[0]
-            case .upLeft: return nodes[1]
-            case .upRight: return nodes[2]
-            case .down: return nodes[3]
-            case .downLeft: return nodes[4]
-            case .downRight: return nodes[5]
-            }
+            return nodes[index(from: dir)]
+        }
+        set {
+            nodes[index(from: dir)] = newValue
+        }
+    }
+    private func index(from dir: Direction) -> Int {
+        switch dir {
+        case .up: return 0
+        case .upLeft: return 1
+        case .upRight: return 2
+        case .down: return 3
+        case .downLeft: return 4
+        case .downRight: return 5
         }
     }
 
