@@ -45,19 +45,14 @@ struct Neighbors {
     }
 
     func equals(_ other: Neighbors) -> Bool {
-        for (i, e) in nodes.enumerated() {
-            if (e !== other.nodes[i]) {
-                return false
-            }
-        }
-        return true
+        return zip(nodes, other.nodes).reduce(true, { $0 && ($1.0 === $1.1) })
     }
 }
 
 /**
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
  */
-protocol HexNode {
+protocol HexNode: AnyObject {
     var neighbors: Neighbors { get }
 
     /**

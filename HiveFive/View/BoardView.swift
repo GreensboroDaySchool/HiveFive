@@ -21,6 +21,8 @@ import UIKit
 
 let nodeRadius = 16.0
 
+fileprivate typealias BoardCoordinationPair = (node: HexNode, coordination: CGPoint)
+
 class BoardView: UIView {
     var hive: Hive?
     
@@ -29,14 +31,20 @@ class BoardView: UIView {
     }
 }
 
-fileprivate func location(for node: HexNode) -> CGPoint {
-    return CGPoint()
-}
-
 extension BoardView {
-    func layoutHive() {
-        guard let hive = hive else { return }
-        let centerDis = cos(1/12) * nodeRadius
+    fileprivate func layoutHive() -> [BoardCoordinationPair]? {
+        guard let hive = hive else { return nil }
+        var fifo = [HexNode]() //A queue that stores all the nodes that need to be processed
+        var processed = [BoardCoordinationPair]()
         
+        var current = BoardCoordinationPair(hive.root, CGPoint(x: 0, y: 0))
+        processed.append(current)
+        
+        while(fifo.count > 0){
+            let current = fifo.removeFirst()
+            
+        }
+        
+        return processed
     }
 }
