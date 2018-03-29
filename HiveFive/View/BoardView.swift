@@ -41,8 +41,6 @@ extension BoardView {
         var fifo = [QueuedNodePair]() //A queue that stores all the nodes that need to be processed
         var processed = [BoardCoordinationPair]()
         
-        let directions: [Direction] = [.up, .upLeft, .upRight, .down, .downLeft, .downRight]
-        
         //Assign (0, 0) to the root node
         processed.append(BoardCoordinationPair(hive.root, CGPoint(x: 0, y: 0)))
         
@@ -52,13 +50,15 @@ extension BoardView {
             .nodes//all the neighboring nodes of the root cell
             .enumerated()
             .filter({ $0.element !== nil })//Filter out nil nodes
-            .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), directions[$0.offset]) }))//map to our QueuedNodePair tuple
+            .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))//map to our QueuedNodePair tuple
         
         //Transform node locations from the inside to the outside
         while(fifo.count > 0){
             let current = fifo.removeFirst()
             var transformed = current.sourceCoordination
             
+            //Left and Right (x-axis) are different from up/down (simpler)
+            //thus using two switch statement to transform coordinations
             switch(current.sourceDirection){
             case .upRight, .downRight: transformed.x += nodeRadius * 0.5
             case .upLeft, .downLeft: transformed.x -= nodeRadius * 0.5
@@ -81,7 +81,7 @@ extension BoardView {
                 .nodes//all the neighboring nodes of the root cell
                 .enumerated()
                 .filter({ n in n.element !== nil && !processed.contains{ n.element?.neighbors.equals($0.node.neighbors) == true } })//Filter out nil nodes and nodes that have been processed
-                .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), directions[$0.offset]) }))
+                .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))
         }
         
         return processed
