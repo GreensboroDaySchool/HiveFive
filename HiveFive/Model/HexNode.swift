@@ -28,7 +28,7 @@ import Foundation
 (downLeft)       (downRight)
      \____(down)____/
  */
-struct SurroundingNodes {
+struct NodeLocation {
     var up: HexNode?
     var upRight: HexNode?
     var upLeft: HexNode?
@@ -41,12 +41,8 @@ struct SurroundingNodes {
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
  */
 protocol HexNode {
-    var surroundings: SurroundingNodes { get }
+    var location: NodeLocation { get }
     
-    func canMove(to newSurroundings: SurroundingNodes) -> Bool
-    
-}
-
-extension SurroundingNodes {
-    
+    func canMove(to newPlace: NodeLocation) -> Bool
+    func move(to newPlace: NodeLocation)
 }
