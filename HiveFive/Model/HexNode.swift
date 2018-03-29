@@ -35,6 +35,19 @@ struct Neighbors {
     var downRight: HexNode?
     var downLeft: HexNode?
     var down: HexNode?
+
+    subscript(dir: Direction) -> HexNode? {
+        get {
+            switch dir {
+            case .up: return up
+            case .upLeft: return upLeft
+            case .upRight: return upRight
+            case .down: return down
+            case .downLeft: return downLeft
+            case .downRight: return downRight
+            }
+        }
+    }
 }
 
 /**
