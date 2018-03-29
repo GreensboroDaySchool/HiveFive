@@ -28,7 +28,7 @@ import Foundation
 (downLeft)       (downRight)
      \____(down)____/
  */
-struct NodeLocation {
+struct Neighbors {
     var up: HexNode?
     var upRight: HexNode?
     var upLeft: HexNode?
@@ -41,7 +41,7 @@ struct NodeLocation {
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
  */
 protocol HexNode {
-    var location: NodeLocation { get }
+    var neighbors: Neighbors { get }
 
     /**
     @return whether taking this node up will break the structure.
@@ -49,17 +49,53 @@ protocol HexNode {
     func canMove() -> Bool
 
     /**
-    @return whether the piece can legally move to the designated NodeLocation
+    **Note**
+    The implementation for this method should be different for each class that conforms to the HexNode protocol.
+    For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
+    @return whether the piece can legally move to the designated location by following the instructions provided by route.
     */
-    func canMove(to newPlace: NodeLocation) -> Bool
+    func canMove(to newPlace: Route) -> Bool
 
     /**
-    @return moves the piece to the designated location
+    moves the piece to the designated location
     */
-    func move(to newPlace: NodeLocation)
+    func move(to newPlace: Route)
 
     /**
-    @return all possible moves
+    @return all possible locations in which the current node can move to by following a defined route.
     */
-    func availableMoves() -> [HexNode]
+    func availableMoves() -> [Route]
+}
+
+extension HexNode {
+
+}
+
+/**
+A piece-wise instruction. For example, Instruction(x,.upLeft) would mean move upLeft 3 times
+Imaging an Instruction instance like a vector that has magnitude and direction, then [dir] defines
+the direction while [num] defines the magnitude.
+*/
+struct Instruction {
+    ///the number of nodes to move in the specified direction
+    let num: Int
+
+    ///the direction in relation to the current node
+    let dir: Direction
+}
+
+/**
+The direction in component of the Instruction
+*/
+enum Direction {
+    case up, upLeft, upRight, down, downLeft, downRight
+}
+
+/**
+Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
+Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
+of vectors that "directs" to the relative location.
+*/
+struct Route {
+    var instructions: [Instruction]
 }
