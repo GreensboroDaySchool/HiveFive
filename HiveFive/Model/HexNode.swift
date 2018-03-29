@@ -175,7 +175,7 @@ extension HexNode {
     }
 
     func move(to newPlace: Route) {
-
+        
     }
 
     func availableMoves() -> [Route] {
@@ -245,7 +245,12 @@ struct Instruction {
 The direction in component of the Instruction
 */
 enum Direction: Int {
+    //Horizontal locations
     case up = 0, upLeft, upRight, down, downLeft, downRight
+    
+    //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
+    //The node being suppressed should have all horizontal references set to nil
+    case below, above
 
     /**
     I know there's a better way, but that would simply take too much time!
@@ -259,6 +264,8 @@ enum Direction: Int {
         case .down: return .up
         case .downLeft: return .upRight
         case .downRight: return .upLeft
+        case .below: return .above
+        case .above: return .below
         }
     }
 }
