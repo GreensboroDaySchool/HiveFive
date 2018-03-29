@@ -65,12 +65,36 @@ class HiveFive_Tests: XCTestCase {
         let spider = Spider()
         let queenBee = QueenBee()
         let beetle = Beetle()
+        let soldierAnt = SoldierAnt()
+        let spider2 = Spider()
 
         grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
+        assert(spider.numConnected() == 2)
+        assert(grasshopper.numConnected() == 2)
         queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
+        assert(spider.numConnected() == 3)
+        assert(grasshopper.numConnected() == 3)
+        assert(queenBee.numConnected() == 3)
         beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
-        assert(spider.numConnected() == 4) // including the spider, there are four pieces connected together
-//        assert(spider is Beetle)
+        assert(spider.numConnected() == 4)
+        assert(grasshopper.numConnected() == 4)
+        assert(queenBee.numConnected() == 4)
+        assert(beetle.numConnected() == 4)
+        soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
+        assert(spider.numConnected() == 5)
+        assert(grasshopper.numConnected() == 5)
+        assert(queenBee.numConnected() == 5)
+        assert(beetle.numConnected() == 5)
+        assert(soldierAnt.numConnected() == 5)
+        spider2.connect(with: grasshopper, at: .down)
+        assert(spider.numConnected() == 6)
+        assert(grasshopper.numConnected() == 6)
+        assert(queenBee.numConnected() == 6)
+        assert(beetle.numConnected() == 6)
+        assert(soldierAnt.numConnected() == 6)
+        assert(spider2.numConnected() == 6)
+         // including the top spider, there are 6 pieces connected together
+
     }
 
     func testPerformanceExample() {

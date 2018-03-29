@@ -39,6 +39,7 @@ struct Neighbors {
     }
 
     /**
+     TODO: should Neighbors be immutable? Don't change it yet!
      @return the direction & node tuples in which there is a neighbor present.
      */
     func available() -> [(dir: Direction, node: HexNode)] {
@@ -48,14 +49,23 @@ struct Neighbors {
     }
 
     /**
-     Offers convenience for chained access
+     Returns a new instance with [node] removed
      */
-    mutating func remove(_ node: HexNode) -> Neighbors {
+    func remove(_ node: HexNode) -> Neighbors {
+        var copied = self
         guard let index = nodes.index(where: {$0 === node}) else {
-            return self
+            return copied
         }
-        nodes[index] = nil
-        return self
+        copied.nodes[index] = nil
+        return copied
+    }
+
+    func removeAll(_ nodes: [HexNode]) -> Neighbors {
+        var copied = self
+        for node in nodes {
+            copied = copied.remove(node) // not very efficient, but suffice for now!
+        }
+        return copied
     }
 
     /**
@@ -172,9 +182,10 @@ extension HexNode {
         return []
     }
 
+    //Not the perfect solution... but it works like a charm!
     func numConnected() -> Int {
         let pool = [HexNode]()
-        return numConnected(pool)
+        return numConnected(pool, 1) - numConnected(pool, 0)
     }
 
     //TODO: check to make sure that the connection could be made, i.e. neighbors[dir] is empty
@@ -189,16 +200,18 @@ extension HexNode {
     }
 
     /**
-     TODO: debug; make use of pool
      @param pool: the HexNodes that are already accounted for
+     @param i: 0 -> excluding leaf nodes; 1 -> leaf nodes + 2 * multi-directionally bounded nodes
      */
-    private func numConnected(_ pool: [HexNode]) -> Int {
+    private func numConnected(_ pool: [HexNode], _ i: Int) -> Int {
         var pool = pool // make pool mutable
         let pairs = neighbors.available() // get the nodes that are present
         let count = pairs.count // initial # of connected is the # of neighbors
+        if pool.contains(where: {$0 === self}) {return 0}
         pool.append(self) // self is accounted for
-        return count + pairs.map{$0.node.removeAll(pool).numConnected(pool)}
-            .reduce(1) {$0 + $1}
+        return count + pairs.map{$0.node}.filter{node in !pool.contains(where: {$0 === node})}
+                .map{$0.numConnected(pool, i)}
+                .reduce(i) {$0 + $1}
     }
 
     func remove(_ node: HexNode) {
