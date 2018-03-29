@@ -60,6 +60,10 @@ class HiveFive_Tests: XCTestCase {
         assert(n1.contains(node2) == .up)
     }
 
+    func testNumConnected() {
+
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

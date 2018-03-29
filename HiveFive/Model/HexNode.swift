@@ -37,7 +37,7 @@ struct Neighbors {
         get {return nodes[dir.rawValue]}
         set {nodes[dir.rawValue] = newValue}
     }
-    
+
     /**
      @return the direction & node tuples in which there is a neighbor present.
      */
@@ -46,7 +46,7 @@ struct Neighbors {
             .map{Direction(rawValue: $0.offset)!}
             .map{($0, self[$0]!)}
     }
-    
+
     /**
      Offers convenience for chained access
      */
@@ -86,7 +86,7 @@ protocol HexNode: AnyObject {
     func canMove() -> Bool
 
     /**
-    @return the number of nodes that are connected to the current node.
+    @return the number of nodes that are connected to the current node, including the current node
     */
     func numConnected() -> Int
 
@@ -107,11 +107,27 @@ protocol HexNode: AnyObject {
     Moves the piece to the designated location
     */
     func move(to newPlace: Route)
-    
+
     /**
      Remove the reference to a specific node from its neighbors
      */
-    func remove(_ node: HexNode) -> HexNode
+    func remove(_ node: HexNode)
+    
+    /**
+     Connect with another node at a certain neighboring position.
+     The connection should be bidirectional
+     */
+    func connect(with node: HexNode, at dir: Direction)
+    
+    /**
+     When the node disconnects from the structure, all references to it from the neighbors should be removed.
+     */
+    func disconnect()
+    
+    /**
+     Returns self for convenient chained modification.
+     */
+    func removeAll(_ nodes: [HexNode]) -> HexNode
 
     /**
     @return all possible locations in which the current node can move to by following a defined route.
@@ -122,14 +138,14 @@ protocol HexNode: AnyObject {
 extension HexNode {
     func canMove() -> Bool {
         var neighbors = self.neighbors // make a copy of the neighbors
-        
+
         // I am not using map, reduce, etc. because clarity outweighs conciseness
         for (i,neighbor) in neighbors.nodes.enumerated() {
             if neighbor == nil {continue}
             let dir = neighbor!.neighbors.contains(self)
             if (dir != nil) {
                 //potential bug, neighbors might get copied
-                
+
                  neighbors.nodes[i]!.neighbors[dir!] = nil // remove reference to self
             }
         }
@@ -156,31 +172,35 @@ extension HexNode {
         return []
     }
 
-    /**
-     @return the number of nodes that are connected with the current node.
-     */
     func numConnected() -> Int {
         let pool = [HexNode]()
         return numConnected(pool)
     }
-    
+
     /**
+     TODO: debug; make use of pool
      @param pool: the HexNodes that are already accounted for
      */
     private func numConnected(_ pool: [HexNode]) -> Int {
+        var pool = pool // make pool mutable
         let pairs = neighbors.available() // get the nodes that are present
         let count = pairs.count // initial # of connected is the # of neighbors
-        return count + pairs.map{$0.node.remove(self).numConnected()}
-            .reduce(0) {$0 + $1}
+        pool.append(self) // self is accounted for
+        return count + pairs.map{$0.node.removeAll(pool).numConnected(pool)}
+            .reduce(1) {$0 + $1}
     }
-    
-    func remove(_ node: HexNode) -> HexNode {
+
+    func remove(_ node: HexNode) {
         neighbors = neighbors.remove(node)
+    }
+
+    func removeAll(_ nodes: [HexNode]) -> HexNode {
+        nodes.forEach(remove)
         return self
     }
 
     func hasNeighbor(_ other: HexNode) -> Direction? {
-        return nil
+        return neighbors.contains(other)
     }
 }
 
