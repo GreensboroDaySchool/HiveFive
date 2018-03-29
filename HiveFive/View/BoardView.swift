@@ -70,6 +70,7 @@ extension BoardView {
             case .downLeft, .downRight: transformed.y -= nodeRadius * sin(.pi / 3)
             case .up: transformed.y += nodeRadius * sin(.pi / 3) * 2
             case .down: transformed.y -= nodeRadius * sin(.pi / 3) * 2
+            default: break
             }
             
             processed.append(BoardCoordinationPair(current.node, transformed))
