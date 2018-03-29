@@ -49,12 +49,15 @@ protocol HexNode {
     func canMove() -> Bool
 
     /**
+    **Note**
+    The implementation for this method should be different for each class that conforms to the HexNode protocol.
+    For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
     @return whether the piece can legally move to the designated location by following the instructions provided by route.
     */
     func canMove(to newPlace: Route) -> Bool
 
     /**
-    @return moves the piece to the designated location
+    moves the piece to the designated location
     */
     func move(to newPlace: Route)
 
