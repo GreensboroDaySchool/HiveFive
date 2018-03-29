@@ -19,7 +19,7 @@
 
 import Foundation
 class QueenBee: HexNode {
-    var surroundings: SurroundingNodes
+    var surroundings: NodeLocation
     
     init() {
         
