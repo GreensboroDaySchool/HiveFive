@@ -29,7 +29,7 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    static let allDirections: [Direction] = (0..<6).map {Direction(rawValue: $0)!}
+    static let allDirections: [Direction] = (0..<8).map {Direction(rawValue: $0)!}
 
     var nodes = [HexNode?](repeating: nil, count: allDirections.count)
 
@@ -103,7 +103,7 @@ protocol HexNode: AnyObject {
     /**
     @return whether taking this node up will break the structure.
     */
-    func canMove() -> Bool
+    func canDisconnect() -> Bool
 
     /**
     @return the number of nodes that are connected to the current node, including the current node
@@ -163,7 +163,7 @@ protocol HexNode: AnyObject {
 }
 
 extension HexNode {
-    func canMove() -> Bool {
+    func canDisconnect() -> Bool {
         let neighbors = self.neighbors // make a copy of the neighbors
         // I am not using map, reduce, etc. because clarity outweighs conciseness
         self.disconnect() // temporarily disconnect with all neighbors
