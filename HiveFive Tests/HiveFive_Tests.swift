@@ -39,10 +39,6 @@ class HiveFive_Tests: XCTestCase {
 
     func testHexNode() {
         let node = HexNode()
-        node.nodes[3] = node
-        assert(node.nodes[3] != nil)
-        node.northEast = node
-        assert(node.northEast != nil)
     }
 
     func testPerformanceExample() {
