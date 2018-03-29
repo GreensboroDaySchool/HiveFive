@@ -105,6 +105,11 @@ class HiveFive_Tests: XCTestCase {
         assert(spider2.canDisconnect() == true)
 
     }
+    
+    func testDirectionAdjacent() {
+        let dir = Direction.up
+        assert(dir.adjacent()[1].adjacent()[1].adjacent()[1] == .down)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

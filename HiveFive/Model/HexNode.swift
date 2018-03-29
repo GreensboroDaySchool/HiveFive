@@ -29,9 +29,7 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    static let allDirections: [Direction] = (0..<8).map {Direction(rawValue: $0)!}
-
-    var nodes = [HexNode?](repeating: nil, count: allDirections.count)
+    var nodes = [HexNode?](repeating: nil, count: Direction.allDirections.count)
 
     subscript(dir: Direction) -> HexNode? {
         get {return nodes[dir.rawValue]}
@@ -279,8 +277,9 @@ struct Instruction {
 The direction in component of the Instruction
 */
 enum Direction: Int {
+    static let allDirections: [Direction] = (0..<8).map {Direction(rawValue: $0)!}
     //Horizontal locations
-    case up = 0, upLeft, upRight, down, downLeft, downRight
+    case up = 0, upRight, downRight, down, downLeft, upLeft
 
     //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
     //The node being suppressed should have all horizontal references set to nil
@@ -301,6 +300,23 @@ enum Direction: Int {
         case .below: return .above
         case .above: return .below
         }
+    }
+
+    /**
+     e.g. Direction.up.adjacent() returns [.upLeft, .upRight]
+     Note: this method is not intended for down/below.
+     @return the adjacent directions of a certain direction
+             use adjacent()[0] to get the next element counter-clockwise,
+             use adjacent()[1] to get the next element clockwise
+     */
+    func adjacent() -> [Direction] {
+        assert(self.rawValue < 6) // this method is only intended for horizontal directions
+        var adjacent = [Direction]()
+        let count = 6 // there are 6 horizontal directions in total
+        let value = rawValue + count
+        adjacent.append(Direction(rawValue: (value - 1) % count)!)
+        adjacent.append(Direction(rawValue: (value + 1) % count)!)
+        return adjacent
     }
 }
 
