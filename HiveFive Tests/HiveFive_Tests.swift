@@ -37,7 +37,7 @@ class HiveFive_Tests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testHexNode() {
+    func testNeighborsReferencesEquals() {
         let node1 = Grasshopper()
         let node2 = Spider()
         
@@ -48,6 +48,16 @@ class HiveFive_Tests: XCTestCase {
         assert(!n1.equals(n2))
         n2[.down] = node1
         assert(n1.equals(n2))
+    }
+
+    func testNeighborsContains() {
+        let node1 = Grasshopper()
+        let node2 = Spider()
+
+        var n1 = Neighbors()
+        n1[.down] = node1
+        n1[.up] = node2
+        assert(n1.contains(node2) == .up)
     }
 
     func testPerformanceExample() {
