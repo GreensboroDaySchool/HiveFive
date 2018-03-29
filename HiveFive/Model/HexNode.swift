@@ -100,6 +100,7 @@ extension Neighbors: Equatable, Hashable {
 protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
 
+
     /**
     @return whether taking this node up will break the structure.
     */
@@ -114,6 +115,11 @@ protocol HexNode: AnyObject {
     @return whether the node has [other] as an immediate neighbor
     */
     func hasNeighbor(_ other: HexNode) -> Direction?
+
+    /**
+    @return whether the current node could move
+    */
+    func canMove() -> Bool
 
     /**
     **Note**
@@ -134,6 +140,12 @@ protocol HexNode: AnyObject {
     func remove(_ node: HexNode)
 
     /**
+     Returns self for convenient chained modification.
+     @return self
+     */
+    func removeAll(_ nodes: [HexNode]) -> HexNode
+
+    /**
      Connect with another node at a certain neighboring position.
      The connection should be bidirectional, [dir] is the direction in relation to [node]
      */
@@ -150,11 +162,6 @@ protocol HexNode: AnyObject {
     Note: ONLY the specified node, does not include all the surrounding nodes
     */
     func disconnect(with node: HexNode);
-
-    /**
-     Returns self for convenient chained modification.
-     */
-    func removeAll(_ nodes: [HexNode]) -> HexNode
 
     /**
     @return all possible locations in which the current node can move to by following a defined route.
@@ -184,6 +191,10 @@ extension HexNode {
         return canMove
     }
 
+    func canMove() -> Bool {
+        return availableMoves().count > 0
+    }
+
     func canMove(to newPlace: Route) -> Bool {
         return false
     }
@@ -208,7 +219,6 @@ extension HexNode {
         neighbors[dir.opposite()] = node
     }
 
-    //TODO: implement
     func disconnect() {
         neighbors.available().map{$0.node}.forEach{$0.disconnect(with: self)}
     }
