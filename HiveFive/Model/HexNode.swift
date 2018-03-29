@@ -43,8 +43,23 @@ struct NodeLocation {
 protocol HexNode {
     var location: NodeLocation { get }
 
+    /**
+    @return whether taking this node up will break the structure.
+    */
     func canMove() -> Bool
+
+    /**
+    @return whether the piece can legally move to the designated NodeLocation
+    */
     func canMove(to newPlace: NodeLocation) -> Bool
+
+    /**
+    @return moves the piece to the designated location
+    */
     func move(to newPlace: NodeLocation)
+
+    /**
+    @return all possible moves
+    */
     func availableMoves() -> [HexNode]
 }
