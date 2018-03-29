@@ -187,7 +187,6 @@ extension HexNode {
         }
 
         available.forEach{connect(with: $0.node, at: $0.dir.opposite())} // reconnect with neighbors
-
         return canMove
     }
 
@@ -195,16 +194,18 @@ extension HexNode {
         return availableMoves().count > 0
     }
 
+    /**
+    TODO: implement
+    */
     func canMove(to newPlace: Route) -> Bool {
         return false
     }
 
+    /**
+    TODO: implement
+    */
     func move(to newPlace: Route) {
 
-    }
-
-    func availableMoves() -> [Route] {
-        return []
     }
 
     //Not the perfect solution... but it works like a charm!
