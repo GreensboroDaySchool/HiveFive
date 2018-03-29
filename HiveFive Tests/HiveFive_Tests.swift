@@ -60,7 +60,7 @@ class HiveFive_Tests: XCTestCase {
         assert(n1.contains(node2) == .up)
     }
 
-    func testNumConnected() {
+    func testCanMove() {
         let grasshopper = Grasshopper()
         let spider = Spider()
         let queenBee = QueenBee()
@@ -68,6 +68,7 @@ class HiveFive_Tests: XCTestCase {
         let soldierAnt = SoldierAnt()
         let spider2 = Spider()
 
+        //testing HexNode::numConnected
         grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
         assert(spider.numConnected() == 2)
         assert(grasshopper.numConnected() == 2)
@@ -86,7 +87,7 @@ class HiveFive_Tests: XCTestCase {
         assert(queenBee.numConnected() == 5)
         assert(beetle.numConnected() == 5)
         assert(soldierAnt.numConnected() == 5)
-        spider2.connect(with: grasshopper, at: .down)
+        spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
         assert(spider.numConnected() == 6)
         assert(grasshopper.numConnected() == 6)
         assert(queenBee.numConnected() == 6)
@@ -94,6 +95,14 @@ class HiveFive_Tests: XCTestCase {
         assert(soldierAnt.numConnected() == 6)
         assert(spider2.numConnected() == 6)
          // including the top spider, there are 6 pieces connected together
+
+        //testing HexNode::canMove
+        assert(soldierAnt.canMove() == true)
+        assert(spider.canMove() == true)
+        assert(queenBee.canMove() == true)
+        assert(beetle.canMove() == false)
+        assert(grasshopper.canMove() == false)
+        assert(spider2.canMove() == true)
 
     }
 
