@@ -43,56 +43,56 @@ extension BoardView {
         }
     }
     
-    fileprivate func layoutHive() -> [BoardCoordinationPair]? {
-        //Only layout when there is a hive
-        guard let hive = hive else { return nil }
-        var fifo = [QueuedNodePair]() //A queue that stores all the nodes that need to be processed
-        var processed = [BoardCoordinationPair]()
-        
-        //Assign (0, 0) to the root node
-        processed.append(BoardCoordinationPair(hive.root, CGPoint(x: 0, y: 0)))
-        
-        fifo.append(contentsOf: processed.first!
-            .node
-            .neighbors
-            .nodes//all the neighboring nodes of the root cell
-            .enumerated()
-            .filter({ $0.element !== nil })//Filter out nil nodes
-            .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))//map to our QueuedNodePair tuple
-        
-        //Transform node locations from the inside to the outside
-        while(fifo.count > 0){
-            let current = fifo.removeFirst()
-            var transformed = current.sourceCoordination
-            
-            //Left and Right (x-axis) are different from up/down (simpler)
-            //thus using two switch statement to transform coordinations
-            switch(current.sourceDirection){
-            case .upRight, .downRight: transformed.x += nodeRadius * 0.5
-            case .upLeft, .downLeft: transformed.x -= nodeRadius * 0.5
-            default: break
-            }
-            
-            switch(current.sourceDirection){
-            case .upRight, .upLeft: transformed.y += nodeRadius * sin(.pi / 3)
-            case .downLeft, .downRight: transformed.y -= nodeRadius * sin(.pi / 3)
-            case .up: transformed.y += nodeRadius * sin(.pi / 3) * 2
-            case .down: transformed.y -= nodeRadius * sin(.pi / 3) * 2
-            default: break
-            }
-            
-            processed.append(BoardCoordinationPair(current.node, transformed))
-            
-            //Append current node's neighboors
-            fifo.append(contentsOf: processed.last!
-                .node
-                .neighbors
-                .nodes//all the neighboring nodes of the root cell
-                .enumerated()
-                .filter({ n in n.element !== nil && !processed.contains{ n.element?.neighbors.equals($0.node.neighbors) == true } })//Filter out nil nodes and nodes that have been processed
-                .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))
-        }
-        
-        return processed
-    }
+//    fileprivate func layoutHive() -> [BoardCoordinationPair]? {
+//        //Only layout when there is a hive
+//        guard let hive = hive else { return nil }
+//        var fifo = [QueuedNodePair]() //A queue that stores all the nodes that need to be processed
+//        var processed = [BoardCoordinationPair]()
+//
+//        //Assign (0, 0) to the root node
+//        processed.append(BoardCoordinationPair(hive.root, CGPoint(x: 0, y: 0)))
+//
+//        fifo.append(contentsOf: processed.first!
+//            .node
+//            .neighbors
+//            .nodes//all the neighboring nodes of the root cell
+//            .enumerated()
+//            .filter({ $0.element !== nil })//Filter out nil nodes
+//            .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))//map to our QueuedNodePair tuple
+//
+//        //Transform node locations from the inside to the outside
+//        while(fifo.count > 0){
+//            let current = fifo.removeFirst()
+//            var transformed = current.sourceCoordination
+//
+//            //Left and Right (x-axis) are different from up/down (simpler)
+//            //thus using two switch statement to transform coordinations
+//            switch(current.sourceDirection){
+//            case .upRight, .downRight: transformed.x += nodeRadius * 0.5
+//            case .upLeft, .downLeft: transformed.x -= nodeRadius * 0.5
+//            default: break
+//            }
+//
+//            switch(current.sourceDirection){
+//            case .upRight, .upLeft: transformed.y += nodeRadius * sin(.pi / 3)
+//            case .downLeft, .downRight: transformed.y -= nodeRadius * sin(.pi / 3)
+//            case .up: transformed.y += nodeRadius * sin(.pi / 3) * 2
+//            case .down: transformed.y -= nodeRadius * sin(.pi / 3) * 2
+//            default: break
+//            }
+//
+//            processed.append(BoardCoordinationPair(current.node, transformed))
+//
+//            //Append current node's neighboors
+//            fifo.append(contentsOf: processed.last!
+//                .node
+//                .neighbors
+//                .nodes//all the neighboring nodes of the root cell
+//                .enumerated()
+//                .filter({ n in n.element !== nil && !processed.contains{ n.element?.neighbors.equals($0.node.neighbors) == true } })//Filter out nil nodes and nodes that have been processed
+//                .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))
+//        }
+//
+//        return processed
+//    }
 }

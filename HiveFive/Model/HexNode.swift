@@ -179,7 +179,7 @@ extension HexNode {
             }
         }
 
-        available.forEach{connect(with: $0.node, at: $0.dir)} // reconnect with neighbors
+        available.forEach{connect(with: $0.node, at: $0.dir.opposite())} // reconnect with neighbors
 
         return canMove
     }
