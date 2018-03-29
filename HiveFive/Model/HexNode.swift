@@ -112,18 +112,18 @@ protocol HexNode: AnyObject {
      Remove the reference to a specific node from its neighbors
      */
     func remove(_ node: HexNode)
-    
+
     /**
      Connect with another node at a certain neighboring position.
      The connection should be bidirectional
      */
     func connect(with node: HexNode, at dir: Direction)
-    
+
     /**
      When the node disconnects from the structure, all references to it from the neighbors should be removed.
      */
     func disconnect()
-    
+
     /**
      Returns self for convenient chained modification.
      */
@@ -177,6 +177,12 @@ extension HexNode {
         return numConnected(pool)
     }
 
+    func connect(with node: HexNode, at dir: Direction) {
+        neighbors[dir] = node
+    }
+
+
+
     /**
      TODO: debug; make use of pool
      @param pool: the HexNodes that are already accounted for
@@ -222,6 +228,20 @@ The direction in component of the Instruction
 */
 enum Direction: Int {
     case up = 0, upLeft, upRight, down, downLeft, downRight
+
+    /**
+    I know there's a better way, but that would simply take too much time!
+     */
+    func opposite() -> Direction {
+        switch self {
+        case .up: return .down
+        case .upLeft: return .downRight
+        case .upRight: return .downLeft
+        case .down: return .up
+        case .downLeft: return .upRight
+        case .downRight: return .upLeft
+        }
+    }
 }
 
 /**
