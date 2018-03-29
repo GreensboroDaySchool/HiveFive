@@ -29,28 +29,38 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    static let allDirections: [Direction] = (0..<6).map({ Direction(rawValue: $0)! })
-    
+    static let allDirections: [Direction] = (0..<6).map {
+        Direction(rawValue: $0)!
+    }
+
     var nodes = [HexNode?](repeating: nil, count: allDirections.count)
 
     subscript(dir: Direction) -> HexNode? {
-        get { return nodes[dir.rawValue] }
-        set { nodes[dir.rawValue] = newValue }
+        get {
+            return nodes[dir.rawValue]
+        }
+        set {
+            nodes[dir.rawValue] = newValue
+        }
     }
 
     /**
      @return whether the references to each nodes of [self] is the same as that of [other]
      */
     func equals(_ other: Neighbors) -> Bool {
-        return zip(nodes, other.nodes).reduce(true, { $0 && ($1.0 === $1.1) })
+        return zip(nodes, other.nodes).reduce(true) {
+            $0 && ($1.0 === $1.1)
+        }
     }
-    
+
     /**
      @return whether [nodes] contains reference to [node]
      returns nil if node is not in [nodes]; returns the Direction otherwise.
     */
     func contains(_ node: HexNode) -> Direction? {
-        return nodes.enumerated().reduce(nil, {$1.element === node ? Direction(rawValue: $1.offset) : $0})
+        return nodes.enumerated().reduce(nil) {
+            $1.element === node ? Direction(rawValue: $1.offset) : $0
+        }
     }
 }
 
@@ -69,7 +79,7 @@ protocol HexNode: AnyObject {
     @return the number of nodes that are connected to the current node.
     */
     func numConnected() -> Int
-    
+
     /**
     @return whether the node has [other] as an immediate neighbor
     */
@@ -96,28 +106,28 @@ protocol HexNode: AnyObject {
 
 extension HexNode {
     func canMove() -> Bool {
-        neighbors.nodes.map({(node) -> Void in
+        neighbors.nodes.map({ (node) -> Void in
 //            if (node == nil) return
         })
         return false
     }
-    
+
     func canMove(to newPlace: Route) -> Bool {
         return false
     }
-    
-    func move(to newPlace: Route){
-        
+
+    func move(to newPlace: Route) {
+
     }
-    
+
     func availableMoves() -> [Route] {
         return []
     }
-    
+
     func numConnected() -> Int {
         return 0
     }
-    
+
     func hasNeighbor(_ other: HexNode) -> Direction? {
         return nil
     }
