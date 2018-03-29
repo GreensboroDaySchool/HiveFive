@@ -42,7 +42,8 @@ struct NodeLocation {
  */
 protocol HexNode {
     var location: NodeLocation { get }
-    
+
+    func canMove() -> Bool
     func canMove(to newPlace: NodeLocation) -> Bool
     func move(to newPlace: NodeLocation)
     func availableMoves() -> [HexNode]
