@@ -18,18 +18,25 @@
  */
 
 import UIKit
-/**
- The Board class takes a Hive structure and displays it.
- */
+
+let nodeRadius = 16.0
+
 class BoardView: UIView {
+    var hive: Hive?
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
 }
 
+fileprivate func location(for node: HexNode) -> CGPoint {
+    return CGPoint()
+}
+
+extension BoardView {
+    func layoutHive() {
+        guard let hive = hive else { return }
+        let centerDis = cos(1/12) * nodeRadius
+        
+    }
+}
