@@ -72,8 +72,8 @@ extension HexNode {
 }
 
 /**
-A piece-wise instruction. For example, Instruction(x,.upLeft) would mean move upLeft 3 times
-Imaging an Instruction instance like a vector that has magnitude and direction, then [dir] defines
+A piece-wise instruction. For example, Instruction(3,.upLeft) would mean move upLeft 3 times
+Imagine an Instruction instance like a vector that has magnitude and direction, then [dir] defines
 the direction while [num] defines the magnitude.
 */
 struct Instruction {
