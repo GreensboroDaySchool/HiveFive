@@ -84,6 +84,12 @@ struct Neighbors {
     }
 }
 
+extension Neighbors: Equatable {
+    static func == (l: Neighbors, r: Neighbors) -> Bool {
+        return l.equals(r)
+    }
+}
+
 /**
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
  */
