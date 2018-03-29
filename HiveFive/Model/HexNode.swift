@@ -29,28 +29,20 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    static let allDirections: [Direction] = (0..<6).map {
-        Direction(rawValue: $0)!
-    }
+    static let allDirections: [Direction] = (0..<6).map {Direction(rawValue: $0)!}
 
     var nodes = [HexNode?](repeating: nil, count: allDirections.count)
 
     subscript(dir: Direction) -> HexNode? {
-        get {
-            return nodes[dir.rawValue]
-        }
-        set {
-            nodes[dir.rawValue] = newValue
-        }
+        get {return nodes[dir.rawValue]}
+        set {nodes[dir.rawValue] = newValue}
     }
 
     /**
      @return whether the references to each nodes of [self] is the same as that of [other]
      */
     func equals(_ other: Neighbors) -> Bool {
-        return zip(nodes, other.nodes).reduce(true) {
-            $0 && ($1.0 === $1.1)
-        }
+        return zip(nodes, other.nodes).reduce(true) {$0 && ($1.0 === $1.1)}
     }
 
     /**
@@ -58,9 +50,7 @@ struct Neighbors {
      returns nil if node is not in [nodes]; returns the Direction otherwise.
     */
     func contains(_ node: HexNode) -> Direction? {
-        return nodes.enumerated().reduce(nil) {
-            $1.element === node ? Direction(rawValue: $1.offset) : $0
-        }
+        return nodes.enumerated().reduce(nil) {$1.element === node ? Direction(rawValue: $1.offset) : $0}
     }
 }
 
@@ -68,7 +58,7 @@ struct Neighbors {
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
  */
 protocol HexNode: AnyObject {
-    var neighbors: Neighbors { get }
+    var neighbors: Neighbors { get set }
 
     /**
     @return whether taking this node up will break the structure.
@@ -94,7 +84,7 @@ protocol HexNode: AnyObject {
     func canMove(to newPlace: Route) -> Bool
 
     /**
-    moves the piece to the designated location
+    Moves the piece to the designated location
     */
     func move(to newPlace: Route)
 
@@ -106,10 +96,24 @@ protocol HexNode: AnyObject {
 
 extension HexNode {
     func canMove() -> Bool {
-        neighbors.nodes.map({ (node) -> Void in
-//            if (node == nil) return
-        })
-        return false
+        var neighbors = self.neighbors // make a copy of the neighbors
+        for (i,neighbor) in neighbors.nodes.enumerated() { // I am not using map, reduce, etc. because clarity outweighs conciseness
+            if neighbor == nil {continue}
+            let dir = neighbor!.neighbors.contains(self)
+            if (dir != nil) {
+                //potential bug, neighbors might get copied
+                
+                 neighbors.nodes[i]!.neighbors[dir!] = nil // remove reference to self
+            }
+        }
+        var connected =  neighbors.nodes.filter{$0 != nil}.map{$0!.numConnected()}
+        if (connected.count == 1) {return true} // only two pieces on the board, one of which can always move.
+        for i in (0..<(connected.count - 1)) {
+            if connected[i] != connected[i+1] { // if number of connected pieces are not the same for each piece, then the structure is broken.
+                return false
+            }
+        }
+        return true
     }
 
     func canMove(to newPlace: Route) -> Bool {
@@ -125,7 +129,15 @@ extension HexNode {
     }
 
     func numConnected() -> Int {
+        var neighbors = self.neighbors // make a copy of neighbors
         return 0
+    }
+    
+    /**
+     @param pool: the HexNodes that are already accounted for
+     */
+    private func numConnected(_ pool: [HexNode]) {
+        
     }
 
     func hasNeighbor(_ other: HexNode) -> Direction? {
