@@ -43,9 +43,9 @@ struct Neighbors {
      @return the direction & node tuples in which there is a neighbor present.
      */
     func available() -> [(dir: Direction, node: HexNode)] {
-        return nodes.enumerated().filter{$0.element != nil}
-            .map{Direction(rawValue: $0.offset)!}
-            .map{($0, self[$0]!)}
+        return nodes.enumerated().filter {$0.element != nil}
+                .map {Direction(rawValue: $0.offset)!}
+                .map {($0, self[$0]!)}
     }
 
     /**
@@ -53,7 +53,7 @@ struct Neighbors {
      */
     func remove(_ node: HexNode) -> Neighbors {
         var copied = self
-        guard let index = nodes.index(where: {$0 === node}) else {
+        guard let index = nodes.index(where: { $0 === node }) else {
             return copied
         }
         copied.nodes[index] = nil
@@ -86,12 +86,10 @@ struct Neighbors {
 
 extension Neighbors: Equatable, Hashable {
     var hashValue: Int {
-        return nodes
-            .filter({ $0 != nil })
-            .reduce(0){ $0 ^ ObjectIdentifier($1!).hashValue }
+        return nodes.filter({ $0 != nil }).reduce(0) {$0 ^ ObjectIdentifier($1!).hashValue}
     }
-    
-    static func == (l: Neighbors, r: Neighbors) -> Bool {
+
+    static func ==(l: Neighbors, r: Neighbors) -> Bool {
         return l.equals(r)
     }
 }
@@ -143,8 +141,15 @@ protocol HexNode: AnyObject {
 
     /**
      When the node disconnects from the structure, all references to it from the neighbors should be removed.
+     Note: disconnect with all neighbors
      */
     func disconnect()
+
+    /**
+    Disconnect with the specified node
+    Note: ONLY the specified node, does not include all the surrounding nodes
+    */
+    func disconnect(with node: HexNode);
 
     /**
      Returns self for convenient chained modification.
@@ -159,27 +164,24 @@ protocol HexNode: AnyObject {
 
 extension HexNode {
     func canMove() -> Bool {
-        var neighbors = self.neighbors // make a copy of the neighbors
-
+        let neighbors = self.neighbors // make a copy of the neighbors
         // I am not using map, reduce, etc. because clarity outweighs conciseness
-        for (i,neighbor) in neighbors.nodes.enumerated() {
-            if neighbor == nil {continue}
-            let dir = neighbor!.neighbors.contains(self)
-            if (dir != nil) {
-                //potential bug, neighbors might get copied
+        self.disconnect() // temporarily disconnect with all neighbors
 
-                 neighbors.nodes[i]!.neighbors[dir!] = nil // remove reference to self
-            }
-        }
-        var connected =  neighbors.nodes.filter{$0 != nil}.map{$0!.numConnected()}
-        if (connected.count == 1) {return true} // only two pieces on the board, one of which can always move.
+        let available = neighbors.available() // extract all available neighbors
+        let connected = available.map{$0.node.numConnected()}
+        var canMove = true
         for i in (0..<(connected.count - 1)) {
-            // if number of connected pieces are not the same for each piece, then the structure is broken.
-            if connected[i] != connected[i+1] {
-                return false
+            // if number of connected pieces are not the same for each piece after the current
+            // node is removed from the structure, then the structure is broken.
+            if connected[i] != connected[i + 1] {
+                canMove = false
             }
         }
-        return true
+
+        available.forEach{connect(with: $0.node, at: $0.dir)} // reconnect with neighbors
+
+        return canMove
     }
 
     func canMove(to newPlace: Route) -> Bool {
@@ -187,7 +189,7 @@ extension HexNode {
     }
 
     func move(to newPlace: Route) {
-        
+
     }
 
     func availableMoves() -> [Route] {
@@ -200,15 +202,24 @@ extension HexNode {
         return numConnected(pool, 1) - numConnected(pool, 0)
     }
 
-    //TODO: check to make sure that the connection could be made, i.e. neighbors[dir] is empty
     func connect(with node: HexNode, at dir: Direction) {
+        assert(node.neighbors[dir] == nil)
         node.neighbors[dir] = self
         neighbors[dir.opposite()] = node
     }
 
     //TODO: implement
     func disconnect() {
-        fatalError("not implemented")
+        neighbors.available().map{$0.node}.forEach{$0.disconnect(with: self)}
+    }
+
+    func disconnect(with node: HexNode) {
+        assert(node.neighbors.contains(self) != nil) // make sure that the reference exist
+        node.remove(self)
+        assert(node.neighbors.contains(self) == nil) // make sure the reference is removed
+        assert(neighbors.contains(node) != nil)
+        remove(node)
+        assert(neighbors.contains(node) == nil)
     }
 
     /**
@@ -219,10 +230,10 @@ extension HexNode {
         var pool = pool // make pool mutable
         let pairs = neighbors.available() // get the nodes that are present
         let count = pairs.count // initial # of connected is the # of neighbors
-        if pool.contains(where: {$0 === self}) {return 0}
+        if pool.contains(where: { $0 === self }) {return 0}
         pool.append(self) // self is accounted for
-        return count + pairs.map{$0.node}.filter{node in !pool.contains(where: {$0 === node})}
-                .map{$0.numConnected(pool, i)}
+        return count + pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
+                .map {$0.numConnected(pool, i)}
                 .reduce(i) {$0 + $1}
     }
 
@@ -259,7 +270,7 @@ The direction in component of the Instruction
 enum Direction: Int {
     //Horizontal locations
     case up = 0, upLeft, upRight, down, downLeft, downRight
-    
+
     //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
     //The node being suppressed should have all horizontal references set to nil
     case below, above
