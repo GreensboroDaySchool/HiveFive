@@ -19,5 +19,14 @@
 
 import Foundation
 class QueenBee: HexNode {
+    func availableMoves() -> [Route] {
+        var moves = [Route]()
+        if (!canMove()) {
+            // if disconnecting the piece breaks the structure, then there are no available moves.
+            return moves
+        }
+        return moves
+    }
+    
     var neighbors = Neighbors()
 }
