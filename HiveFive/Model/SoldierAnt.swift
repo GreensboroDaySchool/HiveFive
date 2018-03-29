@@ -19,5 +19,5 @@
 
 import Foundation
 class SoldierAnt: HexNode {
-    
+    var neighbors = Neighbors()
 }

@@ -19,5 +19,5 @@
 
 import Foundation
 class Grasshopper: HexNode {
-    
+    var neighbors = Neighbors()
 }
