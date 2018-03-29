@@ -20,32 +20,33 @@
 import Foundation
 
 /**
+      _____(up)_____
+     /              \
+ (upLeft)         (upRight)
+   /     Oh Yeah!     \
+   \      Hive        /
+(downLeft)       (downRight)
+     \____(down)____/
+ */
+struct SurroundingNodes {
+    var up: HexNode?
+    var upRight: HexNode?
+    var upLeft: HexNode?
+    var downRight: HexNode?
+    var downLeft: HexNode?
+    var down: HexNode?
+}
+
+/**
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
  */
-class HexNode {
+protocol HexNode {
+    var surroundings: SurroundingNodes { get }
     
-    /**
-           _____(up)_____
-          /              \
-     (upLeft)         (upRight)
-        /     Oh Yeah!     \
-        \      Hive        /
-    (downLeft)       (downRight)
-          \____(down)____/
-     */
-    struct SurroundingNodes {
-        var up: HexNode?
-        var upRight: HexNode?
-        var upLeft: HexNode?
-        var downRight: HexNode?
-        var downLeft: HexNode?
-        var down: HexNode?
-    }
-    
-    var surroundings = SurroundingNodes()
+    func canMove(to newSurroundings: SurroundingNodes) -> Bool
     
 }
 
-extension HexNode.SurroundingNodes {
+extension SurroundingNodes {
     
 }
