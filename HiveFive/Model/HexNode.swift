@@ -54,7 +54,7 @@ struct Neighbors {
         guard let index = nodes.index(where: {$0 === node}) else {
             return self
         }
-        nodes.remove(at: index)
+        nodes[index] = nil
         return self
     }
 
@@ -115,7 +115,7 @@ protocol HexNode: AnyObject {
 
     /**
      Connect with another node at a certain neighboring position.
-     The connection should be bidirectional
+     The connection should be bidirectional, [dir] is the direction in relation to [node]
      */
     func connect(with node: HexNode, at dir: Direction)
 
@@ -177,11 +177,16 @@ extension HexNode {
         return numConnected(pool)
     }
 
+    //TODO: check to make sure that the connection could be made, i.e. neighbors[dir] is empty
     func connect(with node: HexNode, at dir: Direction) {
-        neighbors[dir] = node
+        node.neighbors[dir] = self
+        neighbors[dir.opposite()] = node
     }
 
-
+    //TODO: implement
+    func disconnect() {
+        fatalError("not implemented")
+    }
 
     /**
      TODO: debug; make use of pool
@@ -231,6 +236,7 @@ enum Direction: Int {
 
     /**
     I know there's a better way, but that would simply take too much time!
+    @return the opposite direction.
      */
     func opposite() -> Direction {
         switch self {

@@ -61,7 +61,16 @@ class HiveFive_Tests: XCTestCase {
     }
 
     func testNumConnected() {
+        let grasshopper = Grasshopper()
+        let spider = Spider()
+        let queenBee = QueenBee()
+        let beetle = Beetle()
 
+        grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
+        queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
+        beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
+        assert(spider.numConnected() == 4) // including the spider, there are four pieces connected together
+//        assert(spider is Beetle)
     }
 
     func testPerformanceExample() {
