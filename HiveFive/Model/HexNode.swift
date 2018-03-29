@@ -30,6 +30,7 @@ import Foundation
  */
 struct Neighbors {
     var nodes = [HexNode?](repeating: nil, count: 6)
+    private static let dirs: [Direction:Int] = [.up : 0, .upLeft : 1, .upRight : 2, .down : 3, .downLeft : 4, .downRight: 5]
 
     subscript(dir: Direction) -> HexNode? {
         get {
@@ -39,19 +40,31 @@ struct Neighbors {
             nodes[index(from: dir)] = newValue
         }
     }
+
     private func index(from dir: Direction) -> Int {
-        switch dir {
-        case .up: return 0
-        case .upLeft: return 1
-        case .upRight: return 2
-        case .down: return 3
-        case .downLeft: return 4
-        case .downRight: return 5
-        }
+        return Neighbors.dirs[dir]!
+    }
+    
+    /**
+     WARNING: does not check bounds
+     */
+    private func dir(from index: Int) -> Direction {
+        return Neighbors.dirs.keys.map{$0}[index]
     }
 
+    /**
+     @return whether the references to each nodes of [self] is the same as that of [other]
+     */
     func equals(_ other: Neighbors) -> Bool {
         return zip(nodes, other.nodes).reduce(true, { $0 && ($1.0 === $1.1) })
+    }
+    
+    /**
+     @return whether [nodes] contains reference to [node]
+     returns nil if node is not in [nodes]; returns the Direction otherwise.
+    */
+    func contains(_ node: HexNode) -> Direction? {
+        return nodes.enumerated().reduce(nil, {$1.element === node ? dir(from: $1.offset) : $0})
     }
 }
 
@@ -65,6 +78,16 @@ protocol HexNode: AnyObject {
     @return whether taking this node up will break the structure.
     */
     func canMove() -> Bool
+
+    /**
+    @return the number of nodes that are connected to the current node.
+    */
+    func numConnected() -> Int
+    
+    /**
+    @return whether the node has [other] as an immediate neighbor
+    */
+    func hasNeighbor(_ other: HexNode) -> Direction?
 
     /**
     **Note**
@@ -87,6 +110,9 @@ protocol HexNode: AnyObject {
 
 extension HexNode {
     func canMove() -> Bool {
+        neighbors.nodes.map({(node) -> Void in
+//            if (node == nil) return
+        })
         return false
     }
     
