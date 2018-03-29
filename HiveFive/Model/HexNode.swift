@@ -29,24 +29,28 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    var up: HexNode?
-    var upRight: HexNode?
-    var upLeft: HexNode?
-    var downRight: HexNode?
-    var downLeft: HexNode?
-    var down: HexNode?
+    var nodes = [HexNode?](repeating: nil, count: 6)
 
     subscript(dir: Direction) -> HexNode? {
         get {
             switch dir {
-            case .up: return up
-            case .upLeft: return upLeft
-            case .upRight: return upRight
-            case .down: return down
-            case .downLeft: return downLeft
-            case .downRight: return downRight
+            case .up: return nodes[0]
+            case .upLeft: return nodes[1]
+            case .upRight: return nodes[2]
+            case .down: return nodes[3]
+            case .downLeft: return nodes[4]
+            case .downRight: return nodes[5]
             }
         }
+    }
+
+    func equals(_ other: Neighbors) -> Bool {
+        for (i, e) in nodes.enumerated() {
+            if (e !== other.nodes[i]) {
+                return false
+            }
+        }
+        return true
     }
 }
 
