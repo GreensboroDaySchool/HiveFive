@@ -19,6 +19,8 @@
 
 import Foundation
 
+typealias LocalizedNode = (dir: Direction, node: HexNode?)
+
 /**
       _____(up)_____
      /              \
@@ -44,6 +46,10 @@ struct Neighbors {
         return nodes.enumerated().filter {$0.element != nil}
                 .map {Direction(rawValue: $0.offset)!}
                 .map {($0, self[$0]!)}
+    }
+
+    func adjacent(of dir: Direction) -> [LocalizedNode] {
+        return dir.adjacent().map{($0, self[$0])}
     }
 
     /**
@@ -299,6 +305,16 @@ enum Direction: Int {
         case .downRight: return .upLeft
         case .below: return .above
         case .above: return .below
+        }
+    }
+    
+    func horizontalFlip() -> Direction {
+        switch self {
+        case .upRight: return .upLeft
+        case .upLeft: return .upRight
+        case .downLeft: return .downRight
+        case .downRight: return .downLeft
+        default: fatalError("horizontalFlip() only applies to slanted directions")
         }
     }
 
