@@ -19,8 +19,6 @@
 
 import Foundation
 
-typealias LocalizedNode = (dir: Direction, node: HexNode?)
-
 /**
       _____(up)_____
      /              \
@@ -51,7 +49,7 @@ struct Neighbors {
     e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
      @return the adjacent localized node of the specified direction
      */
-    func adjacent(of dir: Direction) -> [LocalizedNode] {
+    func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
         return dir.adjacent().map{($0, self[$0])}
     }
 
@@ -346,10 +344,27 @@ enum Direction: Int {
 }
 
 /**
-Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
-Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
-of vectors that "directs" to the relative location.
-*/
+ Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
+ Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
+ of vectors that "directs" to the relative location.
+ */
 struct Route {
     var instructions: [Instruction]
+}
+
+/**
+ Destination defines the destination that a piece would eventually arrive by following a given route.
+ */
+struct Destination {
+    var node: HexNode // b/c the "one hive policy", the destination has to be the vacant locations around a node
+    var dir: Direction // the direction of the vacant location
+    
+    /**
+     TODO: implement
+     Resolve the destination by following a given Route.
+     @return the resolved destination
+     */
+    static func resolve(from route: Route) -> Destination {
+        fatalError("not implemented")
+    }
 }
