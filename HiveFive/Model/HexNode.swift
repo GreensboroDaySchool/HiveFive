@@ -20,93 +20,9 @@
 import Foundation
 
 /**
-      _____(up)_____
-     /              \
- (upLeft)         (upRight)
-   /     Oh Yeah!     \
-   \      Hive        /
-(downLeft)       (downRight)
-     \____(down)____/
- */
-struct Neighbors {
-    var nodes = [HexNode?](repeating: nil, count: Direction.allDirections.count)
-
-    subscript(dir: Direction) -> HexNode? {
-        get {return nodes[dir.rawValue]}
-        set {nodes[dir.rawValue] = newValue}
-    }
-
-    /**
-     @return the direction & node tuples in which there is a neighbor present.
-     */
-    func available() -> [(dir: Direction, node: HexNode)] {
-        return nodes.enumerated().filter {$0.element != nil}
-                .map {Direction(rawValue: $0.offset)!}
-                .map {($0, self[$0]!)}
-    }
-
-    /**
-    e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
-     @return the adjacent localized node of the specified direction
-     */
-    func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
-        return dir.adjacent().map {($0, self[$0])}
-    }
-
-    /**
-     Returns a new instance with [node] removed
-     */
-    func remove(_ node: HexNode) -> Neighbors {
-        var copied = self
-        guard let index = nodes.index(where: { $0 === node }) else {
-            return copied
-        }
-        copied.nodes[index] = nil
-        return copied
-    }
-
-    func removeAll(_ nodes: [HexNode]) -> Neighbors {
-        var copied = self
-        for node in nodes {
-            copied = copied.remove(node) // not very efficient, but suffice for now!
-        }
-        return copied
-    }
-
-    /**
-     @return whether the references to each nodes of [self] is the same as that of [other]
-     */
-    func equals(_ other: Neighbors) -> Bool {
-        return zip(nodes, other.nodes).reduce(true) {
-            $0 && ($1.0 === $1.1)
-        }
-    }
-
-    /**
-     @return whether [nodes] contains reference to [node]
-     returns nil if node is not in [nodes]; returns the Direction otherwise.
-    */
-    func contains(_ node: HexNode) -> Direction? {
-        return nodes.enumerated().reduce(nil) {
-            $1.element === node ? Direction(rawValue: $1.offset) : $0
-        }
-    }
-}
-
-extension Neighbors: Equatable, Hashable {
-    var hashValue: Int {
-        return nodes.filter({ $0 != nil }).reduce(0) {
-            $0 ^ ObjectIdentifier($1!).hashValue
-        }
-    }
-
-    static func ==(l: Neighbors, r: Neighbors) -> Bool {
-        return l.equals(r)
-    }
-}
-
-/**
- This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
+ This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt,
+ since all of them are pieces that together consist a hexagonal board, a hexagonal node with
+ references to all the neighbors is the ideal structure.
  */
 protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
