@@ -55,6 +55,7 @@ protocol HexNode: AnyObject {
     /**
      Moves the piece to the designated destination and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
+     Note: this method assumes that the destination is a valid destination and that the route take is legal
      */
     func move(to destination: Destination)
 
@@ -119,6 +120,7 @@ extension HexNode {
     /**
      @param paths: derived paths
      @param root: the root path
+     @return paths to the rest of the nodes in the hive from the current node
      */
     private func derivePaths(_ paths: inout [Path], _ root: Route) {
         let available = neighbors.available().filter {
@@ -132,14 +134,28 @@ extension HexNode {
     }
 
     func canMove() -> Bool {
-        return availableMoves().count > 0
+        return canDisconnect() && availableMoves().count > 0
     }
 
     /**
-     TODO: implement
+     TODO: debug
      */
     func move(to destination: Destination) {
+        self.disconnect() // disconnect from the hive
+        let node = destination.node
+        let dir = destination.dir
+        node.neighbors[dir] = self // connect with destination node
+        let pairs = Direction.allDirections.filter{$0 != dir}
+            .map{(dir: $0, trans: $0.translation())}
+        // directions in which additional connections might need to be made
         
+        derivePaths().map {path -> Destination? in //make additional connections to complete the hive
+            let filtered = pairs.filter {path.route.translation == $0.trans}
+            return filtered.count == 0 ? nil :
+                Destination(node: path.destination, dir: filtered[0].dir)
+            }.filter{$0 != nil}
+            .map{$0!}
+            .forEach{$0.node.neighbors[$0.dir] = self}
     }
 
     func move(by route: Route) {
@@ -195,9 +211,9 @@ extension HexNode {
      @return an integer representing the number of nodes
      */
     private func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
-        let pairs = neighbors.available() // get the nodes that are present
+        let pairs = neighbors.available() // neighbors that are present
         if pool.contains(where: { $0 === self }) {return 0}
-        pool.append(self) // self is accounted for, thus add to pool of accounted node such that it won't get counted again
+        pool.append(self) // add self to pool of accounted node such that it won't get counted again
         return pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
                 .map {$0.deriveConnectedNodes(&pool)}
                 .reduce(1) {$0 + $1}
