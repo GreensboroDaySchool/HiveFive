@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE195D206E77C400733FA0 /* NodeView.swift */; };
 		2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE466206B00880041EDD1 /* AppDelegate.swift */; };
 		2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE468206B00880041EDD1 /* ViewController.swift */; };
 		2CFCE46C206B00880041EDD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46A206B00880041EDD1 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CCE195D206E77C400733FA0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		2CFCE463206B00880041EDD1 /* Hive Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hive Five.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE466206B00880041EDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CFCE468206B00880041EDD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				32D1D154206BEFFF008444F4 /* BoardView.swift */,
+				2CCE195D206E77C400733FA0 /* NodeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
+				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				32D1D153206BEF99008444F4 /* BoardViewController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
 				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
