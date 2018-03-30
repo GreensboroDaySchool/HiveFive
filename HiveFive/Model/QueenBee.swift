@@ -32,7 +32,7 @@ class QueenBee: HexNode {
                 .filter{$0.node == nil}
                 .map{$0.dir})}
             .map{(arg) -> [Route] in let (dir, dirs) = arg; return {
-                dirs.map{Route(instructions: [.init(num: 1, dir: dir), .init(num: 1, dir: $0)])}
+                dirs.map{Route(directions: [dir, $0])}
                 }()}
             .flatMap{$0}
     }

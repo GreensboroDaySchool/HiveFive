@@ -20,129 +20,49 @@
 import Foundation
 
 /**
-      _____(up)_____
-     /              \
- (upLeft)         (upRight)
-   /     Oh Yeah!     \
-   \      Hive        /
-(downLeft)       (downRight)
-     \____(down)____/
- */
-struct Neighbors {
-    var nodes = [HexNode?](repeating: nil, count: Direction.allDirections.count)
-
-    subscript(dir: Direction) -> HexNode? {
-        get {return nodes[dir.rawValue]}
-        set {nodes[dir.rawValue] = newValue}
-    }
-
-    /**
-     @return the direction & node tuples in which there is a neighbor present.
-     */
-    func available() -> [(dir: Direction, node: HexNode)] {
-        return nodes.enumerated().filter {$0.element != nil}
-                .map {Direction(rawValue: $0.offset)!}
-                .map {($0, self[$0]!)}
-    }
-
-    /**
-    e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
-     @return the adjacent localized node of the specified direction
-     */
-    func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
-        return dir.adjacent().map {($0, self[$0])}
-    }
-
-    /**
-     Returns a new instance with [node] removed
-     */
-    func remove(_ node: HexNode) -> Neighbors {
-        var copied = self
-        guard let index = nodes.index(where: { $0 === node }) else {
-            return copied
-        }
-        copied.nodes[index] = nil
-        return copied
-    }
-
-    func removeAll(_ nodes: [HexNode]) -> Neighbors {
-        var copied = self
-        for node in nodes {
-            copied = copied.remove(node) // not very efficient, but suffice for now!
-        }
-        return copied
-    }
-
-    /**
-     @return whether the references to each nodes of [self] is the same as that of [other]
-     */
-    func equals(_ other: Neighbors) -> Bool {
-        return zip(nodes, other.nodes).reduce(true) {
-            $0 && ($1.0 === $1.1)
-        }
-    }
-
-    /**
-     @return whether [nodes] contains reference to [node]
-     returns nil if node is not in [nodes]; returns the Direction otherwise.
-    */
-    func contains(_ node: HexNode) -> Direction? {
-        return nodes.enumerated().reduce(nil) {
-            $1.element === node ? Direction(rawValue: $1.offset) : $0
-        }
-    }
-}
-
-extension Neighbors: Equatable, Hashable {
-    var hashValue: Int {
-        return nodes.filter({ $0 != nil }).reduce(0) {
-            $0 ^ ObjectIdentifier($1!).hashValue
-        }
-    }
-
-    static func ==(l: Neighbors, r: Neighbors) -> Bool {
-        return l.equals(r)
-    }
-}
-
-/**
- This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt, since all of them are pieces that together consist a hexagonal board.
+ This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt,
+ since all of them are pieces that together consist a hexagonal board, a hexagonal node with
+ references to all the neighbors is the ideal structure.
  */
 protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
 
     /**
-    @return whether taking this node up will break the structure.
-    */
+     Derive the Path to each HexNode in the hive
+     */
+    func derivePaths() -> [Path]
+
+    /**
+     @return whether taking this node up will break the structure.
+     */
     func canDisconnect() -> Bool
 
     /**
-    @return the number of nodes that are connected to the current node, including the current node
-    */
+     @return the number of nodes that are connected to the current node, including the current node
+     */
     func numConnected() -> Int
 
     /**
-    @return whether the node has [other] as an immediate neighbor
-    */
+     @return whether the node has [other] as an immediate neighbor
+     */
     func hasNeighbor(_ other: HexNode) -> Direction?
 
     /**
-    @return whether the current node could move
-    */
+     @return whether the current node could move
+     */
     func canMove() -> Bool
 
     /**
-    **Note**
-    The implementation for this method should be different for each class that conforms to the HexNode protocol.
-    For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
-    @return whether the piece can legally move to the designated location by following the instructions provided by route.
-    */
-    func canMove(to newPlace: Route) -> Bool
+     Moves the piece to the designated destination and **properly** connect the piece with the hive,
+     i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
+     */
+    func move(to destination: Destination)
 
     /**
-    Moves the piece to the designated location
-    */
-    func move(to newPlace: Route)
+     Moves the piece by following a certain route
+     (just for convenience, because route is eventually resolved to a destination)
+     */
+    func move(by route: Route)
 
     /**
      Remove the reference to a specific node from its neighbors
@@ -158,6 +78,7 @@ protocol HexNode: AnyObject {
     /**
      Connect with another node at a certain neighboring position.
      The connection should be bidirectional, [dir] is the direction in relation to [node]
+     **Note:** does not connect properly with the entire hive structure; only a bidirectional reference binding.
      */
     func connect(with node: HexNode, at dir: Direction)
 
@@ -168,12 +89,14 @@ protocol HexNode: AnyObject {
     func disconnect()
 
     /**
-    Disconnect with the specified node
-    Note: ONLY the specified node, does not include all the surrounding nodes
-    */
+     Disconnect with the specified node
+     Note: ONLY the specified node, does not include all the surrounding nodes
+     */
     func disconnect(with node: HexNode);
 
     /**
+     The implementation for this method should be different for each class that conforms to the HexNode protocol.
+     For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
      @return all possible locations in which the current node can move to by following a defined route.
      */
     func availableMoves() -> [Route]
@@ -185,9 +108,54 @@ protocol HexNode: AnyObject {
 }
 
 extension HexNode {
+
+    func derivePaths() -> [Path] {
+        var paths = [Path]()
+        derivePaths(&paths)
+        return paths
+    }
+
+    /**
+     @param pool: paths that are already derived
+     */
+    private func derivePaths(_ pool: inout [Path]) {
+        let retained = neighbors.available()
+        let pairs = retained.filter{pair in pool.contains(where: {pair.node === $0.destination})}
+        pool.append(contentsOf: pairs.map{Path(
+            route: Route(directions: [$0.dir]),
+            destination: $0.node)})
+        self.disconnect() // disconnect from the hive
+        retained.forEach {connect(with: $0.node, at: $0.dir.opposite())} // reconnect with the hive
+        fatalError("implementation in progress")
+    }
+
+    func canMove() -> Bool {
+        return availableMoves().count > 0
+    }
+
+    /**
+     TODO: implement
+     */
+    func move(to destination: Destination) {
+        
+    }
+
+    func move(by route: Route) {
+        move(to: Destination.resolve(from: self, following: route))
+    }
+
+    func numConnected() -> Int {
+        return connectedNodes().count
+    }
+
+    func connect(with node: HexNode, at dir: Direction) {
+        assert(node.neighbors[dir] == nil)
+        node.neighbors[dir] = self
+        neighbors[dir.opposite()] = node
+    }
+
     func canDisconnect() -> Bool {
         let neighbors = self.neighbors // make a copy of the neighbors
-        // I am not using map, reduce, etc. because clarity outweighs conciseness
         self.disconnect() // temporarily disconnect with all neighbors
 
         let available = neighbors.available() // extract all available neighbors
@@ -205,38 +173,8 @@ extension HexNode {
         return canMove
     }
 
-    func canMove() -> Bool {
-        return availableMoves().count > 0
-    }
-
-    /**
-    TODO: implement
-    */
-    func canMove(to newPlace: Route) -> Bool {
-        return false
-    }
-
-    /**
-    TODO: implement
-    */
-    func move(to newPlace: Route) {
-
-    }
-
-    func numConnected() -> Int {
-        return connectedNodes().count
-    }
-
-    func connect(with node: HexNode, at dir: Direction) {
-        assert(node.neighbors[dir] == nil)
-        node.neighbors[dir] = self
-        neighbors[dir.opposite()] = node
-    }
-
     func disconnect() {
-        neighbors.available().map {
-            $0.node
-        }.forEach {
+        neighbors.available().map {$0.node}.forEach {
             $0.disconnect(with: self)
         }
     }
@@ -280,129 +218,5 @@ extension HexNode {
 
     func hasNeighbor(_ other: HexNode) -> Direction? {
         return neighbors.contains(other)
-    }
-}
-
-/**
-A piece-wise instruction. For example, Instruction(3,.upLeft) would mean move upLeft 3 times
-Imagine an Instruction instance like a vector that has magnitude and direction, then [dir] defines
-the direction while [num] defines the magnitude.
-*/
-struct Instruction {
-    ///the number of nodes to move in the specified direction
-    let num: Int
-
-    ///the direction in relation to the current node
-    let dir: Direction
-
-    /**
-     Apply the instruction on [node] to get to the next node
-     Note: the method assumes that the instruction is valid.
-     */
-    func apply(to node: HexNode) -> HexNode {
-        var result = node
-        for _ in (0..<num) {
-            result = result.neighbors[dir]!
-        }
-        return result
-    }
-}
-
-/**
-The direction in component of the Instruction
-*/
-enum Direction: Int {
-    static let allDirections: [Direction] = (0..<8).map {
-        Direction(rawValue: $0)!
-    }
-    //Horizontal locations
-    case up = 0, upRight, downRight, down, downLeft, upLeft
-
-    //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
-    //The node being suppressed should have all horizontal references set to nil
-    case below, above
-
-    /**
-    I know there's a better way, but that would simply take too much time!
-    @return the opposite direction.
-     */
-    func opposite() -> Direction {
-        switch self {
-        case .up: return .down
-        case .upLeft: return .downRight
-        case .upRight: return .downLeft
-        case .down: return .up
-        case .downLeft: return .upRight
-        case .downRight: return .upLeft
-        case .below: return .above
-        case .above: return .below
-        }
-    }
-
-    func horizontalFlip() -> Direction {
-        switch self {
-        case .upRight: return .upLeft
-        case .upLeft: return .upRight
-        case .downLeft: return .downRight
-        case .downRight: return .downLeft
-        default: fatalError("horizontalFlip() only applies to slanted directions")
-        }
-    }
-
-    /**
-     e.g. Direction.up.adjacent() returns [.upLeft, .upRight]
-     Note: this method is not intended for down/below.
-     @return the adjacent directions of a certain direction
-             use adjacent()[0] to get the next element counter-clockwise,
-             use adjacent()[1] to get the next element clockwise
-     */
-    func adjacent() -> [Direction] {
-        assert(self.rawValue < 6) // this method is only intended for horizontal directions
-        var adjacent = [Direction]()
-        let count = 6 // there are 6 horizontal directions in total
-        let value = rawValue + count
-        adjacent.append(Direction(rawValue: (value - 1) % count)!)
-        adjacent.append(Direction(rawValue: (value + 1) % count)!)
-        return adjacent
-    }
-}
-
-/**
- Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
- Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
- of vectors that "directs" to the relative location.
- */
-struct Route {
-    var instructions: [Instruction]
-}
-
-/**
- Destination defines the destination that a piece would eventually arrive by following a given route.
- */
-struct Destination {
-    var node: HexNode // b/c the "one hive policy", the destination has to be the vacant locations around a node
-    var dir: Direction // the direction of the vacant location
-
-    /**
-     TODO: debug
-     Resolve the destination by following a given Route.
-     @param start: the starting node of the route
-     @param route: the route to be followed to get to the destination
-     @return the resolved destination
-     */
-    static func resolve(from start: HexNode, following route: Route) -> Destination {
-//        let nodes = start.connectedNodes() // this can be optimized -- only resolve the hive structure when pieces are moved/added
-        var current = start;
-        for q in 0..<(route.instructions.count - 1) {
-            let instruction = route.instructions[q]
-            current = instruction.apply(to: current)
-        }
-        let last = route.instructions.last!
-        // the last step of the last instruction represents the vacant location
-        for _ in 0..<(last.num - 1) {
-            current = current.neighbors[last.dir]!
-        }
-
-        return Destination(node: current, dir: last.dir)
     }
 }
