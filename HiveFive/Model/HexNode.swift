@@ -29,9 +29,7 @@ import Foundation
      \____(down)____/
  */
 struct Neighbors {
-    static let allDirections: [Direction] = (0..<6).map {Direction(rawValue: $0)!}
-
-    var nodes = [HexNode?](repeating: nil, count: allDirections.count)
+    var nodes = [HexNode?](repeating: nil, count: Direction.allDirections.count)
 
     subscript(dir: Direction) -> HexNode? {
         get {return nodes[dir.rawValue]}
@@ -39,13 +37,20 @@ struct Neighbors {
     }
 
     /**
-     TODO: should Neighbors be immutable? Don't change it yet!
      @return the direction & node tuples in which there is a neighbor present.
      */
     func available() -> [(dir: Direction, node: HexNode)] {
-        return nodes.enumerated().filter{$0.element != nil}
-            .map{Direction(rawValue: $0.offset)!}
-            .map{($0, self[$0]!)}
+        return nodes.enumerated().filter {$0.element != nil}
+                .map {Direction(rawValue: $0.offset)!}
+                .map {($0, self[$0]!)}
+    }
+
+    /**
+    e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
+     @return the adjacent localized node of the specified direction
+     */
+    func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
+        return dir.adjacent().map {($0, self[$0])}
     }
 
     /**
@@ -53,7 +58,7 @@ struct Neighbors {
      */
     func remove(_ node: HexNode) -> Neighbors {
         var copied = self
-        guard let index = nodes.index(where: {$0 === node}) else {
+        guard let index = nodes.index(where: { $0 === node }) else {
             return copied
         }
         copied.nodes[index] = nil
@@ -72,7 +77,9 @@ struct Neighbors {
      @return whether the references to each nodes of [self] is the same as that of [other]
      */
     func equals(_ other: Neighbors) -> Bool {
-        return zip(nodes, other.nodes).reduce(true) {$0 && ($1.0 === $1.1)}
+        return zip(nodes, other.nodes).reduce(true) {
+            $0 && ($1.0 === $1.1)
+        }
     }
 
     /**
@@ -80,18 +87,20 @@ struct Neighbors {
      returns nil if node is not in [nodes]; returns the Direction otherwise.
     */
     func contains(_ node: HexNode) -> Direction? {
-        return nodes.enumerated().reduce(nil) {$1.element === node ? Direction(rawValue: $1.offset) : $0}
+        return nodes.enumerated().reduce(nil) {
+            $1.element === node ? Direction(rawValue: $1.offset) : $0
+        }
     }
 }
 
 extension Neighbors: Equatable, Hashable {
     var hashValue: Int {
-        return nodes
-            .filter({ $0 != nil })
-            .reduce(0){ $0 ^ ObjectIdentifier($1!).hashValue }
+        return nodes.filter({ $0 != nil }).reduce(0) {
+            $0 ^ ObjectIdentifier($1!).hashValue
+        }
     }
-    
-    static func == (l: Neighbors, r: Neighbors) -> Bool {
+
+    static func ==(l: Neighbors, r: Neighbors) -> Bool {
         return l.equals(r)
     }
 }
@@ -105,7 +114,7 @@ protocol HexNode: AnyObject {
     /**
     @return whether taking this node up will break the structure.
     */
-    func canMove() -> Bool
+    func canDisconnect() -> Bool
 
     /**
     @return the number of nodes that are connected to the current node, including the current node
@@ -116,6 +125,11 @@ protocol HexNode: AnyObject {
     @return whether the node has [other] as an immediate neighbor
     */
     func hasNeighbor(_ other: HexNode) -> Direction?
+
+    /**
+    @return whether the current node could move
+    */
+    func canMove() -> Bool
 
     /**
     **Note**
@@ -136,6 +150,12 @@ protocol HexNode: AnyObject {
     func remove(_ node: HexNode)
 
     /**
+     Returns self for convenient chained modification.
+     @return self
+     */
+    func removeAll(_ nodes: [HexNode]) -> HexNode
+
+    /**
      Connect with another node at a certain neighboring position.
      The connection should be bidirectional, [dir] is the direction in relation to [node]
      */
@@ -143,87 +163,110 @@ protocol HexNode: AnyObject {
 
     /**
      When the node disconnects from the structure, all references to it from the neighbors should be removed.
+     Note: disconnect with all neighbors, i.e. remove from the hive
      */
     func disconnect()
 
     /**
-     Returns self for convenient chained modification.
-     */
-    func removeAll(_ nodes: [HexNode]) -> HexNode
+    Disconnect with the specified node
+    Note: ONLY the specified node, does not include all the surrounding nodes
+    */
+    func disconnect(with node: HexNode);
 
     /**
-    @return all possible locations in which the current node can move to by following a defined route.
-    */
+     @return all possible locations in which the current node can move to by following a defined route.
+     */
     func availableMoves() -> [Route]
+
+    /**
+     @return an array containing all the references to the connected pieces, including self; i.e. the entire hive
+     */
+    func connectedNodes() -> [HexNode]
 }
 
 extension HexNode {
-    func canMove() -> Bool {
-        var neighbors = self.neighbors // make a copy of the neighbors
-
+    func canDisconnect() -> Bool {
+        let neighbors = self.neighbors // make a copy of the neighbors
         // I am not using map, reduce, etc. because clarity outweighs conciseness
-        for (i,neighbor) in neighbors.nodes.enumerated() {
-            if neighbor == nil {continue}
-            let dir = neighbor!.neighbors.contains(self)
-            if (dir != nil) {
-                //potential bug, neighbors might get copied
+        self.disconnect() // temporarily disconnect with all neighbors
 
-                 neighbors.nodes[i]!.neighbors[dir!] = nil // remove reference to self
-            }
-        }
-        var connected =  neighbors.nodes.filter{$0 != nil}.map{$0!.numConnected()}
-        if (connected.count == 1) {return true} // only two pieces on the board, one of which can always move.
+        let available = neighbors.available() // extract all available neighbors
+        let connected = available.map {$0.node.numConnected()}
+        var canMove = true
         for i in (0..<(connected.count - 1)) {
-            // if number of connected pieces are not the same for each piece, then the structure is broken.
-            if connected[i] != connected[i+1] {
-                return false
+            // if number of connected pieces are not the same for each piece after the current
+            // node is removed from the structure, then the structure is broken.
+            if connected[i] != connected[i + 1] {
+                canMove = false
             }
         }
-        return true
+
+        available.forEach {connect(with: $0.node, at: $0.dir.opposite())} // reconnect with neighbors
+        return canMove
     }
 
+    func canMove() -> Bool {
+        return availableMoves().count > 0
+    }
+
+    /**
+    TODO: implement
+    */
     func canMove(to newPlace: Route) -> Bool {
         return false
     }
 
+    /**
+    TODO: implement
+    */
     func move(to newPlace: Route) {
-        
+
     }
 
-    func availableMoves() -> [Route] {
-        return []
-    }
-
-    //Not the perfect solution... but it works like a charm!
     func numConnected() -> Int {
-        let pool = [HexNode]()
-        return numConnected(pool, 1) - numConnected(pool, 0)
+        return connectedNodes().count
     }
 
-    //TODO: check to make sure that the connection could be made, i.e. neighbors[dir] is empty
     func connect(with node: HexNode, at dir: Direction) {
+        assert(node.neighbors[dir] == nil)
         node.neighbors[dir] = self
         neighbors[dir.opposite()] = node
     }
 
-    //TODO: implement
     func disconnect() {
-        fatalError("not implemented")
+        neighbors.available().map {
+            $0.node
+        }.forEach {
+            $0.disconnect(with: self)
+        }
+    }
+
+    func disconnect(with node: HexNode) {
+        assert(node.neighbors.contains(self) != nil) // make sure that the reference exist
+        node.remove(self)
+        assert(node.neighbors.contains(self) == nil) // make sure the reference is removed
+        assert(neighbors.contains(node) != nil)
+        remove(node)
+        assert(neighbors.contains(node) == nil)
     }
 
     /**
-     @param pool: the HexNodes that are already accounted for
-     @param i: 0 -> excluding leaf nodes; 1 -> leaf nodes + 2 * multi-directionally bounded nodes
+     @param pool: references to HexNodes that are already accounted for
+     @return an integer representing the number of nodes
      */
-    private func numConnected(_ pool: [HexNode], _ i: Int) -> Int {
-        var pool = pool // make pool mutable
+    public func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // get the nodes that are present
-        let count = pairs.count // initial # of connected is the # of neighbors
-        if pool.contains(where: {$0 === self}) {return 0}
-        pool.append(self) // self is accounted for
-        return count + pairs.map{$0.node}.filter{node in !pool.contains(where: {$0 === node})}
-                .map{$0.numConnected(pool, i)}
-                .reduce(i) {$0 + $1}
+        if pool.contains(where: { $0 === self }) {return 0}
+        pool.append(self) // self is accounted for, thus add to pool of accounted node such that it won't get counted again
+        return pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
+                .map {$0.deriveConnectedNodes(&pool)}
+                .reduce(1) {$0 + $1}
+    }
+
+    func connectedNodes() -> [HexNode] {
+        var pool = [HexNode]()
+        let _ = deriveConnectedNodes(&pool)
+        return pool
     }
 
     func remove(_ node: HexNode) {
@@ -251,15 +294,30 @@ struct Instruction {
 
     ///the direction in relation to the current node
     let dir: Direction
+
+    /**
+     Apply the instruction on [node] to get to the next node
+     Note: the method assumes that the instruction is valid.
+     */
+    func apply(to node: HexNode) -> HexNode {
+        var result = node
+        for _ in (0..<num) {
+            result = result.neighbors[dir]!
+        }
+        return result
+    }
 }
 
 /**
 The direction in component of the Instruction
 */
 enum Direction: Int {
+    static let allDirections: [Direction] = (0..<8).map {
+        Direction(rawValue: $0)!
+    }
     //Horizontal locations
-    case up = 0, upLeft, upRight, down, downLeft, downRight
-    
+    case up = 0, upRight, downRight, down, downLeft, upLeft
+
     //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
     //The node being suppressed should have all horizontal references set to nil
     case below, above
@@ -280,13 +338,71 @@ enum Direction: Int {
         case .above: return .below
         }
     }
+
+    func horizontalFlip() -> Direction {
+        switch self {
+        case .upRight: return .upLeft
+        case .upLeft: return .upRight
+        case .downLeft: return .downRight
+        case .downRight: return .downLeft
+        default: fatalError("horizontalFlip() only applies to slanted directions")
+        }
+    }
+
+    /**
+     e.g. Direction.up.adjacent() returns [.upLeft, .upRight]
+     Note: this method is not intended for down/below.
+     @return the adjacent directions of a certain direction
+             use adjacent()[0] to get the next element counter-clockwise,
+             use adjacent()[1] to get the next element clockwise
+     */
+    func adjacent() -> [Direction] {
+        assert(self.rawValue < 6) // this method is only intended for horizontal directions
+        var adjacent = [Direction]()
+        let count = 6 // there are 6 horizontal directions in total
+        let value = rawValue + count
+        adjacent.append(Direction(rawValue: (value - 1) % count)!)
+        adjacent.append(Direction(rawValue: (value + 1) % count)!)
+        return adjacent
+    }
 }
 
 /**
-Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
-Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
-of vectors that "directs" to the relative location.
-*/
+ Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
+ Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
+ of vectors that "directs" to the relative location.
+ */
 struct Route {
     var instructions: [Instruction]
+}
+
+/**
+ Destination defines the destination that a piece would eventually arrive by following a given route.
+ */
+struct Destination {
+    var node: HexNode // b/c the "one hive policy", the destination has to be the vacant locations around a node
+    var dir: Direction // the direction of the vacant location
+
+    /**
+     TODO: debug
+     Resolve the destination by following a given Route.
+     @param start: the starting node of the route
+     @param route: the route to be followed to get to the destination
+     @return the resolved destination
+     */
+    static func resolve(from start: HexNode, following route: Route) -> Destination {
+//        let nodes = start.connectedNodes() // this can be optimized -- only resolve the hive structure when pieces are moved/added
+        var current = start;
+        for q in 0..<(route.instructions.count - 1) {
+            let instruction = route.instructions[q]
+            current = instruction.apply(to: current)
+        }
+        let last = route.instructions.last!
+        // the last step of the last instruction represents the vacant location
+        for _ in 0..<(last.num - 1) {
+            current = current.neighbors[last.dir]!
+        }
+
+        return Destination(node: current, dir: last.dir)
+    }
 }
