@@ -97,18 +97,20 @@ class HiveFive_Tests: XCTestCase {
          // including the top spider, there are 6 pieces connected together
 
         //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
-        //TODO: failed!
         spider2.connect(with: queenBee, at: .downLeft)
         spider2.connect(with: beetle, at: .downRight)
-        var nodes = [HexNode]()
-        let _ = spider.numConnected(&nodes)
+        
+        let nodes = spider.connectedNodes()
         debugPrint(nodes)
+        assert(nodes.count == 6)
+        
         assert(spider.numConnected() == 6)
         assert(grasshopper.numConnected() == 6)
         assert(queenBee.numConnected() == 6)
         assert(beetle.numConnected() == 6)
         assert(soldierAnt.numConnected() == 6)
         assert(spider2.numConnected() == 6)
+        //still holds true -- there are only 6 pieces.
 
         //testing HexNode::canMove
         assert(soldierAnt.canDisconnect() == true)
