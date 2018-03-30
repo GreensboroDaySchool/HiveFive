@@ -92,9 +92,10 @@ enum Direction: Int {
 struct Route {
     var directions: [Direction]
 
-    mutating func append(_ directions: [Direction]) -> Route {
-        self.directions.append(contentsOf: directions)
-        return self
+    func append(_ directions: [Direction]) -> Route {
+        var newDirs = self.directions
+        newDirs.append(contentsOf: directions)
+        return Route(directions: newDirs)
     }
 }
 
