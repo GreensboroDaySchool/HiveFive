@@ -39,7 +39,6 @@ struct Neighbors {
     }
 
     /**
-     TODO: should Neighbors be immutable? Don't change it yet!
      @return the direction & node tuples in which there is a neighbor present.
      */
     func available() -> [(dir: Direction, node: HexNode)] {
@@ -48,6 +47,10 @@ struct Neighbors {
                 .map {($0, self[$0]!)}
     }
 
+    /**
+    e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
+     @return the adjacent localized node of the specified direction
+     */
     func adjacent(of dir: Direction) -> [LocalizedNode] {
         return dir.adjacent().map{($0, self[$0])}
     }
