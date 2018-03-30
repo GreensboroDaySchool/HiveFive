@@ -28,6 +28,11 @@ protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
 
     /**
+     Derive the Path to each HexNode in the hive
+     */
+    func derivePaths() -> [Path]
+
+    /**
      @return whether taking this node up will break the structure.
      */
     func canDisconnect() -> Bool
@@ -103,23 +108,25 @@ protocol HexNode: AnyObject {
 }
 
 extension HexNode {
-    func canDisconnect() -> Bool {
-        let neighbors = self.neighbors // make a copy of the neighbors
-        self.disconnect() // temporarily disconnect with all neighbors
 
-        let available = neighbors.available() // extract all available neighbors
-        let connected = available.map {$0.node.numConnected()}
-        var canMove = true
-        for i in (0..<(connected.count - 1)) {
-            // if number of connected pieces are not the same for each piece after the current
-            // node is removed from the structure, then the structure is broken.
-            if connected[i] != connected[i + 1] {
-                canMove = false
-            }
-        }
+    func derivePaths() -> [Path] {
+        var paths = [Path]()
+        derivePaths(&paths)
+        return paths
+    }
 
-        available.forEach {connect(with: $0.node, at: $0.dir.opposite())} // reconnect with neighbors
-        return canMove
+    /**
+     @param pool: paths that are already derived
+     */
+    private func derivePaths(_ pool: inout [Path]) {
+        let retained = neighbors.available()
+        let pairs = retained.filter{pair in pool.contains(where: {pair.node === $0.destination})}
+        pool.append(contentsOf: pairs.map{Path(
+            route: Route(directions: [$0.dir]),
+            destination: $0.node)})
+        self.disconnect() // disconnect from the hive
+        retained.forEach {connect(with: $0.node, at: $0.dir.opposite())} // reconnect with the hive
+        fatalError("implementation in progress")
     }
 
     func canMove() -> Bool {
@@ -147,10 +154,27 @@ extension HexNode {
         neighbors[dir.opposite()] = node
     }
 
+    func canDisconnect() -> Bool {
+        let neighbors = self.neighbors // make a copy of the neighbors
+        self.disconnect() // temporarily disconnect with all neighbors
+
+        let available = neighbors.available() // extract all available neighbors
+        let connected = available.map {$0.node.numConnected()}
+        var canMove = true
+        for i in (0..<(connected.count - 1)) {
+            // if number of connected pieces are not the same for each piece after the current
+            // node is removed from the structure, then the structure is broken.
+            if connected[i] != connected[i + 1] {
+                canMove = false
+            }
+        }
+
+        available.forEach {connect(with: $0.node, at: $0.dir.opposite())} // reconnect with neighbors
+        return canMove
+    }
+
     func disconnect() {
-        neighbors.available().map {
-            $0.node
-        }.forEach {
+        neighbors.available().map {$0.node}.forEach {
             $0.disconnect(with: self)
         }
     }
