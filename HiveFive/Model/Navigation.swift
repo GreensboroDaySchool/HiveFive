@@ -126,7 +126,6 @@ struct Destination {
     var dir: Direction // the direction of the vacant location
     
     /**
-     TODO: debug
      Resolve the destination by following a given Route.
      @param start: the starting node of the route
      @param route: the route to be followed to get to the destination
@@ -148,3 +147,10 @@ struct Destination {
         return Destination(node: current, dir: last.dir)
     }
 }
+
+/**
+ The difference between Path and Route is:
+ 1) Route needs to be resolved to get to the destination
+ 2) The destination of Path is known beforehand
+ */
+typealias Path = (dir: Direction, destination: HexNode)

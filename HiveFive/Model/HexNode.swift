@@ -28,23 +28,23 @@ protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
 
     /**
-    @return whether taking this node up will break the structure.
-    */
+     @return whether taking this node up will break the structure.
+     */
     func canDisconnect() -> Bool
 
     /**
-    @return the number of nodes that are connected to the current node, including the current node
-    */
+     @return the number of nodes that are connected to the current node, including the current node
+     */
     func numConnected() -> Int
 
     /**
-    @return whether the node has [other] as an immediate neighbor
-    */
+     @return whether the node has [other] as an immediate neighbor
+     */
     func hasNeighbor(_ other: HexNode) -> Direction?
 
     /**
-    @return whether the current node could move
-    */
+     @return whether the current node could move
+     */
     func canMove() -> Bool
 
     /**
@@ -73,6 +73,7 @@ protocol HexNode: AnyObject {
     /**
      Connect with another node at a certain neighboring position.
      The connection should be bidirectional, [dir] is the direction in relation to [node]
+     **Note:** does not connect properly with the entire hive structure; only a bidirectional reference binding.
      */
     func connect(with node: HexNode, at dir: Direction)
 
@@ -83,9 +84,9 @@ protocol HexNode: AnyObject {
     func disconnect()
 
     /**
-    Disconnect with the specified node
-    Note: ONLY the specified node, does not include all the surrounding nodes
-    */
+     Disconnect with the specified node
+     Note: ONLY the specified node, does not include all the surrounding nodes
+     */
     func disconnect(with node: HexNode);
 
     /**
@@ -104,7 +105,6 @@ protocol HexNode: AnyObject {
 extension HexNode {
     func canDisconnect() -> Bool {
         let neighbors = self.neighbors // make a copy of the neighbors
-        // I am not using map, reduce, etc. because clarity outweighs conciseness
         self.disconnect() // temporarily disconnect with all neighbors
 
         let available = neighbors.available() // extract all available neighbors
@@ -130,7 +130,7 @@ extension HexNode {
      TODO: implement
      */
     func move(to destination: Destination) {
-
+        
     }
 
     func move(by route: Route) {
