@@ -21,17 +21,17 @@ import XCTest
 @testable import Hive_Five
 
 class HiveFive_Tests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -40,7 +40,7 @@ class HiveFive_Tests: XCTestCase {
     func testNeighborsReferencesEquals() {
         let node1 = Grasshopper()
         let node2 = Spider()
-        
+
         var n1 = Neighbors()
         var n2 = Neighbors()
         n1[.down] = node1
@@ -60,7 +60,7 @@ class HiveFive_Tests: XCTestCase {
         assert(n1.contains(node2) == .up)
     }
 
-    func testNumConnected() {
+    func testCanDisconnect() {
         let grasshopper = Grasshopper()
         let spider = Spider()
         let queenBee = QueenBee()
@@ -68,6 +68,7 @@ class HiveFive_Tests: XCTestCase {
         let soldierAnt = SoldierAnt()
         let spider2 = Spider()
 
+        //testing HexNode::numConnected
         grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
         assert(spider.numConnected() == 2)
         assert(grasshopper.numConnected() == 2)
@@ -86,15 +87,76 @@ class HiveFive_Tests: XCTestCase {
         assert(queenBee.numConnected() == 5)
         assert(beetle.numConnected() == 5)
         assert(soldierAnt.numConnected() == 5)
-        spider2.connect(with: grasshopper, at: .down)
+        spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
         assert(spider.numConnected() == 6)
         assert(grasshopper.numConnected() == 6)
         assert(queenBee.numConnected() == 6)
         assert(beetle.numConnected() == 6)
         assert(soldierAnt.numConnected() == 6)
         assert(spider2.numConnected() == 6)
-         // including the top spider, there are 6 pieces connected together
+        // including the top spider, there are 6 pieces connected together
 
+        //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
+        spider2.connect(with: queenBee, at: .downLeft)
+        spider2.connect(with: beetle, at: .downRight)
+
+        let nodes = spider.connectedNodes()
+        debugPrint(nodes)
+        assert(nodes.count == 6)
+
+        assert(spider.numConnected() == 6)
+        assert(grasshopper.numConnected() == 6)
+        assert(queenBee.numConnected() == 6)
+        assert(beetle.numConnected() == 6)
+        assert(soldierAnt.numConnected() == 6)
+        assert(spider2.numConnected() == 6)
+        //still holds true -- there are only 6 pieces.
+
+        //testing HexNode::canMove
+        assert(soldierAnt.canDisconnect() == true)
+        assert(spider.canDisconnect() == true)
+        assert(queenBee.canDisconnect() == true)
+        assert(beetle.canDisconnect() == false)
+        assert(grasshopper.canDisconnect() == false)
+        assert(spider2.canDisconnect() == true)
+
+    }
+
+    func testDirectionAdjacent() {
+        let dir = Direction.up
+        assert(dir.adjacent()[1].adjacent()[1].adjacent()[1] == .down)
+    }
+
+    func testNeighborsAdjacentAndHexNodeAvailableMoves() {
+        //test Neighbors::adjacent
+        let grasshopper = Grasshopper()
+        let spider = Spider()
+        let queenBee = QueenBee()
+        let beetle = Beetle()
+        let soldierAnt = SoldierAnt()
+        let spider2 = Spider()
+
+        grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
+        queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
+        beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
+        soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
+        spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
+        //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
+        spider2.connect(with: queenBee, at: .downLeft)
+        spider2.connect(with: beetle, at: .downRight)
+        //this is where we want to be when a structure is properly connected
+
+        var result = grasshopper.neighbors.adjacent(of: .down)
+        assert(result[0].node! === queenBee && result[0].dir == .downRight)
+        assert(result[1].node! === beetle && result[1].dir == .downLeft)
+
+        result = beetle.neighbors.adjacent(of: .down)
+        assert(result[0].node === spider2 && result[0].dir == .downRight)
+        assert(result[1].node == nil && result[1].dir == .downLeft)
+
+        //test QueenBee::availableMoves
+        let moves = queenBee.availableMoves()
+        assert(moves.count == 2)
     }
 
     func testPerformanceExample() {
@@ -103,5 +165,5 @@ class HiveFive_Tests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
 }
