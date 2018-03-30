@@ -217,8 +217,8 @@ extension HexNode {
 
     //Not the perfect solution... but it works like a charm!
     func numConnected() -> Int {
-        let pool = [HexNode]()
-        return numConnected(pool, 1) - numConnected(pool, 0)
+        var pool = [HexNode]()
+        return numConnected(&pool)
     }
 
     func connect(with node: HexNode, at dir: Direction) {
@@ -242,17 +242,14 @@ extension HexNode {
 
     /**
      @param pool: the HexNodes that are already accounted for
-     @param i: 0 -> excluding leaf nodes; 1 -> leaf nodes + 2 * multi-directionally bounded nodes
      */
-    private func numConnected(_ pool: [HexNode], _ i: Int) -> Int {
-        var pool = pool // make pool mutable
+    public func numConnected(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // get the nodes that are present
-        let count = pairs.count // initial # of connected is the # of neighbors
-        if pool.contains(where: { $0 === self }) {return 0}
+        if pool.contains(where: {$0 === self}) {return 0}
         pool.append(self) // self is accounted for
-        return count + pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
-                .map {$0.numConnected(pool, i)}
-                .reduce(i) {$0 + $1}
+        return pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
+                .map {$0.numConnected(&pool)}
+                .reduce(1) {$0 + $1}
     }
 
     func remove(_ node: HexNode) {

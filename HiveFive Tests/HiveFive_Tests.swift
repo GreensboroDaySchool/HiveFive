@@ -100,6 +100,9 @@ class HiveFive_Tests: XCTestCase {
         //TODO: failed!
         spider2.connect(with: queenBee, at: .downLeft)
         spider2.connect(with: beetle, at: .downRight)
+        var nodes = [HexNode]()
+        let _ = spider.numConnected(&nodes)
+        debugPrint(nodes)
         assert(spider.numConnected() == 6)
         assert(grasshopper.numConnected() == 6)
         assert(queenBee.numConnected() == 6)
