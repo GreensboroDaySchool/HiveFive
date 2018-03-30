@@ -110,34 +110,26 @@ protocol HexNode: AnyObject {
 extension HexNode {
 
     func derivePaths() -> [Path] {
-        var paths = [Path]()
-        derivePaths(&paths, [Path]())
+        var paths = [Path(route: Route(directions: []), destination: self)]
+        derivePaths(&paths, paths[0].route) // the root path is initially []
+        paths.removeFirst()
         return paths
     }
 
     /**
      TODO: debug
-     @param pool: paths that are already derived
-     @param roots: the roots from which new paths are derived
+     @param paths: derived paths
+     @param root: the root path
      */
-    private func derivePaths(_ pool: inout [Path], _ roots: [Path]) {
-        let available = neighbors.available()
-        let pairs = available.filter {
-            pair in !pool.contains(where: { pair.node === $0.destination })
+    private func derivePaths(_ paths: inout [Path], _ root: Route) {
+        let available = neighbors.available().filter {
+            pair in !paths.contains(where: { pair.node === $0.destination })
         }
-        if pairs.count == 0 {return} // base case
-        if (pool.count == 0) { // root paths
-            pool.append(contentsOf: pairs.map {Path(
-                        route: Route(directions: [$0.dir]),
-                        destination: $0.node)})
-            derivePaths(&pool, pool) // first recursive call
-            return
-        }
-        let newPaths = roots.map{root in
-            pairs.map{Path(route: root.route.append([$0.dir]), $0.node)}
-        }.flatMap{$0}
-        pool.append(contentsOf: newPaths)
-        derivePaths(&pool, newPaths)
+        
+        if available.count == 0 {return} // base case
+        let newPaths = available.map{Path(route: root.append([$0.dir]), $0.node)}
+        paths.append(contentsOf: newPaths)
+        newPaths.forEach{$0.destination.derivePaths(&paths, $0.route)} // recursive call
     }
 
     func canMove() -> Bool {

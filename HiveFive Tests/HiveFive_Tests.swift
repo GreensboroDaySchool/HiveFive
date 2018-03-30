@@ -173,6 +173,8 @@ class HiveFive_Tests: XCTestCase {
         let destinations = moves.map{Destination.resolve(from: queenBee, following: $0)}
         assert(destinations[0].node === spider2 && destinations[0].dir == .downRight)
         assert(destinations[1].node === grasshopper && destinations[1].dir == .upRight)
+        
+        assert(spider.derivePaths().count == 6)
     }
 
     func testPerformanceExample() {
