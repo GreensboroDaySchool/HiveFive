@@ -127,7 +127,7 @@ class HiveFive_Tests: XCTestCase {
         assert(dir.adjacent()[1].adjacent()[1].adjacent()[1] == .down)
     }
 
-    func testNeighborsAdjacentAndHexNodeAvailableMoves() {
+    func testAvailableMoves() {
         //test Neighbors::adjacent
         let grasshopper = Grasshopper()
         let spider = Spider()
@@ -157,6 +157,11 @@ class HiveFive_Tests: XCTestCase {
         //test QueenBee::availableMoves
         let moves = queenBee.availableMoves()
         assert(moves.count == 2)
+
+        //test Destination::resolve
+        let destinations = moves.map{Destination.resolve(from: queenBee, following: $0)}
+        assert(destinations[0].node === spider2 && destinations[0].dir == .downRight)
+        assert(destinations[1].node === grasshopper && destinations[1].dir == .upRight)
     }
 
     func testPerformanceExample() {
