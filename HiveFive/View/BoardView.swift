@@ -22,14 +22,30 @@ import UIKit
 let nodeRadius: CGFloat = 32.0
 
 class BoardView: UIView {
-    var hive: Hive?
+    var hive: Hive? = nil
     
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    //Cache layout of the hive. Only re-layout when a node is moved/placed
+    fileprivate var _cachedLayout: Set<NodeCoordination>? = nil
+    //Since the views will only be added, so we will just not care about removing them
+    private var subnodeViews = [NodeCoordination:NodeView]()
+    
+    func onNodeChanges(){
+        guard let layout = layout else { return }
+        
     }
+    
+//    override func draw(_ rect: CGRect) {
+//
+//    }
 }
 
 extension BoardView {
+    fileprivate var layout: Set<NodeCoordination>? {
+        if let cached = _cachedLayout { return cached }
+        _cachedLayout = layoutHive()
+        return _cachedLayout
+    }
+    
     fileprivate struct NodeCoordination: Hashable {
         var node: HexNode
         var source: Direction
