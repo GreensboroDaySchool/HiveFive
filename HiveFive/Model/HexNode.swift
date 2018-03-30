@@ -171,9 +171,14 @@ protocol HexNode: AnyObject {
     func disconnect(with node: HexNode);
 
     /**
-    @return all possible locations in which the current node can move to by following a defined route.
-    */
+     @return all possible locations in which the current node can move to by following a defined route.
+     */
     func availableMoves() -> [Route]
+    
+    /**
+     @return an array containing all the references to the connected pieces, including self; i.e. the entire hive
+     */
+    func connectedNodes() -> [HexNode]
 }
 
 extension HexNode {
@@ -215,10 +220,8 @@ extension HexNode {
 
     }
 
-    //Not the perfect solution... but it works like a charm!
     func numConnected() -> Int {
-        var pool = [HexNode]()
-        return numConnected(&pool)
+        return connectedNodes().count
     }
 
     func connect(with node: HexNode, at dir: Direction) {
@@ -241,15 +244,22 @@ extension HexNode {
     }
 
     /**
-     @param pool: the HexNodes that are already accounted for
+     @param pool: references to HexNodes that are already accounted for
+     @return an integer representing the number of nodes
      */
-    public func numConnected(_ pool: inout [HexNode]) -> Int {
+    public func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // get the nodes that are present
         if pool.contains(where: {$0 === self}) {return 0}
-        pool.append(self) // self is accounted for
+        pool.append(self) // self is accounted for, thus add to pool of accounted node such that it won't get counted again
         return pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
-                .map {$0.numConnected(&pool)}
+                .map {$0.deriveConnectedNodes(&pool)}
                 .reduce(1) {$0 + $1}
+    }
+    
+    func connectedNodes() -> [HexNode] {
+        var pool = [HexNode]()
+        let _ = deriveConnectedNodes(&pool)
+        return pool
     }
 
     func remove(_ node: HexNode) {
