@@ -90,7 +90,7 @@ extension BoardView {
         pool.append(contentsOf: root.neighbors.enumerated().filter{ $0.element !== nil }.map(process(from: root)))
         
         //Transform node locations from the inside to the outside
-        while(pool.count > 0){
+        while(!pool.isEmpty){
             var current = pool.removeFirst()
             var transformed = current.coordination
             
