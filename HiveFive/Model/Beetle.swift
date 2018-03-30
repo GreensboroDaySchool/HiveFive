@@ -23,7 +23,7 @@ class Beetle: HexNode {
     
     func availableMoves() -> [Route] {
         var moves = [Route]()
-        if (!canMove()) {
+        if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return moves
         }

@@ -107,7 +107,6 @@ extension Neighbors: Equatable, Hashable {
 protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
 
-
     /**
     @return whether taking this node up will break the structure.
     */
@@ -160,7 +159,7 @@ protocol HexNode: AnyObject {
 
     /**
      When the node disconnects from the structure, all references to it from the neighbors should be removed.
-     Note: disconnect with all neighbors
+     Note: disconnect with all neighbors, i.e. remove from the hive
      */
     func disconnect()
 

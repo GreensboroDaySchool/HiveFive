@@ -60,7 +60,7 @@ class HiveFive_Tests: XCTestCase {
         assert(n1.contains(node2) == .up)
     }
 
-    func testCanMove() {
+    func testCanDisconnect() {
         let grasshopper = Grasshopper()
         let spider = Spider()
         let queenBee = QueenBee()
@@ -127,7 +127,8 @@ class HiveFive_Tests: XCTestCase {
         assert(dir.adjacent()[1].adjacent()[1].adjacent()[1] == .down)
     }
     
-    func testNeighborsAdjacent() {
+    func testNeighborsAdjacentAndHexNodeAvailableMoves() {
+        //test Neighbors::adjacent
         let grasshopper = Grasshopper()
         let spider = Spider()
         let queenBee = QueenBee()
@@ -140,14 +141,22 @@ class HiveFive_Tests: XCTestCase {
         beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
         soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
         spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
+        //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
+        spider2.connect(with: queenBee, at: .downLeft)
+        spider2.connect(with: beetle, at: .downRight)
+        //this is where we want to be when a structure is properly connected
 
         var result = grasshopper.neighbors.adjacent(of: .down)
         assert(result[0].node! === queenBee && result[0].dir == .downRight)
         assert(result[1].node! === beetle && result[1].dir == .downLeft)
         
         result = beetle.neighbors.adjacent(of: .down)
-        assert(result[0].node == nil && result[0].dir == .downRight)
+        assert(result[0].node === spider2 && result[0].dir == .downRight)
         assert(result[1].node == nil && result[1].dir == .downLeft)
+
+        //test QueenBee::availableMoves
+        let moves = queenBee.availableMoves()
+        assert(moves.count == 2)
     }
 
     func testPerformanceExample() {
