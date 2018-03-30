@@ -45,7 +45,13 @@ struct Instruction {
 }
 
 /**
- The direction in component of the Instruction
+       _____(up)_____
+      /              \
+  (upLeft)         (upRight)
+    /     Oh Yeah!     \
+    \      Hive        /
+ (downLeft)       (downRight)
+      \____(down)____/
  */
 enum Direction: Int {
     static let allDirections: [Direction] = (0..<8).map {
