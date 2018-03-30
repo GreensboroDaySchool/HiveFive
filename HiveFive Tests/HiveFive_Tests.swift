@@ -175,6 +175,21 @@ class HiveFive_Tests: XCTestCase {
         assert(destinations[1].node === grasshopper && destinations[1].dir == .upRight)
         
         assert(spider.derivePaths().count == 6)
+        assert(grasshopper.derivePaths().count == 6)
+    }
+    
+    func testRouteSimplified() {
+        //testing Route::equals
+        assert(Route(directions: [.downLeft, .upLeft, .up, .upRight, .downRight]).equals(Route(directions: [.up])))
+        assert(Route(directions: [.upLeft, .up, .upRight, .downRight, .down]).equals(Route(directions: [.upRight])))
+        assert(Route(directions: [.up, .upRight, .downRight, .down, .downLeft]).equals(Route(directions: [.downRight])))
+        assert(Route(directions: [.upRight, .downRight, .down, .downLeft, .upLeft]).equals(Route(directions: [.down])))
+
+        //testing Route::simplified
+        assert(Route(directions: [.downLeft, .upLeft, .up, .upRight, .downRight]).simplified().directions[0] == .up)
+        assert(Route(directions: [.upLeft, .up, .upRight, .downRight, .down]).simplified().directions[0] == .upRight)
+        assert(Route(directions: [.up, .upRight, .downRight, .down, .downLeft]).simplified().directions[0] == .downRight)
+        assert(Route(directions: [.upRight, .downRight, .down, .downLeft, .upLeft]).simplified().directions[0] == .down)
     }
 
     func testPerformanceExample() {

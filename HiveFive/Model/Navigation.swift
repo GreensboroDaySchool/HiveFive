@@ -82,6 +82,22 @@ enum Direction: Int {
         adjacent.append(Direction(rawValue: (value + 1) % count)!)
         return adjacent
     }
+    
+    /**
+     @return 2D translation that results when the direction is applied
+     */
+    func translation() -> Vec2D {
+        switch self {
+        case .up: return Vec2D(x: 0, y: 2)
+        case .upRight: return Vec2D(x: 1, y: 1)
+        case .downRight: return Vec2D(x: 1, y: -1)
+        case .down: return Vec2D(x: 0, y: -2)
+        case .downLeft: return Vec2D(x: -1, y: -1)
+        case .upLeft: return Vec2D(x: -1, y: 1)
+        case .below: return Vec2D(x: 0, y: 0)
+        case .above: return Vec2D(x: 0, y: 0)
+        }
+    }
 }
 
 /**
@@ -91,6 +107,12 @@ enum Direction: Int {
  */
 struct Route {
     var directions: [Direction]
+    var translation: Vec2D {
+        get {return directions.map{$0.translation()}
+                .reduce(Vec2D(x: 0, y: 0)){
+                    $0.add($1)}
+        }
+    }
 
     func append(_ directions: [Direction]) -> Route {
         var newDirs = self.directions
@@ -107,6 +129,13 @@ struct Route {
         // 0 = up, 1 = upRight, 2 = downRight, 3 = down, 4 = downLeft, 5 = upLeft, below, above
         var dirs = [Int](repeating: 0, count: 8)
         directions.forEach{dirs[$0.rawValue] += 1}
+        
+        for i in (0..<3) { // cancel vertically and diagonally
+            while (dirs[i] > 0 && dirs[i+3] > 0) {
+                dirs[i] -= 1
+                dirs[i+3] -= 1
+            }
+        }
 
         //upLeft + upRight = up, downLeft + downRight = down, etc
         while (dirs[1] > 0 && dirs[5] > 0) {
@@ -145,20 +174,20 @@ struct Route {
             dirs[4] += 1 // + downLeft
         }
 
-        for i in (0..<3) { // cancel vertically and diagonally
-            while (dirs[i] > 0 && dirs[i+3] > 0) {
-                dirs[i] -= 1
-                dirs[i+3] -= 1
-            }
-        }
-
         //reconstruct directions
         let newDirs = dirs.enumerated().map{(index, element) -> [Direction] in
-            return element == 0 ? [Direction]() : (0..<index)
-                .map{_ in Direction(rawValue: element)!
+            return element == 0 ? [Direction]() : (0..<element)
+                    .map{_ in Direction(rawValue: index)!
             }}.flatMap{$0}
-        
+
         return Route(directions: newDirs)
+    }
+
+    /**
+     @return whether the relative position represented by the two routes are equal
+     */
+    func equals(_ other: Route) -> Bool {
+        return other.translation == translation
     }
 }
 
