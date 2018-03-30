@@ -110,6 +110,29 @@ class HiveFive_Tests: XCTestCase {
         let dir = Direction.up
         assert(dir.adjacent()[1].adjacent()[1].adjacent()[1] == .down)
     }
+    
+    func testNeighborsAdjacent() {
+        let grasshopper = Grasshopper()
+        let spider = Spider()
+        let queenBee = QueenBee()
+        let beetle = Beetle()
+        let soldierAnt = SoldierAnt()
+        let spider2 = Spider()
+        
+        grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
+        queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
+        beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
+        soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
+        spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
+
+        var result = grasshopper.neighbors.adjacent(of: .down)
+        assert(result[0].node! === queenBee && result[0].dir == .downRight)
+        assert(result[1].node! === beetle && result[1].dir == .downLeft)
+        
+        result = beetle.neighbors.adjacent(of: .down)
+        assert(result[0].node == nil && result[0].dir == .downRight)
+        assert(result[1].node == nil && result[1].dir == .downLeft)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
