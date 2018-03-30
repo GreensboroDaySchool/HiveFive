@@ -254,7 +254,7 @@ extension HexNode {
      @param pool: references to HexNodes that are already accounted for
      @return an integer representing the number of nodes
      */
-    public func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
+    private func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // get the nodes that are present
         if pool.contains(where: { $0 === self }) {return 0}
         pool.append(self) // self is accounted for, thus add to pool of accounted node such that it won't get counted again
