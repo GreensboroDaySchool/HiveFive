@@ -96,6 +96,17 @@ class HiveFive_Tests: XCTestCase {
         assert(spider2.numConnected() == 6)
          // including the top spider, there are 6 pieces connected together
 
+        //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
+        //TODO: failed!
+        spider2.connect(with: queenBee, at: .downLeft)
+        spider2.connect(with: beetle, at: .downRight)
+        assert(spider.numConnected() == 6)
+        assert(grasshopper.numConnected() == 6)
+        assert(queenBee.numConnected() == 6)
+        assert(beetle.numConnected() == 6)
+        assert(soldierAnt.numConnected() == 6)
+        assert(spider2.numConnected() == 6)
+
         //testing HexNode::canMove
         assert(soldierAnt.canDisconnect() == true)
         assert(spider.canDisconnect() == true)
