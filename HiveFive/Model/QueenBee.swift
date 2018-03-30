@@ -22,11 +22,11 @@ class QueenBee: HexNode {
     var neighbors = Neighbors()
 
     func availableMoves() -> [Route] {
-        if (!canMove()) {
+        if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return [Route]()
         }
-        return neighbors.available()
+        return neighbors.available() // worked on the first try!
             .map{($0.dir, $0.node.neighbors
                 .adjacent(of: $0.dir.opposite())
                 .filter{$0.node == nil}
