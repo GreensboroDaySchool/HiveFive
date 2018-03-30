@@ -20,31 +20,6 @@
 import Foundation
 
 /**
- A piece-wise instruction. For example, Instruction(3,.upLeft) would mean move upLeft 3 times
- Imagine an Instruction instance like a vector that has magnitude and direction, then [dir] defines
- the direction while [num] defines the magnitude.
- */
-struct Instruction {
-    ///the number of nodes to move in the specified direction
-    let num: Int
-    
-    ///the direction in relation to the current node
-    let dir: Direction
-    
-    /**
-     Apply the instruction on [node] to get to the next node
-     Note: the method assumes that the instruction is valid.
-     */
-    func apply(to node: HexNode) -> HexNode {
-        var result = node
-        for _ in (0..<num) {
-            result = result.neighbors[dir]!
-        }
-        return result
-    }
-}
-
-/**
        _____(up)_____
       /              \
   (upLeft)         (upRight)
@@ -111,11 +86,16 @@ enum Direction: Int {
 
 /**
  Since everything is relative, there is no absolute location like in a x,y coordinate, only relative positions defined by Route;
- Route defines where the location is by providing step-wise instructions. If Instruction is a vector, then Route is an array
+ Route defines where the location is by providing step-wise directions. If Direction is a vector, then Route is an array
  of vectors that "directs" to the relative location.
  */
 struct Route {
-    var instructions: [Instruction]
+    var directions: [Direction]
+
+    mutating func append(_ directions: [Direction]) -> Route {
+        self.directions.append(contentsOf: directions)
+        return self
+    }
 }
 
 /**
@@ -134,17 +114,11 @@ struct Destination {
     static func resolve(from start: HexNode, following route: Route) -> Destination {
         //        let nodes = start.connectedNodes() // this can be optimized -- only resolve the hive structure when pieces are moved/added
         var current = start;
-        for q in 0..<(route.instructions.count - 1) {
-            let instruction = route.instructions[q]
-            current = instruction.apply(to: current)
+        for q in 0..<(route.directions.count - 1) {
+            let direction = route.directions[q]
+            current = current.neighbors[direction]!
         }
-        let last = route.instructions.last!
-        // the last step of the last instruction represents the vacant location
-        for _ in 0..<(last.num - 1) {
-            current = current.neighbors[last.dir]!
-        }
-        
-        return Destination(node: current, dir: last.dir)
+        return Destination(node: current, dir: route.directions.last!)
     }
 }
 
@@ -153,4 +127,4 @@ struct Destination {
  1) Route needs to be resolved to get to the destination
  2) The destination of Path is known beforehand
  */
-typealias Path = (dir: Direction, destination: HexNode)
+typealias Path = (route: Route, destination: HexNode)
