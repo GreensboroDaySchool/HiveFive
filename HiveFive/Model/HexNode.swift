@@ -48,14 +48,6 @@ protocol HexNode: AnyObject {
     func canMove() -> Bool
 
     /**
-     **Note**
-     The implementation for this method should be different for each class that conforms to the HexNode protocol.
-     For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
-     @return whether the piece can legally move to the designated location by following the instructions provided by route.
-     */
-    func canMove(to newPlace: Route) -> Bool
-
-    /**
      Moves the piece to the designated destination and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
      */
@@ -97,6 +89,8 @@ protocol HexNode: AnyObject {
     func disconnect(with node: HexNode);
 
     /**
+     The implementation for this method should be different for each class that conforms to the HexNode protocol.
+     For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
      @return all possible locations in which the current node can move to by following a defined route.
      */
     func availableMoves() -> [Route]
@@ -133,17 +127,14 @@ extension HexNode {
     }
 
     /**
-    TODO: implement
-    */
-    func canMove(to newPlace: Route) -> Bool {
-        return false
+     TODO: implement
+     */
+    func move(to destination: Destination) {
+
     }
 
-    /**
-    TODO: implement
-    */
-    func move(to newPlace: Route) {
-
+    func move(by route: Route) {
+        move(to: Destination.resolve(from: self, following: route))
     }
 
     func numConnected() -> Int {
