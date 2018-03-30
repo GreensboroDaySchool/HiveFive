@@ -34,11 +34,11 @@ enum Direction: Int {
     }
     //Horizontal locations
     case up = 0, upRight, downRight, down, downLeft, upLeft
-    
+
     //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
     //The node being suppressed should have all horizontal references set to nil
     case below, above
-    
+
     /**
      I know there's a better way, but that would simply take too much time!
      @return the opposite direction.
@@ -55,7 +55,7 @@ enum Direction: Int {
         case .above: return .below
         }
     }
-    
+
     func horizontalFlip() -> Direction {
         switch self {
         case .upRight: return .upLeft
@@ -65,7 +65,7 @@ enum Direction: Int {
         default: fatalError("horizontalFlip() only applies to slanted directions")
         }
     }
-    
+
     /**
      e.g. Direction.up.adjacent() returns [.upLeft, .upRight]
      Note: this method is not intended for down/below.
@@ -97,6 +97,69 @@ struct Route {
         newDirs.append(contentsOf: directions)
         return Route(directions: newDirs)
     }
+
+    /**
+     Note: the simplified route is might no longer be valid! The purpose is to compare
+     if two relative positions are the same.
+     @return the simplified route that leads to the exact same spot in less steps
+     */
+    func simplified() -> Route {
+        // 0 = up, 1 = upRight, 2 = downRight, 3 = down, 4 = downLeft, 5 = upLeft, below, above
+        var dirs = [Int](repeating: 0, count: 8)
+        directions.forEach{dirs[$0.rawValue] += 1}
+
+        //upLeft + upRight = up, downLeft + downRight = down, etc
+        while (dirs[1] > 0 && dirs[5] > 0) {
+            dirs[1] -= 1 // - upRight
+            dirs[5] -= 1 // - upLeft
+            dirs[0] += 1 // + up
+        }
+
+        while (dirs[2] > 0 && dirs[4] > 0) {
+            dirs[2] -= 1 // - downRight
+            dirs[4] -= 1 // - downLeft
+            dirs[3] += 1 // + down
+        }
+
+        while (dirs[0] > 0 && dirs[2] > 0) {
+            dirs[0] -= 1 // - up
+            dirs[2] -= 1 // - downRight
+            dirs[1] += 1 // + upRight
+        }
+
+        while (dirs[0] > 0 && dirs[4] > 0) {
+            dirs[0] -= 1 // - up
+            dirs[4] -= 1 // - downLeft
+            dirs[5] += 1 // + upLeft
+        }
+
+        while (dirs[1] > 0 && dirs[3] > 0) {
+            dirs[1] -= 1 // - upRight
+            dirs[3] -= 1 // - down
+            dirs[2] += 1 // + downRight
+        }
+
+        while (dirs[5] > 0 && dirs[3] > 0) {
+            dirs[5] -= 1 // - upLeft
+            dirs[3] -= 1 // - down
+            dirs[4] += 1 // + downLeft
+        }
+
+        for i in (0..<3) { // cancel vertically and diagonally
+            while (dirs[i] > 0 && dirs[i+3] > 0) {
+                dirs[i] -= 1
+                dirs[i+3] -= 1
+            }
+        }
+
+        //reconstruct directions
+        let newDirs = dirs.enumerated().map{(index, element) -> [Direction] in
+            return element == 0 ? [Direction]() : (0..<index)
+                .map{_ in Direction(rawValue: element)!
+            }}.flatMap{$0}
+        
+        return Route(directions: newDirs)
+    }
 }
 
 /**
@@ -105,7 +168,7 @@ struct Route {
 struct Destination {
     var node: HexNode // b/c the "one hive policy", the destination has to be the vacant locations around a node
     var dir: Direction // the direction of the vacant location
-    
+
     /**
      Resolve the destination by following a given Route.
      @param start: the starting node of the route
