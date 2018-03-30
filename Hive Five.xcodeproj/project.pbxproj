@@ -16,6 +16,7 @@
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
+		32B109AB206E8D360065E465 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
 		32D1D143206BE9A1008444F4 /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
 		32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
 		32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
@@ -24,6 +25,7 @@
 		32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
 		32D1D153206BEF99008444F4 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D152206BEF99008444F4 /* BoardViewController.swift */; };
 		32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D154206BEFFF008444F4 /* BoardView.swift */; };
+		33F751EE8399CC8C67CF1A35 /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7568984C9D4FED040BE69 /* Neighbors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
+		32B109AA206E8D360065E465 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		32D1D145206BEA6F008444F4 /* QueenBee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
 		32D1D147206BEA8A008444F4 /* Beetle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beetle.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
 		32D1D152206BEF99008444F4 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		32D1D154206BEFFF008444F4 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		33F7568984C9D4FED040BE69 /* Neighbors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neighbors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,8 @@
 				32D1D149206BEA9F008444F4 /* Grasshopper.swift */,
 				32D1D14B206BEAAC008444F4 /* Spider.swift */,
 				32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */,
+				32B109AA206E8D360065E465 /* Navigation.swift */,
+				33F7568984C9D4FED040BE69 /* Neighbors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,9 +320,11 @@
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
+				32B109AB206E8D360065E465 /* Navigation.swift in Sources */,
 				32B109A9206C646F0065E465 /* HexNode.swift in Sources */,
 				32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */,
 				32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */,
+				33F751EE8399CC8C67CF1A35 /* Neighbors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
