@@ -117,7 +117,6 @@ extension HexNode {
     }
 
     /**
-     TODO: debug
      @param paths: derived paths
      @param root: the root path
      */
