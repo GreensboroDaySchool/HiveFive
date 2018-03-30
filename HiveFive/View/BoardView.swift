@@ -41,58 +41,100 @@ extension BoardView {
         static func == (l: NodeCoordination, r: NodeCoordination) -> Bool {
             return l.hashValue == r.hashValue
         }
+        
+        //An easy access to the nodes array
+        var neighbors: [HexNode?] { return node.neighbors.nodes }
+        
+        init(_ node: HexNode, from sourceDirection: Direction, at coordination: CGPoint, zIndex: Int){
+            self.node = node
+            self.source = sourceDirection
+            self.coordination = coordination
+            self.zIndex = zIndex
+        }
+        
+        init(_ node: HexNode, direction: Direction, from sourceCoordination: NodeCoordination){
+            self.node = node
+            self.source = direction
+            self.coordination = sourceCoordination.coordination
+            self.zIndex = sourceCoordination.zIndex
+        }
+        
+        init(_ node: HexNode) {
+            self.init(node, from: .above, at: .zero, zIndex: 0)
+        }
     }
     
-//    fileprivate func layoutHive() -> [BoardCoordinationPair]? {
-//        //Only layout when there is a hive
-//        guard let hive = hive else { return nil }
-//        var fifo = [QueuedNodePair]() //A queue that stores all the nodes that need to be processed
-//        var processed = [BoardCoordinationPair]()
-//
-//        //Assign (0, 0) to the root node
-//        processed.append(BoardCoordinationPair(hive.root, CGPoint(x: 0, y: 0)))
-//
-//        fifo.append(contentsOf: processed.first!
-//            .node
-//            .neighbors
-//            .nodes//all the neighboring nodes of the root cell
-//            .enumerated()
-//            .filter({ $0.element !== nil })//Filter out nil nodes
-//            .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))//map to our QueuedNodePair tuple
-//
-//        //Transform node locations from the inside to the outside
-//        while(fifo.count > 0){
-//            let current = fifo.removeFirst()
-//            var transformed = current.sourceCoordination
-//
-//            //Left and Right (x-axis) are different from up/down (simpler)
-//            //thus using two switch statement to transform coordinations
-//            switch(current.sourceDirection){
-//            case .upRight, .downRight: transformed.x += nodeRadius * 0.5
-//            case .upLeft, .downLeft: transformed.x -= nodeRadius * 0.5
-//            default: break
-//            }
-//
-//            switch(current.sourceDirection){
-//            case .upRight, .upLeft: transformed.y += nodeRadius * sin(.pi / 3)
-//            case .downLeft, .downRight: transformed.y -= nodeRadius * sin(.pi / 3)
-//            case .up: transformed.y += nodeRadius * sin(.pi / 3) * 2
-//            case .down: transformed.y -= nodeRadius * sin(.pi / 3) * 2
-//            default: break
-//            }
-//
-//            processed.append(BoardCoordinationPair(current.node, transformed))
-//
-//            //Append current node's neighboors
-//            fifo.append(contentsOf: processed.last!
-//                .node
-//                .neighbors
-//                .nodes//all the neighboring nodes of the root cell
-//                .enumerated()
-//                .filter({ n in n.element !== nil && !processed.contains{ n.element?.neighbors.equals($0.node.neighbors) == true } })//Filter out nil nodes and nodes that have been processed
-//                .map({ QueuedNodePair($0.element!, CGPoint(x: 0, y: 0), Neighbors.allDirections[$0.offset]) }))
-//        }
-//
-//        return processed
-//    }
+    fileprivate func layoutHive() -> Set<NodeCoordination>? {
+        //Only layout when there is a hive
+        guard let hive = hive else { return nil }
+        var pool = [NodeCoordination]() //A queue that stores all the nodes that need to be processed
+        var processed = Set<NodeCoordination>()
+        let root = NodeCoordination(hive.root, from: .above, at: .zero, zIndex: 0)
+        
+        //A wrapper function to provide a transformation closure to each surrounding node, withour coordinations
+        func process(from sourceCoordination: NodeCoordination) -> (((offset: Int, element: HexNode?)) -> NodeCoordination) {
+            func _process(_ enumerated: (offset: Int, element: HexNode?)) -> NodeCoordination {
+                return NodeCoordination(
+                    enumerated.element!,
+                    from: Direction(rawValue: enumerated.offset)!,
+                    at: sourceCoordination.coordination,
+                    zIndex: sourceCoordination.zIndex
+                )
+            }
+            return _process
+        }
+        
+        //Assign (0, 0) to the root node
+        processed.insert(root)
+        //Append the neighbors to the queue
+        pool.append(contentsOf: root.neighbors.enumerated().filter{ $0.element !== nil }.map(process(from: root)))
+        
+        //Transform node locations from the inside to the outside
+        while(pool.count > 0){
+            var current = pool.removeFirst()
+            var transformed = current.coordination
+            
+            //If it is supressing another node, return the node's location with zIndex - 1
+            //We don't need to trace up because the uppermost node is always connected to another node
+            if case .below = current.source {
+                current.coordination = transformed
+                //Check if there is anymore to the node
+                if let nodeBelow = current.node.neighbors[.below] {
+                    let next = NodeCoordination(nodeBelow, from: .below, at: transformed, zIndex: current.zIndex - 1)
+                    if !processed.contains(next) { pool.append(next) }
+                }
+                processed.insert(current)
+                continue
+            }
+            
+            //Left and Right (x-axis) are different from up/down (simpler)
+            //thus using two switch statement to transform coordinations
+            switch(current.source){
+            case .upRight, .downRight: transformed.x += nodeRadius * 0.5
+            case .upLeft, .downLeft: transformed.x -= nodeRadius * 0.5
+            default: break
+            }
+            
+            switch(current.source){
+            case .upRight, .upLeft: transformed.y += nodeRadius * sin(.pi / 3)
+            case .downLeft, .downRight: transformed.y -= nodeRadius * sin(.pi / 3)
+            case .up: transformed.y += nodeRadius * sin(.pi / 3) * 2
+            case .down: transformed.y -= nodeRadius * sin(.pi / 3) * 2
+            default: break
+            }
+            
+            current.coordination = transformed
+            processed.insert(current)
+            
+            //Append current node's neighboors
+            pool.append(contentsOf: current
+                .neighbors
+                .enumerated()
+                .filter{ $0.element !== nil }
+                .map{ NodeCoordination($0.element!, direction: Direction(rawValue: $0.offset)!, from: current) }
+                .filter{ !processed.contains($0) })
+        }
+        
+        return processed
+    }
 }

@@ -20,13 +20,4 @@
 import Foundation
 class Beetle: HexNode {
     var neighbors = Neighbors()
-    
-    func availableMoves() -> [Route] {
-        var moves = [Route]()
-        if (!canDisconnect()) {
-            // if disconnecting the piece breaks the structure, then there are no available moves.
-            return moves
-        }
-        return moves
-    }
 }
