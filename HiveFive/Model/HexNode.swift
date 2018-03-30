@@ -32,27 +32,17 @@ struct Neighbors {
     var nodes = [HexNode?](repeating: nil, count: Direction.allDirections.count)
 
     subscript(dir: Direction) -> HexNode? {
-        get {
-            return nodes[dir.rawValue]
-        }
-        set {
-            nodes[dir.rawValue] = newValue
-        }
+        get {return nodes[dir.rawValue]}
+        set {nodes[dir.rawValue] = newValue}
     }
 
     /**
      @return the direction & node tuples in which there is a neighbor present.
      */
     func available() -> [(dir: Direction, node: HexNode)] {
-        return nodes.enumerated().filter {
-                    $0.element != nil
-                }
-                .map {
-                    Direction(rawValue: $0.offset)!
-                }
-                .map {
-                    ($0, self[$0]!)
-                }
+        return nodes.enumerated().filter {$0.element != nil}
+                .map {Direction(rawValue: $0.offset)!}
+                .map {($0, self[$0]!)}
     }
 
     /**
@@ -60,9 +50,7 @@ struct Neighbors {
      @return the adjacent localized node of the specified direction
      */
     func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
-        return dir.adjacent().map {
-            ($0, self[$0])
-        }
+        return dir.adjacent().map {($0, self[$0])}
     }
 
     /**
@@ -203,9 +191,7 @@ extension HexNode {
         self.disconnect() // temporarily disconnect with all neighbors
 
         let available = neighbors.available() // extract all available neighbors
-        let connected = available.map {
-            $0.node.numConnected()
-        }
+        let connected = available.map {$0.node.numConnected()}
         var canMove = true
         for i in (0..<(connected.count - 1)) {
             // if number of connected pieces are not the same for each piece after the current
@@ -215,9 +201,7 @@ extension HexNode {
             }
         }
 
-        available.forEach {
-            connect(with: $0.node, at: $0.dir.opposite())
-        } // reconnect with neighbors
+        available.forEach {connect(with: $0.node, at: $0.dir.opposite())} // reconnect with neighbors
         return canMove
     }
 
@@ -272,21 +256,11 @@ extension HexNode {
      */
     public func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // get the nodes that are present
-        if pool.contains(where: { $0 === self }) {
-            return 0
-        }
+        if pool.contains(where: { $0 === self }) {return 0}
         pool.append(self) // self is accounted for, thus add to pool of accounted node such that it won't get counted again
-        return pairs.map {
-                    $0.node
-                }.filter { node in
-                    !pool.contains(where: { $0 === node })
-                }
-                .map {
-                    $0.deriveConnectedNodes(&pool)
-                }
-                .reduce(1) {
-                    $0 + $1
-                }
+        return pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}
+                .map {$0.deriveConnectedNodes(&pool)}
+                .reduce(1) {$0 + $1}
     }
 
     func connectedNodes() -> [HexNode] {
