@@ -128,24 +128,35 @@ class HiveFive_Tests: XCTestCase {
     }
 
     func testAvailableMoves() {
-        //test Neighbors::adjacent
+        //set up hive
         let grasshopper = Grasshopper()
         let spider = Spider()
         let queenBee = QueenBee()
         let beetle = Beetle()
         let soldierAnt = SoldierAnt()
         let spider2 = Spider()
+        let beetle2 = Beetle()
+        
+        beetle2.connect(with: spider, at: .upRight)
 
         grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
         queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
         beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
+
         soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
+        soldierAnt.connect(with: spider2, at: .downLeft) // soldier ant is also lower left of spider2
+
         spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
         //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
-        spider2.connect(with: queenBee, at: .downLeft)
-        spider2.connect(with: beetle, at: .downRight)
+        spider2.connect(with: queenBee, at: .downLeft) // spider2 is also lower left of queen bee
+        spider2.connect(with: beetle, at: .downRight) // spider2 is also lower right of beetle
         //this is where we want to be when a structure is properly connected
 
+        //test HexNode::numConnected
+        assert(spider2.numConnected() == 7) // yes!!!
+        assert(grasshopper.numConnected() == 7)
+        
+        //test Neighbors::adjacent
         var result = grasshopper.neighbors.adjacent(of: .down)
         assert(result[0].node! === queenBee && result[0].dir == .downRight)
         assert(result[1].node! === beetle && result[1].dir == .downLeft)
