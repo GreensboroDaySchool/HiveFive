@@ -137,9 +137,6 @@ extension HexNode {
         return canDisconnect() && availableMoves().count > 0
     }
 
-    /**
-     TODO: debug
-     */
     func move(to destination: Destination) {
         self.disconnect() // disconnect from the hive
         let node = destination.node
