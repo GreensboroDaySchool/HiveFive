@@ -219,6 +219,12 @@ class HiveFive_Tests: XCTestCase {
         assert(beetle.neighbors.available().count == 3)
         assert(beetle.availableMoves().count == 5)
         assert(beetle3.availableMoves().count == 6)
+        
+        //test Grasshopper::availableMoves
+        assert(grasshopper.availableMoves()[0] == Destination(node: beetle2, dir: .downLeft))
+        grasshopper.move(to: grasshopper.availableMoves()[0])
+        assert(grasshopper.neighbors.available().count == 4)
+        assert(grasshopper.availableMoves().count == 4)
     }
     
     func testRouteSimplified() {

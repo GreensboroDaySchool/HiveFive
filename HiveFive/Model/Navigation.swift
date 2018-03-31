@@ -191,7 +191,7 @@ struct Route {
 /**
  Destination defines the destination that a piece would eventually arrive by following a given route.
  */
-struct Destination {
+struct Destination: Equatable {
     var node: HexNode // b/c the "one hive policy", the destination has to be the vacant locations around a node
     var dir: Direction // the direction of the vacant location
 
@@ -210,7 +210,13 @@ struct Destination {
         }
         return Destination(node: current, dir: route.directions.last!)
     }
+    
+    static func ==(lhs: Destination, rhs: Destination) -> Bool {
+        return lhs.node === rhs.node && lhs.dir == rhs.dir
+    }
 }
+
+
 
 /**
  The difference between Path and Route is:
