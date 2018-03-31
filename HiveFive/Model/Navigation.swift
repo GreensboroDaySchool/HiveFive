@@ -45,14 +45,9 @@ enum Direction: Int {
      */
     func opposite() -> Direction {
         switch self {
-        case .up: return .down
-        case .upLeft: return .downRight
-        case .upRight: return .downLeft
-        case .down: return .up
-        case .downLeft: return .upRight
-        case .downRight: return .upLeft
         case .below: return .above
         case .above: return .below
+        default: return Direction(rawValue: (self.rawValue + 3) % 6)!
         }
     }
 
@@ -84,7 +79,7 @@ enum Direction: Int {
     }
     
     /**
-     @return 2D translation that results when the direction is applied
+     @return 3D translation that results when the direction is applied
      */
     func translation() -> Translation {
         switch self {
