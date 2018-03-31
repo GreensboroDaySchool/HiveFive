@@ -297,6 +297,33 @@ class HiveFive_Tests: XCTestCase {
         assert(soldierAnt.availableMoves().count == 0)
     }
     
+    func testCanMoveToAndCanPlaceAt() {
+        assert(beetle2.canMove(to: Destination(node: spider, dir: .downRight)))
+        assert(beetle2.canMove(to: Destination(node: spider, dir: .above)))
+        assert(beetle2.neighbors.available().count == 1)
+        assert(beetle2.availableMoves().count == 3)
+        
+        //test canPlace(at:)
+        let blackGrasshopper = Grasshopper(color: .black)
+        let whiteSoldierAnt = SoldierAnt(color: .white)
+        
+        assert(!blackGrasshopper.canPlace(at: Destination(node: beetle2, dir: .above)))
+        assert(!blackGrasshopper.canPlace(at: Destination(node: beetle2, dir: .up)))
+        assert(!blackGrasshopper.canPlace(at: Destination(node: queenBee, dir: .up)))
+        assert(blackGrasshopper.canPlace(at: Destination(node: queenBee, dir: .upRight)))
+        
+        blackGrasshopper.place(at: Destination(node: queenBee, dir: .upRight))
+        assert(blackGrasshopper.hasNeighbor(queenBee) == .downLeft && blackGrasshopper.neighbors.available().count == 1)
+        
+        whiteSoldierAnt.place(at: Destination(node: beetle, dir: .upLeft))
+        assert(whiteSoldierAnt.neighbors.available().count == 1)
+        assert(whiteSoldierAnt.numConnected() == 9)
+        assert(whiteSoldierAnt.canMove(to: Destination(node: beetle2, dir: .upRight)))
+        assert(!whiteSoldierAnt.canMove(to: Destination(node: beetle2, dir: .down)))
+        
+        assert(blackGrasshopper.availableMoves().count == 1)
+        assert(blackGrasshopper.canMove(to: Destination(node: soldierAnt, dir: .downLeft)))
+    }
     
 
     func testPerformanceExample() {
