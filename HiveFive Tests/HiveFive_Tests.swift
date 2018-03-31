@@ -22,13 +22,13 @@ import XCTest
 
 class HiveFive_Tests: XCTestCase {
     
-    let grasshopper = Grasshopper()
-    let spider = Spider()
-    let queenBee = QueenBee()
-    let beetle = Beetle()
-    let soldierAnt = SoldierAnt()
-    let spider2 = Spider()
-    let beetle2 = Beetle()
+    let grasshopper = Grasshopper(color: .black)
+    let spider = Spider(color: .white)
+    let queenBee = QueenBee(color: .black)
+    let beetle = Beetle(color: .white)
+    let soldierAnt = SoldierAnt(color: .black)
+    let spider2 = Spider(color: .black)
+    let beetle2 = Beetle(color: .white)
     
     var allPieces: [HexNode] {
         get {
@@ -69,8 +69,8 @@ class HiveFive_Tests: XCTestCase {
     }
 
     func testNeighborsReferencesEquals() {
-        let node1 = Grasshopper()
-        let node2 = Spider()
+        let node1 = Grasshopper(color: .black)
+        let node2 = Spider(color: .black)
 
         var n1 = Neighbors()
         var n2 = Neighbors()
@@ -82,8 +82,8 @@ class HiveFive_Tests: XCTestCase {
     }
 
     func testNeighborsContains() {
-        let node1 = Grasshopper()
-        let node2 = Spider()
+        let node1 = Grasshopper(color: .black)
+        let node2 = Spider(color: .white)
 
         var n1 = Neighbors()
         n1[.down] = node1
@@ -92,12 +92,12 @@ class HiveFive_Tests: XCTestCase {
     }
 
     func testCanDisconnect() {
-        let grasshopper = Grasshopper()
-        let spider = Spider()
-        let queenBee = QueenBee()
-        let beetle = Beetle()
-        let soldierAnt = SoldierAnt()
-        let spider2 = Spider()
+        let grasshopper = Grasshopper(color: .black)
+        let spider = Spider(color: .black)
+        let queenBee = QueenBee(color: .white)
+        let beetle = Beetle(color: .white)
+        let soldierAnt = SoldierAnt(color: .black)
+        let spider2 = Spider(color: .white)
 
         //testing HexNode::numConnected
         grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
@@ -222,7 +222,7 @@ class HiveFive_Tests: XCTestCase {
         assert(beetle.neighbors.available().count == 1)
         assert(queenBee.derivePaths().count == 6)
         
-        let beetle3 = Beetle() // add another beetle, beetle3, to the downRight of beetle and above soldierAnt
+        let beetle3 = Beetle(color: .white) // add another beetle, beetle3, to the downRight of beetle and above soldierAnt
         beetle3.move(to: Destination(node: soldierAnt, dir: .above))
         //beetle and beetle3 have the same z coordinate, thus they should be automatically connected
         assert(beetle.neighbors.available().count == 2)
@@ -270,10 +270,10 @@ class HiveFive_Tests: XCTestCase {
     }
     
     func testCanGetIn() {
-        let grasshopper2 = Grasshopper()
-        let queenBee2 = QueenBee()
-        grasshopper2.place(at: Destination(node: beetle2, dir: .downRight))
-        queenBee2.place(at: Destination(node: grasshopper2, dir: .down))
+        let grasshopper2 = Grasshopper(color: .black)
+        let queenBee2 = QueenBee(color: .black)
+        grasshopper2.move(to: Destination(node: beetle2, dir: .downRight))
+        queenBee2.move(to: Destination(node: grasshopper2, dir: .down))
         assert(!queenBee2.canGetIn(dir: .upLeft))
         var availableMoves = queenBee2.availableMoves()
         assert(availableMoves.count == 2) // yes !
@@ -282,8 +282,8 @@ class HiveFive_Tests: XCTestCase {
         
         //test Beetle canGetIn
         queenBee2.disconnect()
-        let beetle3 = Beetle()
-        beetle3.place(at: Destination(node: grasshopper2, dir: .down))
+        let beetle3 = Beetle(color: .white)
+        beetle3.move(to: Destination(node: grasshopper2, dir: .down))
         assert(beetle3.canGetIn(dir: .upLeft))
         availableMoves = beetle3.availableMoves()
         assert(availableMoves.count == 5)
@@ -296,6 +296,8 @@ class HiveFive_Tests: XCTestCase {
         assert(soldierAnt.neighbors.available().count == 5)
         assert(soldierAnt.availableMoves().count == 0)
     }
+    
+    
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
