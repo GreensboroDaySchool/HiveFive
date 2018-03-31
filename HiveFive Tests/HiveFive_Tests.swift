@@ -257,10 +257,10 @@ class HiveFive_Tests: XCTestCase {
     
     func testRouteSimplified() {
         //testing Route::equals
-        assert(Route(directions: [.downLeft, .upLeft, .up, .upRight, .downRight]).equals(Route(directions: [.up])))
-        assert(Route(directions: [.upLeft, .up, .upRight, .downRight, .down]).equals(Route(directions: [.upRight])))
-        assert(Route(directions: [.up, .upRight, .downRight, .down, .downLeft]).equals(Route(directions: [.downRight])))
-        assert(Route(directions: [.upRight, .downRight, .down, .downLeft, .upLeft]).equals(Route(directions: [.down])))
+        assert(Route(directions: [.downLeft, .upLeft, .up, .upRight, .downRight]) == Route(directions: [.up]))
+        assert(Route(directions: [.upLeft, .up, .upRight, .downRight, .down]) == Route(directions: [.upRight]))
+        assert(Route(directions: [.up, .upRight, .downRight, .down, .downLeft]) == Route(directions: [.downRight]))
+        assert(Route(directions: [.upRight, .downRight, .down, .downLeft, .upLeft]) == Route(directions: [.down]))
 
         //testing Route::simplified
         assert(Route(directions: [.downLeft, .upLeft, .up, .upRight, .downRight]).simplified().directions[0] == .up)
@@ -286,8 +286,15 @@ class HiveFive_Tests: XCTestCase {
         beetle3.place(at: Destination(node: grasshopper2, dir: .down))
         assert(beetle3.canGetIn(dir: .upLeft))
         availableMoves = beetle3.availableMoves()
-        assert(availableMoves.count == 6)
-        assert(availableMoves.contains(Destination(node: queenBee, dir: .up)))
+        assert(availableMoves.count == 5)
+        assert(availableMoves.contains(Destination(node: grasshopper2, dir: .downLeft)))
+        
+        //test SoldierAnt::availableMoves
+        beetle3.disconnect()
+        assert(soldierAnt.availableMoves().count == 13) // yes !!
+        soldierAnt.move(to: Destination(node: queenBee, dir: .up))
+        assert(soldierAnt.neighbors.available().count == 5)
+        assert(soldierAnt.availableMoves().count == 0)
     }
 
     func testPerformanceExample() {

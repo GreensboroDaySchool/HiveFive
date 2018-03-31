@@ -55,7 +55,7 @@ class Spider: HexNode {
     }
     
     private func registerTraversed(_ traversed: inout [Destination], _ node: HexNode) {
-        traversed.append(contentsOf: neighbors.available()
+        traversed.append(contentsOf: node.neighbors.available()
             .map{Destination(node: $0.node, dir: $0.dir.opposite())})
     }
 }
