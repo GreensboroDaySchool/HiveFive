@@ -29,4 +29,18 @@ class Hive {
         self.root = root
     }
     
+    /**
+     - Returns: The furthest node in the given direction
+     - Parameter from: Starting node
+     - Parameter toward: The direction of trasversal propagation
+     */
+    static func traverse(from node: HexNode, toward dir: Direction) -> HexNode {
+        var path = Path(route: Route(directions: []), destination: node)
+        while path.destination.neighbors[.below] != nil {
+            let dest = path.destination.neighbors[.below]!
+            path = Path(route: path.route.append([.below]), destination: dest)
+        }
+        return path.destination
+    }
+    
 }

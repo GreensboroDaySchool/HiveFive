@@ -70,7 +70,7 @@ protocol HexNode: AnyObject {
     /**
      Move the piece to the designated destination and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
-     - Warning: This method assumes that the destination is a valid destination and that the route take is legal
+     - Warning: This method assumes that the destination is a valid destination and that the route taken is legal
      - Attention: Use this method to MOVE the piece, not to initially PLACE a piece.
      */
     func move(to destination: Destination)
@@ -80,9 +80,15 @@ protocol HexNode: AnyObject {
      (just for convenience, because route is eventually resolved to a destination)
      */
     func move(by route: Route)
+
+    /**
+     Checks whether a piece can initially connect to the hive at the designated destination
+     */
+    func canPlace(at destination: Destination) -> Bool
     
     /**
      - Attention: This is for initially putting down a piece; does not recommend using like move(to:)
+     - Note: Will first checks if the placement is allowed
      */
     func place(at destination: Destination)
 
@@ -193,9 +199,24 @@ extension HexNode {
         return canGetIn
     }
 
-    func place(at destination: Destination) {
-        //TODO: check if neighbors contain opposite color
+    func canPlace(at destination: Destination) -> Bool {
+        let node = destination.node
+        let dir = destination.dir
+        if node.neighbors[dir] != nil {return false}
+        let preserved = neighbors // preserve neighbors
+        move(to: destination)
+        let opponents = neighbors.available()
+            .map{Hive.traverse(from: $0.node, toward: .up)}
+            .filter{$0.color != color}
+            .count
         disconnect()
+        self.neighbors = preserved
+        return opponents == 0
+    }
+
+    func place(at destination: Destination) {
+        if !canPlace(at: destination) {fatalError("Cannot place at \(destination)")}
+        if neighbors.available().count != 0 {fatalError("Still connected to the hive. Please disconnect first")}
         move(to: destination)
     }
 
@@ -204,6 +225,10 @@ extension HexNode {
         let node = destination.node
         let dir = destination.dir
         connect(with: node, at: dir) // connect with destination node
+        inferAdditionalConnections(from: node, at: dir) // make additional connections
+    }
+    
+    private func inferAdditionalConnections(from node: HexNode, at dir: Direction) {
         let pairs = Direction.allDirections.filter{$0 != dir.opposite()}
             .map{(dir: $0, trans: $0.translation())}
         // directions in which additional connections might need to be made
