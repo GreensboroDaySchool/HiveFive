@@ -135,15 +135,20 @@ protocol HexNode: AnyObject {
 extension HexNode {
 
     func oneStepMoves() -> [Route] {
-        return neighbors.available().filter{$0.dir.rawValue < 6}
+        return neighbors.available().filter{$0.dir.rawValue < 6} // only horizontal nodes
             .map{($0.dir, $0.node.neighbors
                 .adjacent(of: $0.dir.opposite())
-                .filter{$0.node == nil}
+                .filter{$0.node == nil} // ensure that the spot is vacant
                 .map{$0.dir})}
             .map{(arg) -> [Route] in let (dir, dirs) = arg; return {
-                dirs.map{Route(directions: [dir, $0])}
+                dirs.map{Route(directions: [dir, $0])} // ensure that the current node can squeeze in
+                    .filter{canGetIn(dir: $0.simplified().directions[0])}
             }()}
             .flatMap{$0}
+    }
+    
+    private func blockedDirections() -> [Direction] {
+        return Direction.xyDirections.filter{neighbors[$0] != nil || !canGetIn(dir: $0)}
     }
 
     func derivePaths() -> [Path] {

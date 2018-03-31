@@ -268,6 +268,18 @@ class HiveFive_Tests: XCTestCase {
         assert(Route(directions: [.up, .upRight, .downRight, .down, .downLeft]).simplified().directions[0] == .downRight)
         assert(Route(directions: [.upRight, .downRight, .down, .downLeft, .upLeft]).simplified().directions[0] == .down)
     }
+    
+    func testCanGetIn() {
+        let grasshopper2 = Grasshopper()
+        let queenBee2 = QueenBee()
+        grasshopper2.place(at: Destination(node: beetle2, dir: .downRight))
+        queenBee2.place(at: Destination(node: grasshopper2, dir: .down))
+        assert(!queenBee2.canGetIn(dir: .upLeft))
+        let availableMoves = queenBee2.availableMoves()
+        assert(availableMoves.count == 2) // yes !
+        assert(availableMoves.contains(Destination(node: grasshopper2, dir: .downRight))) // yes !!
+        assert(availableMoves.contains(Destination(node: queenBee, dir: .downRight))) // yes !!!
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
