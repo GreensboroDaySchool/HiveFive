@@ -35,7 +35,7 @@ class Beetle: HexNode {
             return moves
         }
         
-        let base = getBaseNode() ?? self
+        let base = Hive.traverse(from: self, toward: .below)
         moves.append(contentsOf: base.neighbors.available()
             .filter{$0.dir.rawValue < 6}
             .map{getTopNode(of: $0.node)}
@@ -57,26 +57,9 @@ class Beetle: HexNode {
     }
     
     /**
-     - Returns: The node at the base level if it exists
-     */
-    private func getBaseNode() -> HexNode? {
-        var path = Path(route: Route(directions: []), destination: self)
-        while path.destination.neighbors[.below] != nil {
-            let dest = path.destination.neighbors[.below]!
-            path = Path(route: path.route.append([.below]), destination: dest)
-        }
-        return path.destination === self ? nil : path.destination
-    }
-    
-    /**
-     - Returns: The route to top of node
+     - Returns: The node at the top of the stack
      */
     private func getTopNode(of base: HexNode) -> HexNode {
-        var path = Path(route: Route(directions: []), destination: base)
-        while path.destination.neighbors[.above] != nil {
-            let dest = path.destination.neighbors[.above]!
-            path = Path(route: path.route.append([.above]), destination: dest)
-        }
-        return path.destination
+        return Hive.traverse(from: base, toward: .above)
     }
 }
