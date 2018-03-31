@@ -103,7 +103,7 @@ enum Direction: Int {
  Route defines where the location is by providing step-wise directions. If Direction is a vector, then Route is an array
  of vectors that "directs" to the relative location.
  */
-struct Route {
+struct Route: Equatable {
     var directions: [Direction]
     var translation: Translation {
         get {return directions.map{$0.translation()}
@@ -182,9 +182,10 @@ struct Route {
 
     /**
      - Returns: Whether the relative position represented by the two routes are equal
+     - Warning: Don't use this to compare if the two routes are comprised of the same directions
      */
-    func equals(_ other: Route) -> Bool {
-        return other.translation == translation
+    static func ==(lhs: Route, rhs: Route) -> Bool {
+        return lhs.translation == rhs.translation
     }
 }
 
