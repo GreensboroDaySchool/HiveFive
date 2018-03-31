@@ -26,14 +26,6 @@ class QueenBee: HexNode {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return [Route]()
         }
-        return neighbors.available() // worked on the first try!
-            .map{($0.dir, $0.node.neighbors
-                .adjacent(of: $0.dir.opposite())
-                .filter{$0.node == nil}
-                .map{$0.dir})}
-            .map{(arg) -> [Route] in let (dir, dirs) = arg; return {
-                dirs.map{Route(directions: [dir, $0])}
-                }()}
-            .flatMap{$0}
+        return oneStepMoves()
     }
 }

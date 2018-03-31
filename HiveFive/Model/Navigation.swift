@@ -225,3 +225,7 @@ typealias Translation = (x: Int, y: Int, z: Int)
 func +(lhs: Translation, rhs: Translation) -> Translation {
     return Translation(x: lhs.x + rhs.x, y: lhs.y + rhs.y, z: lhs.z + rhs.z)
 }
+
+func &=(lhs: Translation, rhs: Translation) -> Bool {
+    return lhs.x == rhs.x && lhs.y == rhs.y
+}
