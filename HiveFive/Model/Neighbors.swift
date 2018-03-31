@@ -88,7 +88,9 @@ extension Neighbors: Equatable, Hashable {
     var hashValue: Int {
         //djb2a over all the object identifiers
         return nodes.reduce(5381) {
-            (($0 << 5) + $0) ^ ($1 === nil ? 0 : ObjectIdentifier($1!).hashValue)
+            var hash = 0
+            if let node = $1 { hash = ObjectIdentifier(node).hashValue }
+            return (($0 << 5) &+ $0) ^ (hash)
         }
     }
 

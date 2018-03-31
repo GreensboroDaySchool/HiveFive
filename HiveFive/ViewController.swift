@@ -29,6 +29,8 @@ class ViewController: UIViewController {
         anotherNode.connect(with: root, at: .downLeft)
         let anotherAnotherNode = Spider()
         anotherAnotherNode.connect(with: root, at: .upRight)
+        let oneSubSubNode = Beetle()
+        oneSubSubNode.connect(with: anotherAnotherNode, at: .down)
         board.hive = Hive(root: root)
     }
 
