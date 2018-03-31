@@ -20,13 +20,39 @@
 import Foundation
 class Spider: HexNode {
     var neighbors = Neighbors()
+    private let allowedMoves = 3
     
     func availableMoves() -> [Destination] {
-        var moves = [Destination]()
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
-            return moves
+            return [Destination]()
         }
-        return moves
+        
+        // can't go back to previous location
+        var traversed = [Destination]()
+        let destinations = resolveDestinations(&traversed, allowedMoves)
+        
+        return destinations
+    }
+    
+    private func resolveDestinations(_ traversed: inout [Destination], _ remaining: Int) -> [Destination] {
+        registerTraversed(&traversed, self)
+        let firstRoutes = oneStepMoves()
+        let firstDestinations = firstRoutes.map{Destination.resolve(from: self, following: $0)}
+        if remaining == 1 { return firstDestinations } // base case
+        return firstDestinations.filter{!traversed.contains($0)} // cannot go back to previous location
+            .map{destination -> [Destination] in
+                let neighbor = neighbors.available()[0]
+                let anchor = Destination(node: neighbor.node, dir: neighbor.dir.opposite())
+                self.move(to: destination) // move to next destination
+                let destinations = resolveDestinations(&traversed, remaining - 1) // derive next step
+                self.move(to: anchor) // move back to previous location
+                return destinations
+            }.flatMap{$0}
+    }
+    
+    private func registerTraversed(_ traversed: inout [Destination], _ node: HexNode) {
+        traversed.append(contentsOf: neighbors.available()
+            .map{Destination(node: $0.node, dir: $0.dir.opposite())})
     }
 }
