@@ -20,6 +20,11 @@
 import Foundation
 class SoldierAnt: HexNode {
     var neighbors = Neighbors()
+    var color: Color
+    
+    required init(color: Color) {
+        self.color = color
+    }
 
     func availableMoves() -> [Destination] {
         if (!canDisconnect()) {

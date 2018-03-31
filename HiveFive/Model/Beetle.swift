@@ -20,6 +20,13 @@
 import Foundation
 class Beetle: HexNode {
     var neighbors = Neighbors()
+    var color: Color
+    
+    required init(color: Color) {
+        self.color = color
+    }
+    
+    
     
     func availableMoves() -> [Destination] {
         var moves = [Destination]()

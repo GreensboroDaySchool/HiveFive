@@ -26,6 +26,12 @@ import Foundation
  */
 protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
+    var color: Color {get}
+
+    /**
+     Initializer must specify the color
+     */
+    init(color: Color)
 
     /**
      Derive the Path to every HexNode in the hive
@@ -290,4 +296,8 @@ extension HexNode {
     func hasNeighbor(_ other: HexNode) -> Direction? {
         return neighbors.contains(other)
     }
+}
+
+enum Color {
+    case black, white
 }

@@ -24,12 +24,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let root = QueenBee()
-        let anotherNode = Grasshopper()
+        let root = QueenBee(color: .black)
+        let anotherNode = Grasshopper(color: .black)
         anotherNode.connect(with: root, at: .downLeft)
-        let anotherAnotherNode = Spider()
+        let anotherAnotherNode = Spider(color: .black)
         anotherAnotherNode.connect(with: root, at: .upRight)
-        let oneSubSubNode = Beetle()
+        let oneSubSubNode = Beetle(color: .black)
         oneSubSubNode.connect(with: anotherAnotherNode, at: .down)
         board.hive = Hive(root: root)
     }

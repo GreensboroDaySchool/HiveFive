@@ -19,6 +19,12 @@
 
 import Foundation
 class Spider: HexNode {
+    var color: Color
+    
+    required init(color: Color) {
+        self.color = color
+    }
+    
     var neighbors = Neighbors()
     private let allowedMoves = 3
     
