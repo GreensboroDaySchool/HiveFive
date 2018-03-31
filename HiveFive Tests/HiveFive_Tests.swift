@@ -166,11 +166,10 @@ class HiveFive_Tests: XCTestCase {
         assert(result[1].node == nil && result[1].dir == .downLeft)
 
         //test QueenBee::availableMoves
-        let moves = queenBee.availableMoves()
-        assert(moves.count == 2)
+        let destinations = queenBee.availableMoves()
+        assert(destinations.count == 2)
 
         //test Destination::resolve
-        let destinations = moves.map{Destination.resolve(from: queenBee, following: $0)}
         assert(destinations[0].node === spider2 && destinations[0].dir == .downRight)
         assert(destinations[1].node === grasshopper && destinations[1].dir == .upRight)
 
@@ -212,6 +211,14 @@ class HiveFive_Tests: XCTestCase {
         assert(beetle3.neighbors.available().count == 2) // both beetles are on the plane z = 1
         assert(beetle.neighbors.contains(beetle3) == .downLeft) // works like a charm without modification to existing move(to:) algorithm!
         assert(beetle3.derivePaths().count == 7)
+        assert(queenBee.availableMoves().count == 0)
+        assert(beetle3.availableMoves().count == 6) // yes!!!
+        
+        beetle.move(to: Destination(node: spider2, dir: .upLeft))
+        assert(beetle.derivePaths().count == 7)
+        assert(beetle.neighbors.available().count == 3)
+        assert(beetle.availableMoves().count == 5)
+        assert(beetle3.availableMoves().count == 6)
     }
     
     func testRouteSimplified() {

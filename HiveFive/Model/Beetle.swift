@@ -21,18 +21,48 @@ import Foundation
 class Beetle: HexNode {
     var neighbors = Neighbors()
     
-    func availableMoves() -> [Route] {
-        var moves = [Route]()
+    func availableMoves() -> [Destination] {
+        var moves = [Destination]()
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return moves
         }
-        moves.append(contentsOf: oneStepMoves()) // beetle can move like a Queen Bee
-        let pairs = Direction.allDirections.filter{$0.rawValue < 6} // 2d directions
-            .map{(dir: $0, trans: $0.translation())} // convert to direction, translation pair
-        moves.append(contentsOf: derivePaths().filter{path in
-                pairs.contains(where: {path.route.translation &= $0.trans})
-            }.map{$0.route})
+        
+        let base = getBaseNode() ?? self
+        moves.append(contentsOf: base.neighbors.available()
+            .filter{$0.dir.rawValue < 6}
+            .map{getTopNode(of: $0.node)}
+            .map{Destination(node: $0, dir: .above)})
+        let moreMoves = base === self ? oneStepMoves().map{Destination.resolve(from: base, following: $0)} :
+            Direction.xyDirections.map{(dir: $0, node: base.neighbors[$0])}
+            .filter{$0.node == nil}
+            .map{Destination(node: base, dir: $0.dir)}
+        moves.append(contentsOf: moreMoves)
+        
         return moves
+    }
+    
+    /**
+     - Returns: The node at the base level if it exists
+     */
+    private func getBaseNode() -> HexNode? {
+        var path = Path(route: Route(directions: []), destination: self)
+        while path.destination.neighbors[.below] != nil {
+            let dest = path.destination.neighbors[.below]!
+            path = Path(route: path.route.append([.below]), destination: dest)
+        }
+        return path.destination === self ? nil : path.destination
+    }
+    
+    /**
+     - Returns: The route to top of node
+     */
+    private func getTopNode(of base: HexNode) -> HexNode {
+        var path = Path(route: Route(directions: []), destination: base)
+        while path.destination.neighbors[.above] != nil {
+            let dest = path.destination.neighbors[.above]!
+            path = Path(route: path.route.append([.above]), destination: dest)
+        }
+        return path.destination
     }
 }

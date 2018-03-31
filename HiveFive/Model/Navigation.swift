@@ -29,9 +29,12 @@ import Foundation
       \____(down)____/
  */
 enum Direction: Int {
+    
     static let allDirections: [Direction] = (0..<8).map {
         Direction(rawValue: $0)!
     }
+    static let xyDirections: [Direction] = Direction.allDirections.filter{$0.rawValue < 6}
+    
     //Horizontal locations
     case up = 0, upRight, downRight, down, downLeft, upLeft
 

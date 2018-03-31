@@ -21,11 +21,11 @@ import Foundation
 class QueenBee: HexNode {
     var neighbors = Neighbors()
 
-    func availableMoves() -> [Route] {
+    func availableMoves() -> [Destination] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Route]()
+            return [Destination]()
         }
-        return oneStepMoves()
+        return oneStepMoves().map{Destination.resolve(from: self, following: $0)}
     }
 }

@@ -21,8 +21,8 @@ import Foundation
 class Spider: HexNode {
     var neighbors = Neighbors()
     
-    func availableMoves() -> [Route] {
-        var moves = [Route]()
+    func availableMoves() -> [Destination] {
+        var moves = [Destination]()
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return moves

@@ -102,9 +102,9 @@ protocol HexNode: AnyObject {
     /**
      The implementation for this method should be different for each class that conforms to the HexNode protocol.
      For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
-     - Returns: All possible locations in which the current node can arrive by following a defined route.
+     - Returns: All possible destinations
      */
-    func availableMoves() -> [Route]
+    func availableMoves() -> [Destination]
 
     /**
      - Returns: An array containing all the references to the connected pieces, including self; i.e. the entire hive
@@ -121,14 +121,15 @@ protocol HexNode: AnyObject {
 extension HexNode {
 
     func oneStepMoves() -> [Route] {
-        return neighbors.available().map{($0.dir, $0.node.neighbors
+        return neighbors.available().filter{$0.dir.rawValue < 6}
+            .map{($0.dir, $0.node.neighbors
                 .adjacent(of: $0.dir.opposite())
                 .filter{$0.node == nil}
                 .map{$0.dir})}
-                .map{(arg) -> [Route] in let (dir, dirs) = arg; return {
-                    dirs.map{Route(directions: [dir, $0])}
-                }()}
-                .flatMap{$0}
+            .map{(arg) -> [Route] in let (dir, dirs) = arg; return {
+                dirs.map{Route(directions: [dir, $0])}
+            }()}
+            .flatMap{$0}
     }
 
     func derivePaths() -> [Path] {
