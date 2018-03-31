@@ -110,9 +110,26 @@ protocol HexNode: AnyObject {
      - Returns: An array containing all the references to the connected pieces, including self; i.e. the entire hive
      */
     func connectedNodes() -> [HexNode]
+    
+    /**
+     - Returns: Available moves within one step
+     - Warning: This is a helper method for QueenBee::availableMoves, Beetle, and Spider, don't use it!
+     */
+    func oneStepMoves() -> [Route]
 }
 
 extension HexNode {
+
+    func oneStepMoves() -> [Route] {
+        return neighbors.available().map{($0.dir, $0.node.neighbors
+                .adjacent(of: $0.dir.opposite())
+                .filter{$0.node == nil}
+                .map{$0.dir})}
+                .map{(arg) -> [Route] in let (dir, dirs) = arg; return {
+                    dirs.map{Route(directions: [dir, $0])}
+                }()}
+                .flatMap{$0}
+    }
 
     func derivePaths() -> [Path] {
         var paths = [Path(route: Route(directions: []), destination: self)]

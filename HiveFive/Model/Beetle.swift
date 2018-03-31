@@ -27,6 +27,12 @@ class Beetle: HexNode {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return moves
         }
+        moves.append(contentsOf: oneStepMoves()) // beetle can move like a Queen Bee
+        let pairs = Direction.allDirections.filter{$0.rawValue < 6} // 2d directions
+            .map{(dir: $0, trans: $0.translation())} // convert to direction, translation pair
+        moves.append(contentsOf: derivePaths().filter{path in
+                pairs.contains(where: {path.route.translation &= $0.trans})
+            }.map{$0.route})
         return moves
     }
 }
