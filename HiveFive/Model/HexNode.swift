@@ -199,10 +199,11 @@ extension HexNode {
     
     func canMove(to destination: Destination) -> Bool {
         if !canDisconnect() {return false}
+        let availableMoves = self.availableMoves()
         let preserved = neighbors
         move(to: destination)
         var canMove = false
-        for move in availableMoves() {
+        for move in availableMoves {
             let contains = neighbors.available()
                 .map{(node: $0.node, dir: $0.dir.opposite())}
                 .contains{Destination(node: $0.node, dir: $0.dir) == move}
@@ -307,10 +308,8 @@ extension HexNode {
     }
 
     func disconnect(with node: HexNode) {
-        assert(node.neighbors.contains(self) != nil) // make sure that the reference exist
         node.remove(self)
         assert(node.neighbors.contains(self) == nil) // make sure the reference is removed
-        assert(neighbors.contains(node) != nil)
         remove(node)
         assert(neighbors.contains(node) == nil)
     }
