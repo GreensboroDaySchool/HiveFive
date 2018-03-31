@@ -56,7 +56,8 @@ protocol HexNode: AnyObject {
     /**
      Move the piece to the designated destination and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
-     - Attention: this method assumes that the destination is a valid destination and that the route take is legal
+     - Warning: This method assumes that the destination is a valid destination and that the route take is legal
+     - Attention: Use this method to MOVE the piece, not to initially PLACE a piece.
      */
     func move(to destination: Destination)
 
@@ -65,6 +66,11 @@ protocol HexNode: AnyObject {
      (just for convenience, because route is eventually resolved to a destination)
      */
     func move(by route: Route)
+    
+    /**
+     - Attention: This is for initially putting down a piece; does not recommend using like move(to:)
+     */
+    func place(at destination: Destination)
 
     /**
      Remove the reference to a specific node from its neighbors
@@ -157,6 +163,12 @@ extension HexNode {
 
     func canMove() -> Bool {
         return canDisconnect() && availableMoves().count > 0
+    }
+
+    func place(at destination: Destination) {
+        //TODO: check if neighbors contain opposite color
+        disconnect()
+        move(to: destination)
     }
 
     func move(to destination: Destination) {
