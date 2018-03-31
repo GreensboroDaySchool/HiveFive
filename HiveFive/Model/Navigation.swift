@@ -121,7 +121,7 @@ struct Route {
     }
 
     /**
-     Note: the simplified route is might no longer be valid! The purpose is to compare
+     Note: the simplified route might no longer be valid! The purpose is to compare
      if two relative positions are the same.
      @return the simplified route that leads to the exact same spot in less steps
      */
@@ -221,3 +221,9 @@ struct Destination {
  2) The destination of Path is known beforehand
  */
 typealias Path = (route: Route, destination: HexNode)
+
+typealias Translation = (x: Int, y: Int, z: Int)
+
+func +=(lhs: Translation, rhs: Translation) -> Translation {
+    return Translation(x: lhs.x + rhs.x, y: lhs.y + rhs.y, z: lhs.z + rhs.z)
+}

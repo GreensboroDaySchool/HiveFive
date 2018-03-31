@@ -196,7 +196,11 @@ class HiveFive_Tests: XCTestCase {
         assert(beetle.numConnected() == 7)
         assert(spider.derivePaths().count == 6)
         
-        
+        //test Beetle!!!
+        beetle.move(to: Destination(node: spider2, dir: .above))
+        assert(queenBee.availableMoves().count == 0)
+        assert(soldierAnt.neighbors.available().count == 2)
+        assert(beetle.neighbors.available().count == 0)
     }
     
     func testRouteSimplified() {
