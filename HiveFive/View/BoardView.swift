@@ -19,7 +19,7 @@
 
 import UIKit
 
-let nodeRadius: CGFloat = 32.0
+let nodeRadius: CGFloat = 48.0
 
 class BoardView: UIView {
     var hive: Hive? = nil {
