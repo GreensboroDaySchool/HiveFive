@@ -173,15 +173,29 @@ class HiveFive_Tests: XCTestCase {
         let destinations = moves.map{Destination.resolve(from: queenBee, following: $0)}
         assert(destinations[0].node === spider2 && destinations[0].dir == .downRight)
         assert(destinations[1].node === grasshopper && destinations[1].dir == .upRight)
-        
+
+        //test HexNode::derivePaths
         assert(spider.derivePaths().count == 6)
         assert(grasshopper.derivePaths().count == 6)
         assert(beetle.derivePaths().count == 6)
 
+        //test HexNode::move(to:)
         let destination = Destination(node: grasshopper, dir: .upRight)
         beetle2.move(to: destination)
         assert(grasshopper.numConnected() == 7)
         assert(beetle2.neighbors.available().count == 3)
+
+        spider.move(to: Destination(node: beetle, dir: .downLeft))
+        assert(spider.hasNeighbor(beetle) == .upRight)
+        assert(spider.hasNeighbor(soldierAnt) == .downRight)
+        assert(spider2.canDisconnect())
+        
+        grasshopper.move(to: Destination(node: beetle2, dir: .upRight))
+        assert(spider2.neighbors.available().count == 3)
+        assert(beetle2.neighbors.available().count == 2)
+        assert(beetle.numConnected() == 7)
+        assert(spider.derivePaths().count == 6)
+        
         
     }
     
