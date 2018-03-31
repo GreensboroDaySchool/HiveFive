@@ -86,8 +86,11 @@ struct Neighbors {
 
 extension Neighbors: Equatable, Hashable {
     var hashValue: Int {
-        return nodes.filter({ $0 != nil }).reduce(0) {
-            $0 ^ ObjectIdentifier($1!).hashValue
+        //djb2a over all the object identifiers
+        return nodes.reduce(5381) {
+            var hash = 0
+            if let node = $1 { hash = ObjectIdentifier(node).hashValue }
+            return (($0 << 5) &+ $0) ^ (hash)
         }
     }
 

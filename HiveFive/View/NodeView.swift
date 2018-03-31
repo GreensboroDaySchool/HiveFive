@@ -22,17 +22,27 @@ import UIKit
 @IBDesignable
 class NodeView: UIView {
     weak var node: HexNode?
-    var expectedBonds: CGRect {
-        return CGRect(
-            x: 0, y: 0,
+    var expectedSize: CGSize {
+        return CGSize(
             width: 2 * nodeRadius + borderWidth,
-            height: 2 * sin(.pi / 3) + borderWidth
+            height: 2 * sin(.pi / 3) * nodeRadius + borderWidth
         )
     }
     
     @IBInspectable var borderColor: UIColor = .gray
     @IBInspectable var borderWidth: CGFloat = 3.0
     @IBInspectable var fillColor: UIColor = UIColor.gray.withAlphaComponent(0.8)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        //Allow transparent background
+        self.isOpaque = false
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.isOpaque = false
+    }
     
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
