@@ -144,7 +144,8 @@ extension HexNode {
                 dirs.map{Route(directions: [dir, $0])} // ensure that the current node can squeeze in
                     .filter{canGetIn(dir: $0.simplified().directions[0])}
             }()}
-            .flatMap{$0}
+            .flatMap{$0} // if two different routes lead to the same destination, keep only one.
+            .filterDuplicates(isDuplicate: ==)
     }
     
     private func blockedDirections() -> [Direction] {
