@@ -176,6 +176,13 @@ class HiveFive_Tests: XCTestCase {
         
         assert(spider.derivePaths().count == 6)
         assert(grasshopper.derivePaths().count == 6)
+        assert(beetle.derivePaths().count == 6)
+
+        let destination = Destination(node: grasshopper, dir: .upRight)
+        beetle2.move(to: destination)
+        assert(grasshopper.numConnected() == 7)
+        assert(beetle2.neighbors.available().count == 3)
+        
     }
     
     func testRouteSimplified() {

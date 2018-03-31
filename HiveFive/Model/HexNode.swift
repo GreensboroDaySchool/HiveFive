@@ -144,8 +144,8 @@ extension HexNode {
         self.disconnect() // disconnect from the hive
         let node = destination.node
         let dir = destination.dir
-        node.neighbors[dir] = self // connect with destination node
-        let pairs = Direction.allDirections.filter{$0 != dir}
+        connect(with: node, at: dir) // connect with destination node
+        let pairs = Direction.allDirections.filter{$0 != dir.opposite()}
             .map{(dir: $0, trans: $0.translation())}
         // directions in which additional connections might need to be made
         
@@ -155,7 +155,7 @@ extension HexNode {
                 Destination(node: path.destination, dir: filtered[0].dir)
             }.filter{$0 != nil}
             .map{$0!}
-            .forEach{$0.node.neighbors[$0.dir] = self}
+            .forEach{$0.node.connect(with: self, at: $0.dir)}
     }
 
     func move(by route: Route) {
@@ -192,9 +192,7 @@ extension HexNode {
     }
 
     func disconnect() {
-        neighbors.available().map {$0.node}.forEach {
-            $0.disconnect(with: self)
-        }
+        neighbors.available().map {$0.node}.forEach {$0.disconnect(with: self)}
     }
 
     func disconnect(with node: HexNode) {
