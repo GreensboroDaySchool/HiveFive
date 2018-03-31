@@ -22,11 +22,24 @@ class Grasshopper: HexNode {
     var neighbors = Neighbors()
     
     func availableMoves() -> [Destination] {
-        var moves = [Destination]()
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
-            return moves
+            return [Destination]()
         }
-        return moves
+        
+        return Direction.xyDirections
+            .map{explore(dir: $0)}
+            .filter{$0 != nil}
+            .map{$0!}
+    }
+    
+    private func explore(dir: Direction) -> Destination? {
+        guard var node = neighbors[dir] else {
+            return nil
+        }
+        while node.neighbors[dir] != nil {
+            node = node.neighbors[dir]!
+        }
+        return Destination(node: node, dir: dir)
     }
 }
