@@ -19,6 +19,12 @@
 
 import Foundation
 class Grasshopper: HexNode {
+    var color: Color
+    
+    required init(color: Color) {
+        self.color = color
+    }
+    
     var neighbors = Neighbors()
     
     func availableMoves() -> [Destination] {
