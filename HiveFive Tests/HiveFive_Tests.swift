@@ -200,7 +200,12 @@ class HiveFive_Tests: XCTestCase {
         beetle.move(to: Destination(node: spider2, dir: .above))
         assert(queenBee.availableMoves().count == 0)
         assert(soldierAnt.neighbors.available().count == 2)
-//        assert(beetle.neighbors.available().count == 0)
+        
+        //at this point, the only available neighbor of beetle is the piece that is below it
+        assert(beetle.neighbors.available().count == 1)
+        assert(queenBee.derivePaths().count == 6)
+        
+        
     }
     
     func testRouteSimplified() {
