@@ -22,7 +22,9 @@ import UIKit
 let nodeRadius: CGFloat = 32.0
 
 class BoardView: UIView {
-    var hive: Hive? = nil
+    var hive: Hive? = nil {
+        didSet { onNodeChanges() }
+    }
     
     //Cache layout of the hive. Only re-layout when a node is moved/placed
     fileprivate var _cachedLayout: Set<NodeCoordination>? = nil
@@ -31,7 +33,13 @@ class BoardView: UIView {
     
     func onNodeChanges(){
         guard let layout = layout else { return }
-        
+        layout.forEach{
+            current in
+            let view = subnodeViews[current] ?? { let _view = NodeView(frame: .zero); self.addSubview(_view); return _view }()
+            view.node = current.node
+            //Just assign it right here. Later can be used for animation purposes
+            view.frame = CGRect(origin: current.coordination, size: view.expectedSize)
+        }
     }
     
 //    override func draw(_ rect: CGRect) {
@@ -49,7 +57,7 @@ extension BoardView {
     fileprivate struct NodeCoordination: Hashable {
         var node: HexNode
         var source: Direction
-        var coordination = CGPoint.zero
+        var coordination: CGPoint = .zero
         var zIndex = 0
         
         //Use the node's neighbors to identify the coordination
@@ -85,7 +93,7 @@ extension BoardView {
         guard let hive = hive else { return nil }
         var pool = [NodeCoordination]() //A queue that stores all the nodes that need to be processed
         var processed = Set<NodeCoordination>()
-        let root = NodeCoordination(hive.root, from: .above, at: .zero, zIndex: 0)
+        let root = NodeCoordination(hive.root, from: .above, at: CGPoint(x: bounds.midX, y: bounds.midY), zIndex: 0)
         
         //A wrapper function to provide a transformation closure to each surrounding node, withour coordinations
         func process(from sourceCoordination: NodeCoordination) -> (((offset: Int, element: HexNode?)) -> NodeCoordination) {
@@ -100,7 +108,7 @@ extension BoardView {
             return _process
         }
         
-        //Assign (0, 0) to the root node
+        //Assign (midX, midY) to the root node
         processed.insert(root)
         //Append the neighbors to the queue
         pool.append(contentsOf: root.neighbors.enumerated().filter{ $0.element !== nil }.map(process(from: root)))
@@ -126,16 +134,16 @@ extension BoardView {
             //Left and Right (x-axis) are different from up/down (simpler)
             //thus using two switch statement to transform coordinations
             switch(current.source){
-            case .upRight, .downRight: transformed.x += nodeRadius * 0.5
-            case .upLeft, .downLeft: transformed.x -= nodeRadius * 0.5
+            case .upRight, .downRight: transformed.x += nodeRadius * 1.5
+            case .upLeft, .downLeft: transformed.x -= nodeRadius * 1.5
             default: break
             }
             
             switch(current.source){
-            case .upRight, .upLeft: transformed.y += nodeRadius * sin(.pi / 3)
-            case .downLeft, .downRight: transformed.y -= nodeRadius * sin(.pi / 3)
-            case .up: transformed.y += nodeRadius * sin(.pi / 3) * 2
-            case .down: transformed.y -= nodeRadius * sin(.pi / 3) * 2
+            case .upRight, .upLeft: transformed.y -= nodeRadius * sin(.pi / 3)
+            case .downLeft, .downRight: transformed.y += nodeRadius * sin(.pi / 3)
+            case .up: transformed.y -= nodeRadius * sin(.pi / 3) * 2
+            case .down: transformed.y += nodeRadius * sin(.pi / 3) * 2
             default: break
             }
             

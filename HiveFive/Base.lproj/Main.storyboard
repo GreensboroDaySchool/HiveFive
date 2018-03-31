@@ -17,7 +17,19 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="RootView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="233" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r45-Pk-amd" userLabel="HiveBoardView" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="r45-Pk-amd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8bl-FQ-tin"/>
+                            <constraint firstItem="r45-Pk-amd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EiS-vj-RF3"/>
+                            <constraint firstItem="r45-Pk-amd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Tpn-lX-nnI"/>
+                            <constraint firstItem="r45-Pk-amd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vh3-ku-NgK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
