@@ -20,10 +20,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var board: BoardView { return view.viewWithTag(233) as! BoardView }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let root = QueenBee()
+        let anotherNode = Grasshopper()
+        anotherNode.connect(with: root, at: .downLeft)
+        let anotherAnotherNode = Spider()
+        anotherAnotherNode.connect(with: root, at: .upRight)
+        let oneSubSubNode = Beetle()
+        oneSubSubNode.connect(with: anotherAnotherNode, at: .down)
+        board.hive = Hive(root: root)
     }
 
     override func didReceiveMemoryWarning() {
