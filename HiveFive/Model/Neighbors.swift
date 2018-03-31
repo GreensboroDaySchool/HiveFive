@@ -28,7 +28,7 @@ struct Neighbors {
     }
 
     /**
-     @return the direction & node tuples in which there is a neighbor present.
+     - Returns: The direction & node tuples in which there is a neighbor present.
      */
     func available() -> [(dir: Direction, node: HexNode)] {
         return nodes.enumerated().filter {$0.element != nil}
@@ -38,14 +38,15 @@ struct Neighbors {
 
     /**
     e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
-     @return the adjacent localized node of the specified direction
+     - Returns: the adjacent localized node of the specified direction
      */
     func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
         return dir.adjacent().map {($0, self[$0])}
     }
 
     /**
-     Returns a new instance with [node] removed
+     - Parameter node: The node to be removed
+     - Returns: A new instance with the specified node removed
      */
     func remove(_ node: HexNode) -> Neighbors {
         var copied = self
@@ -65,7 +66,7 @@ struct Neighbors {
     }
 
     /**
-     @return whether the references to each nodes of [self] is the same as that of [other]
+     - Returns: Whether the references to each nodes of [self] is the same as that of [other]
      */
     func equals(_ other: Neighbors) -> Bool {
         return zip(nodes, other.nodes).reduce(true) {
@@ -74,8 +75,8 @@ struct Neighbors {
     }
 
     /**
-     @return whether [nodes] contains reference to [node]
-     returns nil if node is not in [nodes]; returns the Direction otherwise.
+     Whether [nodes] contains reference to [node]
+     - Returns: Nil if node is not in [nodes]; returns the Direction otherwise.
     */
     func contains(_ node: HexNode) -> Direction? {
         return nodes.enumerated().reduce(nil) {

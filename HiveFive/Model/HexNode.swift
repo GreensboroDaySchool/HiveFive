@@ -29,33 +29,34 @@ protocol HexNode: AnyObject {
 
     /**
      Derive the Path to every HexNode in the hive
+     - Returns: The paths leading to the rest of the pieces in the hive
      */
     func derivePaths() -> [Path]
 
     /**
-     @return whether taking this node up will break the structure.
+     - Returns: Whether taking this node up will break the structure.
      */
     func canDisconnect() -> Bool
 
     /**
-     @return the number of nodes that are connected to the current node, including the current node
+     - Returns: Whe number of nodes that are connected to the current node, including the current node
      */
     func numConnected() -> Int
 
     /**
-     @return whether the node has [other] as an immediate neighbor
+     - Returns: Whether the node has [other] as an immediate neighbor
      */
     func hasNeighbor(_ other: HexNode) -> Direction?
 
     /**
-     @return whether the current node could move
+     - Returns: Whether the current node could move
      */
     func canMove() -> Bool
 
     /**
-     Moves the piece to the designated destination and **properly** connect the piece with the hive,
+     Move the piece to the designated destination and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
-     Note: this method assumes that the destination is a valid destination and that the route take is legal
+     - Attention: this method assumes that the destination is a valid destination and that the route take is legal
      */
     func move(to destination: Destination)
 
@@ -72,38 +73,41 @@ protocol HexNode: AnyObject {
 
     /**
      Returns self for convenient chained modification.
-     @return self
+     - Parameter nodes: references to the nodes to be removed
+     - Returns: self
      */
     func removeAll(_ nodes: [HexNode]) -> HexNode
 
     /**
-     Connect with another node at a certain neighboring position.
-     The connection should be bidirectional, [dir] is the direction in relation to [node]
-     **Note:** does not connect properly with the entire hive structure; only a bidirectional reference binding.
+     Connect bidirectionally with another node at a certain neighboring position.
+     - Attention: Does not connect properly with the entire hive structure; only a bidirectional reference binding.
+     - Parameter node: The node in which a bidirectional connection is to be established
+     - Parameter dir: The direction in relation to the node to be connected with
      */
     func connect(with node: HexNode, at dir: Direction)
 
     /**
      When the node disconnects from the structure, all references to it from the neighbors should be removed.
-     Note: disconnect with all neighbors, i.e. remove from the hive
+     - Attention: Disconnect with all neighbors, i.e. remove from the hive
      */
     func disconnect()
 
     /**
      Disconnect with the specified node
-     Note: ONLY the specified node, does not include all the surrounding nodes
+     - Attention: Disconnect ONLY with the specified node, does not disconnect with all the surrounding nodes
+     - Parameter node: The node with which the bidirectional connection is to be broken
      */
     func disconnect(with node: HexNode);
 
     /**
      The implementation for this method should be different for each class that conforms to the HexNode protocol.
      For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
-     @return all possible locations in which the current node can move to by following a defined route.
+     - Returns: All possible locations in which the current node can arrive by following a defined route.
      */
     func availableMoves() -> [Route]
 
     /**
-     @return an array containing all the references to the connected pieces, including self; i.e. the entire hive
+     - Returns: An array containing all the references to the connected pieces, including self; i.e. the entire hive
      */
     func connectedNodes() -> [HexNode]
 }
@@ -118,9 +122,9 @@ extension HexNode {
     }
 
     /**
-     @param paths: derived paths
-     @param root: the root path
-     @return paths to the rest of the nodes in the hive from the current node
+     - Parameter paths: Derived paths
+     - Parameter root: The root path
+     - Returns: Paths to the rest of the nodes in the hive from the current node
      */
     private func derivePaths(_ paths: inout [Path], _ root: Route) {
         let available = neighbors.available().filter {
@@ -182,6 +186,7 @@ extension HexNode {
             // node is removed from the structure, then the structure is broken.
             if connected[i] != connected[i + 1] {
                 canMove = false
+                break
             }
         }
 
@@ -203,8 +208,8 @@ extension HexNode {
     }
 
     /**
-     @param pool: references to HexNodes that are already accounted for
-     @return an integer representing the number of nodes
+     - Parameter pool: References to HexNodes that are already accounted for
+     - Returns: An integer representing the number of nodes
      */
     private func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // neighbors that are present
