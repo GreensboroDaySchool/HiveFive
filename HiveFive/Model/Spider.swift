@@ -39,7 +39,10 @@ class Spider: HexNode {
         registerTraversed(&traversed, self)
         let firstRoutes = oneStepMoves()
         let firstDestinations = firstRoutes.map{Destination.resolve(from: self, following: $0)}
-        if remaining == 1 { return firstDestinations } // base case
+        if remaining == 0 { // base case
+            let location = neighbors.available()[0]
+            return [Destination(node: location.node, dir: location.dir.opposite())]
+        }
         return firstDestinations.filter{!traversed.contains($0)} // cannot go back to previous location
             .map{destination -> [Destination] in
                 let neighbor = neighbors.available()[0]

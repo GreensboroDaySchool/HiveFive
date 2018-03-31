@@ -245,6 +245,16 @@ class HiveFive_Tests: XCTestCase {
         assert(grasshopper.availableMoves().count == 4)
     }
     
+    func testSpiderAvailableMoves() {
+        let availableMoves = spider2.availableMoves()
+        assert(availableMoves.count == 2) // yes!
+        assert(availableMoves.contains(Destination(node: queenBee, dir: .upRight))) // yes!!
+        assert(availableMoves.contains(Destination(node: soldierAnt, dir: .downLeft))) // yes!!!
+
+        assert(spider2.neighbors.available().count == 4)
+        assert(spider2.numConnected() == 7)
+    }
+    
     func testRouteSimplified() {
         //testing Route::equals
         assert(Route(directions: [.downLeft, .upLeft, .up, .upRight, .downRight]).equals(Route(directions: [.up])))
