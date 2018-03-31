@@ -52,6 +52,14 @@ protocol HexNode: AnyObject {
      - Returns: Whether the current node could move
      */
     func canMove() -> Bool
+    
+    /**
+     Checks if a certain piece could get move in a certain direction.
+     For example, if we have a node 'a', and 'a' has 'b' and 'c' at .upLeft, .upRight respectively,
+     Then the piece cannot move in the direction of .up; except when the piece is Beetle.
+     Beetle should override this method to always return true.
+     */
+    func canGetIn(dir: Direction) -> Bool
 
     /**
      Move the piece to the designated destination and **properly** connect the piece with the hive,
@@ -163,6 +171,14 @@ extension HexNode {
 
     func canMove() -> Bool {
         return canDisconnect() && availableMoves().count > 0
+    }
+
+    func canGetIn(dir: Direction) -> Bool {
+        var canGetIn = false
+        for node in neighbors.adjacent(of: dir).map({$0.node}) {
+            canGetIn = canGetIn || node == nil
+        }
+        return canGetIn
     }
 
     func place(at destination: Destination) {
