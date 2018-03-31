@@ -60,6 +60,11 @@ protocol HexNode: AnyObject {
     func canMove() -> Bool
     
     /**
+     Checks if a certain movement is legal
+     */
+    func canMove(to destination: Destination) -> Bool
+    
+    /**
      Checks if a certain piece could get move in a certain direction.
      For example, if we have a node 'a', and 'a' has 'b' and 'c' at .upLeft, .upRight respectively,
      Then the piece cannot move in the direction of .up; except when the piece is Beetle.
@@ -70,7 +75,8 @@ protocol HexNode: AnyObject {
     /**
      Move the piece to the designated destination and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
-     - Warning: This method assumes that the destination is a valid destination and that the route taken is legal
+     - Warning: This method assumes that the destination is a valid destination and that the route taken is legal.
+       Maybe a more intuitive description is that this method snaps a piece off the hive and squeeze it into the destination
      - Attention: Use this method to MOVE the piece, not to initially PLACE a piece.
      */
     func move(to destination: Destination)
@@ -88,7 +94,7 @@ protocol HexNode: AnyObject {
     
     /**
      - Attention: This is for initially putting down a piece; does not recommend using like move(to:)
-     - Note: Will first checks if the placement is allowed
+     - Note: Will first check if the placement is allowed/legal
      */
     func place(at destination: Destination)
 
@@ -189,6 +195,25 @@ extension HexNode {
 
     func canMove() -> Bool {
         return canDisconnect() && availableMoves().count > 0
+    }
+    
+    func canMove(to destination: Destination) -> Bool {
+        if !canDisconnect() {return false}
+        let preserved = neighbors
+        move(to: destination)
+        var canMove = false
+        for move in availableMoves() {
+            let contains = neighbors.available()
+                .map{(node: $0.node, dir: $0.dir.opposite())}
+                .contains{Destination(node: $0.node, dir: $0.dir) == move}
+            if contains {
+                canMove = true
+                break
+            }
+        }
+        disconnect() //restore the status of the hive
+        self.neighbors = preserved
+        return canMove
     }
 
     func canGetIn(dir: Direction) -> Bool {
