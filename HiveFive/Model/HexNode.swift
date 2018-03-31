@@ -28,7 +28,7 @@ protocol HexNode: AnyObject {
     var neighbors: Neighbors { get set }
 
     /**
-     Derive the Path to each HexNode in the hive
+     Derive the Path to every HexNode in the hive
      */
     func derivePaths() -> [Path]
 
@@ -170,6 +170,7 @@ extension HexNode {
     }
 
     func canDisconnect() -> Bool {
+        if self.neighbors[.above] != nil {return false} // little fucking beetle...
         let neighbors = self.neighbors // make a copy of the neighbors
         self.disconnect() // temporarily disconnect with all neighbors
 
