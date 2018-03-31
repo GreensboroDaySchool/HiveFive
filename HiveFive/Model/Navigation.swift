@@ -86,16 +86,16 @@ enum Direction: Int {
     /**
      @return 2D translation that results when the direction is applied
      */
-    func translation() -> Vec2D {
+    func translation() -> Translation {
         switch self {
-        case .up: return Vec2D(x: 0, y: 2)
-        case .upRight: return Vec2D(x: 1, y: 1)
-        case .downRight: return Vec2D(x: 1, y: -1)
-        case .down: return Vec2D(x: 0, y: -2)
-        case .downLeft: return Vec2D(x: -1, y: -1)
-        case .upLeft: return Vec2D(x: -1, y: 1)
-        case .below: return Vec2D(x: 0, y: 0)
-        case .above: return Vec2D(x: 0, y: 0)
+        case .up: return Translation(x: 0, y: 2, z: 0)
+        case .upRight: return Translation(x: 1, y: 1, z: 0)
+        case .downRight: return Translation(x: 1, y: -1, z: 0)
+        case .down: return Translation(x: 0, y: -2, z: 0)
+        case .downLeft: return Translation(x: -1, y: -1, z: 0)
+        case .upLeft: return Translation(x: -1, y: 1, z: 0)
+        case .below: return Translation(x: 0, y: 0, z: -1)
+        case .above: return Translation(x: 0, y: 0, z: 1)
         }
     }
 }
@@ -107,10 +107,9 @@ enum Direction: Int {
  */
 struct Route {
     var directions: [Direction]
-    var translation: Vec2D {
+    var translation: Translation {
         get {return directions.map{$0.translation()}
-                .reduce(Vec2D(x: 0, y: 0)){
-                    $0.add($1)}
+            .reduce(Translation(x: 0, y: 0, z: 0)){$0+$1}
         }
     }
 
@@ -224,6 +223,6 @@ typealias Path = (route: Route, destination: HexNode)
 
 typealias Translation = (x: Int, y: Int, z: Int)
 
-func +=(lhs: Translation, rhs: Translation) -> Translation {
+func +(lhs: Translation, rhs: Translation) -> Translation {
     return Translation(x: lhs.x + rhs.x, y: lhs.y + rhs.y, z: lhs.z + rhs.z)
 }
