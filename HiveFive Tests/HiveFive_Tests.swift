@@ -275,10 +275,19 @@ class HiveFive_Tests: XCTestCase {
         grasshopper2.place(at: Destination(node: beetle2, dir: .downRight))
         queenBee2.place(at: Destination(node: grasshopper2, dir: .down))
         assert(!queenBee2.canGetIn(dir: .upLeft))
-        let availableMoves = queenBee2.availableMoves()
+        var availableMoves = queenBee2.availableMoves()
         assert(availableMoves.count == 2) // yes !
         assert(availableMoves.contains(Destination(node: grasshopper2, dir: .downRight))) // yes !!
         assert(availableMoves.contains(Destination(node: queenBee, dir: .downRight))) // yes !!!
+        
+        //test Beetle canGetIn
+        queenBee2.disconnect()
+        let beetle3 = Beetle()
+        beetle3.place(at: Destination(node: grasshopper2, dir: .down))
+        assert(beetle3.canGetIn(dir: .upLeft))
+        availableMoves = beetle3.availableMoves()
+        assert(availableMoves.count == 6)
+        assert(availableMoves.contains(Destination(node: queenBee, dir: .up)))
     }
 
     func testPerformanceExample() {

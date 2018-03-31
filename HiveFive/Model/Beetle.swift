@@ -43,6 +43,13 @@ class Beetle: HexNode {
     }
     
     /**
+     Beetle can get in anywhere! Yay beetle!
+     */
+    func canGetIn(dir: Direction) -> Bool {
+        return true
+    }
+    
+    /**
      - Returns: The node at the base level if it exists
      */
     private func getBaseNode() -> HexNode? {
