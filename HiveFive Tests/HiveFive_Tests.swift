@@ -205,7 +205,13 @@ class HiveFive_Tests: XCTestCase {
         assert(beetle.neighbors.available().count == 1)
         assert(queenBee.derivePaths().count == 6)
         
-        
+        let beetle3 = Beetle() // add another beetle, beetle3, to the downRight of beetle and above soldierAnt
+        beetle3.move(to: Destination(node: soldierAnt, dir: .above))
+        //beetle and beetle3 have the same z coordinate, thus they should be automatically connected
+        assert(beetle.neighbors.available().count == 2)
+        assert(beetle3.neighbors.available().count == 2) // both beetles are on the plane z = 1
+        assert(beetle.neighbors.contains(beetle3) == .downLeft) // works like a charm without modification to existing move(to:) algorithm!
+        assert(beetle3.derivePaths().count == 7)
     }
     
     func testRouteSimplified() {

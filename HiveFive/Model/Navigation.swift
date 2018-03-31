@@ -41,7 +41,7 @@ enum Direction: Int {
 
     /**
      I know there's a better way, but that would simply take too much time!
-     @return the opposite direction.
+     - Returns: The opposite direction.
      */
     func opposite() -> Direction {
         switch self {
@@ -63,8 +63,8 @@ enum Direction: Int {
 
     /**
      e.g. Direction.up.adjacent() returns [.upLeft, .upRight]
-     Note: this method is not intended for down/below.
-     @return the adjacent directions of a certain direction
+     - Attention: This method is not intended for down/below.
+     - Return: The adjacent directions of a certain direction
      use adjacent()[0] to get the next element counter-clockwise,
      use adjacent()[1] to get the next element clockwise
      */
@@ -79,7 +79,7 @@ enum Direction: Int {
     }
     
     /**
-     @return 3D translation that results when the direction is applied
+     - Returns: 3D translation that results when the direction is applied
      */
     func translation() -> Translation {
         switch self {
@@ -115,9 +115,9 @@ struct Route {
     }
 
     /**
-     Note: the simplified route might no longer be valid! The purpose is to compare
+     - Attention: The simplified route might no longer be valid! The purpose is to compare
      if two relative positions are the same.
-     @return the simplified route that leads to the exact same spot in less steps
+     - Returns: The simplified route that leads to the exact same spot in less steps
      */
     func simplified() -> Route {
         // 0 = up, 1 = upRight, 2 = downRight, 3 = down, 4 = downLeft, 5 = upLeft, below, above
@@ -178,7 +178,7 @@ struct Route {
     }
 
     /**
-     @return whether the relative position represented by the two routes are equal
+     - Returns: Whether the relative position represented by the two routes are equal
      */
     func equals(_ other: Route) -> Bool {
         return other.translation == translation
@@ -194,9 +194,9 @@ struct Destination {
 
     /**
      Resolve the destination by following a given Route.
-     @param start: the starting node of the route
-     @param route: the route to be followed to get to the destination
-     @return the resolved destination
+     - Parameter start: The starting node of the route
+     - Parameter route: The route to be followed to get to the destination
+     - Returns: The resolved destination
      */
     static func resolve(from start: HexNode, following route: Route) -> Destination {
         //        let nodes = start.connectedNodes() // this can be optimized -- only resolve the hive structure when pieces are moved/added
@@ -216,6 +216,10 @@ struct Destination {
  */
 typealias Path = (route: Route, destination: HexNode)
 
+/**
+ z: vertical displacement
+ Arbitrary Cartesian coordinate that is converted from a given Direction
+ */
 typealias Translation = (x: Int, y: Int, z: Int)
 
 func +(lhs: Translation, rhs: Translation) -> Translation {
