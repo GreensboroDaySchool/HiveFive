@@ -316,7 +316,7 @@ extension HexNode {
 
     /**
      - Parameter pool: References to HexNodes that are already accounted for
-     - Returns: An integer representing the number of nodes
+     - Returns: An integer representing the number of nodesincluding self
      */
     private func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
         let pairs = neighbors.available() // neighbors that are present
