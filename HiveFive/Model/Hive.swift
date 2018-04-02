@@ -23,10 +23,13 @@ import Foundation
  The actual game has no boards, but we need an invisible board that is able to traverse/modify the HexNode ADT.
  */
 class Hive {
-    var root: HexNode
+    var root: HexNode?
+    var blackHand: Hand
+    var whiteHand: Hand
     
-    init(root: HexNode) {
-        self.root = root
+    init() {
+        blackHand = Hand()
+        whiteHand = Hand()
     }
     
     /**
@@ -43,4 +46,12 @@ class Hive {
         return path.destination
     }
     
+}
+
+struct Hand {
+    var grasshoppers = 3
+    var queenBees = 1
+    var beetles = 2
+    var spiders = 2
+    var soldierAnts = 3
 }
