@@ -23,12 +23,25 @@ import UIKit
 class NodeView: UIView {
     weak var node: HexNode!
     
+    /**
+     The radius of the node
+     */
     var radius: CGFloat = 0
+    
+    /**
+     Grabs the drawing core graphics context, for convenience.
+     */
+    var context: CGContext {
+        return UIGraphicsGetCurrentContext()!
+    }
     
     @IBInspectable var borderColor: UIColor = .gray
     @IBInspectable var borderWidth: CGFloat = 3.0
     @IBInspectable var fillColor: UIColor = UIColor.gray.withAlphaComponent(0.8)
 
+    /**
+     Each node view must be paired with a node.
+     */
     init(node: HexNode) {
         super.init(frame: CGRect.zero)
         self.isOpaque = false
@@ -39,6 +52,10 @@ class NodeView: UIView {
         super.init(coder: aDecoder)
     }
     
+    /**
+     Calculte the rectangular size of the node based on the given radius
+     - Parameter radius: The radius of the node
+     */
     private func calculateSize(radius: CGFloat) -> CGSize {
         return CGSize(
             width: 2 * radius + borderWidth,
@@ -46,6 +63,11 @@ class NodeView: UIView {
         )
     }
     
+    /**
+     Update the radius and coordinate of the current node view.
+     - Parameter radius: The new radius
+     - Parameter coordinate: The new coordinate
+     */
     func update(radius: CGFloat, coordinate: CGPoint) {
         self.frame = CGRect(origin: coordinate, size: calculateSize(radius: radius))
         self.radius = radius
@@ -53,12 +75,14 @@ class NodeView: UIView {
     
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        
         drawHexagon(rect)
         drawIdentityGram(rect)
-        
     }
     
+    /**
+     Draws the letter "identity gram" at the center of each node that indicates the identity of each node.
+     - Note: This is only temporary.
+     */
     private func drawIdentityGram(_ rect: CGRect) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
@@ -67,50 +91,52 @@ class NodeView: UIView {
             .paragraphStyle  : paragraphStyle,
             .font            : UIFont.systemFont(ofSize: radius),
             .foregroundColor : borderColor,
-            ]
+        ]
         
-        let myText = node.insect.rawValue
-        let attrString = NSAttributedString(string: myText, attributes: attributes)
+        let attrString = NSAttributedString(
+            string: node.insect.rawValue,
+            attributes: attributes
+        )
         
-        let y = attrString.height(withConstrainedWidth: bounds.size.width) / 4 + bounds.origin.y
-        let x = bounds.origin.x
-        let rect = CGRect(origin: CGPoint(x: x, y: y), size: bounds.size)
+        let textHeight = attrString.height(withConstrainedWidth: bounds.size.width) / 2
+        let origin = CGPoint(x: bounds.origin.x, y: textHeight / 2 + bounds.origin.y)
+        let rect = CGRect(origin: origin, size: bounds.size)
         attrString.draw(in: rect)
     }
     
+    /**
+     Draws the body and contour of the hexagon
+     This should be the same for every node, except maybe color
+     */
     private func drawHexagon(_ rect: CGRect) {
-        let hexagon = pathForHexagon()
+        let hexagon = pathForPolygon(radius: radius, sides: 6)
+        context.saveGState() // save
         borderColor.setStroke()
+        context.translateBy(x: bounds.midX, y: bounds.midY)
         hexagon.lineWidth = borderWidth
         hexagon.stroke()
         fillColor.setFill()
         hexagon.fill()
+        context.restoreGState() // restore
     }
     
-    
-    private func pathForHexagon() -> UIBezierPath {
-        let offset = CGPoint(x: borderWidth / 2, y: borderWidth / 2)
-        let polygon = UIBezierPath()
-        
-        polygon.move(to: CGPoint(
-            x: offset.x + (radius * 0.5),
-            y: offset.y))
-        polygon.addLine(to: CGPoint(
-            x: offset.x + (radius * 1.5),
-            y: offset.y))
-        polygon.addLine(to: CGPoint(
-            x: offset.x + (radius * 2),
-            y: offset.y + (radius * sin(.pi / 3))))
-        polygon.addLine(to: CGPoint(
-            x: offset.x + (radius * 1.5),
-            y: offset.y + (radius * sin(.pi / 3) * 2)))
-        polygon.addLine(to: CGPoint(
-            x: offset.x + (radius * 0.5),
-            y: offset.y + (radius * sin(.pi / 3) * 2)))
-        polygon.addLine(to: CGPoint(
-            x: offset.x,
-            y: offset.y + (radius * sin(.pi / 3))))
-        polygon.close()
-        return polygon
+    /**
+     Construct the UIBezierPath for a polygon, utilizing the convenience provided by Vec2D lib.
+     - Parameter radius: The radius of the polygon
+     - Parameter sides:  Number of sides of the polygon
+     - Returns:          UIBezierPath for the requested polygon
+     */
+    private func pathForPolygon(radius: CGFloat, sides: Int) -> UIBezierPath {
+        let path = UIBezierPath()
+        let step = CGFloat.pi * 2 / CGFloat(sides)
+        path.move(to: Vec2D(x: cos(step), y: sin(step)).setMag(radius).cgPoint)
+        for i in 1...(sides - 1) {
+            let angle = step * CGFloat(i + 1)
+            let dir = Vec2D(x: cos(angle), y: sin(angle))
+                .setMag(radius).cgPoint
+            path.addLine(to: dir)
+        }
+        path.close()
+        return path
     }
 }
