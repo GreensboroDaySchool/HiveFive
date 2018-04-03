@@ -18,18 +18,15 @@
  */
 
 import Foundation
-class Beetle: HexNode, InsectProtocol {
-    var neighbors = Neighbors()
-    var color: Color
-    var insect: Insect = .beetle
+class Beetle: HexNode {
     
-    required init(color: Color) {
-        self.color = color
+    override var identity: Identity {
+        return .beetle
     }
     
     
     
-    func availableMoves() -> [Position] {
+    override func availableMoves() -> [Position] {
         var moves = [Position]()
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
@@ -53,7 +50,7 @@ class Beetle: HexNode, InsectProtocol {
     /**
      Beetle can get in anywhere! Yay beetle!
      */
-    func canGetIn(dir: Direction) -> Bool {
+    override func canGetIn(dir: Direction) -> Bool {
         return true
     }
     

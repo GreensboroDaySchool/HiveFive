@@ -18,17 +18,13 @@
  */
 
 import Foundation
-class Grasshopper: HexNode, InsectProtocol {
-    var neighbors = Neighbors()
-    var color: Color
-    var insect: Insect = .grasshopper
-    
-    required init(color: Color) {
-        self.color = color
+class Grasshopper: HexNode {
+    override var identity: Identity {
+        return .grasshopper
     }
     
     
-    func availableMoves() -> [Position] {
+    override func availableMoves() -> [Position] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return [Position]()

@@ -24,134 +24,34 @@ import Foundation
  since all of them are pieces that together consist a hexagonal board, a hexagonal node with
  references to all the neighbors is the ideal structure.
  */
-protocol HexNode: AnyObject, InsectProtocol {
-    var neighbors: Neighbors { get set }
-    var color: Color {get}
+class HexNode: IdentityProtocol {
+    var neighbors = Neighbors()
+    var color: Color
+    var identity: Identity {
+        get {return .none}
+    }
 
     /**
      Initializer must specify the color
      */
-    init(color: Color)
-
-    /**
-     Derive the Path to every HexNode in the hive
-     - Returns: The paths leading to the rest of the pieces in the hive
-     */
-    func derivePaths() -> [Path]
-
-    /**
-     - Returns: Whether taking this node up will break the structure.
-     */
-    func canDisconnect() -> Bool
-
-    /**
-     - Returns: Whe number of nodes that are connected to the current node, including the current node
-     */
-    func numConnected() -> Int
-
-    /**
-     - Returns: Whether the node has [other] as an immediate neighbor
-     */
-    func hasNeighbor(_ other: HexNode) -> Direction?
-
-    /**
-     - Returns: Whether the current node could move
-     */
-    func canMove() -> Bool
-    
-    /**
-     Checks if a certain movement is legal
-     */
-    func canMove(to position: Position) -> Bool
-    
-    /**
-     Checks if a certain piece could get move in a certain direction.
-     For example, if we have a node 'a', and 'a' has 'b' and 'c' at .upLeft, .upRight respectively,
-     Then the piece cannot move in the direction of .up; except when the piece is Beetle.
-     Beetle should override this method to always return true.
-     */
-    func canGetIn(dir: Direction) -> Bool
-
-    /**
-     Move the piece to the designated position and **properly** connect the piece with the hive,
-     i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
-     - Warning: This method assumes that the position is a valid position and that the route taken is legal.
-       Maybe a more intuitive description is that this method snaps a piece off the hive and squeeze it into the position
-     - Attention: Use this method to MOVE the piece, not to initially PLACE a piece.
-     */
-    func move(to position: Position)
-
-    /**
-     Moves the piece by following a certain route
-     (just for convenience, because route is eventually resolved to a position)
-     */
-    func move(by route: Route)
-
-    /**
-     Checks whether a piece can initially connect to the hive at the designated position
-     */
-    func canPlace(at position: Position) -> Bool
-    
-    /**
-     - Attention: This is for initially putting down a piece; does not recommend using like move(to:)
-     - Note: Will first check if the placement is allowed/legal
-     */
-    func place(at position: Position)
-
-    /**
-     Remove the reference to a specific node from its neighbors
-     */
-    func remove(_ node: HexNode)
-
-    /**
-     Returns self for convenient chained modification.
-     - Parameter nodes: references to the nodes to be removed
-     - Returns: self
-     */
-    func removeAll(_ nodes: [HexNode]) -> HexNode
-
-    /**
-     Connect bidirectionally with another node at a certain neighboring position.
-     - Attention: Does not connect properly with the entire hive structure; only a bidirectional reference binding.
-     - Parameter node: The node in which a bidirectional connection is to be established
-     - Parameter dir: The direction in relation to the node to be connected with
-     */
-    func connect(with node: HexNode, at dir: Direction)
-
-    /**
-     When the node disconnects from the structure, all references to it from the neighbors should be removed.
-     - Attention: Disconnect with all neighbors, i.e. remove from the hive
-     */
-    func disconnect()
-
-    /**
-     Disconnect with the specified node
-     - Attention: Disconnect ONLY with the specified node, does not disconnect with all the surrounding nodes
-     - Parameter node: The node with which the bidirectional connection is to be broken
-     */
-    func disconnect(with node: HexNode);
+    required init(color: Color) {
+        self.color = color
+    }
 
     /**
      The implementation for this method should be different for each class that conforms to the HexNode protocol.
      For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
+     - Note: Empty implementation for HexNode because it is just a dummy.
      - Returns: All possible positions
      */
-    func availableMoves() -> [Position]
-
-    /**
-     - Returns: An array containing all the references to the connected pieces, including self; i.e. the entire hive
-     */
-    func connectedNodes() -> [HexNode]
+    func availableMoves() -> [Position] {
+        return []
+    }
     
     /**
      - Returns: Available moves within one step
      - Warning: This is a helper method for QueenBee::availableMoves, Beetle, and Spider, don't use it!
      */
-    func oneStepMoves() -> [Route]
-}
-
-extension HexNode {
-
     func oneStepMoves() -> [Route] {
         return neighbors.available().filter{$0.dir.rawValue < 6} // only horizontal nodes
             .map{($0.dir, $0.node.neighbors
@@ -170,6 +70,10 @@ extension HexNode {
         return Direction.xyDirections.filter{neighbors[$0] != nil || !canGetIn(dir: $0)}
     }
 
+    /**
+     Derive the Path to every HexNode in the hive
+     - Returns: The paths leading to the rest of the pieces in the hive
+     */
     func derivePaths() -> [Path] {
         var paths = [Path(route: Route(directions: []), destination: self)]
         derivePaths(&paths, paths[0].route) // the root path is initially []
@@ -193,10 +97,16 @@ extension HexNode {
         newPaths.forEach{$0.destination.derivePaths(&paths, $0.route)} // recursive call
     }
 
+    /**
+     - Returns: Whether the current node could move
+     */
     func canMove() -> Bool {
         return canDisconnect() && availableMoves().count > 0
     }
     
+    /**
+     Checks if a certain movement is legal
+     */
     func canMove(to position: Position) -> Bool {
         if !canDisconnect() {return false}
         let availableMoves = self.availableMoves()
@@ -217,6 +127,12 @@ extension HexNode {
         return canMove
     }
 
+    /**
+     Checks if a certain piece could get move in a certain direction.
+     For example, if we have a node 'a', and 'a' has 'b' and 'c' at .upLeft, .upRight respectively,
+     Then the piece cannot move in the direction of .up; except when the piece is Beetle.
+     Beetle should override this method to always return true.
+     */
     func canGetIn(dir: Direction) -> Bool {
         var canGetIn = false
         for node in neighbors.adjacent(of: dir).map({$0.node}) {
@@ -225,6 +141,9 @@ extension HexNode {
         return canGetIn
     }
 
+    /**
+     Checks whether a piece can initially connect to the hive at the designated position
+     */
     func canPlace(at position: Position) -> Bool {
         let node = position.node
         let dir = position.dir
@@ -240,6 +159,10 @@ extension HexNode {
         return opponents == 0
     }
 
+    /**
+     - Attention: This is for initially putting down a piece; does not recommend using like move(to:)
+     - Note: Will first check if the placement is allowed/legal
+     */
     func place(at position: Position) {
         if !canPlace(at: position) {fatalError("Cannot place at \(position)")}
         if neighbors.available().count != 0 {fatalError("Still connected to the hive. Please disconnect first")}
@@ -255,6 +178,13 @@ extension HexNode {
         place(at: Position(node: node, dir: dir))
     }
 
+    /**
+     Move the piece to the designated position and **properly** connect the piece with the hive,
+     i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
+     - Warning: This method assumes that the position is a valid position and that the route taken is legal.
+     Maybe a more intuitive description is that this method snaps a piece off the hive and squeeze it into the position
+     - Attention: Use this method to MOVE the piece, not to initially PLACE a piece.
+     */
     func move(to position: Position) {
         self.disconnect() // disconnect from the hive
         let node = position.node
@@ -286,20 +216,36 @@ extension HexNode {
             .forEach{$0.node.connect(with: self, at: $0.dir)}
     }
 
+    /**
+     Moves the piece by following a certain route
+     (just for convenience, because route is eventually resolved to a position)
+     */
     func move(by route: Route) {
         move(to: Position.resolve(from: self, following: route))
     }
 
+    /**
+     - Returns: Whe number of nodes that are connected to the current node, including the current node
+     */
     func numConnected() -> Int {
         return connectedNodes().count
     }
 
+    /**
+     Connect bidirectionally with another node at a certain neighboring position.
+     - Attention: Does not connect properly with the entire hive structure; only a bidirectional reference binding.
+     - Parameter node: The node in which a bidirectional connection is to be established
+     - Parameter dir: The direction in relation to the node to be connected with
+     */
     func connect(with node: HexNode, at dir: Direction) {
         assert(node.neighbors[dir] == nil)
         node.neighbors[dir] = self
         neighbors[dir.opposite()] = node
     }
 
+    /**
+     - Returns: Whether taking this node up will break the structure.
+     */
     func canDisconnect() -> Bool {
         if self.neighbors[.above] != nil {return false} // little fucking beetle...
         let neighbors = self.neighbors // make a copy of the neighbors
@@ -321,10 +267,19 @@ extension HexNode {
         return canMove
     }
 
+    /**
+     When the node disconnects from the structure, all references to it from the neighbors should be removed.
+     - Attention: Disconnect with all neighbors, i.e. remove from the hive
+     */
     func disconnect() {
         neighbors.available().map {$0.node}.forEach {$0.disconnect(with: self)}
     }
 
+    /**
+     Disconnect with the specified node
+     - Attention: Disconnect ONLY with the specified node, does not disconnect with all the surrounding nodes
+     - Parameter node: The node with which the bidirectional connection is to be broken
+     */
     func disconnect(with node: HexNode) {
         node.remove(self)
         assert(node.neighbors.contains(self) == nil) // make sure the reference is removed
@@ -345,21 +300,35 @@ extension HexNode {
                 .reduce(1) {$0 + $1}
     }
 
+    /**
+     - Returns: An array containing all the references to the connected pieces, including self; i.e. the entire hive
+     */
     func connectedNodes() -> [HexNode] {
         var pool = [HexNode]()
         let _ = deriveConnectedNodes(&pool)
         return pool
     }
 
+    /**
+     Remove the reference to a specific node from its neighbors
+     */
     func remove(_ node: HexNode) {
         neighbors = neighbors.remove(node)
     }
 
+    /**
+     Returns self for convenient chained modification.
+     - Parameter nodes: references to the nodes to be removed
+     - Returns: self
+     */
     func removeAll(_ nodes: [HexNode]) -> HexNode {
         nodes.forEach(remove)
         return self
     }
 
+    /**
+     - Returns: Whether the node has [other] as an immediate neighbor
+     */
     func hasNeighbor(_ other: HexNode) -> Direction? {
         return neighbors.contains(other)
     }

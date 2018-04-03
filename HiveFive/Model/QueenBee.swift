@@ -18,16 +18,13 @@
  */
 
 import Foundation
-class QueenBee: HexNode, InsectProtocol {
-    var neighbors = Neighbors()
-    var color: Color
-    var insect: Insect = .queenBee
+class QueenBee: HexNode {
     
-    required init(color: Color) {
-        self.color = color
+    override var identity: Identity {
+        return .queenBee
     }
 
-    func availableMoves() -> [Position] {
+    override func availableMoves() -> [Position] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return [Position]()

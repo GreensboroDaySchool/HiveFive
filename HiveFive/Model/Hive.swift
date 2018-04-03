@@ -78,10 +78,10 @@ struct Hand {
     var soldierAnts = 3
 }
 
-enum Insect: String {
-    case grasshopper = "G", queenBee = "Q", beetle = "B", spider = "S", soldierAnt = "A"
+enum Identity: String {
+    case grasshopper = "G", queenBee = "Q", beetle = "B", spider = "S", soldierAnt = "A", none = ""
 }
 
-protocol InsectProtocol {
-    var insect: Insect {get}
+protocol IdentityProtocol {
+    var identity: Identity {get}
 }

@@ -18,18 +18,14 @@
  */
 
 import Foundation
-class Spider: HexNode, InsectProtocol {
-    var color: Color
-    var insect: Insect = .spider
-    
-    required init(color: Color) {
-        self.color = color
+class Spider: HexNode {
+    override var identity: Identity {
+        return .spider
     }
     
-    var neighbors = Neighbors()
     private let allowedMoves = 3
     
-    func availableMoves() -> [Position] {
+    override func availableMoves() -> [Position] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return [Position]()

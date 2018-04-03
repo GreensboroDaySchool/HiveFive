@@ -68,7 +68,7 @@ class NodeView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(node.insect.rawValue)
+        print(node.identity.rawValue)
     }
     
     /**
@@ -124,7 +124,7 @@ class NodeView: UIView {
         ]
         
         let attrString = NSAttributedString(
-            string: node.insect.rawValue,
+            string: node.identity.rawValue,
             attributes: attributes
         )
         
