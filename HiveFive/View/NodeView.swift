@@ -36,9 +36,17 @@ class NodeView: UIView {
     }
     
     @IBInspectable var borderColor: UIColor = .gray
-    @IBInspectable var borderWidth: CGFloat = 3.0
+    @IBInspectable var borderWidthRatio: CGFloat = 1 / 16
     @IBInspectable var fillColor: UIColor = UIColor.gray.withAlphaComponent(0.8)
 
+    /**
+     Since the user can zoom in and out, a fixed borderWidth is no longer suitable.
+     The border width should instead be derived from node radius by multiplying with a ratio.
+     */
+    var borderWidth: CGFloat {
+        get {return radius * borderWidthRatio}
+    }
+    
     /**
      Each node view must be paired with a node.
      */
