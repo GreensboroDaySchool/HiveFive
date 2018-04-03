@@ -22,12 +22,8 @@ import UIKit
 @IBDesignable
 class NodeView: UIView {
     weak var node: HexNode?
-    var expectedSize: CGSize {
-        return CGSize(
-            width: 2 * nodeRadius + borderWidth,
-            height: 2 * sin(.pi / 3) * nodeRadius + borderWidth
-        )
-    }
+    
+    var radius: CGFloat = 0
     
     @IBInspectable var borderColor: UIColor = .gray
     @IBInspectable var borderWidth: CGFloat = 3.0
@@ -44,29 +40,41 @@ class NodeView: UIView {
         self.isOpaque = false
     }
     
+    private func calculateSize(radius: CGFloat) -> CGSize {
+        return CGSize(
+            width: 2 * radius + borderWidth,
+            height: 2 * sin(.pi / 3) * radius + borderWidth
+        )
+    }
+    
+    func update(radius: CGFloat, coordinate: CGPoint) {
+        self.frame = CGRect(origin: coordinate, size: calculateSize(radius: radius))
+        self.radius = radius
+    }
+    
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         let offset = CGPoint(x: borderWidth / 2, y: borderWidth / 2)
         let polygon = UIBezierPath()
         
         polygon.move(to: CGPoint(
-            x: offset.x + (nodeRadius * 0.5),
+            x: offset.x + (radius * 0.5),
             y: offset.y))
         polygon.addLine(to: CGPoint(
-            x: offset.x + (nodeRadius * 1.5),
+            x: offset.x + (radius * 1.5),
             y: offset.y))
         polygon.addLine(to: CGPoint(
-            x: offset.x + (nodeRadius * 2),
-            y: offset.y + (nodeRadius * sin(.pi / 3))))
+            x: offset.x + (radius * 2),
+            y: offset.y + (radius * sin(.pi / 3))))
         polygon.addLine(to: CGPoint(
-            x: offset.x + (nodeRadius * 1.5),
-            y: offset.y + (nodeRadius * sin(.pi / 3) * 2)))
+            x: offset.x + (radius * 1.5),
+            y: offset.y + (radius * sin(.pi / 3) * 2)))
         polygon.addLine(to: CGPoint(
-            x: offset.x + (nodeRadius * 0.5),
-            y: offset.y + (nodeRadius * sin(.pi / 3) * 2)))
+            x: offset.x + (radius * 0.5),
+            y: offset.y + (radius * sin(.pi / 3) * 2)))
         polygon.addLine(to: CGPoint(
             x: offset.x,
-            y: offset.y + (nodeRadius * sin(.pi / 3))))
+            y: offset.y + (radius * sin(.pi / 3))))
         polygon.close()
         borderColor.setStroke()
         polygon.lineWidth = borderWidth
