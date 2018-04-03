@@ -51,10 +51,19 @@ class ViewController: UIViewController {
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
         let focus = sender.location(in: board)
-        let scale = sender.scale
+        var scale = sender.scale
         let origin = board.rootCoordinate
         
+        //Exclude these states because at these moments the change (first derivative) does not exist
+        switch sender.state {
+        case .began: scale = 1
+        case .ended: scale = 1
+        default: break
+        }
+        
+        //Change node radius based on the scale
         board.nodeRadius *= scale
+        
         /*
          Calculate the escaping direction of root coordinate to create an optical illusion.
          This way users will be able to scale to exactly where they wanted on the screen

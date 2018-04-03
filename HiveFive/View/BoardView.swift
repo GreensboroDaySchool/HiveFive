@@ -65,7 +65,7 @@ import UIKit
                 coordinate: offset + rootCoordinate
             )
         }
-        subviews.forEach{$0.setNeedsDisplay()} // prevent pixelation
+        subviews.forEach{$0.setNeedsDisplay()} // prevent pixelation, affects performance though
     }
     
     /**
