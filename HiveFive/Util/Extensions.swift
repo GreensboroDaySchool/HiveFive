@@ -30,12 +30,24 @@ extension Array {
 //Various extensions developed by Jiachen Ren. Migrated from Hashlife project
 
 extension CGPoint {
+    var vec2D: Vec2D {
+        return Vec2D(point: self)
+    }
+    
     func translate(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
         return CGPoint(x: self.x + x, y: self.y + y);
     }
     
     func translate(by point: CGPoint) -> CGPoint {
         return self.translate(point.x, point.y)
+    }
+    
+    /**
+     - Parameter other: Another point
+     - Returns: Distance from self to the given point
+     */
+    func dist(to other: CGPoint) -> CGFloat {
+        return vec2D.dist(other.vec2D)
     }
     
     static func midpoint(from p1: CGPoint, to p2: CGPoint) -> CGPoint{

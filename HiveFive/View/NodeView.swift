@@ -24,9 +24,16 @@ class NodeView: UIView {
     weak var node: HexNode!
     
     /**
-     The radius of the node
+     The radius of the node (outer radius)
      */
-    var radius: CGFloat = 0
+    private var radius: CGFloat = 0
+    
+    /**
+     Radius of the circle that fits in the hexagon
+     */
+    var innerRadius: CGFloat {
+        get {return bounds.height / 2}
+    }
     
     /**
      Grabs the drawing core graphics context, for convenience.
@@ -60,6 +67,10 @@ class NodeView: UIView {
         super.init(coder: aDecoder)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(node.insect.rawValue)
+    }
+    
     /**
      Calculte the rectangular size of the node based on the given radius
      - Parameter radius: The radius of the node
@@ -85,6 +96,17 @@ class NodeView: UIView {
     override func draw(_ rect: CGRect) {
         drawHexagon(rect)
         drawIdentityGram(rect)
+    }
+    
+    /**
+     The bounds of each node view is rectangular by default - this is not appropriate because it overlaps
+     and inteferes with other nodes. Overriding this method provides a more pixel-accurate method for
+     determining which node view is acutually being touched.
+     */
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        // point is in relation to bounds.origin
+        let ctr = bounds.origin.translate(bounds.midX, bounds.midY) // center of the hexagon
+        return ctr.dist(to: point) < innerRadius // make sure the touch is within the inner radius, not the outer.
     }
     
     /**
