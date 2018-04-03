@@ -22,9 +22,14 @@ import UIKit
 let nodeRadius: CGFloat = 48.0
 
 class BoardView: UIView {
-    var hive: Hive? = nil {
-        didSet { onNodeChanges() }
+    
+    //the board view shouldn't know about hive; it should only know about the structure.
+    var hiveRoot: HexNode? {
+        didSet {
+            onNodeChanges()
+        }
     }
+    
     
     //Cache layout of the hive. Only re-layout when a node is moved/placed
     fileprivate var _cachedLayout: Set<NodeCoordination>? = nil
@@ -48,6 +53,7 @@ class BoardView: UIView {
 }
 
 extension BoardView {
+    
     fileprivate var layout: Set<NodeCoordination>? {
         if let cached = _cachedLayout { return cached }
         _cachedLayout = layoutHive()
@@ -90,10 +96,10 @@ extension BoardView {
     
     fileprivate func layoutHive() -> Set<NodeCoordination>? {
         //Only layout when there is a hive
-        guard let hive = hive else { return nil }
+        guard let hiveRoot = hiveRoot else { return nil }
         var pool = [NodeCoordination]() //A queue that stores all the nodes that need to be processed
         var processed = Set<NodeCoordination>()
-        let root = NodeCoordination(hive.root, from: .above, at: CGPoint(x: bounds.midX, y: bounds.midY), zIndex: 0)
+        let root = NodeCoordination(hiveRoot, from: .above, at: CGPoint(x: bounds.midX, y: bounds.midY), zIndex: 0)
         
         //A wrapper function to provide a transformation closure to each surrounding node, withour coordinations
         func process(from sourceCoordination: NodeCoordination) -> (((offset: Int, element: HexNode?)) -> NodeCoordination) {

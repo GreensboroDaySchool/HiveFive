@@ -21,6 +21,9 @@ import UIKit
 
 class ViewController: UIViewController {
     var board: BoardView { return view.viewWithTag(233) as! BoardView }
+    var hive: Hive {
+        get {return Hive.sharedInstance}
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +34,20 @@ class ViewController: UIViewController {
         anotherAnotherNode.connect(with: root, at: .upRight)
         let oneSubSubNode = Beetle(color: .black)
         oneSubSubNode.connect(with: anotherAnotherNode, at: .down)
-        board.hive = Hive(root: root)
+        
+        hive.delegate = self
+        hive.root = root
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
 
-
+extension ViewController: HiveDelegate {
+    func hiveDidUpdate() {
+        // transfer the updated root to boardview for display
+        board.hiveRoot = hive.root
+    }
 }

@@ -23,9 +23,24 @@ import Foundation
  The actual game has no boards, but we need an invisible board that is able to traverse/modify the HexNode ADT.
  */
 class Hive {
-    var root: HexNode?
+    
+    /**
+     There should only be one instance of Hive throughout the application
+     */
+    static var sharedInstance: Hive = {
+        return Hive()
+    }()
+    
+    var root: HexNode? {
+        didSet {
+            //notify the delegate when the root changes
+            delegate?.hiveDidUpdate()
+        }
+    }
+    
     var blackHand: Hand
     var whiteHand: Hand
+    var delegate: HiveDelegate?
     
     init() {
         blackHand = Hand()
@@ -48,6 +63,13 @@ class Hive {
     
 }
 
+protocol HiveDelegate {
+    func hiveDidUpdate()
+}
+
+/**
+ This struct is used to represent the available pieces at each player's disposal.
+ */
 struct Hand {
     var grasshoppers = 3
     var queenBees = 1
