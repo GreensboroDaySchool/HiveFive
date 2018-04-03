@@ -20,6 +20,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var pan: UIPanGestureRecognizer!
+    @IBOutlet var pinch: UIPinchGestureRecognizer!
+    
+    private var lastTranslation: CGPoint?
+    
     var board: BoardView { return view.viewWithTag(233) as! BoardView }
     var hive: Hive {
         get {return Hive.sharedInstance}
@@ -39,7 +45,29 @@ class ViewController: UIViewController {
         hive.root = root
         board.rootCoordinate = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
     }
-
+    @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
+        
+    }
+    
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        guard let last = lastTranslation else {
+            lastTranslation = sender.translation(in: board)
+            return
+        }
+        
+        switch sender.state {
+        case .ended: lastTranslation = nil
+            return
+        default: break
+        }
+        
+        let current = sender.translation(in: board)
+        let change = current - last
+        let newCoordinate = board.rootCoordinate + change
+        board.rootCoordinate = newCoordinate
+        lastTranslation = current
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
