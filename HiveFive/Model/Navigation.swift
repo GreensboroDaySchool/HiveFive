@@ -18,6 +18,7 @@
  */
 
 import Foundation
+import UIKit
 
 /**
        _____(up)_____
@@ -109,6 +110,18 @@ struct Route: Equatable {
         get {return directions.map{$0.translation()}
             .reduce(Translation(x: 0, y: 0, z: 0)){$0+$1}
         }
+    }
+    
+    /**
+     Convert quantitative translation to physical relative location based on the given node radius
+     - Parameter radius: The radius of each node
+     - Returns: Position relative to root
+     */
+    func relativeCoordinate(radius: CGFloat) -> CGPoint {
+        let translation = self.translation
+        let x = CGFloat(translation.x) * radius * 1.5
+        let y = CGFloat(translation.y) * radius * sin(.pi / 3)
+        return CGPoint(x: x, y: y)
     }
 
     func append(_ directions: [Direction]) -> Route {

@@ -37,8 +37,7 @@ class ViewController: UIViewController {
         
         hive.delegate = self
         hive.root = root
-        board.centerOffset = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
-        board.setNeedsDisplay()
+        board.rootCoordinate = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +49,6 @@ class ViewController: UIViewController {
 extension ViewController: HiveDelegate {
     func hiveDidUpdate() {
         // transfer the updated root to boardview for display
-        board.hiveRoot = hive.root
+        board.root = hive.root
     }
 }
