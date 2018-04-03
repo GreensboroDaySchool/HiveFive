@@ -23,7 +23,11 @@ import UIKit
 
 @IBDesignable class BoardView: UIView {
     
-    @IBInspectable var nodeRadius: CGFloat = 48
+    @IBInspectable var nodeRadius: CGFloat = 48 {
+        didSet {
+            updateDisplay()
+        }
+    }
     
     var rootCoordinate: CGPoint = .init(x: 0, y: 0) {
         didSet { // the coordinate of root node has changed (panning)
@@ -61,6 +65,7 @@ import UIKit
                 coordinate: offset + rootCoordinate
             )
         }
+        subviews.forEach{$0.setNeedsDisplay()} // prevent pixelation
     }
     
     /**

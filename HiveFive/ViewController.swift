@@ -24,6 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet var pan: UIPanGestureRecognizer!
     @IBOutlet var pinch: UIPinchGestureRecognizer!
     
+    /**
+     This variable records the previous translation to detect change
+     */
     private var lastTranslation: CGPoint?
     
     var board: BoardView { return view.viewWithTag(233) as! BoardView }
@@ -45,8 +48,28 @@ class ViewController: UIViewController {
         hive.root = root
         board.rootCoordinate = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
     }
+    
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
+        let focus = sender.location(in: board)
+        let scale = sender.scale
+        let origin = board.rootCoordinate
         
+        board.nodeRadius *= scale
+        /*
+         Calculate the escaping direction of root coordinate to create an optical illusion.
+         This way users will be able to scale to exactly where they wanted on the screen
+         */
+        let escapeDir = Vec2D(point: origin)
+            .sub(Vec2D(point: focus)) //translate to focus's coordinate system by subtracting it
+            .mult(scale) //elongate or shrink according to the scale.
+        
+        //Compensating change in coordinate, since escapeDir is now in focus's coordinate system.
+        board.rootCoordinate = escapeDir
+            .add(Vec2D(point: focus))
+            .cgPoint
+        
+        //Reset the scale so that sender.scale is always the first derivative
+        sender.scale = 1
     }
     
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
