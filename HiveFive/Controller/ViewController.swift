@@ -50,29 +50,35 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let blackQueenBee = QueenBee(color: .black)
-        let blackGrasshopper = Grasshopper(color: .black)
-        let blackSpider = Spider(color: .black)
-        let blackBeetle = Beetle(color: .black)
-        
-        blackGrasshopper.place(at: .downLeft, of: blackQueenBee)
-        blackSpider.place(at: .upRight, of: blackQueenBee)
-        blackBeetle.place(at: .down, of: blackSpider)
         
         hive.delegate = self // establish communication with Model
         board.delegate = self // establish communication with View
         
-        hive.root = blackQueenBee
+        let beetle2 = Beetle(color: .black)
+        let grasshopper = Grasshopper(color: .black)
+        let queenBee = QueenBee(color: .black)
+        let beetle = Beetle(color: .black)
+        let soldierAnt = SoldierAnt(color: .black)
+        let spider = Spider(color: .black)
+        let spider2 = Spider(color: .black)
+        
+        beetle2.connect(with: spider, at: .upRight)
+        
+        grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
+        queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
+        beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
+        
+        soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
+        soldierAnt.connect(with: spider2, at: .downLeft) // soldier ant is also lower left of spider2
+        
+        spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
+        //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
+        spider2.connect(with: queenBee, at: .downLeft) // spider2 is also lower left of queen bee
+        spider2.connect(with: beetle, at: .downRight) // spider2 is also lower right of beetle
+        
+        hive.root = spider
         let ctr = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
         board.rootCoordinate = ctr
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tap.delegate = self
-        board.addGestureRecognizer(tap)
-    }
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        hive.cancelSelection()
     }
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
@@ -135,16 +141,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return touch.view === gestureRecognizer.view
-    }
-    
-    
 }
 
 extension ViewController: BoardViewDelegate {
-    func didTap(node: HexNode) {
+    func didTap(on node: HexNode) {
         hive.select(node: node)
+    }
+    
+    func didTapOnBoard() {
+        hive.cancelSelection()
     }
 }
 
@@ -158,5 +163,9 @@ extension ViewController: HiveDelegate {
     
     func selectedNodeDidUpdate() {
         board.updateSelectedNode(hive.selectedNode)
+    }
+    
+    func availablePositionsDidUpdate() {
+        board.availablePositions = hive.availablePositions
     }
 }

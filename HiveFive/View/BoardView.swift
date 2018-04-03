@@ -38,26 +38,45 @@ import UIKit
     
     var delegate: BoardViewDelegate?
     
-    var rootCoordinate: CGPoint = .init(x: 0, y: 0) {
-        didSet { // the coordinate of root node has changed (panning)
-            updateDisplay()
-        }
+    var rootCoordinate: CGPoint = .init(x: 0, y: 0) { // the coordinate of root node has changed (panning)
+        didSet {updateDisplay()}
     }
     
     /**
      The root node of the hive
      */
-    var root: HexNode? {
-        didSet { // the structure of the hive has changed
-            updateStructure()
-        }
+    var root: HexNode? { // the structure of the hive has changed
+        didSet {updateStructure()}
     }
     
-    private var paths = [Path]()
+    var availablePositions = [Position]() {
+        didSet {updateAvailablePositions()}
+    }
+    
     private var nodeViews: [NodeView] {
         get {
             return subviews.map{$0 as! NodeView}
         }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupTapRecognizer()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupTapRecognizer()
+    }
+    
+    /**
+     This should only be called once in the initialzer; sets up the UITapGestureRecognizer and set
+     self as its delegate
+     */
+    private func setupTapRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapOnBoard))
+        tap.delegate = self
+        addGestureRecognizer(tap)
     }
     
     /**
@@ -65,15 +84,7 @@ import UIKit
      When rootCoordinate or nodeRadius changes, only the coordinates need to be updated.
      */
     func updateDisplay() {
-        assert(subviews.count == paths.count)
-        nodeViews.enumerated().forEach {(index, element) in
-            let route = paths[index].route
-            let offset = route.relativeCoordinate(radius: nodeRadius)
-            element.update(
-                radius: nodeRadius,
-                coordinate: offset + rootCoordinate
-            )
-        }
+        nodeViews.forEach {$0.update(radius: nodeRadius, rootCo: rootCoordinate)}
         subviews.forEach{$0.setNeedsDisplay()} // prevent pixelation, affects performance though
     }
     
@@ -83,11 +94,11 @@ import UIKit
      */
     func updateStructure(){
         guard let root = root else { return }
-        paths = root.derivePaths()
+        var paths = root.derivePaths()
         paths.append(Path(route: Route(directions: []), destination: root))
-        subviews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
+        nodeViews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
         paths.forEach {
-            addSubview(NodeView(node: $0.destination))
+            addSubview(NodeView(path: $0))
         }
         updateDisplay()
     }
@@ -104,22 +115,43 @@ import UIKit
                 element.isSelected = true
                 element.removeFromSuperview()
                 addSubview(element) // bring selected node to foreground
-                paths.append(paths.remove(at: index)) // rearrange paths accordingly! Bad practice though...
             } else {
                 element.isSelected = false
             }
         }
     }
     
+    func updateAvailablePositions() {
+//        let positions = availablePositions
+//        positions.forEach{}
+    }
+    
     /**
      This method is called when the touch landed on one of the nodes
      */
     func didTap(node: HexNode) {
-        delegate?.didTap(node: node)
+        delegate?.didTap(on: node)
+    }
+    
+    /**
+     This method is called when the touch landed on blank spaces
+     */
+    @objc func didTapOnBoard() {
+        delegate?.didTapOnBoard()
     }
     
 }
 
+extension BoardView: UIGestureRecognizerDelegate {
+    /**
+     Only receive touch when it landed on self, i.e. not on the nodes.
+     */
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view === self
+    }
+}
+
 protocol BoardViewDelegate {
-    func didTap(node: HexNode) // touched on node
+    func didTap(on node: HexNode) // touched on node
+    func didTapOnBoard() // touched on blank areas
 }

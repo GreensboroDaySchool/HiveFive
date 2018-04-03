@@ -21,7 +21,17 @@ import UIKit
 
 @IBDesignable
 class NodeView: UIView {
-    weak var node: HexNode!
+    
+    /**
+     Path contains information about both node and relative position
+     */
+    let path: Path!
+    
+    var node: HexNode {
+        return path!.destination
+    }
+    
+    
     
     /**
      The radius of the node (outer radius)
@@ -87,10 +97,10 @@ class NodeView: UIView {
     }
     
     /**
-     Each node view must be paired with a node.
+     Each node view must be paired with a path.
      */
-    init(node: HexNode) {
-        self.node = node
+    init(path: Path) {
+        self.path = path
         super.init(frame: CGRect.zero)
         self.isOpaque = false
         
@@ -99,6 +109,7 @@ class NodeView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.path = nil
         super.init(coder: aDecoder)
     }
     
@@ -121,10 +132,16 @@ class NodeView: UIView {
     /**
      Update the radius and coordinate of the current node view.
      - Parameter radius: The new radius
-     - Parameter coordinate: The new coordinate
+     - Parameter rootCo: The new root coordinate
      */
-    func update(radius: CGFloat, coordinate: CGPoint) {
-        self.frame = CGRect(origin: coordinate, size: calculateSize(radius: radius))
+    func update(radius: CGFloat, rootCo: CGPoint) {
+        let route = path.route
+        var offset = route.relativeCoordinate(radius: radius)
+        offset.y *= -1 // the y coordinate on screen is inverted
+        self.frame = CGRect(
+            origin: rootCo + offset,
+            size: calculateSize(radius: radius)
+        )
         self.radius = radius
     }
     

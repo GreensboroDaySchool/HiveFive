@@ -28,7 +28,7 @@ class HexNode: IdentityProtocol {
     var neighbors = Neighbors()
     var color: Color
     var identity: Identity {
-        get {return .none}
+        get {return .dummy}
     }
 
     /**
@@ -36,6 +36,13 @@ class HexNode: IdentityProtocol {
      */
     required init(color: Color) {
         self.color = color
+    }
+    
+    /**
+     For initialization of a dummy node
+     */
+    convenience init() {
+        self.init(color: .black)
     }
 
     /**

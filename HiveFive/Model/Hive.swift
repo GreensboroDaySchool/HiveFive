@@ -33,19 +33,22 @@ class Hive {
     }()
     
     var root: HexNode? {
-        didSet {
-            //notify the delegate when the root changes
-            delegate?.structureDidUpdate()
-        }
+        didSet {delegate?.structureDidUpdate()}
+    }
+    
+    /**
+     Assistive positions that indicated the spacial layout of the physical
+     coordinates of the available moves, etc.
+     */
+    var availablePositions = [Position]() {
+        didSet {delegate?.availablePositionsDidUpdate()}
     }
     
     /**
      The node that is currently selected by the user
      */
     var selectedNode: HexNode? {
-        didSet {
-            delegate?.selectedNodeDidUpdate()
-        }
+        didSet {delegate?.selectedNodeDidUpdate()}
     }
     
     var blackHand: Hand
@@ -65,8 +68,10 @@ class Hive {
      */
     func select(node: HexNode) {
         switch node.identity {
-        case .none: break
-        default: selectedNode = node
+        case .dummy: break
+        default:
+            selectedNode = node
+            availablePositions = node.availableMoves()
         }
     }
     
@@ -96,6 +101,7 @@ class Hive {
 protocol HiveDelegate {
     func structureDidUpdate()
     func selectedNodeDidUpdate()
+    func availablePositionsDidUpdate()
 }
 
 /**
@@ -110,7 +116,7 @@ struct Hand {
 }
 
 enum Identity: String {
-    case grasshopper = "G", queenBee = "Q", beetle = "B", spider = "S", soldierAnt = "A", none = ""
+    case grasshopper = "G", queenBee = "Q", beetle = "B", spider = "S", soldierAnt = "A", dummy = ":)"
 }
 
 protocol IdentityProtocol {
