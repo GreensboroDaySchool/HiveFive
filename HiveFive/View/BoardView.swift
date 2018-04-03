@@ -32,9 +32,9 @@ class BoardView: UIView {
     
     
     //Cache layout of the hive. Only re-layout when a node is moved/placed
-    fileprivate var _cachedLayout: Set<NodeCoordination>? = nil
+    fileprivate var _cachedLayout: Set<NodeCoordinate>? = nil
     //Since the views will only be added, so we will just not care about removing them
-    private var subnodeViews = [NodeCoordination:NodeView]()
+    private var subnodeViews = [NodeCoordinate:NodeView]()
     
     func onNodeChanges(){
         guard let layout = layout else { return }
@@ -54,21 +54,21 @@ class BoardView: UIView {
 
 extension BoardView {
     
-    fileprivate var layout: Set<NodeCoordination>? {
+    fileprivate var layout: Set<NodeCoordinate>? {
         if let cached = _cachedLayout { return cached }
         _cachedLayout = layoutHive()
         return _cachedLayout
     }
     
-    fileprivate struct NodeCoordination: Hashable {
+    fileprivate struct NodeCoordinate: Hashable {
         var node: HexNode
         var source: Direction
-        var coordination: CGPoint = .zero
+        var coordinate: CGPoint = .zero
         var zIndex = 0
         
         //Use the node's neighbors to identify the coordination
         var hashValue: Int { return node.neighbors.hashValue }
-        static func == (l: NodeCoordination, r: NodeCoordination) -> Bool {
+        static func == (l: NodeCoordinate, r: NodeCoordinate) -> Bool {
             return l.hashValue == r.hashValue
         }
         
@@ -78,14 +78,14 @@ extension BoardView {
         init(_ node: HexNode, from sourceDirection: Direction, at coordination: CGPoint, zIndex: Int){
             self.node = node
             self.source = sourceDirection
-            self.coordination = coordination
+            self.coordinate = coordination
             self.zIndex = zIndex
         }
         
-        init(_ node: HexNode, direction: Direction, from sourceCoordination: NodeCoordination){
+        init(_ node: HexNode, direction: Direction, from sourceCoordination: NodeCoordinate){
             self.node = node
             self.source = direction
-            self.coordination = sourceCoordination.coordination
+            self.coordinate = sourceCoordination.coordinate
             self.zIndex = sourceCoordination.zIndex
         }
         
@@ -94,12 +94,12 @@ extension BoardView {
         }
     }
     
-    fileprivate func layoutHive() -> Set<NodeCoordination>? {
+    fileprivate func layoutHive() -> Set<NodeCoordinate>? {
         //Only layout when there is a hive
         guard let hiveRoot = hiveRoot else { return nil }
-        var pool = [NodeCoordination]() //A queue that stores all the nodes that need to be processed
-        var processed = Set<NodeCoordination>()
-        let root = NodeCoordination(hiveRoot, from: .above, at: CGPoint(x: bounds.midX, y: bounds.midY), zIndex: 0)
+        var pool = [NodeCoordinate]() //A queue that stores all the nodes that need to be processed
+        var processed = Set<NodeCoordinate>()
+        let root = NodeCoordinate(hiveRoot, from: .above, at: CGPoint(x: bounds.midX, y: bounds.midY), zIndex: 0)
         
         //A wrapper function to provide a transformation closure to each surrounding node, withour coordinations
         func process(from sourceCoordination: NodeCoordination) -> (((offset: Int, element: HexNode?)) -> NodeCoordination) {
@@ -122,15 +122,15 @@ extension BoardView {
         //Transform node locations from the inside to the outside
         while(!pool.isEmpty){
             var current = pool.removeFirst()
-            var transformed = current.coordination
+            var transformed = current.coordinate
             
             //If it is supressing another node, return the node's location with zIndex - 1
             //We don't need to trace up because the uppermost node is always connected to another node
             if case .below = current.source {
-                current.coordination = transformed
+                current.coordinate = transformed
                 //Check if there is anymore to the node
                 if let nodeBelow = current.node.neighbors[.below] {
-                    let next = NodeCoordination(nodeBelow, from: .below, at: transformed, zIndex: current.zIndex - 1)
+                    let next = NodeCoordinate(nodeBelow, from: .below, at: transformed, zIndex: current.zIndex - 1)
                     if !processed.contains(next) { pool.append(next) }
                 }
                 processed.insert(current)
@@ -153,7 +153,7 @@ extension BoardView {
             default: break
             }
             
-            current.coordination = transformed
+            current.coordinate = transformed
             processed.insert(current)
             
             //Append current node's neighboors
