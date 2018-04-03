@@ -24,7 +24,7 @@ import Foundation
  since all of them are pieces that together consist a hexagonal board, a hexagonal node with
  references to all the neighbors is the ideal structure.
  */
-protocol HexNode: AnyObject {
+protocol HexNode: AnyObject, InsectProtocol {
     var neighbors: Neighbors { get set }
     var color: Color {get}
 

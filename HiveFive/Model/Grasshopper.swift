@@ -18,14 +18,15 @@
  */
 
 import Foundation
-class Grasshopper: HexNode {
+class Grasshopper: HexNode, InsectProtocol {
+    var neighbors = Neighbors()
     var color: Color
+    var insect: Insect = .grasshopper
     
     required init(color: Color) {
         self.color = color
     }
     
-    var neighbors = Neighbors()
     
     func availableMoves() -> [Destination] {
         if (!canDisconnect()) {

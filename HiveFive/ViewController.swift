@@ -62,6 +62,10 @@ class ViewController: UIViewController {
         }
         
         //Change node radius based on the scale
+        if board.nodeRadius >= board.maxNodeRadius && scale > 1
+            || board.nodeRadius <= board.minNodeRadius && scale < 1 {
+            return
+        }
         board.nodeRadius *= scale
         
         /*

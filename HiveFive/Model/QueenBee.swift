@@ -18,9 +18,10 @@
  */
 
 import Foundation
-class QueenBee: HexNode {
+class QueenBee: HexNode, InsectProtocol {
     var neighbors = Neighbors()
     var color: Color
+    var insect: Insect = .queenBee
     
     required init(color: Color) {
         self.color = color

@@ -18,9 +18,10 @@
  */
 
 import Foundation
-class SoldierAnt: HexNode {
+class SoldierAnt: HexNode, InsectProtocol {
     var neighbors = Neighbors()
     var color: Color
+    var insect: Insect = .soldierAnt
     
     required init(color: Color) {
         self.color = color

@@ -21,23 +21,22 @@ import UIKit
 
 @IBDesignable
 class NodeView: UIView {
-    weak var node: HexNode?
+    weak var node: HexNode!
     
     var radius: CGFloat = 0
     
     @IBInspectable var borderColor: UIColor = .gray
     @IBInspectable var borderWidth: CGFloat = 3.0
     @IBInspectable var fillColor: UIColor = UIColor.gray.withAlphaComponent(0.8)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        //Allow transparent background
+
+    init(node: HexNode) {
+        super.init(frame: CGRect.zero)
         self.isOpaque = false
+        self.node = node
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.isOpaque = false
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     private func calculateSize(radius: CGFloat) -> CGSize {
@@ -54,6 +53,42 @@ class NodeView: UIView {
     
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
+        
+        drawHexagon(rect)
+        drawIdentityGram(rect)
+        
+    }
+    
+    private func drawIdentityGram(_ rect: CGRect) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        let attributes : [NSAttributedStringKey:NSObject] = [
+            .paragraphStyle  : paragraphStyle,
+            .font            : UIFont.systemFont(ofSize: radius),
+            .foregroundColor : borderColor,
+            ]
+        
+        let myText = node.insect.rawValue
+        let attrString = NSAttributedString(string: myText, attributes: attributes)
+        
+        let y = attrString.height(withConstrainedWidth: bounds.size.width) / 4 + bounds.origin.y
+        let x = bounds.origin.x
+        let rect = CGRect(origin: CGPoint(x: x, y: y), size: bounds.size)
+        attrString.draw(in: rect)
+    }
+    
+    private func drawHexagon(_ rect: CGRect) {
+        let hexagon = pathForHexagon()
+        borderColor.setStroke()
+        hexagon.lineWidth = borderWidth
+        hexagon.stroke()
+        fillColor.setFill()
+        hexagon.fill()
+    }
+    
+    
+    private func pathForHexagon() -> UIBezierPath {
         let offset = CGPoint(x: borderWidth / 2, y: borderWidth / 2)
         let polygon = UIBezierPath()
         
@@ -76,10 +111,6 @@ class NodeView: UIView {
             x: offset.x,
             y: offset.y + (radius * sin(.pi / 3))))
         polygon.close()
-        borderColor.setStroke()
-        polygon.lineWidth = borderWidth
-        polygon.stroke()
-        fillColor.setFill()
-        polygon.fill()
+        return polygon
     }
 }

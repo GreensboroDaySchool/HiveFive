@@ -25,9 +25,16 @@ import UIKit
     
     @IBInspectable var nodeRadius: CGFloat = 48 {
         didSet {
+            nodeRadius = nodeRadius > maxNodeRadius ?
+                maxNodeRadius : nodeRadius < minNodeRadius ?
+                    minNodeRadius : nodeRadius
             updateDisplay()
         }
     }
+    
+    //prevent users from creating giant/tiny nodes
+    @IBInspectable var maxNodeRadius: CGFloat = 100
+    @IBInspectable var minNodeRadius: CGFloat = 10
     
     var rootCoordinate: CGPoint = .init(x: 0, y: 0) {
         didSet { // the coordinate of root node has changed (panning)
@@ -77,10 +84,8 @@ import UIKit
         paths = root.derivePaths()
         paths.append(Path(route: Route(directions: []), destination: root))
         subviews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
-        paths.forEach {path in
-            let nodeView = NodeView(frame: .zero)
-            nodeView.node = path.destination
-            self.addSubview(nodeView)
+        paths.forEach {
+            addSubview(NodeView(node: $0.destination))
         }
         updateDisplay()
     }

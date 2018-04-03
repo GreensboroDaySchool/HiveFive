@@ -18,9 +18,10 @@
  */
 
 import Foundation
-class Beetle: HexNode {
+class Beetle: HexNode, InsectProtocol {
     var neighbors = Neighbors()
     var color: Color
+    var insect: Insect = .beetle
     
     required init(color: Color) {
         self.color = color

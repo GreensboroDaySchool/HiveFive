@@ -18,8 +18,9 @@
  */
 
 import Foundation
-class Spider: HexNode {
+class Spider: HexNode, InsectProtocol {
     var color: Color
+    var insect: Insect = .spider
     
     required init(color: Color) {
         self.color = color
