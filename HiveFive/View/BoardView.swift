@@ -19,9 +19,16 @@
 
 import UIKit
 
-let nodeRadius: CGFloat = 48.0
+var nodeRadius: CGFloat = 48
 
 class BoardView: UIView {
+    
+    var centerOffset: CGPoint = .init(x: 0, y: 0) {
+        didSet {
+            _cachedLayout = layoutHive()
+            onNodeChanges()
+        }
+    }
     
     //the board view shouldn't know about hive; it should only know about the structure.
     var hiveRoot: HexNode? {
@@ -40,10 +47,14 @@ class BoardView: UIView {
         guard let layout = layout else { return }
         layout.forEach{
             current in
-            let view = subnodeViews[current] ?? { let _view = NodeView(frame: .zero); self.addSubview(_view); return _view }()
+            let view = subnodeViews[current] ?? { let _view = NodeView(frame: .zero)
+                self.addSubview(_view)
+                return _view
+                }()
+            
             view.node = current.node
             //Just assign it right here. Later can be used for animation purposes
-            view.frame = CGRect(origin: current.coordination, size: view.expectedSize)
+            view.frame = CGRect(origin: current.coordinate, size: view.expectedSize)
         }
     }
     
@@ -62,7 +73,7 @@ extension BoardView {
     
     fileprivate struct NodeCoordinate: Hashable {
         var node: HexNode
-        var source: Direction
+        var dir: Direction
         var coordinate: CGPoint = .zero
         var zIndex = 0
         
@@ -77,14 +88,14 @@ extension BoardView {
         
         init(_ node: HexNode, from sourceDirection: Direction, at coordination: CGPoint, zIndex: Int){
             self.node = node
-            self.source = sourceDirection
+            self.dir = sourceDirection
             self.coordinate = coordination
             self.zIndex = zIndex
         }
         
         init(_ node: HexNode, direction: Direction, from sourceCoordination: NodeCoordinate){
             self.node = node
-            self.source = direction
+            self.dir = direction
             self.coordinate = sourceCoordination.coordinate
             self.zIndex = sourceCoordination.zIndex
         }
@@ -99,16 +110,16 @@ extension BoardView {
         guard let hiveRoot = hiveRoot else { return nil }
         var pool = [NodeCoordinate]() //A queue that stores all the nodes that need to be processed
         var processed = Set<NodeCoordinate>()
-        let root = NodeCoordinate(hiveRoot, from: .above, at: CGPoint(x: bounds.midX, y: bounds.midY), zIndex: 0)
+        let root = NodeCoordinate(hiveRoot, from: .above, at: centerOffset, zIndex: 0)
         
         //A wrapper function to provide a transformation closure to each surrounding node, withour coordinations
-        func process(from sourceCoordination: NodeCoordination) -> (((offset: Int, element: HexNode?)) -> NodeCoordination) {
-            func _process(_ enumerated: (offset: Int, element: HexNode?)) -> NodeCoordination {
-                return NodeCoordination(
+        func process(from sourceCoordinate: NodeCoordinate) -> (((offset: Int, element: HexNode?)) -> NodeCoordinate) {
+            func _process(_ enumerated: (offset: Int, element: HexNode?)) -> NodeCoordinate {
+                return NodeCoordinate(
                     enumerated.element!,
                     from: Direction(rawValue: enumerated.offset)!,
-                    at: sourceCoordination.coordination,
-                    zIndex: sourceCoordination.zIndex
+                    at: sourceCoordinate.coordinate,
+                    zIndex: sourceCoordinate.zIndex
                 )
             }
             return _process
@@ -126,7 +137,7 @@ extension BoardView {
             
             //If it is supressing another node, return the node's location with zIndex - 1
             //We don't need to trace up because the uppermost node is always connected to another node
-            if case .below = current.source {
+            if case .below = current.dir {
                 current.coordinate = transformed
                 //Check if there is anymore to the node
                 if let nodeBelow = current.node.neighbors[.below] {
@@ -139,13 +150,13 @@ extension BoardView {
             
             //Left and Right (x-axis) are different from up/down (simpler)
             //thus using two switch statement to transform coordinations
-            switch(current.source){
+            switch(current.dir){
             case .upRight, .downRight: transformed.x += nodeRadius * 1.5
             case .upLeft, .downLeft: transformed.x -= nodeRadius * 1.5
             default: break
             }
             
-            switch(current.source){
+            switch(current.dir){
             case .upRight, .upLeft: transformed.y -= nodeRadius * sin(.pi / 3)
             case .downLeft, .downRight: transformed.y += nodeRadius * sin(.pi / 3)
             case .up: transformed.y -= nodeRadius * sin(.pi / 3) * 2
@@ -161,7 +172,7 @@ extension BoardView {
                 .neighbors
                 .enumerated()
                 .filter{ $0.element !== nil }
-                .map{ NodeCoordination($0.element!, direction: Direction(rawValue: $0.offset)!, from: current) }
+                .map{ NodeCoordinate($0.element!, direction: Direction(rawValue: $0.offset)!, from: current) }
                 .filter{ !processed.contains($0) })
         }
         

@@ -37,6 +37,8 @@ class ViewController: UIViewController {
         
         hive.delegate = self
         hive.root = root
+        board.centerOffset = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
+        board.setNeedsDisplay()
     }
 
     override func didReceiveMemoryWarning() {
