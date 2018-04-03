@@ -27,11 +27,11 @@ class QueenBee: HexNode, InsectProtocol {
         self.color = color
     }
 
-    func availableMoves() -> [Destination] {
+    func availableMoves() -> [Position] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Destination]()
+            return [Position]()
         }
-        return oneStepMoves().map{Destination.resolve(from: self, following: $0)}
+        return oneStepMoves().map{Position.resolve(from: self, following: $0)}
     }
 }

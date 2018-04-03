@@ -28,10 +28,10 @@ class Grasshopper: HexNode, InsectProtocol {
     }
     
     
-    func availableMoves() -> [Destination] {
+    func availableMoves() -> [Position] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Destination]()
+            return [Position]()
         }
         
         return Direction.xyDirections
@@ -40,13 +40,13 @@ class Grasshopper: HexNode, InsectProtocol {
             .map{$0!}
     }
     
-    private func explore(dir: Direction) -> Destination? {
+    private func explore(dir: Direction) -> Position? {
         guard var node = neighbors[dir] else {
             return nil
         }
         while node.neighbors[dir] != nil {
             node = node.neighbors[dir]!
         }
-        return Destination(node: node, dir: dir)
+        return Position(node: node, dir: dir)
     }
 }

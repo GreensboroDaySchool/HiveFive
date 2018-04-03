@@ -29,8 +29,8 @@ class Beetle: HexNode, InsectProtocol {
     
     
     
-    func availableMoves() -> [Destination] {
-        var moves = [Destination]()
+    func availableMoves() -> [Position] {
+        var moves = [Position]()
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
             return moves
@@ -40,11 +40,11 @@ class Beetle: HexNode, InsectProtocol {
         moves.append(contentsOf: base.neighbors.available()
             .filter{$0.dir.rawValue < 6}
             .map{getTopNode(of: $0.node)}
-            .map{Destination(node: $0, dir: .above)})
-        let moreMoves = base === self ? oneStepMoves().map{Destination.resolve(from: base, following: $0)} :
+            .map{Position(node: $0, dir: .above)})
+        let moreMoves = base === self ? oneStepMoves().map{Position.resolve(from: base, following: $0)} :
             Direction.xyDirections.map{(dir: $0, node: base.neighbors[$0])}
             .filter{$0.node == nil}
-            .map{Destination(node: base, dir: $0.dir)}
+            .map{Position(node: base, dir: $0.dir)}
         moves.append(contentsOf: moreMoves)
         
         return moves

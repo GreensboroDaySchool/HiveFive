@@ -203,29 +203,29 @@ struct Route: Equatable {
 }
 
 /**
- Destination defines the destination that a piece would eventually arrive by following a given route.
+ Position defines the position that a piece would eventually arrive by following a given route.
  */
-struct Destination: Equatable {
-    var node: HexNode // b/c the "one hive policy", the destination has to be the vacant locations around a node
+struct Position: Equatable {
+    var node: HexNode // b/c the "one hive policy", the position has to be the vacant locations around a node
     var dir: Direction // the direction of the vacant location
 
     /**
-     Resolve the destination by following a given Route.
+     Resolve the position by following a given Route.
      - Parameter start: The starting node of the route
-     - Parameter route: The route to be followed to get to the destination
-     - Returns: The resolved destination
+     - Parameter route: The route to be followed to get to the position
+     - Returns: The resolved position
      */
-    static func resolve(from start: HexNode, following route: Route) -> Destination {
+    static func resolve(from start: HexNode, following route: Route) -> Position {
         //        let nodes = start.connectedNodes() // this can be optimized -- only resolve the hive structure when pieces are moved/added
         var current = start;
         for q in 0..<(route.directions.count - 1) {
             let direction = route.directions[q]
             current = current.neighbors[direction]!
         }
-        return Destination(node: current, dir: route.directions.last!)
+        return Position(node: current, dir: route.directions.last!)
     }
     
-    static func ==(lhs: Destination, rhs: Destination) -> Bool {
+    static func ==(lhs: Position, rhs: Position) -> Bool {
         return lhs.node === rhs.node && lhs.dir == rhs.dir
     }
 }
@@ -234,7 +234,7 @@ struct Destination: Equatable {
 
 /**
  The difference between Path and Route is:
- 1) Route needs to be resolved to get to the destination
+ 1) Route needs to be resolved to get to a certain destination/location
  2) The destination of Path is known beforehand
  */
 typealias Path = (route: Route, destination: HexNode)

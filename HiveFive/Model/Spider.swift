@@ -29,40 +29,40 @@ class Spider: HexNode, InsectProtocol {
     var neighbors = Neighbors()
     private let allowedMoves = 3
     
-    func availableMoves() -> [Destination] {
+    func availableMoves() -> [Position] {
         if (!canDisconnect()) {
             // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Destination]()
+            return [Position]()
         }
         
         // can't go back to previous location
-        var traversed = [Destination]()
-        let destinations = resolveDestinations(&traversed, allowedMoves)
+        var traversed = [Position]()
+        let destinations = resolvePositions(&traversed, allowedMoves)
         
         return destinations
     }
     
-    private func resolveDestinations(_ traversed: inout [Destination], _ remaining: Int) -> [Destination] {
+    private func resolvePositions(_ traversed: inout [Position], _ remaining: Int) -> [Position] {
         registerTraversed(&traversed, self)
         let firstRoutes = oneStepMoves()
-        let firstDestinations = firstRoutes.map{Destination.resolve(from: self, following: $0)}
+        let firstPositions = firstRoutes.map{Position.resolve(from: self, following: $0)}
         if remaining == 0 { // base case
             let location = neighbors.available()[0]
-            return [Destination(node: location.node, dir: location.dir.opposite())]
+            return [Position(node: location.node, dir: location.dir.opposite())]
         }
-        return firstDestinations.filter{!traversed.contains($0)} // cannot go back to previous location
-            .map{destination -> [Destination] in
+        return firstPositions.filter{!traversed.contains($0)} // cannot go back to previous location
+            .map{position -> [Position] in
                 let neighbor = neighbors.available()[0]
-                let anchor = Destination(node: neighbor.node, dir: neighbor.dir.opposite())
-                self.move(to: destination) // move to next destination
-                let destinations = resolveDestinations(&traversed, remaining - 1) // derive next step
+                let anchor = Position(node: neighbor.node, dir: neighbor.dir.opposite())
+                self.move(to: position) // move to next destination
+                let positions = resolvePositions(&traversed, remaining - 1) // derive next step
                 self.move(to: anchor) // move back to previous location
-                return destinations
+                return positions
             }.flatMap{$0}
     }
     
-    private func registerTraversed(_ traversed: inout [Destination], _ node: HexNode) {
+    private func registerTraversed(_ traversed: inout [Position], _ node: HexNode) {
         traversed.append(contentsOf: node.neighbors.available()
-            .map{Destination(node: $0.node, dir: $0.dir.opposite())})
+            .map{Position(node: $0.node, dir: $0.dir.opposite())})
     }
 }

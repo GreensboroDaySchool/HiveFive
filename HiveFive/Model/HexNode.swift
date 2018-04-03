@@ -62,7 +62,7 @@ protocol HexNode: AnyObject, InsectProtocol {
     /**
      Checks if a certain movement is legal
      */
-    func canMove(to destination: Destination) -> Bool
+    func canMove(to position: Position) -> Bool
     
     /**
      Checks if a certain piece could get move in a certain direction.
@@ -73,30 +73,30 @@ protocol HexNode: AnyObject, InsectProtocol {
     func canGetIn(dir: Direction) -> Bool
 
     /**
-     Move the piece to the designated destination and **properly** connect the piece with the hive,
+     Move the piece to the designated position and **properly** connect the piece with the hive,
      i.e., handles multi-directional reference bindings, unlike connect(with:) which only handles bidirectional binding
-     - Warning: This method assumes that the destination is a valid destination and that the route taken is legal.
-       Maybe a more intuitive description is that this method snaps a piece off the hive and squeeze it into the destination
+     - Warning: This method assumes that the position is a valid position and that the route taken is legal.
+       Maybe a more intuitive description is that this method snaps a piece off the hive and squeeze it into the position
      - Attention: Use this method to MOVE the piece, not to initially PLACE a piece.
      */
-    func move(to destination: Destination)
+    func move(to position: Position)
 
     /**
      Moves the piece by following a certain route
-     (just for convenience, because route is eventually resolved to a destination)
+     (just for convenience, because route is eventually resolved to a position)
      */
     func move(by route: Route)
 
     /**
-     Checks whether a piece can initially connect to the hive at the designated destination
+     Checks whether a piece can initially connect to the hive at the designated position
      */
-    func canPlace(at destination: Destination) -> Bool
+    func canPlace(at position: Position) -> Bool
     
     /**
      - Attention: This is for initially putting down a piece; does not recommend using like move(to:)
      - Note: Will first check if the placement is allowed/legal
      */
-    func place(at destination: Destination)
+    func place(at position: Position)
 
     /**
      Remove the reference to a specific node from its neighbors
@@ -134,9 +134,9 @@ protocol HexNode: AnyObject, InsectProtocol {
     /**
      The implementation for this method should be different for each class that conforms to the HexNode protocol.
      For example, a beetle's route may cover a piece while a Queen's route may never overlap another piece.
-     - Returns: All possible destinations
+     - Returns: All possible positions
      */
-    func availableMoves() -> [Destination]
+    func availableMoves() -> [Position]
 
     /**
      - Returns: An array containing all the references to the connected pieces, including self; i.e. the entire hive
@@ -162,7 +162,7 @@ extension HexNode {
                 dirs.map{Route(directions: [dir, $0])} // ensure that the current node can squeeze in
                     .filter{canGetIn(dir: $0.simplified().directions[0])}
             }()}
-            .flatMap{$0} // if two different routes lead to the same destination, keep only one.
+            .flatMap{$0} // if two different routes lead to the same position, keep only one.
             .filterDuplicates(isDuplicate: ==)
     }
     
@@ -197,16 +197,16 @@ extension HexNode {
         return canDisconnect() && availableMoves().count > 0
     }
     
-    func canMove(to destination: Destination) -> Bool {
+    func canMove(to position: Position) -> Bool {
         if !canDisconnect() {return false}
         let availableMoves = self.availableMoves()
         let preserved = neighbors
-        move(to: destination)
+        move(to: position)
         var canMove = false
         for move in availableMoves {
             let contains = neighbors.available()
                 .map{(node: $0.node, dir: $0.dir.opposite())}
-                .contains{Destination(node: $0.node, dir: $0.dir) == move}
+                .contains{Position(node: $0.node, dir: $0.dir) == move}
             if contains {
                 canMove = true
                 break
@@ -225,12 +225,12 @@ extension HexNode {
         return canGetIn
     }
 
-    func canPlace(at destination: Destination) -> Bool {
-        let node = destination.node
-        let dir = destination.dir
+    func canPlace(at position: Position) -> Bool {
+        let node = position.node
+        let dir = position.dir
         if node.neighbors[dir] != nil {return false}
         let preserved = neighbors // preserve neighbors
-        move(to: destination)
+        move(to: position)
         let opponents = neighbors.available()
             .map{Hive.traverse(from: $0.node, toward: .up)}
             .filter{$0.color != color}
@@ -240,10 +240,10 @@ extension HexNode {
         return opponents == 0
     }
 
-    func place(at destination: Destination) {
-        if !canPlace(at: destination) {fatalError("Cannot place at \(destination)")}
+    func place(at position: Position) {
+        if !canPlace(at: position) {fatalError("Cannot place at \(position)")}
         if neighbors.available().count != 0 {fatalError("Still connected to the hive. Please disconnect first")}
-        move(to: destination)
+        move(to: position)
     }
     
     /**
@@ -252,14 +252,14 @@ extension HexNode {
      - Parameter dir: The direction in relation to the destination node in which the current piece is to be placed at
      */
     func place(at dir: Direction, of node: HexNode) {
-        place(at: Destination(node: node, dir: dir))
+        place(at: Position(node: node, dir: dir))
     }
 
-    func move(to destination: Destination) {
+    func move(to position: Position) {
         self.disconnect() // disconnect from the hive
-        let node = destination.node
-        let dir = destination.dir
-        connect(with: node, at: dir) // connect with destination node
+        let node = position.node
+        let dir = position.dir
+        connect(with: node, at: dir) // connect with position node
         inferAdditionalConnections(from: node, at: dir) // make additional connections
     }
     
@@ -269,7 +269,7 @@ extension HexNode {
      - Parameter dir: The direction in relation to the destination node in which the current piece is moving to.
      */
     func move(to dir: Direction, of node: HexNode) {
-        move(to: Destination(node: node, dir: dir))
+        move(to: Position(node: node, dir: dir))
     }
     
     private func inferAdditionalConnections(from node: HexNode, at dir: Direction) {
@@ -277,17 +277,17 @@ extension HexNode {
             .map{(dir: $0, trans: $0.translation())}
         // directions in which additional connections might need to be made
         
-        derivePaths().map {path -> Destination? in //make additional connections to complete the hive
+        derivePaths().map {path -> Position? in //make additional connections to complete the hive
             let filtered = pairs.filter {path.route.translation == $0.trans}
             return filtered.count == 0 ? nil :
-                Destination(node: path.destination, dir: filtered[0].dir)
+                Position(node: path.destination, dir: filtered[0].dir)
             }.filter{$0 != nil}
             .map{$0!}
             .forEach{$0.node.connect(with: self, at: $0.dir)}
     }
 
     func move(by route: Route) {
-        move(to: Destination.resolve(from: self, following: route))
+        move(to: Position.resolve(from: self, following: route))
     }
 
     func numConnected() -> Int {
