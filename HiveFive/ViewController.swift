@@ -36,17 +36,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let root = QueenBee(color: .black)
-        let anotherNode = Grasshopper(color: .black)
-        anotherNode.connect(with: root, at: .downLeft)
-        let anotherAnotherNode = Spider(color: .black)
-        anotherAnotherNode.connect(with: root, at: .upRight)
-        let oneSubSubNode = Beetle(color: .black)
-        oneSubSubNode.connect(with: anotherAnotherNode, at: .down)
+        let blackQueenBee = QueenBee(color: .black)
+        let blackGrasshopper = Grasshopper(color: .black)
+        let blackSpider = Spider(color: .black)
+        let blackBeetle = Beetle(color: .black)
+        
+        blackGrasshopper.place(at: .downLeft, of: blackQueenBee)
+        blackSpider.place(at: .upRight, of: blackQueenBee)
+        blackBeetle.place(at: .down, of: blackSpider)
         
         hive.delegate = self
-        hive.root = root
+        hive.root = blackQueenBee
         board.rootCoordinate = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
+        
     }
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {

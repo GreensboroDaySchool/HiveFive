@@ -245,6 +245,15 @@ extension HexNode {
         if neighbors.available().count != 0 {fatalError("Still connected to the hive. Please disconnect first")}
         move(to: destination)
     }
+    
+    /**
+     The behavior is the same as place(at:), this is for convenient access
+     - Parameter node: The destination node
+     - Parameter dir: The direction in relation to the destination node in which the current piece is to be placed at
+     */
+    func place(at dir: Direction, of node: HexNode) {
+        place(at: Destination(node: node, dir: dir))
+    }
 
     func move(to destination: Destination) {
         self.disconnect() // disconnect from the hive
@@ -252,6 +261,15 @@ extension HexNode {
         let dir = destination.dir
         connect(with: node, at: dir) // connect with destination node
         inferAdditionalConnections(from: node, at: dir) // make additional connections
+    }
+    
+    /**
+     The behavior is the same as move(to:), this overloading method is for convenient access.
+     - Parameter node: The destination node.
+     - Parameter dir: The direction in relation to the destination node in which the current piece is moving to.
+     */
+    func move(to dir: Direction, of node: HexNode) {
+        move(to: Destination(node: node, dir: dir))
     }
     
     private func inferAdditionalConnections(from node: HexNode, at dir: Direction) {
