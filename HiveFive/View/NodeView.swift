@@ -64,6 +64,13 @@ class NodeView: UIView {
     }
     
     /**
+     Actual radius of the polygon that is drawn on screen
+     */
+    var displayRadius: CGFloat {
+        get {return radius * displayRadiusRatio}
+    }
+    
+    /**
      Grabs the drawing core graphics context, for convenience.
      */
     var context: CGContext {
@@ -82,18 +89,35 @@ class NodeView: UIView {
         return isSelected ? selectedFillColor : regularFillColor
     }
     
+    @IBInspectable var dummyBorderColor: UIColor = UIColor.green
+    @IBInspectable var dummyFillColor: UIColor = UIColor.green.withAlphaComponent(0.2)
+    
     /**
      Ratio acquired by doing (borderWidth / radius)
      */
     @IBInspectable var borderWidthRatio: CGFloat = 1 / 16
     
+    /**
+     Ratio acquired by doing (dummyBorderRatio / radius)
+     */
+    @IBInspectable var dummyBorderWidthRatio: CGFloat = 1 / 16
+    
+    /**
+     Ratio acquired by doing (displayRadius / radius)
+     */
+    @IBInspectable var displayRadiusRatio: CGFloat = 15 / 16
 
+    
     /**
      Since the user can zoom in and out, a fixed borderWidth is no longer suitable.
      The border width should instead be derived from node radius by multiplying with a ratio.
      */
     var borderWidth: CGFloat {
         get {return radius * borderWidthRatio}
+    }
+    
+    var dummyBorderWidth: CGFloat {
+        get {return radius * dummyBorderWidthRatio}
     }
     
     /**
@@ -147,8 +171,24 @@ class NodeView: UIView {
     
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        drawHexagon(rect)
-        drawIdentityGram(rect)
+        switch node.identity {
+        case .dummy: drawDummy()
+        default:
+            drawHexagon(rect)
+            drawIdentityGram(rect)
+        }
+    }
+    
+    private func drawDummy() {
+        let dummy = pathForPolygon(radius: displayRadius, sides: 6)
+        context.saveGState()
+        context.translateBy(x: bounds.midX, y: bounds.midY)
+        dummyFillColor.setFill()
+        dummyBorderColor.setStroke()
+        dummy.lineWidth = dummyBorderWidth
+        dummy.fill()
+        dummy.stroke()
+        context.restoreGState()
     }
     
     /**
@@ -192,7 +232,7 @@ class NodeView: UIView {
      This should be the same for every node, except maybe color
      */
     private func drawHexagon(_ rect: CGRect) {
-        let hexagon = pathForPolygon(radius: radius, sides: 6)
+        let hexagon = pathForPolygon(radius: displayRadius, sides: 6)
         context.saveGState() // save
         borderColor.setStroke()
         context.translateBy(x: bounds.midX, y: bounds.midY)

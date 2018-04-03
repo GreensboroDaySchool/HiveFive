@@ -122,8 +122,17 @@ import UIKit
     }
     
     func updateAvailablePositions() {
-//        let positions = availablePositions
-//        positions.forEach{}
+        nodeViews.filter{$0.node.identity == .dummy}
+            .forEach{$0.removeFromSuperview()}
+        let knownPaths = nodeViews.map{$0.path!}
+        availablePositions.forEach {position in
+            var route = knownPaths.filter{$0.destination === position.node}
+                .map{$0.route}[0]
+            route = route.append([position.dir])
+            let path = Path(route: route, destination: HexNode())
+            addSubview(NodeView(path: path))
+        }
+        updateDisplay()
     }
     
     /**

@@ -80,6 +80,7 @@ class Hive {
      */
     func cancelSelection() {
         selectedNode = nil
+        availablePositions = []
     }
     
     /**
