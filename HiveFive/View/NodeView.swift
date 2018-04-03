@@ -29,6 +29,24 @@ class NodeView: UIView {
     private var radius: CGFloat = 0
     
     /**
+     This indicates whether the node is currently selected. The outlook/color should change accordingly
+     */
+    var isSelected = false {
+        didSet {
+            if oldValue != isSelected {
+                setNeedsDisplay()
+            }
+        }
+    }
+    
+    /**
+     Since the superview of NodeView should always be its delegate, this is much more convenient.
+     */
+    var delegate: NodeViewDelegate {
+        return self.superview! as! NodeViewDelegate
+    }
+    
+    /**
      Radius of the circle that fits in the hexagon
      */
     var innerRadius: CGFloat {
@@ -42,9 +60,23 @@ class NodeView: UIView {
         return UIGraphicsGetCurrentContext()!
     }
     
-    @IBInspectable var borderColor: UIColor = .gray
+    @IBInspectable var regularBorderColor: UIColor = .gray
+    @IBInspectable var selectedBorderColor: UIColor = .red
+    var borderColor: UIColor {
+        return isSelected ? selectedBorderColor : regularBorderColor
+    }
+    
+    @IBInspectable var regularFillColor: UIColor = UIColor.gray.withAlphaComponent(0.3)
+    @IBInspectable var selectedFillColor: UIColor = UIColor.red.withAlphaComponent(0.3)
+    var fillColor: UIColor {
+        return isSelected ? selectedFillColor : regularFillColor
+    }
+    
+    /**
+     Ratio acquired by doing (borderWidth / radius)
+     */
     @IBInspectable var borderWidthRatio: CGFloat = 1 / 16
-    @IBInspectable var fillColor: UIColor = UIColor.gray.withAlphaComponent(0.8)
+    
 
     /**
      Since the user can zoom in and out, a fixed borderWidth is no longer suitable.
@@ -58,17 +90,21 @@ class NodeView: UIView {
      Each node view must be paired with a node.
      */
     init(node: HexNode) {
+        self.node = node
         super.init(frame: CGRect.zero)
         self.isOpaque = false
-        self.node = node
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        addGestureRecognizer(tap)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(node.identity.rawValue)
+    @objc func handleTap() {
+        print("Tapped: \(node.identity.rawValue)")
+        delegate.didTap(node: node)
     }
     
     /**
@@ -169,4 +205,11 @@ class NodeView: UIView {
         path.close()
         return path
     }
+}
+
+/**
+ The delegate protocol helps to pass on the action to the delegate
+ */
+protocol NodeViewDelegate {
+    func didTap(node: HexNode)
 }

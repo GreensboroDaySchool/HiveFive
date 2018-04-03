@@ -19,7 +19,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+/**
+ This is the Controller of the MVC design pattern.
+ In this case -
+ >   Model:      Hive
+ >   View:       BoardView
+ >   Controller: ViewController
+ */
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet var pan: UIPanGestureRecognizer!
     @IBOutlet var pinch: UIPinchGestureRecognizer!
@@ -29,7 +36,14 @@ class ViewController: UIViewController {
      */
     private var lastTranslation: CGPoint?
     
+    /**
+     View
+     */
     var board: BoardView { return view.viewWithTag(233) as! BoardView }
+    
+    /**
+     Model
+     */
     var hive: Hive {
         get {return Hive.sharedInstance}
     }
@@ -45,10 +59,20 @@ class ViewController: UIViewController {
         blackSpider.place(at: .upRight, of: blackQueenBee)
         blackBeetle.place(at: .down, of: blackSpider)
         
-        hive.delegate = self
-        hive.root = blackQueenBee
-        board.rootCoordinate = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
+        hive.delegate = self // establish communication with Model
+        board.delegate = self // establish communication with View
         
+        hive.root = blackQueenBee
+        let ctr = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
+        board.rootCoordinate = ctr
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tap.delegate = self
+        board.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        hive.cancelSelection()
     }
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
@@ -110,11 +134,29 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view === gestureRecognizer.view
+    }
+    
+    
+}
+
+extension ViewController: BoardViewDelegate {
+    func didTap(node: HexNode) {
+        hive.select(node: node)
+    }
 }
 
 extension ViewController: HiveDelegate {
-    func hiveDidUpdate() {
-        // transfer the updated root to boardview for display
+    /**
+     Transfer the updated root structure from hive to boardview for display
+     */
+    func structureDidUpdate() {
         board.root = hive.root
+    }
+    
+    func selectedNodeDidUpdate() {
+        board.updateSelectedNode(hive.selectedNode)
     }
 }

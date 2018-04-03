@@ -21,7 +21,7 @@ import UIKit
 
 
 
-@IBDesignable class BoardView: UIView {
+@IBDesignable class BoardView: UIView, NodeViewDelegate {
     
     @IBInspectable var nodeRadius: CGFloat = 48 {
         didSet {
@@ -35,6 +35,8 @@ import UIKit
     //prevent users from creating giant/tiny nodes
     @IBInspectable var maxNodeRadius: CGFloat = 100
     @IBInspectable var minNodeRadius: CGFloat = 10
+    
+    var delegate: BoardViewDelegate?
     
     var rootCoordinate: CGPoint = .init(x: 0, y: 0) {
         didSet { // the coordinate of root node has changed (panning)
@@ -90,7 +92,34 @@ import UIKit
         updateDisplay()
     }
     
-//    override func draw(_ rect: CGRect) {
-//
-//    }
+    /**
+     This method should be called each time the selected node is updated.
+     - Parameter node: When this is nil, cancel selection for all node views;
+     otherwise when selected is a reference, the node view containing the reference
+     to the node will be marked as selected.
+     */
+    func updateSelectedNode(_ node: HexNode?) {
+        nodeViews.enumerated().forEach {(index, element) in
+            if element.node === node {
+                element.isSelected = true
+                element.removeFromSuperview()
+                addSubview(element) // bring selected node to foreground
+                paths.append(paths.remove(at: index)) // rearrange paths accordingly! Bad practice though...
+            } else {
+                element.isSelected = false
+            }
+        }
+    }
+    
+    /**
+     This method is called when the touch landed on one of the nodes
+     */
+    func didTap(node: HexNode) {
+        delegate?.didTap(node: node)
+    }
+    
+}
+
+protocol BoardViewDelegate {
+    func didTap(node: HexNode) // touched on node
 }

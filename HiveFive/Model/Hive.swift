@@ -21,6 +21,7 @@ import Foundation
 
 /**
  The actual game has no boards, but we need an invisible board that is able to traverse/modify the HexNode ADT.
+ This is the Model of the MVC design pattern
  */
 class Hive {
     
@@ -34,7 +35,16 @@ class Hive {
     var root: HexNode? {
         didSet {
             //notify the delegate when the root changes
-            delegate?.hiveDidUpdate()
+            delegate?.structureDidUpdate()
+        }
+    }
+    
+    /**
+     The node that is currently selected by the user
+     */
+    var selectedNode: HexNode? {
+        didSet {
+            delegate?.selectedNodeDidUpdate()
         }
     }
     
@@ -45,6 +55,26 @@ class Hive {
     init() {
         blackHand = Hand()
         whiteHand = Hand()
+    }
+    
+    /**
+     The hive reacts according to the type of node that is selected and the node that is previously selected.
+     1) If QueenBee is previously selected and now a destination node is selected, the hive would
+     react by moving QueenBee to the destination node and tell the delegate that the structure has updated.
+     - Todo: Implement
+     */
+    func select(node: HexNode) {
+        switch node.identity {
+        case .none: break
+        default: selectedNode = node
+        }
+    }
+    
+    /**
+     The user has touched blank space between nodes, should cancel selection.
+     */
+    func cancelSelection() {
+        selectedNode = nil
     }
     
     /**
@@ -64,7 +94,8 @@ class Hive {
 }
 
 protocol HiveDelegate {
-    func hiveDidUpdate()
+    func structureDidUpdate()
+    func selectedNodeDidUpdate()
 }
 
 /**

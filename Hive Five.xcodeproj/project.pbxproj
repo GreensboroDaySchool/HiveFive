@@ -123,13 +123,13 @@
 		2CFCE465206B00880041EDD1 /* HiveFive */ = {
 			isa = PBXGroup;
 			children = (
+				3291A3222073FDB300DBF9B2 /* Controller */,
 				32B109AC206EECAC0065E465 /* Util */,
 				32D1D14F206BEE71008444F4 /* View */,
 				32D1D144206BE9BE008444F4 /* Model */,
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
 				2CFCE46D206B00880041EDD1 /* Assets.xcassets */,
 				2CFCE46A206B00880041EDD1 /* Main.storyboard */,
-				2CFCE468206B00880041EDD1 /* ViewController.swift */,
 				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2CFCE472206B00880041EDD1 /* Info.plist */,
 			);
@@ -152,6 +152,14 @@
 				2CFCE4C6206C60590041EDD1 /* Info.plist */,
 			);
 			path = "HiveFive Tests";
+			sourceTree = "<group>";
+		};
+		3291A3222073FDB300DBF9B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2CFCE468206B00880041EDD1 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		32B109AC206EECAC0065E465 /* Util */ = {
