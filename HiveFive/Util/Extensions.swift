@@ -27,17 +27,33 @@ extension Array {
     }
 }
 
-//Various extensions developed by Jiachen Ren. Migrated from Hashlife project
+/*
+ Various extensions developed by Jiachen Ren. Migrated from Hashlife project
+ */
 
 extension CGPoint {
+    
+    /**
+     Equivalent representation of the point with Vec2D
+     */
     var vec2D: Vec2D {
         return Vec2D(point: self)
     }
     
+    /**
+     Translate by doing self.x + x, self.y + y
+     - Parameter x: Offset x
+     - Parameter y: Offset y
+     - Returns: A new CGPoint instance that is translated by the offset.
+     */
     func translate(_ x: CGFloat, _ y: CGFloat) -> CGPoint {
         return CGPoint(x: self.x + x, y: self.y + y);
     }
     
+    /**
+     - Parameter point: The CGPoint to which the translation is based on.
+     - Returns: A new CGPoint instance that is translated by the coordinate represented by the given point/
+     */
     func translate(by point: CGPoint) -> CGPoint {
         return self.translate(point.x, point.y)
     }
@@ -50,41 +66,104 @@ extension CGPoint {
         return vec2D.dist(other.vec2D)
     }
     
+    /**
+     - Parameter from: First point.
+     - Parameter to: Second point.
+     - Returns: The midpoint between the first point and the second point.
+     */
     static func midpoint(from p1: CGPoint, to p2: CGPoint) -> CGPoint{
         return CGPoint(x: (p2.x+p1.x)/2, y: (p2.y+p1.y)/2)
     }
     
+    /**
+     Equivalent to translate(by:)
+     */
     static func +(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }
     
+    /**
+     Opposite of translate(by:)
+     */
     static func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
     }
 }
 
-
-
-extension CGFloat {
-    static func random() -> CGFloat {
-        let dividingConst: UInt32 = 4294967295
-        return CGFloat(arc4random()) / CGFloat(dividingConst)
+extension Double {
+    
+    /**
+     This is sufficient for most scenarios!
+     - Returns: A random double from 0 to 1 using the arc4 random number generation algorithm
+     */
+    static func random() -> Double {
+        let arc4Max: UInt32 = 4294967295
+        return Double(arc4random()) / Double(arc4Max)
     }
     
-    static func random(min: CGFloat, max: CGFloat) -> CGFloat {
+    /**
+     - Parameter min: A double
+     - Parameter max: Another double
+     - Note: Automatically swaps min and max if max is larger than min.
+     - Returns: A random double between min and max.
+     */
+    static func random(min: Double, max: Double) -> Double {
         var min = min, max = max
         if (max < min) {swap(&min, &max)}
         return min + random() * (max - min)
     }
     
-    private static func swap(_ a: inout CGFloat, _ b: inout CGFloat){
+    /**
+     Swaps two doubles - for convenience.
+     */
+    private static func swap(_ a: inout Double, _ b: inout Double){
         let temp = a
         a = b
         b = temp
     }
+    
+    /**
+     Maps a given value within a given range to another range
+     - Parameter i: The value to be mapped
+     - Parameter v1: Min value of first range
+     - Parameter v2: Max value of first range
+     - Parameter t1: Min value of second range
+     - Parameter t2: Max value of second range
+     - Returns: The mapped double value
+     */
+    static func map(_ i: Double, _ v1: Double, _ v2: Double, _ t1: Double, _ t2: Double) -> Double {
+        return (i - v1) / (v2 - v1) * (t2 - t1) + t1
+    }
+}
+
+
+extension CGFloat {
+    
+    /**
+     This is sufficient for most scenarios!
+     - Returns: A random CGFloat from 0 to 1 using the arc4 random number generation algorithm
+     */
+    static func random() -> CGFloat {
+        return CGFloat(Double.random())
+    }
+    
+    /**
+     - Parameter min: A CGFloat
+     - Parameter max: Another CGFloat
+     - Note: Automatically swaps min and max if max is larger than min.
+     - Returns: A random CGFloat between min and max.
+     */
+    static func random(min: CGFloat, max: CGFloat) -> CGFloat {
+        return CGFloat(Double.random(min: Double(min), max: Double(max)))
+    }
+    
 }
 
 extension Decimal {
+    
+    /**
+     IntValue of the Decimal - for convenience.
+     */
     var intValue: Int {
         return NSDecimalNumber(decimal: self).intValue
     }
@@ -100,41 +179,86 @@ extension Date {
     }
 }
 
-//Modified from https://stackoverflow.com/questions/28644311/how-to-get-the-rgb-code-int-from-an-uicolor-in-swift
+
 extension UIColor {
-    func rgb() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
-        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
-        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        return (r: red, g: green, b: blue, a: alpha)
-    }
-}
-
-
-public class Utils {
-    public static func map(_ i: CGFloat, _ v1: CGFloat, _ v2: CGFloat, _ t1: CGFloat, _ t2: CGFloat) -> CGFloat {
-        return (i - v1) / (v2 - v1) * (t2 - t1) + t1
+    
+    /**
+     Decomposes UIColor to its RGBA components
+     */
+    var rgbColor: RGBColor {
+        get {
+            var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+            self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+            return RGBColor(red: red, green: green, blue: blue, alpha: alpha)
+        }
     }
     
-    public static func loadFile(name: String, extension ext: String) -> String? {
-        let path = Bundle.main.path(forResource: name, ofType: ext, inDirectory: nil)
-        let url = URL(fileURLWithPath: path!)
-        let data = try? Data(contentsOf: url)
-        return String(data: data!, encoding: .utf8)
+    /**
+     Decomposes UIColor to its HSBA components
+     */
+    var hsbColor: HSBColor {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        self.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return HSBColor(hue: h, saturation: s, brightness: b, alpha: a)
+    }
+    
+    /**
+     Holds the CGFloat values of HSBA components of a color
+     */
+    public struct HSBColor {
+        var hue: CGFloat
+        var saturation: CGFloat
+        var brightness: CGFloat
+        var alpha: CGFloat
+        
+        var uiColor: UIColor {
+            get {
+                return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+            }
+        }
+    }
+
+    /**
+     Holds the CGFloat values of RGBA components of a color
+     */
+    public struct RGBColor {
+        var red: CGFloat
+        var green: CGFloat
+        var blue: CGFloat
+        var alpha: CGFloat
+        
+        var uiColor: UIColor {
+            get {
+                return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+            }
+        }
     }
 }
 
 extension CGContext {
-    static func point(at point: CGPoint, strokeWeight: CGFloat){
-        let circle = UIBezierPath(ovalIn: CGRect(center: point, size: CGSize(width: strokeWeight, height: strokeWeight)))
-        circle.fill()
-    }
+    /**
+     Fills a circle at a given coordinate with designated radius
+     */
     static func fillCircle(center: CGPoint, radius: CGFloat) {
         let circle = UIBezierPath(ovalIn: CGRect(center: center, size: CGSize(width: radius * 2, height: radius * 2)))
         circle.fill()
     }
+    
+    /**
+     Strokes a circle at a given coordinate with designated radius
+     */
+    static func strokeCircle(center: CGPoint, radius: CGFloat) {
+        let circle = UIBezierPath(ovalIn: CGRect(center: center, size: CGSize(width: radius * 2, height: radius * 2)))
+        circle.stroke()
+    }
 }
 
 extension CGRect {
+    
+    /**
+     - Parameter center: The center point of the rectangle
+     - Parameter size: The size of the rectangle
+     */
     init(center: CGPoint, size: CGSize){
         self.init(
             origin: CGPoint(
@@ -144,9 +268,12 @@ extension CGRect {
             size: size
         )
     }
-    static func fillCircle(center: CGPoint, radius: CGFloat) {
-        let circle = UIBezierPath(ovalIn: CGRect(center: center, size: CGSize(width: radius * 2, height: radius * 2)))
-        circle.fill()
+    
+    /**
+     - Returns: Path for the inner circle that fits in the rectangle, with its center at the center of the rectangle
+     */
+    static func innerCircle(center: CGPoint, radius: CGFloat) -> UIBezierPath {
+        return UIBezierPath(ovalIn: CGRect(center: center, size: CGSize(width: radius * 2, height: radius * 2)))
     }
 }
 
