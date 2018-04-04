@@ -37,6 +37,11 @@ class NodeView: UIView {
      The radius of the node (outer radius)
      */
     private var radius: CGFloat = 0
+    /**
+     The coordinate of the root node
+     */
+    private var rootCoordinate: CGPoint = .zero
+    
     
     /**
      This indicates whether the node is currently selected. The outlook/color should change accordingly
@@ -211,15 +216,30 @@ class NodeView: UIView {
      - Parameter radius: The new radius
      - Parameter rootCo: The new root coordinate
      */
-    func update(radius: CGFloat, rootCo: CGPoint) {
+    private func update() {
         let route = path.route
         var offset = route.relativeCoordinate(radius: radius)
         offset.y *= -1 // the y coordinate on screen is inverted
         self.frame = CGRect(
-            origin: rootCo + offset,
+            origin: rootCoordinate + offset,
             size: calculateSize(radius: radius)
         )
+    }
+    
+    /**
+     - Parameter rootCoordinate: The coordinate of the root node.
+     */
+    func update(rootCoordinate: CGPoint) {
+        self.rootCoordinate = rootCoordinate
+        update()
+    }
+    
+    /**
+     - Parameter radius: The new Radius.
+     */
+    func update(radius: CGFloat) {
         self.radius = radius
+        update()
     }
     
     // An empty implementation adversely affects performance during animation.

@@ -28,7 +28,7 @@ import UIKit
             nodeRadius = nodeRadius > maxNodeRadius ?
                 maxNodeRadius : nodeRadius < minNodeRadius ?
                     minNodeRadius : nodeRadius
-            updateDisplay()
+            updateNodeRadius()
         }
     }
     
@@ -39,7 +39,7 @@ import UIKit
     var delegate: BoardViewDelegate?
     
     var rootCoordinate: CGPoint = .init(x: 0, y: 0) { // the coordinate of root node has changed (panning)
-        didSet {updateDisplay()}
+        didSet {updateNodeCoordinates()}
     }
     
     /**
@@ -80,12 +80,19 @@ import UIKit
     }
     
     /**
-     This method should be called when the user is panning or zooming the structure.
-     When rootCoordinate or nodeRadius changes, only the coordinates need to be updated.
+     This method should be called when the user is zooming the structure.
+     When nodeRadius changes, only the radius of each need to be updated such that the new coordinates could be calculated
      */
-    func updateDisplay() {
-        nodeViews.forEach {$0.update(radius: nodeRadius, rootCo: rootCoordinate)}
+    func updateNodeRadius() {
+        nodeViews.forEach {$0.update(radius: nodeRadius)}
         subviews.forEach{$0.setNeedsDisplay()} // prevent pixelation, affects performance though
+    }
+    
+    /**
+     Only updates the coordinate, the node views don't need to be redrawn.
+     */
+    func updateNodeCoordinates() {
+        nodeViews.forEach{$0.update(rootCoordinate: rootCoordinate)}
     }
     
     /**
@@ -101,7 +108,8 @@ import UIKit
         paths.forEach {
             addSubview(NodeView(path: $0))
         }
-        updateDisplay()
+        updateNodeRadius()
+        updateNodeCoordinates()
     }
     
     /**
@@ -135,7 +143,8 @@ import UIKit
             let path = Path(route: route, destination: dummy)
             addSubview(NodeView(path: path))
         }
-        updateDisplay()
+        updateNodeRadius()
+        updateNodeCoordinates()
     }
     
     /**
