@@ -131,8 +131,8 @@ enum Identity: String {
 //    case grasshopper = "𝜞", queenBee = "𝜟", beetle = "𝜭", spider = "𝜮", soldierAnt = "𝜴", dummy = "𝜩"
 //    case grasshopper = "𝞝", queenBee = "𝞡", beetle = "𝞨", spider = "𝞚", soldierAnt = "𝞧", dummy = "𝞦"
 //    case grasshopper = "𝝣", queenBee = "𝝠", beetle = "𝝧", spider = "𝝮", soldierAnt = "𝝭", dummy = "𝝬"
-//    case grasshopper = "♞", queenBee = "♛", beetle = "♟", spider = "♝", soldierAnt = "♜", dummy = "♚"
-    case grasshopper = "♘", queenBee = "♕", beetle = "♙", spider = "♗", soldierAnt = "♖", dummy = "♔"
+    case grasshopper = "♞", queenBee = "♛", beetle = "♟", spider = "♝", soldierAnt = "♜", dummy = "♚"
+//    case grasshopper = "♘", queenBee = "♕", beetle = "♙", spider = "♗", soldierAnt = "♖", dummy = "♔"
 //      case grasshopper = "$", queenBee = "€", beetle = "¥", spider = "¢", soldierAnt = "£", dummy = "₽"
 //    case grasshopper = "😀", queenBee = "😆", beetle = "🙃", spider = "🤪", soldierAnt = "😎", dummy = "🤩"
 }

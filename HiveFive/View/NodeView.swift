@@ -67,8 +67,17 @@ class NodeView: UIView {
      Actual radius of the polygon that is drawn on screen
      */
     var displayRadius: CGFloat {
-        get {return radius * displayRadiusRatio}
+        get {
+            return radius * displayRadiusRatio * pow(CGFloat(overlapShrinkRatio), CGFloat(nodesBelow()))
+        }
     }
+    
+    /**
+     Defines by how much the radius of a piece should shrink when it goes on top of another piece
+     */
+    var overlapShrinkRatio: CGFloat = 0.92
+    
+    
     
     /**
      Grabs the drawing core graphics context, for convenience.
@@ -77,40 +86,74 @@ class NodeView: UIView {
         return UIGraphicsGetCurrentContext()!
     }
     
-    @IBInspectable var whiteBorderColor: UIColor = .gray
+    /**
+     A completely different style - only one color
+     */
+    var isMonocromatic = true
+    
+    @IBInspectable var monocromaticColor: UIColor = .black // this must be a solid color
+    @IBInspectable var monocromaticSelectedColor: UIColor = .red // this must be a solid color as well
+    
+    @IBInspectable var whiteBorderColor: UIColor = .black
     @IBInspectable var whiteFillColor: UIColor = UIColor.white.withAlphaComponent(1)
     
     @IBInspectable var blackBorderColor: UIColor = .black
-    @IBInspectable var blackFillColor: UIColor = UIColor.gray.withAlphaComponent(1)
+    @IBInspectable var blackFillColor: UIColor = UIColor.lightGray.withAlphaComponent(1)
     
-    @IBInspectable var regularBorderColor: UIColor {
+    @IBInspectable var selectedBorderColor: UIColor = .orange
+    @IBInspectable var selectedFillColor: UIColor = UIColor.orange.withAlphaComponent(0.2)
+    @IBInspectable var selectedIdentityColor: UIColor = .orange
+
+    @IBInspectable var dummyColor: UIColor = .green
+    @IBInspectable var dummyColorAlpha: CGFloat = 0.2
+    
+    var regularBorderColor: UIColor {
+        if isMonocromatic {return monocromaticColor}
         return node.color == .black ? blackBorderColor : whiteBorderColor
     }
-    @IBInspectable var selectedBorderColor: UIColor = .orange
-    var borderColor: UIColor {
-        return isSelected ? selectedBorderColor : regularBorderColor
-    }
-    
-    @IBInspectable var regularFillColor: UIColor {
+    var regularFillColor: UIColor {
+        if isMonocromatic {return node.color == .black ? monocromaticColor : .white}
         return node.color == .black ? blackFillColor : whiteFillColor
     }
-    @IBInspectable var selectedFillColor: UIColor = UIColor.orange.withAlphaComponent(0.2)
-    var fillColor: UIColor {
-        return isSelected ? selectedFillColor : regularFillColor
+    var regularIdentityColor: UIColor {
+        if isMonocromatic {return node.color == .black ? .white : monocromaticColor}
+        return borderColor
     }
     
-    @IBInspectable var dummyBorderColor: UIColor = .green
-    @IBInspectable var dummyFillColor: UIColor = UIColor.green.withAlphaComponent(0.2)
+    var monocromaticSelectedBorderColor: UIColor {
+        return node.color == .black ? monocromaticSelectedColor : monocromaticSelectedColor
+    }
+    var monocromaticSelectedFillColor: UIColor {
+        return node.color == .black ? monocromaticSelectedColor : .white
+    }
+    var monocromaticSelectedIdentityColor: UIColor {
+        return node.color == .black ? .white : monocromaticSelectedColor
+    }
+    
+    var borderColor: UIColor {
+        return isSelected ? isMonocromatic ? monocromaticSelectedBorderColor : selectedBorderColor : regularBorderColor
+    }
+    var fillColor: UIColor {
+        return isSelected ? isMonocromatic ? monocromaticSelectedFillColor : selectedFillColor : regularFillColor
+    }
+    var identityColor: UIColor {
+        return isSelected ? isMonocromatic ? monocromaticSelectedIdentityColor : selectedIdentityColor : regularIdentityColor
+    }
     
     /**
      Ratio acquired by doing (borderWidth / radius)
      */
-    @IBInspectable var borderWidthRatio: CGFloat = 1 / 25
+    @IBInspectable var borderWidthRatio: CGFloat = 1/100
+    
+    /**
+     Ratio acquired by doing (borderWidth / radius) when selected
+     */
+    @IBInspectable var selectedBorderWidthRatio: CGFloat = 1/100
     
     /**
      Ratio acquired by doing (dummyBorderRatio / radius)
      */
-    @IBInspectable var dummyBorderWidthRatio: CGFloat = 1 / 25
+    @IBInspectable var dummyBorderWidthRatio: CGFloat = 1/100
     
     /**
      Ratio acquired by doing (displayRadius / radius)
@@ -123,7 +166,7 @@ class NodeView: UIView {
      The border width should instead be derived from node radius by multiplying with a ratio.
      */
     var borderWidth: CGFloat {
-        get {return radius * borderWidthRatio}
+        get {return radius * (isSelected ? selectedBorderWidthRatio: borderWidthRatio)}
     }
     
     var dummyBorderWidth: CGFloat {
@@ -184,17 +227,33 @@ class NodeView: UIView {
         switch node.identity {
         case .dummy: drawDummy()
         default:
+            context.saveGState()
+            if isMonocromatic && isSelected && nodesBelow() > 0 {
+                context.setAlpha(0.5)
+            }
             drawHexagon(rect)
             drawIdentityGram(rect)
+            context.restoreGState()
         }
     }
     
+    /**
+     Draws the dummy piece, i.e. the prompted positions.
+     */
     private func drawDummy() {
         let dummy = pathForPolygon(radius: displayRadius, sides: 6)
         context.saveGState()
         context.translateBy(x: bounds.midX, y: bounds.midY)
-        dummyFillColor.setFill()
-        dummyBorderColor.setStroke()
+        if isMonocromatic { //monocromatic - only one color. The drawing logic should be different.
+            dummy.lineWidth = dummyBorderWidth
+            monocromaticSelectedColor.setStroke()
+            monocromaticSelectedColor.withAlphaComponent(dummyColorAlpha).setFill()
+            dummy.fill()
+            dummy.stroke()
+        } else {
+            dummyColor.withAlphaComponent(dummyColorAlpha).setFill()
+            dummyColor.setStroke()
+        }
         dummy.lineWidth = dummyBorderWidth
         dummy.fill()
         dummy.stroke()
@@ -225,7 +284,7 @@ class NodeView: UIView {
         let attributes : [NSAttributedStringKey:NSObject] = [
             .paragraphStyle  : paragraphStyle,
             .font            : UIFont.systemFont(ofSize: radius),
-            .foregroundColor : borderColor,
+            .foregroundColor : identityColor,
         ]
         
         let attrString = NSAttributedString(
@@ -272,7 +331,21 @@ class NodeView: UIView {
             path.addLine(to: dir)
         }
         path.close()
+        path.lineJoinStyle = .round
         return path
+    }
+    
+    /**
+     - Returns: The number of nodes that are below the current node
+     */
+    private func nodesBelow() -> Int {
+        var current = node
+        var count = 0
+        while current.neighbors[.below] != nil {
+            current = current.neighbors[.below]!
+            count += 1
+        }
+        return count
     }
 }
 
