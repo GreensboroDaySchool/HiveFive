@@ -97,6 +97,7 @@ import UIKit
         var paths = root.derivePaths()
         paths.append(Path(route: Route(directions: []), destination: root))
         nodeViews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
+        paths.sort{$0.route.translation.z < $1.route.translation.z} // sort according to z coordinate, toppest node get added last.
         paths.forEach {
             addSubview(NodeView(path: $0))
         }

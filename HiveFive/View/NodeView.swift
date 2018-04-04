@@ -197,6 +197,8 @@ class NodeView: UIView {
      determining which node view is acutually being touched.
      */
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        // if current node is not the topmost node, then ignore.
+        if node.neighbors[.above] != nil {return false}
         // point is in relation to bounds.origin
         let ctr = bounds.origin.translate(bounds.midX, bounds.midY) // center of the hexagon
         return ctr.dist(to: point) < innerRadius // make sure the touch is within the inner radius, not the outer.

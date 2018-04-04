@@ -56,6 +56,22 @@ class HexNode: IdentityProtocol {
     }
     
     /**
+     Sometimes two different positions represents the same physical position. The job of this
+     method is to get rid of such duplicate positions.
+     - Returns: An array containing physically non-repeating available destinations
+     - Todo: Debug & test
+     */
+    func uniqueAvailableMoves() -> [Position] {
+        let moves = availableMoves()
+        let paths = derivePaths()
+        return moves.map{position in
+                let route = paths.filter{$0.destination === position.node}[0].route
+                return route.append([position.dir])
+            }.filterDuplicates(isDuplicate: ==)
+            .map{Position.resolve(from: self, following: $0)}
+    }
+    
+    /**
      - Returns: Available moves within one step
      - Warning: This is a helper method for QueenBee::availableMoves, Beetle, and Spider, don't use it!
      */
@@ -256,15 +272,16 @@ class HexNode: IdentityProtocol {
     func canDisconnect() -> Bool {
         if self.neighbors[.above] != nil {return false} // little fucking beetle...
         let neighbors = self.neighbors // make a copy of the neighbors
+        let numConnected = self.numConnected() // the number of pieces that are currently connected.
         self.disconnect() // temporarily disconnect with all neighbors
 
         let available = neighbors.available() // extract all available neighbors
         let connected = available.map {$0.node.numConnected()}
         var canMove = true
-        for i in (0..<(connected.count - 1)) {
+        for i in (0..<connected.count) {
             // if number of connected pieces are not the same for each piece after the current
             // node is removed from the structure, then the structure is broken.
-            if connected[i] != connected[i + 1] {
+            if connected[i] != numConnected - 1 {
                 canMove = false
                 break
             }

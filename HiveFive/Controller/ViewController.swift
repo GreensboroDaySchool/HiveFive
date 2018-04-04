@@ -159,6 +159,9 @@ extension ViewController: HiveDelegate {
      */
     func structureDidUpdate() {
         board.root = hive.root
+        board.rootCoordinate = board.rootCoordinate
+        // this is for fixing an impossible bug, where  the pieces dislocates.
+        // simply calling board.updateDisplay() just doesn't work.
     }
     
     func selectedNodeDidUpdate() {

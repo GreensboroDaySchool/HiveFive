@@ -79,7 +79,7 @@ class Hive {
             }
         default:
             selectedNode = node
-            availablePositions = node.availableMoves()
+            availablePositions = node.uniqueAvailableMoves()
         }
     }
     
@@ -98,9 +98,9 @@ class Hive {
      */
     static func traverse(from node: HexNode, toward dir: Direction) -> HexNode {
         var path = Path(route: Route(directions: []), destination: node)
-        while path.destination.neighbors[.below] != nil {
-            let dest = path.destination.neighbors[.below]!
-            path = Path(route: path.route.append([.below]), destination: dest)
+        while path.destination.neighbors[dir] != nil {
+            let dest = path.destination.neighbors[dir]!
+            path = Path(route: path.route.append([dir]), destination: dest)
         }
         return path.destination
     }
