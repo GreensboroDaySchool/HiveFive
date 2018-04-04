@@ -34,7 +34,7 @@ class HexNode: IdentityProtocol {
     /**
      Initializer must specify the color
      */
-    required init(color: Color) {
+    init(color: Color) {
         self.color = color
     }
     

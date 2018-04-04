@@ -129,7 +129,9 @@ import UIKit
             var route = knownPaths.filter{$0.destination === position.node}
                 .map{$0.route}[0]
             route = route.append([position.dir])
-            let path = Path(route: route, destination: HexNode())
+            let dummy = HexNode()
+            dummy.neighbors[position.dir.opposite()] = position.node // make a uni-directional connection
+            let path = Path(route: route, destination: dummy)
             addSubview(NodeView(path: path))
         }
         updateDisplay()

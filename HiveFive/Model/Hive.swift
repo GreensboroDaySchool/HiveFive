@@ -68,7 +68,15 @@ class Hive {
      */
     func select(node: HexNode) {
         switch node.identity {
-        case .dummy: break
+        case .dummy:
+            if selectedNode != nil {
+                let available = node.neighbors.available()
+                assert(available.count == 1)
+                let dest = available[0]
+                let position = Position(node: dest.node, dir: dest.dir.opposite())
+                selectedNode!.move(to: position)
+                delegate?.structureDidUpdate()
+            }
         default:
             selectedNode = node
             availablePositions = node.availableMoves()
@@ -117,7 +125,7 @@ struct Hand {
 }
 
 enum Identity: String {
-    case grasshopper = "G", queenBee = "Q", beetle = "B", spider = "S", soldierAnt = "A", dummy = ":)"
+    case grasshopper = "G", queenBee = "Q", beetle = "B", spider = "S", soldierAnt = "A", dummy = ""
 }
 
 protocol IdentityProtocol {
