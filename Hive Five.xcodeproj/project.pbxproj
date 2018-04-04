@@ -15,6 +15,7 @@
 		2CFCE471206B00880041EDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */; };
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
+		3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */; };
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
 		32B109AB206E8D360065E465 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
 		32B109AE206EECC20065E465 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
@@ -61,6 +62,7 @@
 		2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiveFive.xcdatamodel; sourceTree = "<group>"; };
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		32B109AA206E8D360065E465 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		32B109AD206EECC20065E465 /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				2CFCE46A206B00880041EDD1 /* Main.storyboard */,
 				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2CFCE472206B00880041EDD1 /* Info.plist */,
+				3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */,
 			);
 			path = HiveFive;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
+				3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
 				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
@@ -644,6 +648,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */,
+			);
+			currentVersion = 3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */;
+			path = HiveFive.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2CFCE45B206B00880041EDD1 /* Project object */;
 }
