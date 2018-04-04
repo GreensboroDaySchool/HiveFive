@@ -55,11 +55,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         board.delegate = self // establish communication with View
         
         let beetle2 = Beetle(color: .black)
-        let grasshopper = Grasshopper(color: .black)
+        let grasshopper = Grasshopper(color: .white)
         let queenBee = QueenBee(color: .black)
-        let beetle = Beetle(color: .black)
+        let beetle = Beetle(color: .white)
         let soldierAnt = SoldierAnt(color: .black)
-        let spider = Spider(color: .black)
+        let spider = Spider(color: .white)
         let spider2 = Spider(color: .black)
         
         beetle2.connect(with: spider, at: .upRight)

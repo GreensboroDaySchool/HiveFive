@@ -77,30 +77,40 @@ class NodeView: UIView {
         return UIGraphicsGetCurrentContext()!
     }
     
-    @IBInspectable var regularBorderColor: UIColor = .gray
-    @IBInspectable var selectedBorderColor: UIColor = .red
+    @IBInspectable var whiteBorderColor: UIColor = .gray
+    @IBInspectable var whiteFillColor: UIColor = UIColor.white.withAlphaComponent(1)
+    
+    @IBInspectable var blackBorderColor: UIColor = .black
+    @IBInspectable var blackFillColor: UIColor = UIColor.gray.withAlphaComponent(1)
+    
+    @IBInspectable var regularBorderColor: UIColor {
+        return node.color == .black ? blackBorderColor : whiteBorderColor
+    }
+    @IBInspectable var selectedBorderColor: UIColor = .orange
     var borderColor: UIColor {
         return isSelected ? selectedBorderColor : regularBorderColor
     }
     
-    @IBInspectable var regularFillColor: UIColor = UIColor.gray.withAlphaComponent(0.3)
-    @IBInspectable var selectedFillColor: UIColor = UIColor.red.withAlphaComponent(0.3)
+    @IBInspectable var regularFillColor: UIColor {
+        return node.color == .black ? blackFillColor : whiteFillColor
+    }
+    @IBInspectable var selectedFillColor: UIColor = UIColor.orange.withAlphaComponent(0.2)
     var fillColor: UIColor {
         return isSelected ? selectedFillColor : regularFillColor
     }
     
-    @IBInspectable var dummyBorderColor: UIColor = UIColor.green
+    @IBInspectable var dummyBorderColor: UIColor = .green
     @IBInspectable var dummyFillColor: UIColor = UIColor.green.withAlphaComponent(0.2)
     
     /**
      Ratio acquired by doing (borderWidth / radius)
      */
-    @IBInspectable var borderWidthRatio: CGFloat = 1 / 16
+    @IBInspectable var borderWidthRatio: CGFloat = 1 / 25
     
     /**
      Ratio acquired by doing (dummyBorderRatio / radius)
      */
-    @IBInspectable var dummyBorderWidthRatio: CGFloat = 1 / 16
+    @IBInspectable var dummyBorderWidthRatio: CGFloat = 1 / 25
     
     /**
      Ratio acquired by doing (displayRadius / radius)
@@ -237,11 +247,11 @@ class NodeView: UIView {
         let hexagon = pathForPolygon(radius: displayRadius, sides: 6)
         context.saveGState() // save
         borderColor.setStroke()
+        fillColor.setFill()
         context.translateBy(x: bounds.midX, y: bounds.midY)
         hexagon.lineWidth = borderWidth
-        hexagon.stroke()
-        fillColor.setFill()
         hexagon.fill()
+        hexagon.stroke()
         context.restoreGState() // restore
     }
     
