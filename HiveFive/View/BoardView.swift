@@ -32,9 +32,17 @@ import UIKit
         }
     }
     
-    //prevent users from creating giant/tiny nodes
+    /**
+     Prevent users from creating giant/tiny nodes
+     */
     @IBInspectable var maxNodeRadius: CGFloat = 100
     @IBInspectable var minNodeRadius: CGFloat = 10
+    
+    /**
+     This boolean dictates whether to redraw each node views when the user
+     is zooming in/out; setting this to true dramatically affects performance in some cases.
+     */
+    @IBInspectable var dynamicUpdate = false
     
     var delegate: BoardViewDelegate?
     
@@ -85,7 +93,17 @@ import UIKit
      */
     func updateNodeRadius() {
         nodeViews.forEach {$0.update(radius: nodeRadius)}
-        subviews.forEach{$0.setNeedsDisplay()} // prevent pixelation, affects performance though
+        if dynamicUpdate { // prevent pixelation at the cost of performance
+            redrawSubviews()
+        }
+    }
+    
+    /**
+     Redraw all of the subviews (nodeViews). This could affect performance in some cases,
+     i.e. when drawing complex unicode symbols as identity grams.
+     */
+    private func redrawSubviews() {
+        subviews.forEach{$0.setNeedsDisplay()}
     }
     
     /**
@@ -148,6 +166,13 @@ import UIKit
         }
         updateNodeRadius()
         updateNodeCoordinates()
+    }
+    
+    /**
+     The user has finished zooming in/out, redraw node views to prevent pixelation.
+     */
+    func pinchGestureDidEnd() {
+        redrawSubviews()
     }
 
     /**

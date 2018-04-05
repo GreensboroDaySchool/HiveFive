@@ -94,7 +94,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         //Exclude these states because at these moments the change (first derivative) does not exist
         switch sender.state {
         case .began: scale = 1
-        case .ended: scale = 1
+        case .ended:
+            scale = 1
+            board.pinchGestureDidEnd() // notify the board that the pinch gesture has ended.
         default: break
         }
         
