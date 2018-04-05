@@ -18,6 +18,8 @@
  */
 
 import Foundation
+import CoreData
+import UIKit
 
 /**
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt,
@@ -26,7 +28,7 @@ import Foundation
  */
 class HexNode: IdentityProtocol {
     var neighbors = Neighbors()
-    var color: Color
+    var color: Color = .black
     var identity: Identity {
         get {return .dummy}
     }
