@@ -17,29 +17,23 @@ extension Hive {
             if retrieved.count == 0 {
                 let beetle2 = Beetle(color: .black)
                 let grasshopper = Grasshopper(color: .white)
-                let queenBee = QueenBee(color: .black)
-                let beetle = Beetle(color: .white)
                 let soldierAnt = SoldierAnt(color: .black)
+                let beetle = Beetle(color: .black)
+                let queenBee = QueenBee(color: .white)
                 let spider = Spider(color: .white)
                 let spider2 = Spider(color: .black)
                 
-                beetle2.connect(with: spider, at: .upRight)
+                beetle2.move(to: .downRight, of: spider)
                 
-                grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
-                queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
-                beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
-                
-                soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
-                soldierAnt.connect(with: spider2, at: .downLeft) // soldier ant is also lower left of spider2
-                
-                spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
-                //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
-                spider2.connect(with: queenBee, at: .downLeft) // spider2 is also lower left of queen bee
-                spider2.connect(with: beetle, at: .downRight) // spider2 is also lower right of beetle
+                grasshopper.move(to: .down, of: spider) // grasshopper is beneath the spider
+                soldierAnt.move(to: .downRight, of: grasshopper) // queen bee is to the lower right of grasshopper
+                beetle.move(to: .downLeft, of: grasshopper) // beetle is to the lower left of grass hopper
+                queenBee.move(to: .down, of: beetle) // soldier ant is beneath beetle
+                spider2.move(to: .down, of: grasshopper) // spider2 is right beneath grasshopper
                 
                 SoldierAnt(color: .white).move(to: .down, of: spider2)
-                QueenBee(color: .white).move(to: .up, of: beetle)
-                Grasshopper(color: .black).move(to: .down, of: queenBee)
+                QueenBee(color: .white).move(to: .upLeft, of: beetle)
+                Grasshopper(color: .black).move(to: .downLeft, of: beetle)
                 
                 let hive = Hive()
                 hive.root = spider

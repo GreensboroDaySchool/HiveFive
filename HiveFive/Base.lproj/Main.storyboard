@@ -161,34 +161,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xtr-wr-taB">
-                            <size key="itemSize" width="217" height="287"/>
+                            <size key="itemSize" width="218" height="278"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell3" id="A6U-eN-R0s" customClass="ThemesCollectionViewCell" customModule="Hive_Five" customModuleProvider="target">
-                                <rect key="frame" x="79" y="0.0" width="217" height="287"/>
+                                <rect key="frame" x="78.5" y="10" width="218" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="217" height="287"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="218" height="278"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uun-XR-iht" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="217" height="190"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="191"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0c-ao-se1">
-                                            <rect key="frame" x="0.0" y="190" width="217" height="97"/>
+                                            <rect key="frame" x="0.0" y="191" width="218" height="87"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULh-F1-Arf">
-                                                    <rect key="frame" x="85.5" y="8" width="45" height="21"/>
+                                                    <rect key="frame" x="86" y="8" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="ULh-F1-Arf" firstAttribute="centerX" secondItem="c0c-ao-se1" secondAttribute="centerX" id="62w-yY-RQx"/>
                                                 <constraint firstItem="ULh-F1-Arf" firstAttribute="top" secondItem="c0c-ao-se1" secondAttribute="top" constant="8" id="NHh-R0-gR6"/>

@@ -58,8 +58,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         hive.root = hive.root // manually trigger update
         
-        let ctr = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
-        board.rootCoordinate = ctr
+        board.centerHiveStructure()
     }
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
@@ -124,6 +123,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /**
+     Works flawlessly!
+     */
+    override func viewDidLayoutSubviews() {
+        board.centerHiveStructure()
     }
     
 }

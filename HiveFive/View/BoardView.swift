@@ -95,7 +95,7 @@ import UIKit
         tap.delegate = self
         addGestureRecognizer(tap)
     }
-        
+    
     /**
      This method should be called when the user is zooming the structure.
      When nodeRadius changes, only the radius of each need to be updated such that the new coordinates could be calculated
@@ -175,6 +175,35 @@ import UIKit
         }
         updateNodeRadius()
         updateNodeCoordinates()
+    }
+    
+    /**
+     Adjusts the root coordinate so that the hive structure is centered in the view.
+     */
+    func centerHiveStructure() {
+        if subviews.count == 0 {return}
+        let frames = subviews.map{$0.frame}
+        let xCos = frames
+            .map{$0.origin.x}
+            .sorted(by: <)
+        let yCos = frames
+            .map{$0.origin.y}
+            .sorted(by: <)
+        
+        let cellHeight = nodeRadius * 4 * sin(.pi / 3) / 3
+        
+        let minX = xCos.first!
+        let maxX = xCos.last! + 2 * nodeRadius
+        let minY = yCos.first!
+        let maxY = yCos.last! + cellHeight
+        
+        let width = maxX - minX
+        let height = maxY - minY
+        
+        let hiveCtr = CGPoint(x: minX + width / 2, y: minY + height / 2)
+        let boardCtr = CGPoint(x: bounds.midX, y: bounds.midY)
+        let translation = hiveCtr - boardCtr
+        rootCoordinate = rootCoordinate - translation
     }
     
     /**

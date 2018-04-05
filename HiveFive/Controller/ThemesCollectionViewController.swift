@@ -137,11 +137,13 @@ class ThemesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
         let theme = themes[indexPath.row]
-        cell.boardView.root = Hive.defaultHive.root
         cell.boardView.patterns = theme.patterns
+        cell.boardView.root = Hive.defaultHive.root
+        cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name
         return cell
     }
+    
 
     // MARK: UICollectionViewDelegate
 
