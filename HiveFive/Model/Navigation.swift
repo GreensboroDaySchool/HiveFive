@@ -129,6 +129,22 @@ struct Route: Equatable {
         newDirs.append(contentsOf: directions)
         return Route(directions: newDirs)
     }
+    
+    /**
+     For core data serialization
+     Encodes the current instance into an array of ints that represent the raw values of the directions.
+     */
+    func encode() -> [Int] {
+        return directions.map{$0.rawValue}
+    }
+    
+    /**
+     For core data serialization
+     Decodes an int array and constructs a route
+     */
+    static func decode(_ arr: [Int]) -> Route {
+        return Route(directions: arr.map{Direction(rawValue: $0)!})
+    }
 
     /**
      - Attention: The simplified route might no longer be valid! The purpose is to compare

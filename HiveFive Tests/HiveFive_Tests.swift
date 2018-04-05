@@ -329,15 +329,18 @@ class HiveFive_Tests: XCTestCase {
     
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    func deleteHiveStuctures() {
+        // delete everything
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "HiveStructure")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let _ = try? CoreData.context.execute(request)
+    }
     
     func testCoreData() {
         let context = (UIApplication.shared.delegate as! AppDelegate)
             .persistentContainer.viewContext
         
-        // delete everything
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "HiveStructure")
-        let request = NSBatchDeleteRequest(fetchRequest: fetch)
-        let _ try? context.execute(request)
+        deleteHiveStuctures()
         
         let hiveStructure = HiveStructure(context: context)
 
@@ -357,6 +360,19 @@ class HiveFive_Tests: XCTestCase {
 
         assert(pieces.first == "Beetle")
         assert(routes[0] == [0,2,3,4,5])
+    }
+    
+    func testHiveSerialization() {
+        
+        deleteHiveStuctures()
+        
+        let hive = Hive()
+        hive.root = spider
+        hive.save(name: "game1")
+        
+        let game1 = Hive.savedStructures()!.first!
+        let retrieved = Hive.load(structure: game1)
+        assert(retrieved.root!.connectedNodes().count == allPieces.count)
     }
     
 

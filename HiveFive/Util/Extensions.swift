@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 extension Array {
@@ -291,4 +292,11 @@ extension NSAttributedString {
         
         return ceil(boundingBox.width)
     }
+}
+
+class CoreData {
+    static var context: NSManagedObjectContext = {
+        return (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
+    }()
 }

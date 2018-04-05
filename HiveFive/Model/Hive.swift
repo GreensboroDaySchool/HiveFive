@@ -105,6 +105,74 @@ class Hive {
         return path.destination
     }
     
+    /**
+     Serialize the structure of the hive and store it in core data.
+     - Parameter name: Name of the newly saved hive structure
+     */
+    func save(name: String) {
+        guard let root = root else {return}
+        var paths = root.derivePaths()
+        let context = CoreData.context
+        paths.insert(Path(route: Route(directions: []), destination: root), at: 0)
+        let encoded = paths.map{($0.destination.identity.rawValue, $0.route.encode())}
+        let structure = HiveStructure(context: context)
+        let pieces = encoded.map{$0.0}
+        let routes = encoded.map{$0.1}
+        let colors = root.connectedNodes().map{$0.color.rawValue} // black == 0
+        structure.pieces = pieces as NSObject // [String]
+        structure.routes = routes as NSObject // [[Int]]
+        structure.colors = colors as NSObject // [Int]
+        structure.name = name
+        
+        var id: Int16 = 0
+        if let retrivedID = Utils.retrieveFromUserDefualt(key: "hiveStructId") as? Int16 {
+            id = retrivedID + 1
+        }
+        Utils.saveToUserDefault(obj: id, key: "hiveStructId")
+        structure.id = id
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    /**
+     Retrieve saved hive structures from core data.
+     - Parameter shouldInclude: Whether the HiveStructure should be returned as part of the results.
+     */
+    static func savedStructures(_ shouldInclude: (HiveStructure) -> Bool = {_ in return true}) -> [HiveStructure]? {
+        if let structures = try? CoreData.context.fetch(HiveStructure.fetchRequest()) as! [HiveStructure] {
+            return structures.filter(shouldInclude)
+        }
+        return nil
+    }
+    
+    /**
+     Retrives & loads a serialized HiveStructure and convert it to a Hive object
+     - Parameter structure: The hive structure to be retrived from core data and reconstructed to a Hive object
+     */
+    static func load(structure: HiveStructure) -> Hive {
+        let hive = Hive()
+        let pieces = structure.pieces as! [String]
+        let colors = (structure.colors as! [Int]).map{Color(rawValue: $0)!}
+        let nodes = zip(pieces, colors).map{Identity(rawValue: $0.0)!.new(color: $0.1)}
+        let routes = (structure.routes as! [[Int]]).map{Route.decode($0)}
+        var paths = zip(nodes, routes).map{Path(route: $0.1, destination: $0.0)}
+        
+        let root = paths.removeFirst().destination
+        paths.forEach {path in
+            let position = Position.resolve(from: root, following: path.route)
+            path.destination.move(to: position)
+        }
+        
+        hive.root = root
+        return hive
+    }
+    
+    
+    
 }
 
 protocol HiveDelegate {
@@ -125,17 +193,57 @@ struct Hand {
 }
 
 enum Identity: String {
+    
+    /**
+     A dictionary that defines the symbols that represent each node type
+     */
+    static var symbols: [Identity:String] = [
+        .grasshopper:"𝝣",
+        .queenBee:"𝝠",
+        .beetle:"𝝧",
+        .spider:"𝝮",
+        .soldierAnt:"𝝭",
+        .dummy:"𝝬"
+    ]
+    
+    case grasshopper
+    case queenBee
+    case beetle
+    case spider
+    case soldierAnt
+    case dummy
+    
+    var symbol: String {
+        get {return Identity.symbols[self]!}
+    }
+    
+    /**
+     Construct a new HexNode object based on the type...
+     there might be a better way of doing this, but for now this will do.
+     - Parameter color: The color of the new node.
+     */
+    func new(color: Color) -> HexNode {
+        switch self {
+        case .grasshopper: return Grasshopper(color: color)
+        case .queenBee: return QueenBee(color: color)
+        case .beetle: return Beetle(color: color)
+        case .spider: return Spider(color: color)
+        case .soldierAnt: return SoldierAnt(color: color)
+        case .dummy: return HexNode(color: color)
+        }
+    }
+    
 //    case grasshopper = "蜢", queenBee = "皇", beetle = "甲", spider = "蛛", soldierAnt = "蚁", dummy = "笨"
 //    case grasshopper = "✡︎", queenBee = "✪", beetle = "✶", spider = "★", soldierAnt = "✩", dummy = "▲"
 //    case grasshopper = "𝔾", queenBee = "ℚ", beetle = "𝔹", spider = "𝕊", soldierAnt = "𝔸", dummy = "𝔻"
 //    case grasshopper = "𝜞", queenBee = "𝜟", beetle = "𝜭", spider = "𝜮", soldierAnt = "𝜴", dummy = "𝜩"
 //    case grasshopper = "𝞝", queenBee = "𝞡", beetle = "𝞨", spider = "𝞚", soldierAnt = "𝞧", dummy = "𝞦"
-    case grasshopper = "𝝣", queenBee = "𝝠", beetle = "𝝧", spider = "𝝮", soldierAnt = "𝝭", dummy = "𝝬"
 //    case grasshopper = "♞", queenBee = "♛", beetle = "♟", spider = "♝", soldierAnt = "♜", dummy = "♚"
 //    case grasshopper = "♘", queenBee = "♕", beetle = "♙", spider = "♗", soldierAnt = "♖", dummy = "♔"
 //      case grasshopper = "$", queenBee = "€", beetle = "¥", spider = "¢", soldierAnt = "£", dummy = "₽"
 //    case grasshopper = "😀", queenBee = "😆", beetle = "🙃", spider = "🤪", soldierAnt = "😎", dummy = "🤩"
 }
+
 
 protocol IdentityProtocol {
     var identity: Identity {get}

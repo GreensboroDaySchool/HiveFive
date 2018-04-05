@@ -360,6 +360,9 @@ class HexNode: IdentityProtocol {
     }
 }
 
-enum Color {
-    case black, white
+/**
+ Extend from Int for convenience during serialization
+ */
+enum Color: Int {
+    case black = 0, white
 }

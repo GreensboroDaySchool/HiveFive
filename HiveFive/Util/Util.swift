@@ -18,7 +18,7 @@ public class Utils {
         return String(data: data!, encoding: .utf8)
     }
     
-    public func loadJSON(from fileName: String) -> Any? {
+    public static func loadJSON(from fileName: String) -> Any? {
         let path = Bundle.main.path(forResource: fileName, ofType: "json", inDirectory: nil)
         let url = URL(fileURLWithPath: path!)
         let data = try? Data(contentsOf: url)
@@ -27,7 +27,7 @@ public class Utils {
         return jsonObj
     }
     
-    public func loadFrom(url: String, completion: @escaping HtmlCompletionHandler) {
+    public static func loadFrom(url: String, completion: @escaping HtmlCompletionHandler) {
         if let url = URL(string: url) {
             let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 DispatchQueue.main.async {
@@ -38,12 +38,12 @@ public class Utils {
         }
     }
     
-    public func saveToUserDefault(obj: Any, key: String) {
+    public static func saveToUserDefault(obj: Any, key: String) {
         UserDefaults.standard.set(obj, forKey: key)
         print("saved: \(obj) with key: \(key)")
     }
     
-    public func retrieveFromUserDefualt(key: String) -> Any? {
+    public static func retrieveFromUserDefualt(key: String) -> Any? {
         let obj = UserDefaults.standard.object(forKey: key)
         print("retrieved \(String(describing: obj)) for key: \(key)")
         return obj
