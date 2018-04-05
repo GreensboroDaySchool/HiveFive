@@ -15,6 +15,8 @@
 		2CFCE471206B00880041EDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */; };
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
+		322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF73E20766E91008A98F7 /* SlideMenuController.swift */; };
+		322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74120767058008A98F7 /* ContainerViewController.swift */; };
 		3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */; };
 		3291A329207524C400DBF9B2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3291A328207524C400DBF9B2 /* Util.swift */; };
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
@@ -63,6 +65,8 @@
 		2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		322EF73E20766E91008A98F7 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
+		322EF74120767058008A98F7 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiveFive.xcdatamodel; sourceTree = "<group>"; };
 		3291A328207524C400DBF9B2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		2CFCE465206B00880041EDD1 /* HiveFive */ = {
 			isa = PBXGroup;
 			children = (
+				322EF74020766E98008A98F7 /* Lib */,
 				3291A3222073FDB300DBF9B2 /* Controller */,
 				32B109AC206EECAC0065E465 /* Util */,
 				32D1D14F206BEE71008444F4 /* View */,
@@ -159,10 +164,19 @@
 			path = "HiveFive Tests";
 			sourceTree = "<group>";
 		};
+		322EF74020766E98008A98F7 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				322EF73E20766E91008A98F7 /* SlideMenuController.swift */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
 		3291A3222073FDB300DBF9B2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
+				322EF74120767058008A98F7 /* ContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -340,6 +354,7 @@
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */,
+				322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
 				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
 				3291A329207524C400DBF9B2 /* Util.swift in Sources */,
@@ -347,6 +362,7 @@
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				32B109AE206EECC20065E465 /* Vec2D.swift in Sources */,
 				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
+				322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */,
 				32B109AB206E8D360065E465 /* Navigation.swift in Sources */,
 				32B109B2206FE0D00065E465 /* Extensions.swift in Sources */,
 				32B109A9206C646F0065E465 /* HexNode.swift in Sources */,
