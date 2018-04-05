@@ -138,9 +138,11 @@ class ThemesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
         let theme = themes[indexPath.row]
         cell.boardView.patterns = theme.patterns
+//        cell.boardView.nodeRadius = 30
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name
+        cell.layer.cornerRadius = 10
         return cell
     }
     
@@ -175,5 +177,16 @@ class ThemesCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let theme = themes[indexPath.row]
+        NotificationCenter.default.post(
+            name: themeUpdateNotification,
+            object: theme.patterns
+        )
+//        collectionView.visibleCells.forEach{($0 as! ThemesCollectionViewCell).bezel.backgroundColor = nil}
+//        (collectionView.cellForItem(at: indexPath) as! ThemesCollectionViewCell).bezel.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
+        navigationController?.popToRootViewController(animated: true)
+    }
 
 }

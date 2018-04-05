@@ -19,6 +19,8 @@
 
 import UIKit
 
+let themeUpdateNotification = Notification.Name("themeUpdated")
+
 /**
  This is the Controller of the MVC design pattern.
  In this case -
@@ -59,6 +61,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         hive.root = hive.root // manually trigger update
         
         board.centerHiveStructure()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeDidUpdate(_:)),
+            name: themeUpdateNotification,
+            object: nil
+        )
+    }
+    
+    @objc func themeDidUpdate(_ notification: Notification) {
+        board.patterns = notification.object! as! [Identity:String]
     }
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {

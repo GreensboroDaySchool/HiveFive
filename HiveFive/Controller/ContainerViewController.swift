@@ -12,13 +12,25 @@ class ContainerViewController: SlideMenuController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeDidUpdate(_:)),
+            name: themeUpdateNotification,
+            object: nil
+        )
+        
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func themeDidUpdate(_ notification: Notification) {
+        let patterns = notification.object as! [Identity:String]
+        print("received \(patterns)")
+        closeLeft()
     }
     
     override func awakeFromNib() {
