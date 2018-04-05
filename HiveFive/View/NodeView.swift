@@ -308,7 +308,7 @@ class NodeView: UIView {
         ]
         
         let attrString = NSAttributedString(
-            string: node.identity.rawValue,
+            string: node.identity.symbol,
             attributes: attributes
         )
         

@@ -309,7 +309,7 @@ class HiveFive_Tests: XCTestCase {
         let whiteSoldierAnt = SoldierAnt(color: .white)
         
         XCTAssert(!blackGrasshopper.canPlace(at: Position(node: beetle2, dir: .above)))
-//        XCTAssert(!blackGrasshopper.canPlace(at: Position(node: beetle2, dir: .up))) //Test fails!
+        XCTAssert(!blackGrasshopper.canPlace(at: Position(node: beetle2, dir: .up))) //Test fails!
         XCTAssert(!blackGrasshopper.canPlace(at: Position(node: queenBee, dir: .up)))
         XCTAssert(blackGrasshopper.canPlace(at: Position(node: queenBee, dir: .upRight)))
         
@@ -354,12 +354,12 @@ class HiveFive_Tests: XCTestCase {
         }
         
         let fetched = try! context.fetch(HiveStructure.fetchRequest()) as! [HiveStructure]
-        assert(fetched.count == 1)
+        XCTAssert(fetched.count == 1)
         let pieces = fetched[0].pieces as! [String]
         let routes = fetched[0].routes as! [[Int]]
 
-        assert(pieces.first == "Beetle")
-        assert(routes[0] == [0,2,3,4,5])
+        XCTAssert(pieces.first == "Beetle")
+        XCTAssert(routes[0] == [0,2,3,4,5])
     }
     
     func testHiveSerialization() {
@@ -371,8 +371,8 @@ class HiveFive_Tests: XCTestCase {
         hive.save(name: "game1")
         
         let game1 = Hive.savedStructures()!.first!
-        let retrieved = Hive.load(structure: game1)
-        assert(retrieved.root!.connectedNodes().count == allPieces.count)
+        let retrieved = Hive.load(game1)
+        XCTAssert(retrieved.root!.connectedNodes().count == allPieces.count)
     }
     
 

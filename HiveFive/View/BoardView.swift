@@ -129,7 +129,10 @@ import UIKit
             }
         }
     }
-    
+
+    /**
+     Update dummy nodes according to the new prompted positions provided by the Hive model
+     */
     func updateAvailablePositions() {
         nodeViews.filter{$0.node.identity == .dummy}
             .forEach{$0.removeFromSuperview()}
@@ -145,6 +148,14 @@ import UIKit
         }
         updateNodeRadius()
         updateNodeCoordinates()
+    }
+
+    /**
+     The root node has been moved by the player; this is a special case, update the coordinates accordingly
+     so that the physical location & structure of the node views remains unchanged.
+     */
+    func rootNodeMoved(by route: Route) {
+        rootCoordinate = rootCoordinate + route.relativeCoordinate(radius: nodeRadius).flipY()
     }
     
     /**

@@ -76,6 +76,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         spider2.connect(with: queenBee, at: .downLeft) // spider2 is also lower left of queen bee
         spider2.connect(with: beetle, at: .downRight) // spider2 is also lower right of beetle
         
+        SoldierAnt(color: .white).move(to: .down, of: spider2)
+        QueenBee(color: .white).move(to: .up, of: beetle)
+        Grasshopper(color: .black).move(to: .down, of: queenBee)
+        
+        
         hive.root = spider
         let ctr = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
         board.rootCoordinate = ctr
@@ -167,5 +172,9 @@ extension ViewController: HiveDelegate {
     
     func availablePositionsDidUpdate() {
         board.availablePositions = hive.availablePositions
+    }
+
+    func rootNodeDidMove(by route: Route) {
+        board.rootNodeMoved(by: route)
     }
 }

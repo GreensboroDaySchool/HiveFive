@@ -89,6 +89,27 @@ extension CGPoint {
     static func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
     }
+    
+    /**
+     - Returns: CGPoint with y coordinate flipped
+     */
+    func flipY() -> CGPoint {
+        return CGPoint(x: x, y: -y)
+    }
+    
+    /**
+     - Returns: CGPoint with x coordinate flipped
+     */
+    func flipX() -> CGPoint {
+        return CGPoint(x: -x, y: y)
+    }
+    
+    /**
+     - Returns: CGPoint with x, y coordinates flipped
+     */
+    func flip() -> CGPoint {
+        return CGPoint(x: -x, y: -y)
+    }
 }
 
 extension Double {
@@ -135,6 +156,7 @@ extension Double {
     static func map(_ i: Double, _ v1: Double, _ v2: Double, _ t1: Double, _ t2: Double) -> Double {
         return (i - v1) / (v2 - v1) * (t2 - t1) + t1
     }
+    
 }
 
 

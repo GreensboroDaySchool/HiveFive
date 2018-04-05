@@ -69,12 +69,21 @@ class Hive {
     func select(node: HexNode) {
         switch node.identity {
         case .dummy:
-            if selectedNode != nil {
+            if let selected = selectedNode {
                 let available = node.neighbors.available()
                 assert(available.count == 1)
                 let dest = available[0]
                 let position = Position(node: dest.node, dir: dest.dir.opposite())
-                selectedNode!.move(to: position)
+
+                // if the root moves, then the root coordinate needs to be updated
+                if selected === root {
+                    let route = root!.derivePaths().filter{$0.destination === position.node}[0]
+                        .route.append([position.dir])
+                    delegate?.rootNodeDidMove(by: route)
+                }
+
+                //move to the designated position
+                selected.move(to: position)
                 delegate?.structureDidUpdate()
             }
         default:
@@ -153,7 +162,7 @@ class Hive {
      Retrives & loads a serialized HiveStructure and convert it to a Hive object
      - Parameter structure: The hive structure to be retrived from core data and reconstructed to a Hive object
      */
-    static func load(structure: HiveStructure) -> Hive {
+    static func load(_ structure: HiveStructure) -> Hive {
         let hive = Hive()
         let pieces = structure.pieces as! [String]
         let colors = (structure.colors as! [Int]).map{Color(rawValue: $0)!}
@@ -179,6 +188,7 @@ protocol HiveDelegate {
     func structureDidUpdate()
     func selectedNodeDidUpdate()
     func availablePositionsDidUpdate()
+    func rootNodeDidMove(by route: Route)
 }
 
 /**
