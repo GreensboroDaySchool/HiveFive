@@ -82,7 +82,9 @@ class NodeView: UIView {
      */
     var overlapShrinkRatio: CGFloat = 0.92
     
-    
+    var patterns: [Identity:String]? {
+        return (superview as? BoardView)?.patterns
+    }
     
     /**
      Grabs the drawing core graphics context, for convenience.
@@ -308,7 +310,7 @@ class NodeView: UIView {
         ]
         
         let attrString = NSAttributedString(
-            string: node.identity.symbol,
+            string: patterns?[node.identity] ?? node.identity.defaultPattern,
             attributes: attributes
         )
         

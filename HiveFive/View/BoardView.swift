@@ -51,6 +51,15 @@ import UIKit
     }
     
     /**
+     Patterns that are drawn on top of each node.
+     */
+    var patterns = Identity.defaultPatterns {
+        didSet {
+            redrawSubviews()
+        }
+    }
+    
+    /**
      The root node of the hive
      */
     var root: HexNode? { // the structure of the hive has changed
@@ -86,7 +95,7 @@ import UIKit
         tap.delegate = self
         addGestureRecognizer(tap)
     }
-    
+        
     /**
      This method should be called when the user is zooming the structure.
      When nodeRadius changes, only the radius of each need to be updated such that the new coordinates could be calculated

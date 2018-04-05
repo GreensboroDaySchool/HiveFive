@@ -19,6 +19,9 @@
 		322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74120767058008A98F7 /* ContainerViewController.swift */; };
 		322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF743207676EF008A98F7 /* MenuTableViewController.swift */; };
 		322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */; };
+		328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */; };
+		328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */; };
+		328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19B2076A7890056CB0C /* DefaultStructure.swift */; };
 		3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */; };
 		3291A329207524C400DBF9B2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3291A328207524C400DBF9B2 /* Util.swift */; };
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
@@ -71,6 +74,9 @@
 		322EF74120767058008A98F7 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		322EF743207676EF008A98F7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
+		328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; };
+		328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewCell.swift; sourceTree = "<group>"; };
+		328EE19B2076A7890056CB0C /* DefaultStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStructure.swift; sourceTree = "<group>"; };
 		3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiveFive.xcdatamodel; sourceTree = "<group>"; };
 		3291A328207524C400DBF9B2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
@@ -176,6 +182,14 @@
 			path = Lib;
 			sourceTree = "<group>";
 		};
+		328EE19A207695640056CB0C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3291A3222073FDB300DBF9B2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +197,7 @@
 				322EF74120767058008A98F7 /* ContainerViewController.swift */,
 				322EF743207676EF008A98F7 /* MenuTableViewController.swift */,
 				322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */,
+				328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -209,6 +224,7 @@
 				32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */,
 				32B109AA206E8D360065E465 /* Navigation.swift */,
 				33F7568984C9D4FED040BE69 /* Neighbors.swift */,
+				328EE19B2076A7890056CB0C /* DefaultStructure.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +232,7 @@
 		32D1D14F206BEE71008444F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				328EE19A207695640056CB0C /* Cell */,
 				32D1D154206BEFFF008444F4 /* BoardView.swift */,
 				2CCE195D206E77C400733FA0 /* NodeView.swift */,
 			);
@@ -359,11 +376,13 @@
 				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */,
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
+				328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */,
 				322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
 				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
+				328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */,
 				3291A329207524C400DBF9B2 /* Util.swift in Sources */,
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
@@ -377,6 +396,7 @@
 				32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */,
 				32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */,
 				33F751EE8399CC8C67CF1A35 /* Neighbors.swift in Sources */,
+				328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

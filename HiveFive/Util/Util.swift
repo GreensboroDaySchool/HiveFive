@@ -11,6 +11,17 @@ import UIKit
 
 public class Utils {
     
+    /**
+     - Parameter id: The id of the event, must be unique and consistent
+     - Parameter exec: The event to be executed once when the app is first launched.
+     */
+    public static func executeOnce(id: String, _ exec: () -> Void) {
+        if let _ = retrieveFromUserDefualt(key: id)  {
+            return
+        }
+        exec()
+    }
+    
     public static func loadFile(name: String, extension ext: String) -> String? {
         let path = Bundle.main.path(forResource: name, ofType: ext, inDirectory: nil)
         let url = URL(fileURLWithPath: path!)

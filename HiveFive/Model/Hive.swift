@@ -151,11 +151,11 @@ class Hive {
      Retrieve saved hive structures from core data.
      - Parameter shouldInclude: Whether the HiveStructure should be returned as part of the results.
      */
-    static func savedStructures(_ shouldInclude: (HiveStructure) -> Bool = {_ in return true}) -> [HiveStructure]? {
+    static func savedStructures(_ shouldInclude: (HiveStructure) -> Bool = {_ in return true}) -> [HiveStructure] {
         if let structures = try? CoreData.context.fetch(HiveStructure.fetchRequest()) as! [HiveStructure] {
             return structures.filter(shouldInclude)
         }
-        return nil
+        return []
     }
     
     /**
@@ -207,7 +207,7 @@ enum Identity: String {
     /**
      A dictionary that defines the symbols that represent each node type
      */
-    static var symbols: [Identity:String] = [
+    static var defaultPatterns: [Identity:String] = [
         .grasshopper:"𝝣",
         .queenBee:"𝝠",
         .beetle:"𝝧",
@@ -223,8 +223,8 @@ enum Identity: String {
     case soldierAnt
     case dummy
     
-    var symbol: String {
-        get {return Identity.symbols[self]!}
+    var defaultPattern: String {
+        get {return Identity.defaultPatterns[self]!}
     }
     
     /**
@@ -242,16 +242,6 @@ enum Identity: String {
         case .dummy: return HexNode(color: color)
         }
     }
-    
-//    case grasshopper = "蜢", queenBee = "皇", beetle = "甲", spider = "蛛", soldierAnt = "蚁", dummy = "笨"
-//    case grasshopper = "✡︎", queenBee = "✪", beetle = "✶", spider = "★", soldierAnt = "✩", dummy = "▲"
-//    case grasshopper = "𝔾", queenBee = "ℚ", beetle = "𝔹", spider = "𝕊", soldierAnt = "𝔸", dummy = "𝔻"
-//    case grasshopper = "𝜞", queenBee = "𝜟", beetle = "𝜭", spider = "𝜮", soldierAnt = "𝜴", dummy = "𝜩"
-//    case grasshopper = "𝞝", queenBee = "𝞡", beetle = "𝞨", spider = "𝞚", soldierAnt = "𝞧", dummy = "𝞦"
-//    case grasshopper = "♞", queenBee = "♛", beetle = "♟", spider = "♝", soldierAnt = "♜", dummy = "♚"
-//    case grasshopper = "♘", queenBee = "♕", beetle = "♙", spider = "♗", soldierAnt = "♖", dummy = "♔"
-//      case grasshopper = "$", queenBee = "€", beetle = "¥", spider = "¢", soldierAnt = "£", dummy = "₽"
-//    case grasshopper = "😀", queenBee = "😆", beetle = "🙃", spider = "🤪", soldierAnt = "😎", dummy = "🤩"
 }
 
 

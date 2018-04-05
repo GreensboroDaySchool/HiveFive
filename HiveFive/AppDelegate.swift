@@ -27,8 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        Utils.executeOnce(id: "setup", setup)
         return true
+    }
+    
+    /**
+     App launches for the first time, setup Core Data, User Defaults, etc.
+     */
+    private func setup() {
+//        CoreData.delete(entity: "HiveStructure")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

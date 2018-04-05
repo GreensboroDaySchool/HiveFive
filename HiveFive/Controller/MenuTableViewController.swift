@@ -8,6 +8,7 @@
 
 import UIKit
 
+private let reuseIdentifier = "cell1"
 class MenuTableViewController: UITableViewController {
 
     let menuItems = [
@@ -45,7 +46,7 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         cell.textLabel?.text = menuItems[indexPath.row]
 
         return cell

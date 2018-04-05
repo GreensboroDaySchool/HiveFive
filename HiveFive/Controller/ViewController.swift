@@ -51,37 +51,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Hive.sharedInstance = Hive.defaultHive
+        
         hive.delegate = self // establish communication with Model
         board.delegate = self // establish communication with View
         
-        let beetle2 = Beetle(color: .black)
-        let grasshopper = Grasshopper(color: .white)
-        let queenBee = QueenBee(color: .black)
-        let beetle = Beetle(color: .white)
-        let soldierAnt = SoldierAnt(color: .black)
-        let spider = Spider(color: .white)
-        let spider2 = Spider(color: .black)
+        hive.root = hive.root // manually trigger update
         
-        beetle2.connect(with: spider, at: .upRight)
-        
-        grasshopper.connect(with: spider, at: .down) // grasshopper is beneath the spider
-        queenBee.connect(with: grasshopper, at: .downRight) // queen bee is to the lower right of grasshopper
-        beetle.connect(with: grasshopper, at: .downLeft) // beetle is to the lower left of grass hopper
-        
-        soldierAnt.connect(with: beetle, at: .down) // soldier ant is beneath beetle
-        soldierAnt.connect(with: spider2, at: .downLeft) // soldier ant is also lower left of spider2
-        
-        spider2.connect(with: grasshopper, at: .down) // spider2 is right beneath grasshopper
-        //in real world scenario, spider2 is also lower right of beetle and lower left of queen bee
-        spider2.connect(with: queenBee, at: .downLeft) // spider2 is also lower left of queen bee
-        spider2.connect(with: beetle, at: .downRight) // spider2 is also lower right of beetle
-        
-        SoldierAnt(color: .white).move(to: .down, of: spider2)
-        QueenBee(color: .white).move(to: .up, of: beetle)
-        Grasshopper(color: .black).move(to: .down, of: queenBee)
-        
-        
-        hive.root = spider
         let ctr = CGPoint(x: board.bounds.midX, y: board.bounds.midY)
         board.rootCoordinate = ctr
     }

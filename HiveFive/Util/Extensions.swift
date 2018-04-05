@@ -321,12 +321,22 @@ class CoreData {
         return (UIApplication.shared.delegate as! AppDelegate)
         .persistentContainer.viewContext
     }()
+    
+    /**
+     - Parameter entity: The name of the entity to be deleted.
+     */
+    static func delete(entity: String) {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let _ = try? CoreData.context.execute(request)
+    }
 }
 
-/**
- A little trick for cancelling detected gesture.
- */
 extension UIGestureRecognizer {
+    
+    /**
+     A little trick for cancelling detected gesture.
+     */
     func cancel() {
         isEnabled = false
         isEnabled = true
