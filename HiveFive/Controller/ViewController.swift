@@ -131,7 +131,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         switch sender.state {
-        case .ended: lastTranslation = nil
+        case .began: fallthrough
+        case .ended:
+            lastTranslation = nil
             return
         default: break
         }
@@ -178,5 +180,23 @@ extension ViewController: HiveDelegate {
 
     func rootNodeDidMove(by route: Route) {
         board.rootNodeMoved(by: route)
+    }
+}
+
+extension ViewController: SlideMenuControllerDelegate {
+    
+    /**
+     Works perfect!
+     Disable pan gesture controls when menu will become visible.
+     */
+    func leftWillOpen() {
+        pan.isEnabled = false
+    }
+    
+    /**
+     Re-enable pan gesture when the menu closes.
+     */
+    func leftDidClose() {
+        pan.isEnabled = true
     }
 }

@@ -24,6 +24,7 @@ class ContainerViewController: SlideMenuController {
     override func awakeFromNib() {
         if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Main") {
             self.mainViewController = controller
+            self.delegate = mainViewController as? SlideMenuControllerDelegate
         }
         if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Left") {
             self.leftViewController = controller

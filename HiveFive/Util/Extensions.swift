@@ -322,3 +322,13 @@ class CoreData {
         .persistentContainer.viewContext
     }()
 }
+
+/**
+ A little trick for cancelling detected gesture.
+ */
+extension UIGestureRecognizer {
+    func cancel() {
+        isEnabled = false
+        isEnabled = true
+    }
+}
