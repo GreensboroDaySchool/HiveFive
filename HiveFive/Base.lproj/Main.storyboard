@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,15 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view tag="233" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r45-Pk-amd" userLabel="HiveBoardView" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="65" width="375" height="502"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="xUd-sL-zuV" appends="YES" id="boL-T7-5aH"/>
-                                    <outletCollection property="gestureRecognizers" destination="LvY-iL-J2i" appends="YES" id="q72-k3-QwL"/>
-                                </connections>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thm-Y4-BRI">
                                 <rect key="frame" x="0.0" y="21" width="375" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -68,30 +58,93 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vqb-wU-pqe"/>
                                 </items>
                             </toolbar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzj-dB-Pqb">
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzj-dB-Pqb">
                                 <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="e0V-y6-Atb"/>
+                                    <constraint firstAttribute="width" constant="100" id="yCM-Nc-KQ9"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yCM-Nc-KQ9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="e0V-y6-Atb"/>
+                                        <include reference="yCM-Nc-KQ9"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="YZe-Oa-syx" kind="embed" id="bpf-JZ-leD"/>
                                 </connections>
                             </containerView>
+                            <view tag="233" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r45-Pk-amd" userLabel="HiveBoardView" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="65" width="375" height="502"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xUd-sL-zuV" appends="YES" id="boL-T7-5aH"/>
+                                    <outletCollection property="gestureRecognizers" destination="LvY-iL-J2i" appends="YES" id="q72-k3-QwL"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="thm-Y4-BRI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="1" id="2iv-zv-Z5y"/>
+                            <constraint firstItem="pzj-dB-Pqb" firstAttribute="leading" secondItem="r45-Pk-amd" secondAttribute="trailing" id="3ez-hg-7Qa"/>
+                            <constraint firstItem="pzj-dB-Pqb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5ty-h9-vZS"/>
                             <constraint firstItem="r45-Pk-amd" firstAttribute="top" secondItem="thm-Y4-BRI" secondAttribute="bottom" id="7Cv-ts-Ca0"/>
+                            <constraint firstItem="r45-Pk-amd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7Z4-lh-OYU"/>
                             <constraint firstItem="r45-Pk-amd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8bl-FQ-tin"/>
                             <constraint firstItem="pzj-dB-Pqb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OVK-t9-lp2"/>
                             <constraint firstItem="pzj-dB-Pqb" firstAttribute="top" secondItem="r45-Pk-amd" secondAttribute="bottom" id="Rc2-Cx-BGd"/>
                             <constraint firstItem="thm-Y4-BRI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TMu-Zv-Fnx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pzj-dB-Pqb" secondAttribute="bottom" id="Tt5-0P-QZ4"/>
                             <constraint firstItem="r45-Pk-amd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vh3-ku-NgK"/>
+                            <constraint firstAttribute="bottom" secondItem="pzj-dB-Pqb" secondAttribute="bottom" id="alZ-P3-iag"/>
                             <constraint firstItem="thm-Y4-BRI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fBF-Qh-YfY"/>
+                            <constraint firstItem="pzj-dB-Pqb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gca-K6-M5J"/>
+                            <constraint firstItem="pzj-dB-Pqb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="oFD-3q-zwg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pzj-dB-Pqb" secondAttribute="bottom" id="ppn-Na-YSG"/>
                             <constraint firstItem="pzj-dB-Pqb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rAP-EU-4cg"/>
+                            <constraint firstItem="r45-Pk-amd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xUt-s9-aSD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ppn-Na-YSG"/>
+                                <exclude reference="7Z4-lh-OYU"/>
+                                <exclude reference="xUt-s9-aSD"/>
+                                <exclude reference="3ez-hg-7Qa"/>
+                                <exclude reference="5ty-h9-vZS"/>
+                                <exclude reference="alZ-P3-iag"/>
+                                <exclude reference="gca-K6-M5J"/>
+                                <exclude reference="oFD-3q-zwg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="thm-Y4-BRI"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Tt5-0P-QZ4"/>
+                                <exclude reference="ppn-Na-YSG"/>
+                                <include reference="7Z4-lh-OYU"/>
+                                <exclude reference="8bl-FQ-tin"/>
+                                <include reference="xUt-s9-aSD"/>
+                                <include reference="3ez-hg-7Qa"/>
+                                <include reference="5ty-h9-vZS"/>
+                                <exclude reference="OVK-t9-lp2"/>
+                                <exclude reference="Rc2-Cx-BGd"/>
+                                <include reference="alZ-P3-iag"/>
+                                <include reference="gca-K6-M5J"/>
+                                <exclude reference="oFD-3q-zwg"/>
+                                <exclude reference="rAP-EU-4cg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="pan" destination="LvY-iL-J2i" id="Lke-5m-Fwz"/>
@@ -111,7 +164,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-119.2" y="31.934032983508249"/>
+            <point key="canvasLocation" x="-120.08995502248877" y="31.199999999999999"/>
         </scene>
         <!--Hand Collection View Controller-->
         <scene sceneID="QOj-RQ-jrY">
@@ -122,40 +175,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZrT-Q6-58M">
-                            <size key="itemSize" width="100" height="86.599999999999994"/>
+                            <size key="itemSize" width="100" height="90"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell4" id="iQQ-Ug-Wp1" customClass="HandCollectionViewCell" customModule="Hive_Five" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="6.5" width="100" height="86.599999999999994"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell4" id="iQQ-Ug-Wp1" customClass="HandCollectionViewCell" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="100" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="86.599999999999994"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKv-fa-LMx" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="90"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC2-xp-IYf">
+                                                    <rect key="frame" x="58" y="69" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="KC2-xp-IYf" secondAttribute="bottom" id="6ft-7z-dX7"/>
+                                                <constraint firstAttribute="trailing" secondItem="KC2-xp-IYf" secondAttribute="trailing" id="Gym-Wt-XHm"/>
+                                                <constraint firstItem="KC2-xp-IYf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FKv-fa-LMx" secondAttribute="leading" constant="8" id="vs0-wa-GPd"/>
+                                            </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC2-xp-IYf">
-                                            <rect key="frame" x="58" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="KC2-xp-IYf" secondAttribute="bottom" constant="-8" id="1Vk-FU-39C"/>
                                     <constraint firstAttribute="trailing" secondItem="FKv-fa-LMx" secondAttribute="trailing" id="Kd7-Gg-35c"/>
                                     <constraint firstItem="FKv-fa-LMx" firstAttribute="top" secondItem="iQQ-Ug-Wp1" secondAttribute="top" id="Lfk-8y-F0x"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="KC2-xp-IYf" secondAttribute="trailing" constant="-8" id="gJh-tR-jSY"/>
-                                    <constraint firstItem="KC2-xp-IYf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iQQ-Ug-Wp1" secondAttribute="leadingMargin" constant="10" id="jVN-Bc-NiH"/>
+                                    <constraint firstItem="FKv-fa-LMx" firstAttribute="top" secondItem="iQQ-Ug-Wp1" secondAttribute="top" id="joU-gE-IiT"/>
                                     <constraint firstAttribute="bottom" secondItem="FKv-fa-LMx" secondAttribute="bottom" id="vsE-lK-fyd"/>
                                     <constraint firstItem="FKv-fa-LMx" firstAttribute="leading" secondItem="iQQ-Ug-Wp1" secondAttribute="leading" id="yWP-RL-e4F"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Lfk-8y-F0x"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="boardView" destination="FKv-fa-LMx" id="f5r-QD-119"/>
                                     <outlet property="numLabel" destination="KC2-xp-IYf" id="y2w-Ur-1FK"/>

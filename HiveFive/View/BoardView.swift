@@ -72,7 +72,7 @@ import UIKit
     
     var nodeViews: [NodeView] {
         get {
-            return subviews.map{$0 as! NodeView}
+            return subviews.map{$0 as? NodeView}.filter{$0 != nil}.map{$0!}
         }
     }
     

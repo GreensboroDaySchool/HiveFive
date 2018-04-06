@@ -27,8 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.rotated(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         Utils.executeOnce(id: "setup", setup)
         return true
+    }
+    
+    @objc func rotated(_ notification: Notification) {
+        debugPrint((notification.object as? UIDevice)?.orientation.isLandscape ?? "no value")
     }
     
     /**

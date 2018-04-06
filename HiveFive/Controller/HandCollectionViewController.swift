@@ -67,6 +67,23 @@ class HandCollectionViewController: UICollectionViewController {
             name: didPlaceNewPiece,
             object: nil
         )
+        
+        //detect orientation change
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    @objc func deviceOrientationDidChange(_ notification: Notification) {
+        if let orientation = (notification.object as? UIDevice)?.orientation {
+            let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
+            switch orientation {
+            case .landscapeLeft: fallthrough
+            case .landscapeRight: flowLayout.scrollDirection = .vertical
+            case .portraitUpsideDown: fallthrough
+            case .portrait: flowLayout.scrollDirection = .horizontal
+            default: break
+            }
+            collectionView?.reloadData()
+        }
     }
     
     @objc func didCancelSelection(_ notification: Notification) {
@@ -202,7 +219,9 @@ class HandCollectionViewController: UICollectionViewController {
 extension HandCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
-        flowLayout.itemSize = CGSize(width: collectionView.bounds.height - 10, height: collectionView.bounds.height - 10)
+        let w = collectionView.bounds.width, h = collectionView.bounds.height
+        let length = (w < h ? w : h) - 10
+        flowLayout.itemSize = CGSize(width: length, height: length)
         return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
     }
 }
