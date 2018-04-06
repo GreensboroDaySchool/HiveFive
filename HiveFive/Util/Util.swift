@@ -62,3 +62,11 @@ public class Utils {
     
     public typealias HtmlCompletionHandler = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 }
+
+func save(id: String, obj: Any) {
+    Utils.saveToUserDefault(obj: obj, key: id)
+}
+
+func get(id: String) -> Any? {
+    return Utils.retrieveFromUserDefualt(key: id)
+}

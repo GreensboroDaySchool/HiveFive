@@ -20,6 +20,23 @@ class HandCollectionViewController: UICollectionViewController {
     var color: Color = .black
     var patterns = Identity.defaultPatterns
     
+    private var isLandscape: Bool {
+        get { return UIDevice.current.orientation.isLandscape}
+    }
+    var nodeSize = preferredNodeSizes[nodeSizeIndex()] {
+        didSet {
+            updateBoundsAccordingToNodeSize()
+            updateFlowLayout()
+            
+            //OMG!!! What a solution, I encountered the exact same bug!
+            //https://stackoverflow.com/questions/45391651/cell-size-not-updating-after-changing-flow-layouts-itemsize
+            //I am getting so good at search stack overflow...
+            collectionViewLayout.invalidateLayout()
+            collectionView?.layoutIfNeeded()
+            collectionView?.reloadData()
+        }
+    }
+    
     /**
      The index of the cell that is currently selected
      */
@@ -67,9 +84,52 @@ class HandCollectionViewController: UICollectionViewController {
             name: didPlaceNewPiece,
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(preferredNodeSizeDidChange(_:)),
+            name: preferredNodeSizeNotification,
+            object: nil
+        )
         
         //detect orientation change
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceOrientationDidChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(deviceOrientationDidChange(_:)),
+            name: NSNotification.Name.UIDeviceOrientationDidChange,
+            object: nil
+        )
+        
+    }
+    
+    private func updateBoundsAccordingToNodeSize() {
+        if let collectionView = collectionView {
+            let current = collectionView.bounds.size
+            if isLandscape {
+                collectionView.bounds.size = CGSize(width: nodeSize, height: current.height)
+            } else {
+                collectionView.bounds.size = CGSize(width: current.width, height: nodeSize)
+            }
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        updateBoundsAccordingToNodeSize()
+        updateFlowLayout()
+    }
+    
+    private func updateFlowLayout() {
+        if let collectionView = collectionView {
+            let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
+            let w = collectionView.bounds.width, h = collectionView.bounds.height
+            let length = (w < h ? w : h) - 10
+            flowLayout.itemSize = CGSize(width: length, height: length)
+        }
+    }
+    
+    @objc func preferredNodeSizeDidChange(_ notification: Notification) {
+        nodeSize = preferredNodeSizes[nodeSizeIndex()]
+        updateFlowLayout()
+        
     }
     
     @objc func deviceOrientationDidChange(_ notification: Notification) {
@@ -77,7 +137,8 @@ class HandCollectionViewController: UICollectionViewController {
             let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
             switch orientation {
             case .landscapeLeft: fallthrough
-            case .landscapeRight: flowLayout.scrollDirection = .vertical
+            case .landscapeRight:
+                flowLayout.scrollDirection = .vertical
             case .portraitUpsideDown: fallthrough
             case .portrait: flowLayout.scrollDirection = .horizontal
             default: break
@@ -218,10 +279,7 @@ class HandCollectionViewController: UICollectionViewController {
 
 extension HandCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
-        let w = collectionView.bounds.width, h = collectionView.bounds.height
-        let length = (w < h ? w : h) - 10
-        flowLayout.itemSize = CGSize(width: length, height: length)
+        updateFlowLayout()
         return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
     }
 }

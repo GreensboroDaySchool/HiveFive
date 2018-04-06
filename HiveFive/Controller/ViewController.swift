@@ -58,8 +58,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //MARK: delegate binding
         hive.delegate = self // establish communication with Model
         board.delegate = self // establish communication with View
+        
+        //MARK: user defaults
+        toolBar.isHidden = !toolBarShouldBeVisible()
+        
         
         //MARK: Notification binding
         NotificationCenter.default.addObserver(
@@ -75,13 +80,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             name: didSelectNewNodeNotification,
             object: nil
         )
-        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(toolBarVisibilityDidUpdate(_:)),
+            name: toolBarVisibilityNotification,
+            object: nil
+        )
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-    
     
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
@@ -224,5 +229,9 @@ extension ViewController {
     
     @objc func themeDidUpdate(_ notification: Notification) {
         board.patterns = notification.object! as! [Identity:String]
+    }
+    
+    @objc func toolBarVisibilityDidUpdate(_ notification: Notification) {
+        toolBar.isHidden = !toolBarShouldBeVisible()
     }
 }
