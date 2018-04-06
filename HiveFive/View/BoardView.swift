@@ -206,10 +206,11 @@ import UIKit
             .map{$0.origin.y}
             .sorted(by: <)
         
-        let cellHeight = nodeRadius * 4 * sin(.pi / 3) / 3
+        let cellHeight = nodeViews[0].bounds.height
+        let cellWidth = nodeViews[0].bounds.width
         
         let minX = xCos.first!
-        let maxX = xCos.last! + 2 * nodeRadius
+        let maxX = xCos.last! + cellWidth
         let minY = yCos.first!
         let maxY = yCos.last! + cellHeight
         

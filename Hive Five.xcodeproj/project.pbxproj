@@ -15,6 +15,8 @@
 		2CFCE471206B00880041EDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */; };
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
+		321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED2E2077D27800805F74 /* MenuIconView.swift */; };
+		321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceViewController.swift */; };
 		322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF73E20766E91008A98F7 /* SlideMenuController.swift */; };
 		322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74120767058008A98F7 /* ContainerViewController.swift */; };
 		322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF743207676EF008A98F7 /* MenuTableViewController.swift */; };
@@ -73,6 +75,8 @@
 		2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		321CED2E2077D27800805F74 /* MenuIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconView.swift; sourceTree = "<group>"; };
+		321CED302077D9D400805F74 /* UserInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceViewController.swift; sourceTree = "<group>"; };
 		322EF73E20766E91008A98F7 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		322EF74120767058008A98F7 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		322EF743207676EF008A98F7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */,
 				328EE19D2076DC3C0056CB0C /* HandCollectionViewController.swift */,
 				328EE1A12076EE940056CB0C /* Constants.swift */,
+				321CED302077D9D400805F74 /* UserInterfaceViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				328EE19A207695640056CB0C /* Cell */,
 				32D1D154206BEFFF008444F4 /* BoardView.swift */,
 				2CCE195D206E77C400733FA0 /* NodeView.swift */,
+				321CED2E2077D27800805F74 /* MenuIconView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				328EE1A02076DE5E0056CB0C /* HandCollectionViewCell.swift in Sources */,
 				328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
+				321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */,
 				3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */,
 				322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
@@ -400,6 +407,7 @@
 				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
 				322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */,
 				322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */,
+				321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */,
 				32B109AB206E8D360065E465 /* Navigation.swift in Sources */,
 				32B109B2206FE0D00065E465 /* Extensions.swift in Sources */,
 				32B109A9206C646F0065E465 /* HexNode.swift in Sources */,

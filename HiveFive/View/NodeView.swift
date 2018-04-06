@@ -73,6 +73,18 @@ class NodeView: UIView {
         get {return bounds.height / 2}
     }
     
+    var displayHeight: CGFloat {
+        get {
+            return displayRadius * sin(.pi / 3) * 2
+        }
+    }
+    
+    var displayWidth: CGFloat {
+        get {
+            return displayRadius * 2
+        }
+    }
+    
     /**
      Actual radius of the polygon that is drawn on screen
      */

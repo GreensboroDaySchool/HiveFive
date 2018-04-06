@@ -12,7 +12,8 @@ private let reuseIdentifier = "cell2"
 class AppearanceTableViewController: UITableViewController {
     
     var items = [
-        "Themes"
+        "Themes",
+        "User Interface"
     ]
 
     override func viewDidLoad() {

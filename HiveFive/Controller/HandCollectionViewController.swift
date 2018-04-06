@@ -25,13 +25,11 @@ class HandCollectionViewController: UICollectionViewController {
      */
     var selectedIndex: IndexPath? {
         willSet {
-            if let old = selectedIndex {
-                getNodeView(at: old).isSelected = false
+            collectionView?.subviews.forEach{
+                ($0 as? HandCollectionViewCell)?.boardView.nodeViews[0].isSelected = false
             }
-        }
-        didSet {
-            if let new = selectedIndex {
-                getNodeView(at: new).isSelected = true
+            if let val = newValue {
+                getNodeView(at: val)?.isSelected = true
             }
         }
     }
@@ -41,9 +39,6 @@ class HandCollectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view
         
@@ -79,9 +74,10 @@ class HandCollectionViewController: UICollectionViewController {
     }
     
     @objc func didPlaceSelection(_ notification: Notification) {
-        let boardView = getCell(at: selectedIndex!).boardView!
-        let node = boardView.root!
-        boardView.root = node.identity.new(color: node.color) // the old node has been used, instantiate a new one.
+        if let boardView = getCell(at: selectedIndex!)?.boardView! {
+            let node = boardView.root!
+            boardView.root = node.identity.new(color: node.color) // the old node has been used, instantiate a new one.
+        }
         selectedIndex = nil
     }
     
@@ -98,12 +94,12 @@ class HandCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func getCell(at indexPath: IndexPath) -> HandCollectionViewCell {
-        return collectionView?.cellForItem(at: selectedIndex!) as! HandCollectionViewCell
+    private func getCell(at indexPath: IndexPath) -> HandCollectionViewCell? {
+        return collectionView?.cellForItem(at: indexPath) as? HandCollectionViewCell
     }
     
-    private func getNodeView(at indexPath: IndexPath) -> NodeView {
-        return getCell(at: indexPath).boardView.nodeViews[0]
+    private func getNodeView(at indexPath: IndexPath) -> NodeView? {
+        return getCell(at: indexPath)?.boardView.nodeViews[0]
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,12 +135,25 @@ class HandCollectionViewController: UICollectionViewController {
         let pair = hand.keyValuePairs[indexPath.row]
         let node = pair.key.new(color: color)
         
-        cell.boardView.patterns = patterns
-        cell.boardView.root = node
-        cell.boardView.nodeRadius = cell.bounds.midX
-        cell.boardView.isUserInteractionEnabled = false
+        //configure board
+        let board = cell.boardView!
+        board.isUserInteractionEnabled = false
+        board.patterns = patterns
+        board.root = node
+        
+        //configure node radius
+        let nodeRadius = cell.bounds.midX < cell.bounds.midY ? cell.bounds.midX : cell.bounds.midY
+        board.nodeRadius = nodeRadius
+        
+        //center node view
+        let nodeView = board.nodeViews[0]
+        nodeView.isSelected = indexPath == selectedIndex
+        let cellCtr = CGPoint(x: cell.bounds.midX, y: cell.bounds.midY)
+        let translation = CGPoint(x: nodeView.bounds.width / 2, y: nodeView.bounds.height / 2)
+        board.rootCoordinate = cellCtr - translation
+        
+        //configure cell
         cell.indexPath = indexPath
-        cell.boardView.nodeViews[0].isSelected = indexPath == selectedIndex
         cell.numLabel.text = String(pair.value)
         
         return cell
@@ -188,4 +197,12 @@ class HandCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension HandCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
+        flowLayout.itemSize = CGSize(width: collectionView.bounds.height - 10, height: collectionView.bounds.height - 10)
+        return (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+    }
 }

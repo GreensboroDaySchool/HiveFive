@@ -30,6 +30,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet var pan: UIPanGestureRecognizer!
     @IBOutlet var pinch: UIPinchGestureRecognizer!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     /**
      This variable records the previous translation to detect change
@@ -46,6 +47,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
      */
     var hive: Hive {
         get {return Hive.sharedInstance}
+    }
+    
+    var container: ContainerViewController? {
+        get {
+            return parent as? ContainerViewController
+        }
     }
 
     override func viewDidLoad() {
@@ -68,7 +75,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             name: didSelectNewNodeNotification,
             object: nil
         )
+        
     }
+    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//    }
     
     
     
@@ -130,6 +142,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         board.rootCoordinate = newCoordinate
         lastTranslation = current
     }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        container?.openLeft() //open menu
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
