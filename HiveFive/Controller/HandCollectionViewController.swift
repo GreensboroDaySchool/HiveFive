@@ -19,10 +19,7 @@ class HandCollectionViewController: UICollectionViewController {
     var hand = Hive.defaultHand
     var color: Color = .black
     var patterns = Identity.defaultPatterns
-    
-    private var isLandscape: Bool {
-        get { return UIDevice.current.orientation.isLandscape}
-    }
+
     var nodeSize = preferredNodeSizes[nodeSizeIndex()] {
         didSet {
             updateBoundsAccordingToNodeSize()
@@ -104,15 +101,19 @@ class HandCollectionViewController: UICollectionViewController {
     private func updateBoundsAccordingToNodeSize() {
         if let collectionView = collectionView {
             let current = collectionView.bounds.size
-            if isLandscape {
+            switch UIDevice.current.orientation {
+            case .landscapeLeft: fallthrough
+            case .landscapeRight:
                 collectionView.bounds.size = CGSize(width: nodeSize, height: current.height)
-            } else {
+            case .portraitUpsideDown: fallthrough
+            case .portrait:
                 collectionView.bounds.size = CGSize(width: current.width, height: nodeSize)
+            default: break
             }
         }
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         updateBoundsAccordingToNodeSize()
         updateFlowLayout()
     }
@@ -140,7 +141,8 @@ class HandCollectionViewController: UICollectionViewController {
             case .landscapeRight:
                 flowLayout.scrollDirection = .vertical
             case .portraitUpsideDown: fallthrough
-            case .portrait: flowLayout.scrollDirection = .horizontal
+            case .portrait:
+                flowLayout.scrollDirection = .horizontal
             default: break
             }
             collectionView?.reloadData()
