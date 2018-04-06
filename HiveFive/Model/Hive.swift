@@ -151,6 +151,10 @@ class Hive {
                 currentPlayer = currentPlayer.opposite
             }
         default:
+            if node.color != currentPlayer {
+                //this prevents current player from selecting opponent's pieces
+                return
+            }
             selectedNode = node
             availablePositions = node.uniqueAvailableMoves()
             if selectedNewNode {
