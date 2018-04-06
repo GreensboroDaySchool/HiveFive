@@ -370,7 +370,7 @@ class HiveFive_Tests: XCTestCase {
         hive.root = spider
         hive.save(name: "game1")
         
-        let game1 = Hive.savedStructures()!.first!
+        let game1 = Hive.savedStructures().first!
         let retrieved = Hive.load(game1)
         XCTAssert(retrieved.root!.connectedNodes().count == allPieces.count)
     }

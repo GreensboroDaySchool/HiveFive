@@ -342,3 +342,11 @@ extension UIGestureRecognizer {
         isEnabled = true
     }
 }
+
+extension Dictionary {
+    var keyValuePairs: [(key: Key,value: Value)] {
+        get {
+            return zip(self.keys,self.values).map{(key: $0.0, value: $0.1)}
+        }
+    }
+}

@@ -22,6 +22,9 @@
 		328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */; };
 		328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */; };
 		328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19B2076A7890056CB0C /* DefaultStructure.swift */; };
+		328EE19E2076DC3C0056CB0C /* HandCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19D2076DC3C0056CB0C /* HandCollectionViewController.swift */; };
+		328EE1A02076DE5E0056CB0C /* HandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19F2076DE5E0056CB0C /* HandCollectionViewCell.swift */; };
+		328EE1A22076EE940056CB0C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1A12076EE940056CB0C /* Constants.swift */; };
 		3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */; };
 		3291A329207524C400DBF9B2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3291A328207524C400DBF9B2 /* Util.swift */; };
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
@@ -77,6 +80,9 @@
 		328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; };
 		328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewCell.swift; sourceTree = "<group>"; };
 		328EE19B2076A7890056CB0C /* DefaultStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStructure.swift; sourceTree = "<group>"; };
+		328EE19D2076DC3C0056CB0C /* HandCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandCollectionViewController.swift; sourceTree = "<group>"; };
+		328EE19F2076DE5E0056CB0C /* HandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandCollectionViewCell.swift; sourceTree = "<group>"; };
+		328EE1A12076EE940056CB0C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiveFive.xcdatamodel; sourceTree = "<group>"; };
 		3291A328207524C400DBF9B2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */,
+				328EE19F2076DE5E0056CB0C /* HandCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -198,6 +205,8 @@
 				322EF743207676EF008A98F7 /* MenuTableViewController.swift */,
 				322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */,
 				328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */,
+				328EE19D2076DC3C0056CB0C /* HandCollectionViewController.swift */,
+				328EE1A12076EE940056CB0C /* Constants.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -376,6 +385,7 @@
 				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */,
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
+				328EE1A02076DE5E0056CB0C /* HandCollectionViewCell.swift in Sources */,
 				328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */,
@@ -395,8 +405,10 @@
 				32B109A9206C646F0065E465 /* HexNode.swift in Sources */,
 				32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */,
 				32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */,
+				328EE19E2076DC3C0056CB0C /* HandCollectionViewController.swift in Sources */,
 				33F751EE8399CC8C67CF1A35 /* Neighbors.swift in Sources */,
 				328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */,
+				328EE1A22076EE940056CB0C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

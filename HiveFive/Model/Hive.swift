@@ -37,6 +37,22 @@ class Hive {
     }
     
     /**
+     Whether the queen is required to be on the board in the first 4 moves.
+     */
+    var queenOutInFirstFour = true
+    
+    /**
+     Default hand of a player by Hive's rule
+     */
+    static let defaultHand: Hand = [
+            .grasshopper: 3,
+            .queenBee: 1,
+            .beetle: 2,
+            .spider: 3,
+            .soldierAnt: 3
+        ]
+    
+    /**
      Assistive positions that indicated the spacial layout of the physical
      coordinates of the available moves, etc.
      */
@@ -51,13 +67,29 @@ class Hive {
         didSet {delegate?.selectedNodeDidUpdate()}
     }
     
+    private var selectedNewNode = false
+    
     var blackHand: Hand
     var whiteHand: Hand
+    var currentPlayer: Color = .black
+    var nextPlayer: Color {
+        get {return currentPlayer.opposite}
+    }
+    var currentHand: Hand {
+        get {return currentPlayer == .black ? blackHand : whiteHand}
+    }
+    var opponentHand: Hand {
+        get {return currentPlayer == .black ? whiteHand : blackHand}
+    }
+    
+    var history: History
+    
     var delegate: HiveDelegate?
     
     init() {
-        blackHand = Hand()
-        whiteHand = Hand()
+        blackHand = Hive.defaultHand
+        whiteHand = Hive.defaultHand
+        history = History()
     }
     
     /**
@@ -71,25 +103,72 @@ class Hive {
         case .dummy:
             if let selected = selectedNode {
                 let available = node.neighbors.available()
-                assert(available.count == 1)
-                let dest = available[0]
-                let position = Position(node: dest.node, dir: dest.dir.opposite())
+                if available.count == 0 { // special case, first piece!
+                    root = selectedNode
+                } else {
+                    let dest = available[0]
+                    let position = Position(node: dest.node, dir: dest.dir.opposite())
 
-                // if the root moves, then the root coordinate needs to be updated
-                if selected === root {
-                    let route = root!.derivePaths().filter{$0.destination === position.node}[0]
-                        .route.append([position.dir])
-                    delegate?.rootNodeDidMove(by: route)
+                    // if the root moves, then the root coordinate needs to be updated
+                    if selected === root {
+                        let route = root!.derivePaths().filter{$0.destination === position.node}[0]
+                            .route.append([position.dir])
+                        delegate?.rootNodeDidMove(by: route)
+                    }
+
+                    //move to the designated position
+                    selected.move(to: position)
+                    
+                    //record the move
+                    //TODO: DEBUG!
+                    let origins = selected.neighbors.available()
+                        .map{Position(node: $0.node, dir: $0.dir.opposite())}
+                    history.push(move: Move(selected, from: origins.first, to: position))
                 }
-
-                //move to the designated position
-                selected.move(to: position)
-                delegate?.structureDidUpdate()
+                
+                //if the piece just placed/moved is a new piece, then:
+                if selectedNewNode {
+                    NotificationCenter.default.post(name: didPlaceNewPiece, object: nil)
+                    
+                    //update black/white hands
+                    let key = selectedNode!.identity
+                    switch currentPlayer {
+                    case .black: blackHand.updateValue(blackHand[key]! - 1, forKey: key)
+                    case .white: whiteHand.updateValue(whiteHand[key]! - 1, forKey: key)
+                    }
+                    blackHand.keys.filter{blackHand[$0]! == 0}.forEach {
+                        blackHand.remove(at: blackHand.index(forKey: $0)!)
+                    }
+                    whiteHand.keys.filter{whiteHand[$0]! == 0}.forEach {
+                        whiteHand.remove(at: whiteHand.index(forKey: $0)!)
+                    }
+                    
+                    NotificationCenter.default.post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
+                    selectedNewNode = false
+                }
+                
+                delegate?.structureDidUpdate() //notify the delegate that the structure has updated
+                currentPlayer = currentPlayer.opposite
             }
         default:
             selectedNode = node
             availablePositions = node.uniqueAvailableMoves()
+            if selectedNewNode {
+                NotificationCenter.default.post(name: didCancelNewPiece, object: nil)
+                selectedNewNode = false
+            }
         }
+    }
+    
+    /**
+     - Todo: Implement!
+     */
+    func select(newNode: HexNode) {
+        selectedNode = newNode
+        let specialCase = root?.connectedNodes().count == 1
+        let color = specialCase ? root!.color : newNode.color
+        availablePositions = availablePositions(color: color)
+        selectedNewNode = true
     }
     
     /**
@@ -98,6 +177,11 @@ class Hive {
     func cancelSelection() {
         selectedNode = nil
         availablePositions = []
+        selectedNewNode = false
+        NotificationCenter.default.post(name: didCancelNewPiece, object: nil)
+        if root == nil {
+            delegate?.hiveStructureRemoved()
+        }
     }
     
     /**
@@ -131,6 +215,18 @@ class Hive {
         structure.pieces = pieces as NSObject // [String]
         structure.routes = routes as NSObject // [[Int]]
         structure.colors = colors as NSObject // [Int]
+        
+        func encode(_ hand: Hand) -> NSObject {
+            return hand.map{(key: $0.key.rawValue, value: $0.value)}
+                .reduce([String:Int]()){(dict: [String:Int], element: (key: String, value: Int)) in
+                    var _dict = dict
+                    _dict[element.key] = element.value
+                    return _dict
+                } as NSObject
+        }
+        
+        structure.blackHand = encode(blackHand)
+        structure.whiteHand = encode(whiteHand)
         structure.name = name
         
         var id: Int16 = 0
@@ -176,10 +272,46 @@ class Hive {
             path.destination.move(to: position)
         }
         
+        func decode(_ hand: NSObject) -> Hand {
+            return (hand as! [String:Int])
+                .keyValuePairs.reduce([Identity:Int]()) {(dict: [Identity:Int], element: (key: String, value: Int)) in
+                    var _dict = dict
+                    _dict[Identity(rawValue: element.key)!] = element.value
+                    return _dict
+            }
+        }
+        
         hive.root = root
+        hive.blackHand = decode(structure.blackHand!)
+        hive.whiteHand = decode(structure.whiteHand!)
         return hive
     }
     
+    /**
+     Positions in the hive in which a new node could be placed at.
+     - Todo: Debug!!
+     - Parameter color: The color of the new piece.
+     */
+    func availablePositions(color: Color) -> [Position] {
+        guard let root = root else {return []}
+        var paths = root.derivePaths()
+        let path = Path(destination: root, route: Route(directions: []))
+        paths.insert(path, at: 0)
+        let dummy = Identity.dummy.new(color: color)
+        return paths.filter{$0.destination.color == color}
+            .map{($0, $0.destination.neighbors.empty())}
+            .map{(arg) -> [Path] in
+            let (path, dirs) = arg
+            return dirs.map{Path(
+                destination: path.destination,
+                route: path.route.append([$0]))
+            }
+            }.flatMap{$0}
+            .map{$0.route}
+            .filterDuplicates(isDuplicate: ==)
+            .map{Position.resolve(from: root, following: $0)}
+            .filter{dummy.canPlace(at: $0)}
+    }
     
     
 }
@@ -189,18 +321,13 @@ protocol HiveDelegate {
     func selectedNodeDidUpdate()
     func availablePositionsDidUpdate()
     func rootNodeDidMove(by route: Route)
+    func hiveStructureRemoved()
 }
 
 /**
  This struct is used to represent the available pieces at each player's disposal.
  */
-struct Hand {
-    var grasshoppers = 3
-    var queenBees = 1
-    var beetles = 2
-    var spiders = 2
-    var soldierAnts = 3
-}
+typealias Hand = [Identity:Int]
 
 enum Identity: String {
     
@@ -247,4 +374,43 @@ enum Identity: String {
 
 protocol IdentityProtocol {
     var identity: Identity {get}
+}
+
+struct Move {
+    var node: HexNode
+    var from: Position?
+    var to: Position
+    
+    init(_ node: HexNode, from: Position?, to: Position) {
+        self.node = node
+        self.from = from
+        self.to = to
+    }
+}
+
+class History {
+    var moves = [Move]()
+    
+    /**
+     Pops the last move from history stack and restore hive state
+     - Returns: A node is the node was added; otherwise nil.
+     */
+    func pop() -> HexNode? {
+        if moves.count == 0 {return nil}
+        let move = moves.removeLast()
+        if let from = move.from {
+            move.node.move(to: from)
+            return nil
+        } else {
+            move.node.disconnect()
+            return move.node
+        }
+    }
+    
+    /**
+     Push the move into the history stack.
+     */
+    func push(move: Move) {
+        moves.append(move)
+    }
 }

@@ -25,12 +25,17 @@ class NodeView: UIView {
     /**
      Path contains information about both node and relative position
      */
-    let path: Path!
+    var path: Path!
     
     var node: HexNode {
         return path!.destination
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let node = Identity.dummy.new(color: .black)
+        path = Path(destination: node, route: Route(directions: []))
+    }
     
     
     /**

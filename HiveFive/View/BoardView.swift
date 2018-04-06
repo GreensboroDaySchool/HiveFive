@@ -70,7 +70,7 @@ import UIKit
         didSet {updateAvailablePositions()}
     }
     
-    private var nodeViews: [NodeView] {
+    var nodeViews: [NodeView] {
         get {
             return subviews.map{$0 as! NodeView}
         }
@@ -156,11 +156,25 @@ import UIKit
             }
         }
     }
+    
+    /**
+     Clears everything on the board!
+     */
+    func clear() {
+        root = nil
+        availablePositions = []
+        subviews.forEach{$0.removeFromSuperview()}
+    }
 
     /**
      Update dummy nodes according to the new prompted positions provided by the Hive model
      */
     func updateAvailablePositions() {
+        if root == nil || root!.identity == .dummy { // special case
+            root = Identity.dummy.new(color: .black)
+            centerHiveStructure()
+            return
+        }
         nodeViews.filter{$0.node.identity == .dummy}
             .forEach{$0.removeFromSuperview()}
         let knownPaths = nodeViews.map{$0.path!}
@@ -181,7 +195,9 @@ import UIKit
      Adjusts the root coordinate so that the hive structure is centered in the view.
      */
     func centerHiveStructure() {
-        if subviews.count == 0 {return}
+        if subviews.count == 0 {
+            return
+        }
         let frames = subviews.map{$0.frame}
         let xCos = frames
             .map{$0.origin.x}

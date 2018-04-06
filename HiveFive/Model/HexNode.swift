@@ -170,17 +170,17 @@ class HexNode: IdentityProtocol {
      Checks whether a piece can initially connect to the hive at the designated position
      */
     func canPlace(at position: Position) -> Bool {
+        if position.dir.rawValue >= 6 {return false}
         let node = position.node
         let dir = position.dir
         if node.neighbors[dir] != nil {return false}
-        let preserved = neighbors // preserve neighbors
-        move(to: position)
-        let opponents = neighbors.available()
-            .map{Hive.traverse(from: $0.node, toward: .up)}
+        let dummy = Identity.dummy.new(color: color)
+        dummy.move(to: position)
+        let opponents = dummy.neighbors.available()
+            .map{Hive.traverse(from: $0.node, toward: .above)}
             .filter{$0.color != color}
             .count
-        disconnect()
-        self.neighbors = preserved
+        dummy.disconnect()
         return opponents == 0
     }
 
@@ -365,4 +365,10 @@ class HexNode: IdentityProtocol {
  */
 enum Color: Int {
     case black = 0, white
+    
+    var opposite: Color {
+        get {
+            return (self == .black ? .white : .black)
+        }
+    }
 }

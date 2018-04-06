@@ -35,6 +35,15 @@ struct Neighbors {
                 .map {Direction(rawValue: $0.offset)!}
                 .map {($0, self[$0]!)}
     }
+    
+    /**
+     - Returns: The directions at which there is no neighbors.
+     */
+    func empty() -> [Direction] {
+        return nodes.enumerated()
+            .filter{$0.element == nil}
+            .map{Direction(rawValue: $0.offset)!}
+    }
 
     /**
     e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]

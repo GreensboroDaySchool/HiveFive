@@ -37,6 +37,11 @@ extension Hive {
                 
                 let hive = Hive()
                 hive.root = spider
+                
+                let blackHand: [Identity:Int] = [.grasshopper: 2, .queenBee: 1, .soldierAnt: 3, .beetle: 2]
+                let whiteHand: [Identity:Int] = [.grasshopper: 2, .queenBee: 1, .soldierAnt: 3, .beetle: 2]
+                hive.blackHand = blackHand
+                hive.whiteHand = whiteHand
                 hive.save(name: "#default")
                 return hive
             }

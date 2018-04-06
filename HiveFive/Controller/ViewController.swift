@@ -19,8 +19,6 @@
 
 import UIKit
 
-let themeUpdateNotification = Notification.Name("themeUpdated")
-
 /**
  This is the Controller of the MVC design pattern.
  In this case -
@@ -53,26 +51,26 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Hive.sharedInstance = Hive.defaultHive
-        
         hive.delegate = self // establish communication with Model
         board.delegate = self // establish communication with View
         
-        hive.root = hive.root // manually trigger update
-        
-        board.centerHiveStructure()
-        
+        //MARK: Notification binding
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(themeDidUpdate(_:)),
             name: themeUpdateNotification,
             object: nil
         )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didSelectNewNode(_:)),
+            name: didSelectNewNodeNotification,
+            object: nil
+        )
     }
     
-    @objc func themeDidUpdate(_ notification: Notification) {
-        board.patterns = notification.object! as! [Identity:String]
-    }
+    
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
         let focus = sender.location(in: board)
@@ -176,6 +174,11 @@ extension ViewController: HiveDelegate {
     func rootNodeDidMove(by route: Route) {
         board.rootNodeMoved(by: route)
     }
+    
+    func hiveStructureRemoved() {
+        board.clear()
+    }
+    
 }
 
 extension ViewController: SlideMenuControllerDelegate {
@@ -193,5 +196,16 @@ extension ViewController: SlideMenuControllerDelegate {
      */
     func leftDidClose() {
         pan.isEnabled = true
+    }
+}
+
+//MARK: Notification handling
+extension ViewController {
+    @objc func didSelectNewNode(_ notification: Notification) {
+        hive.select(newNode: notification.object as! HexNode)
+    }
+    
+    @objc func themeDidUpdate(_ notification: Notification) {
+        board.patterns = notification.object! as! [Identity:String]
     }
 }

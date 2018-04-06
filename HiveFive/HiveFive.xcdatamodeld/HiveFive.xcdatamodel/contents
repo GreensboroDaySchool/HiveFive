@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="HiveStructure" representedClassName="HiveStructure" syncable="YES" codeGenerationType="class">
+        <attribute name="blackHand" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="colors" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pieces" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="routes" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="whiteHand" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="HiveStructure" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="HiveStructure" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
