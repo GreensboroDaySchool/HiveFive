@@ -780,5 +780,92 @@
             </objects>
             <point key="canvasLocation" x="3843" y="1747"/>
         </scene>
+        <!--Color Picker View Controller-->
+        <scene sceneID="8i5-Qz-Sxc">
+            <objects>
+                <viewController storyboardIdentifier="ColorPicker" id="JQv-Oz-TQU" customClass="ColorPickerViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ohr-Dk-eHI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-b0-eSj">
+                                <rect key="frame" x="37.5" y="410" width="300" height="249"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-lF-fhu" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="-4" width="304" height="91"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5h-n1-fME" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="79" width="304" height="91"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsV-On-qvx" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="162" width="304" height="91"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="F5h-n1-fME" firstAttribute="height" secondItem="gLA-lF-fhu" secondAttribute="height" id="g1e-kw-Ylr"/>
+                                    <constraint firstItem="F5h-n1-fME" firstAttribute="height" secondItem="UsV-On-qvx" secondAttribute="height" id="yzD-dN-aUQ"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVF-xR-IVt">
+                                <rect key="frame" x="38" y="28" width="300" height="374"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7l-Ew-DTU">
+                                        <rect key="frame" x="0.0" y="8" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Z7l-Ew-DTU" secondAttribute="height" multiplier="1:1" id="gSy-AE-PyZ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Z7l-Ew-DTU" firstAttribute="centerX" secondItem="IVF-xR-IVt" secondAttribute="centerX" id="EF6-k9-uRR"/>
+                                    <constraint firstItem="Z7l-Ew-DTU" firstAttribute="width" secondItem="IVF-xR-IVt" secondAttribute="width" id="SJ1-He-Bzh"/>
+                                    <constraint firstItem="Z7l-Ew-DTU" firstAttribute="top" secondItem="IVF-xR-IVt" secondAttribute="top" constant="8" id="a6u-of-QZn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IVF-xR-IVt" firstAttribute="height" secondItem="D3d-b0-eSj" secondAttribute="height" multiplier="1.5" id="4SN-yN-Pfp"/>
+                            <constraint firstItem="IVF-xR-IVt" firstAttribute="width" secondItem="D3d-b0-eSj" secondAttribute="width" id="8iL-j8-NDw"/>
+                            <constraint firstItem="D3d-b0-eSj" firstAttribute="centerX" secondItem="A1T-SL-umo" secondAttribute="centerX" id="D4E-Ua-bQJ"/>
+                            <constraint firstItem="IVF-xR-IVt" firstAttribute="centerX" secondItem="A1T-SL-umo" secondAttribute="centerX" id="O5c-ow-AYD"/>
+                            <constraint firstItem="D3d-b0-eSj" firstAttribute="top" secondItem="IVF-xR-IVt" secondAttribute="bottom" constant="8" id="UPU-bu-c9m"/>
+                            <constraint firstItem="D3d-b0-eSj" firstAttribute="width" secondItem="Ohr-Dk-eHI" secondAttribute="width" multiplier="0.8" id="YhK-4d-ms9"/>
+                            <constraint firstItem="A1T-SL-umo" firstAttribute="bottom" secondItem="D3d-b0-eSj" secondAttribute="bottom" constant="8" id="iYb-JF-pqJ"/>
+                            <constraint firstItem="IVF-xR-IVt" firstAttribute="top" secondItem="A1T-SL-umo" secondAttribute="top" constant="8" id="lnX-Lf-1dh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A1T-SL-umo"/>
+                    </view>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="F5h-n1-fME" id="c0Z-Jx-YlW"/>
+                        <outlet property="colorView" destination="Z7l-Ew-DTU" id="Hjy-O7-Ug1"/>
+                        <outlet property="hueSlider" destination="UsV-On-qvx" id="2T5-ws-ABY"/>
+                        <outlet property="mainStackView" destination="D3d-b0-eSj" id="0JL-av-sG0"/>
+                        <outlet property="saturationSlider" destination="gLA-lF-fhu" id="2Iy-lz-cQO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twG-pa-s6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4780" y="1576.4617691154424"/>
+        </scene>
     </scenes>
 </document>

@@ -141,7 +141,7 @@ class NodeView: UIView {
     }
     var regularIdentityColor: UIColor {
         if isMonocromatic {return node.color == .black ? .white : monocromaticColor}
-        return borderColor
+        return _borderColor
     }
     
     var monocromaticSelectedBorderColor: UIColor {
@@ -154,7 +154,7 @@ class NodeView: UIView {
         return node.color == .black ? .white : monocromaticSelectedColor
     }
     
-    var borderColor: UIColor {
+    var _borderColor: UIColor {
         return isSelected ? isMonocromatic ? monocromaticSelectedBorderColor : selectedBorderColor : regularBorderColor
     }
     var fillColor: UIColor {
@@ -165,12 +165,12 @@ class NodeView: UIView {
     }
     
     /**
-     Ratio acquired by doing (borderWidth / radius)
+     Ratio acquired by doing (_borderWidth / radius)
      */
     @IBInspectable var borderWidthRatio: CGFloat = 1/100
     
     /**
-     Ratio acquired by doing (borderWidth / radius) when selected
+     Ratio acquired by doing (_borderWidth / radius) when selected
      */
     @IBInspectable var selectedBorderWidthRatio: CGFloat = 1/100
     
@@ -189,7 +189,7 @@ class NodeView: UIView {
      Since the user can zoom in and out, a fixed borderWidth is no longer suitable.
      The border width should instead be derived from node radius by multiplying with a ratio.
      */
-    var borderWidth: CGFloat {
+    var _borderWidth: CGFloat {
         get {return radius * (isSelected ? selectedBorderWidthRatio: borderWidthRatio)}
     }
     
@@ -204,6 +204,7 @@ class NodeView: UIView {
         self.path = path
         super.init(frame: CGRect.zero)
         self.isOpaque = false
+        Profile.defaultProfile.apply(on: self)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
         addGestureRecognizer(tap)
@@ -225,8 +226,8 @@ class NodeView: UIView {
      */
     private func calculateSize(radius: CGFloat) -> CGSize {
         return CGSize(
-            width: 2 * radius + borderWidth,
-            height: 2 * sin(.pi / 3) * radius + borderWidth
+            width: 2 * radius + _borderWidth,
+            height: 2 * sin(.pi / 3) * radius + _borderWidth
         )
     }
     
@@ -344,10 +345,10 @@ class NodeView: UIView {
     private func drawHexagon(_ rect: CGRect) {
         let hexagon = pathForPolygon(radius: displayRadius, sides: 6)
         context.saveGState() // save
-        borderColor.setStroke()
+        _borderColor.setStroke()
         fillColor.setFill()
         context.translateBy(x: bounds.midX, y: bounds.midY)
-        hexagon.lineWidth = borderWidth
+        hexagon.lineWidth = _borderWidth
         hexagon.fill()
         hexagon.stroke()
         context.restoreGState() // restore
@@ -393,4 +394,16 @@ class NodeView: UIView {
  */
 protocol NodeViewDelegate {
     func didTap(node: HexNode)
+}
+
+extension NodeView {
+    func set(color: UIColor, forKeyPath path: ReferenceWritableKeyPath<NodeView, UIColor>) {
+        self[keyPath: path] = color
+    }
+    func set(val: CGFloat, forKeyPath path: ReferenceWritableKeyPath<NodeView, CGFloat>) {
+        self[keyPath: path] = val
+    }
+    func set(bool: Bool, forKeyPath path: ReferenceWritableKeyPath<NodeView, Bool>) {
+        self[keyPath: path] = bool
+    }
 }
