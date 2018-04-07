@@ -10,14 +10,66 @@ import Foundation
 import UIKit
 
 struct Profile {
-    static let defaultProfile = Profile(name: "default", content: defaultKeyPaths)
+    static let defaultProfile = Profile(name: "default", keyPaths: defaultKeyPaths)
 
-    var name: String?
-    var content: [KPHackable]
+    var name: String
+    var keyPaths: [KPHackable]
 
     func apply(on nodeView: NodeView) {
-        content.forEach{$0.apply(on: nodeView)}
+        keyPaths.forEach{$0.apply(on: nodeView)}
     }
+    
+    func save() {
+        var colors = [String:String]()
+        var numbers = [String:CGFloat]()
+        var bools = [String:Bool]()
+        keyPaths.forEach {keyPath in
+            let key = keyPath.key
+            switch keyPath.valueType() {
+            case .bool(let bool): bools[key] = bool
+            case .number(let num): numbers[key] = num
+            case .color(let color): colors[key] = color.hexString
+            }
+        }
+        let context = CoreData.context
+        let profile = NodeViewProfile(context: context)
+        profile.name = name
+        profile.colors = colors as NSObject
+        profile.nums = numbers as NSObject
+        profile.bools = bools as NSObject
+        try? context.save()
+    }
+    
+    static func savedProfiles(_ shouldInclude: (NodeViewProfile) -> Bool = {_ in return true}) -> [NodeViewProfile] {
+        if let profiles = try? CoreData.context.fetch(NodeViewProfile.fetchRequest()) as! [NodeViewProfile] {
+            return profiles.filter(shouldInclude)
+        }
+        return []
+    }
+    
+    static func load(_ profile: NodeViewProfile) -> Profile {
+        let colors = profile.colors as! [String:String]
+        let numbers = profile.nums as! [String:CGFloat]
+        let bools = profile.bools as! [String:Bool]
+        let name = profile.name!
+        
+        var profile = Profile(name: name, keyPaths: [])
+        
+        func process(_ property: String, _ value: Any) -> KPHackable {
+            return KPHacker.make(from: property, value: value)
+        }
+        
+        profile.keyPaths.append(contentsOf: colors.map{process($0.key, UIColor(hexString: $0.value))})
+        profile.keyPaths.append(contentsOf: numbers.map{process($0.key, $0.value)})
+        profile.keyPaths.append(contentsOf: bools.map{process($0.key, $0.value)})
+        return profile
+    }
+}
+
+enum CustomValue {
+    case bool(Bool)
+    case number(CGFloat)
+    case color(UIColor)
 }
 
 /*
@@ -26,25 +78,28 @@ struct Profile {
 protocol KPHackable {
     func apply<T>(on obj: T)
     func setValue<T>(_ val: T) -> KPHackable
+    func getValue() -> Any
+    func valueType() -> CustomValue
     var key: String {get}
-
-    static func make<V>(from key: String, value: V) -> KPHackable
+    typealias KeyValuePair = (key: String, value: Any)
 }
 
-extension KPHackable {
+class KPHacker {
     static func make<V>(from key: String, value: V) -> KPHackable {
         let new = defaultKeyPaths.filter{$0.key == key}[0]
         return new.setValue(value)
     }
 }
 
+
 struct KPNamespace<RootType,Value>: KPHackable {
+    
     func apply<T>(on obj: T) {
         apply(on: obj as! RootType)
     }
 
     func setValue<T>(_ val: T) -> KPHackable {
-        return KPNamespace(keyPath: keyPath, key: key, value: val as! Value)
+        return set(val as! Value)
     }
 
     let keyPath: ReferenceWritableKeyPath<RootType,Value>
@@ -54,20 +109,33 @@ struct KPNamespace<RootType,Value>: KPHackable {
     func apply(on rootType: RootType) {
         rootType[keyPath: keyPath] = value
     }
-
-    typealias KeyValuePair = (key: String, value: Value)
-
-    func encode() -> KeyValuePair {
-        return (key: key, value: value)
+    
+    func set(_ val: Value) -> KPNamespace<RootType, Value> {
+        return KPNamespace(keyPath: keyPath, key: key, value: val)
+    }
+    
+    func getValue() -> Any {
+        return value as Any
     }
 
-    func getKey() -> String {
-        return key
+    func encode() -> KeyValuePair {
+        return (key: key, value: getValue())
+    }
+    
+    func valueType() -> CustomValue {
+        if value is CGFloat {
+            return .number(value as! CGFloat)
+        }else if value is UIColor {
+            return .color(value as! UIColor)
+        }else if value is Bool {
+            return .bool(value as! Bool)
+        }
+        fatalError("unsupported type \(value)")
     }
 }
 
 let defaultKeyPaths: [KPHackable] = [
-    KPNamespace(keyPath: \NodeView.isMonocromatic, key: "Monochromatic", value: false),
+    KPNamespace(keyPath: \NodeView.isMonochromatic, key: "Monochromatic", value: false),
     KPNamespace(keyPath: \NodeView.monocromaticColor, key: "Theme Color", value: .black),
     KPNamespace(keyPath: \NodeView.monocromaticSelectedColor, key: "Selected Color", value: .red),
     

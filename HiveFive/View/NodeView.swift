@@ -113,7 +113,7 @@ class NodeView: UIView {
     /**
      A completely different style - only one color
      */
-    var isMonocromatic = true
+    var isMonochromatic = true
     
     @IBInspectable var monocromaticColor: UIColor = .black // this must be a solid color
     @IBInspectable var monocromaticSelectedColor: UIColor = .red // this must be a solid color as well
@@ -132,15 +132,15 @@ class NodeView: UIView {
     @IBInspectable var dummyColorAlpha: CGFloat = 0.2
     
     var regularBorderColor: UIColor {
-        if isMonocromatic {return monocromaticColor}
+        if isMonochromatic {return monocromaticColor}
         return node.color == .black ? blackBorderColor : whiteBorderColor
     }
     var regularFillColor: UIColor {
-        if isMonocromatic {return node.color == .black ? monocromaticColor : .white}
+        if isMonochromatic {return node.color == .black ? monocromaticColor : .white}
         return node.color == .black ? blackFillColor : whiteFillColor
     }
     var regularIdentityColor: UIColor {
-        if isMonocromatic {return node.color == .black ? .white : monocromaticColor}
+        if isMonochromatic {return node.color == .black ? .white : monocromaticColor}
         return _borderColor
     }
     
@@ -155,13 +155,13 @@ class NodeView: UIView {
     }
     
     var _borderColor: UIColor {
-        return isSelected ? isMonocromatic ? monocromaticSelectedBorderColor : selectedBorderColor : regularBorderColor
+        return isSelected ? isMonochromatic ? monocromaticSelectedBorderColor : selectedBorderColor : regularBorderColor
     }
     var fillColor: UIColor {
-        return isSelected ? isMonocromatic ? monocromaticSelectedFillColor : selectedFillColor : regularFillColor
+        return isSelected ? isMonochromatic ? monocromaticSelectedFillColor : selectedFillColor : regularFillColor
     }
     var identityColor: UIColor {
-        return isSelected ? isMonocromatic ? monocromaticSelectedIdentityColor : selectedIdentityColor : regularIdentityColor
+        return isSelected ? isMonochromatic ? monocromaticSelectedIdentityColor : selectedIdentityColor : regularIdentityColor
     }
     
     /**
@@ -268,7 +268,7 @@ class NodeView: UIView {
         case .dummy: drawDummy()
         default:
             context.saveGState()
-            if isMonocromatic && isSelected && nodesBelow() > 0 {
+            if isMonochromatic && isSelected && nodesBelow() > 0 {
                 context.setAlpha(0.5)
             }
             drawHexagon(rect)
@@ -284,7 +284,7 @@ class NodeView: UIView {
         let dummy = pathForPolygon(radius: displayRadius, sides: 6)
         context.saveGState()
         context.translateBy(x: bounds.midX, y: bounds.midY)
-        if isMonocromatic { //monocromatic - only one color. The drawing logic should be different.
+        if isMonochromatic { //monocromatic - only one color. The drawing logic should be different.
             dummy.lineWidth = dummyBorderWidth
             monocromaticSelectedColor.setStroke()
             monocromaticSelectedColor.withAlphaComponent(dummyColorAlpha).setFill()
