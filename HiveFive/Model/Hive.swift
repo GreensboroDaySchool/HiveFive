@@ -158,10 +158,9 @@ class Hive {
                     whiteHand.keys.filter{whiteHand[$0]! == 0}.forEach {
                         whiteHand.remove(at: whiteHand.index(forKey: $0)!)
                     }
-                    
-                    post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
                     selectedNewNode = false
                 }
+                post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
                 
                 delegate?.structureDidUpdate() //notify the delegate that the structure has updated
                 currentPlayer = currentPlayer.opposite
