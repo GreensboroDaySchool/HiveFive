@@ -24,6 +24,7 @@ let didSelectNewNodeNotification = Notification.Name("selectedNewNode")
 let didCancelNewPiece = Notification.Name("cancelledSelectedNewNode")
 let didPlaceNewPiece = Notification.Name("placeSelectedNewPiece")
 let requiresQueenNotification = Notification.Name(rawValue: "requireQueen")
+let displayMsgNotification = Notification.Name("requestDisplayMsg")
 
 //MARK: User Default
 //Note: posted value is always the new value
@@ -48,3 +49,11 @@ func shouldUseRectangularUI() -> Bool  {
     return get(id: rectangularUiId) as? Bool ?? defaultUseRectangularUI
 }
 let uiCornerRadius: CGFloat = 10
+
+let showAlertsId = "showAlerts"
+let shouldShowAlertsChangedNotification = Notification.Name(showAlertsId)
+let defaultShowAlerts = true
+func shouldShowAlerts() -> Bool  {
+    return get(id: showAlertsId) as? Bool ?? defaultShowAlerts
+}
+

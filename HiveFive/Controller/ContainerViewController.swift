@@ -15,10 +15,17 @@ class ContainerViewController: SlideMenuController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //MARK: Notification binding
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(themeDidUpdate(_:)),
             name: themeUpdateNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(receivedNotificationRequest(_:)),
+            name: displayMsgNotification,
             object: nil
         )
         
@@ -28,10 +35,15 @@ class ContainerViewController: SlideMenuController {
         notificationLabel.layer.cornerRadius = uiCornerRadius
     }
     
+    @objc func receivedNotificationRequest(_ notification: Notification) {
+        displayNotification(msg: notification.object as! String)
+    }
+    
     /**
      Flashes a notification in the center of the screen
      */
     private func displayNotification(msg: String) {
+        if !shouldShowAlerts() {return}
         notificationLabel.isHidden = false
         notificationLabel.text = msg
         UIView.animate(withDuration: 1.5, animations: {[unowned self] in

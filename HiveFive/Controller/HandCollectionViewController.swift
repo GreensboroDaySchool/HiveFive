@@ -235,6 +235,7 @@ class HandCollectionViewController: UICollectionViewController {
         //configure cell
         cell.indexPath = indexPath
         cell.numLabel.text = String(pair.value)
+        cell.numLabel.font = cell.numLabel.font.withSize([12,14,17][nodeSizeIndex()])
         
         return cell
     }

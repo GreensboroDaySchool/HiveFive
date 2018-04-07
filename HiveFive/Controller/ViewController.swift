@@ -172,6 +172,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
 extension ViewController: BoardViewDelegate {
     func didTap(on node: HexNode) {
+        if node.color != hive.currentPlayer && node.identity != .dummy {
+            post(name: displayMsgNotification, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
+        }
         hive.select(node: node)
     }
     

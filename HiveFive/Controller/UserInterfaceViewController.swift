@@ -34,10 +34,6 @@ class UserInterfaceViewController: UIViewController {
         post(name: toolBarVisibilityNotification, object: isOn)
     }
     
-    private func post(name: NSNotification.Name, object: Any?) {
-        NotificationCenter.default.post(name: name, object: object, userInfo: nil)
-    }
-    
     @IBAction func preferredNodeSizeSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         save(id: preferredNodeSizeId, obj: index)
@@ -47,6 +43,15 @@ class UserInterfaceViewController: UIViewController {
     @IBAction func rectangularUiSwitchToggled(_ sender: UISwitch) {
         save(id: rectangularUiId, obj: sender.isOn)
     }
+    
+    @IBAction func showAlertsSwitchToggled(_ sender: UISwitch) {
+        let isOn = sender.isOn
+        post(name: displayMsgNotification, object: isOn ? "Alerts On" : "Alerts Off") // Minor bug
+        save(id: showAlertsId, obj: isOn)
+        post(name: shouldShowAlertsChangedNotification, object: isOn)
+        
+    }
+    
     
     /*
     // MARK: - Navigation

@@ -70,3 +70,7 @@ func save(id: String, obj: Any) {
 func get(id: String) -> Any? {
     return Utils.retrieveFromUserDefualt(key: id)
 }
+
+func post(name: NSNotification.Name, object: Any?) {
+    NotificationCenter.default.post(name: name, object: object, userInfo: nil)
+}

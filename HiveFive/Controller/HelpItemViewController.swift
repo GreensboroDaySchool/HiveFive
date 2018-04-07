@@ -57,7 +57,7 @@ class HelpItemViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // Configure identity node
-        demonstrationBoard.nodeRadius = 40
+        demonstrationBoard.nodeRadius = [30,35,40][nodeSizeIndex()]
         demonstrationBoard.centerHiveStructure()
         demonstrationBoard.rootCoordinate = demonstrationBoard.rootCoordinate.translate(-20, -26)
 //        demonstrationBoard.clipsToBounds = true
