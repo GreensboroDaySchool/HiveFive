@@ -24,7 +24,7 @@
 		322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74120767058008A98F7 /* ContainerViewController.swift */; };
 		322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF743207676EF008A98F7 /* MenuTableViewController.swift */; };
 		322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */; };
-		3281AC2E2079365C00DE7EDA /* NodeColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281AC2D2079365C00DE7EDA /* NodeColorScheme.swift */; };
+		3281AC2E2079365C00DE7EDA /* NodeViewProfie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281AC2D2079365C00DE7EDA /* NodeViewProfie.swift */; };
 		328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */; };
 		328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */; };
 		328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19B2076A7890056CB0C /* DefaultStructure.swift */; };
@@ -592,7 +592,7 @@
 		322EF74120767058008A98F7 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		322EF743207676EF008A98F7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
-		3281AC2D2079365C00DE7EDA /* NodeColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeColorScheme.swift; sourceTree = "<group>"; };
+		3281AC2D2079365C00DE7EDA /* NodeViewProfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeViewProfie.swift; sourceTree = "<group>"; };
 		328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; };
 		328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewCell.swift; sourceTree = "<group>"; };
 		328EE19B2076A7890056CB0C /* DefaultStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStructure.swift; sourceTree = "<group>"; };
@@ -1270,7 +1270,7 @@
 				32D1D154206BEFFF008444F4 /* BoardView.swift */,
 				2CCE195D206E77C400733FA0 /* NodeView.swift */,
 				321CED2E2077D27800805F74 /* MenuIconView.swift */,
-				3281AC2D2079365C00DE7EDA /* NodeColorScheme.swift */,
+				3281AC2D2079365C00DE7EDA /* NodeViewProfie.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2638,7 +2638,7 @@
 				321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */,
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
-				3281AC2E2079365C00DE7EDA /* NodeColorScheme.swift in Sources */,
+				3281AC2E2079365C00DE7EDA /* NodeViewProfie.swift in Sources */,
 				32B109AE206EECC20065E465 /* Vec2D.swift in Sources */,
 				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
 				322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */,
