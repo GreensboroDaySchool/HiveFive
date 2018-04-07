@@ -142,7 +142,7 @@ class ThemesCollectionViewController: UICollectionViewController {
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name
-        cell.layer.cornerRadius = 10
+        if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
         return cell
     }
     

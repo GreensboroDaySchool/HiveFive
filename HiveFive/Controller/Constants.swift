@@ -35,3 +35,10 @@ let defaultNodeSize = 1 //the index of the node size
 func nodeSizeIndex() -> Int {
     return get(id: preferredNodeSizeId) as? Int ?? defaultNodeSize
 }
+
+let rectangularUiId = "rectangularUI"
+let defaultUseRectangularUI = false
+func shouldUseRectangularUI() -> Bool  {
+    return get(id: rectangularUiId) as? Bool ?? defaultUseRectangularUI
+}
+let uiCornerRadius: CGFloat = 10

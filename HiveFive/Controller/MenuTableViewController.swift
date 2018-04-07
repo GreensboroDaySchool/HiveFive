@@ -13,7 +13,9 @@ class MenuTableViewController: UITableViewController {
 
     let menuItems = [
         "Settings",
-        "Appearance"
+        "Appearance",
+        "Help",
+        "About"
     ]
     
     override func viewDidLoad() {

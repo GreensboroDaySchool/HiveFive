@@ -12,12 +12,14 @@ class UserInterfaceViewController: UIViewController {
 
     @IBOutlet weak var tabBarVisibilitySwitch: UISwitch!
     @IBOutlet weak var preferredNodeSizeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var rectangularUiSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tabBarVisibilitySwitch.isOn = toolBarShouldBeVisible()
         preferredNodeSizeSegmentedControl.selectedSegmentIndex = nodeSizeIndex()
+        rectangularUiSwitch.isOn = shouldUseRectangularUI()
         // Do any additional setup after loading the view.
     }
 
@@ -41,6 +43,11 @@ class UserInterfaceViewController: UIViewController {
         save(id: preferredNodeSizeId, obj: index)
         post(name: preferredNodeSizeNotification, object: index)
     }
+    
+    @IBAction func rectangularUiSwitchToggled(_ sender: UISwitch) {
+        save(id: rectangularUiId, obj: sender.isOn)
+    }
+    
     /*
     // MARK: - Navigation
 

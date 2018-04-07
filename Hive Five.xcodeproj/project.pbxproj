@@ -17,6 +17,9 @@
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
 		321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED2E2077D27800805F74 /* MenuIconView.swift */; };
 		321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceViewController.swift */; };
+		321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED322078256900805F74 /* ColorSchemeTableViewController.swift */; };
+		321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED76207838B200805F74 /* HelpPageViewController.swift */; };
+		321CED7920783D5500805F74 /* HelpItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED7820783D5500805F74 /* HelpItemViewController.swift */; };
 		322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF73E20766E91008A98F7 /* SlideMenuController.swift */; };
 		322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74120767058008A98F7 /* ContainerViewController.swift */; };
 		322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF743207676EF008A98F7 /* MenuTableViewController.swift */; };
@@ -77,6 +80,9 @@
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321CED2E2077D27800805F74 /* MenuIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconView.swift; sourceTree = "<group>"; };
 		321CED302077D9D400805F74 /* UserInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceViewController.swift; sourceTree = "<group>"; };
+		321CED322078256900805F74 /* ColorSchemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTableViewController.swift; sourceTree = "<group>"; };
+		321CED76207838B200805F74 /* HelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageViewController.swift; sourceTree = "<group>"; };
+		321CED7820783D5500805F74 /* HelpItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpItemViewController.swift; sourceTree = "<group>"; };
 		322EF73E20766E91008A98F7 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		322EF74120767058008A98F7 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		322EF743207676EF008A98F7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 				328EE19D2076DC3C0056CB0C /* HandCollectionViewController.swift */,
 				328EE1A12076EE940056CB0C /* Constants.swift */,
 				321CED302077D9D400805F74 /* UserInterfaceViewController.swift */,
+				321CED322078256900805F74 /* ColorSchemeTableViewController.swift */,
+				321CED76207838B200805F74 /* HelpPageViewController.swift */,
+				321CED7820783D5500805F74 /* HelpItemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -396,11 +405,14 @@
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */,
 				3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */,
+				321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */,
 				322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
 				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
 				328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */,
 				3291A329207524C400DBF9B2 /* Util.swift in Sources */,
+				321CED7920783D5500805F74 /* HelpItemViewController.swift in Sources */,
+				321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */,
 				32D1D143206BE9A1008444F4 /* Hive.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				32B109AE206EECC20065E465 /* Vec2D.swift in Sources */,
