@@ -65,7 +65,17 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="biv-kj-bt6"/>
+                                    <barButtonItem title="Hive 5" id="eUg-SK-hRw">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vqb-wU-pqe"/>
+                                    <barButtonItem systemItem="refresh" id="9Mw-Kp-ny3">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="restartButtonTapped:" destination="BYZ-38-t0r" id="VXz-nv-4fv"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzj-dB-Pqb">

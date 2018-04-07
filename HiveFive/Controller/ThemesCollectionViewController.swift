@@ -55,7 +55,8 @@ class ThemesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
         let theme = themes[indexPath.row]
         cell.boardView.patterns = theme.patterns
-//        cell.boardView.nodeRadius = 30
+        cell.boardView.isUserInteractionEnabled = false
+        //        cell.boardView.nodeRadius = 30 TODO: preferred node size
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name

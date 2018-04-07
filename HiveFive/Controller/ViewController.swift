@@ -155,6 +155,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         container?.openLeft() //open menu
     }
     
+    @IBAction func restartButtonTapped(_ sender: UIBarButtonItem) {
+        restart()
+    }
+    
+    func restart() {
+        board.clear()
+        hive.reset()
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

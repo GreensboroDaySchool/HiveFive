@@ -87,9 +87,25 @@ class Hive {
     var delegate: HiveDelegate?
     
     init() {
+        history = History()
         blackHand = Hive.defaultHand
         whiteHand = Hive.defaultHand
+    }
+    
+    /**
+     Reset the entire hive to "Factory" state
+     Does not forget delegate, however.
+     */
+    func reset() {
         history = History()
+        blackHand = Hive.defaultHand
+        whiteHand = Hive.defaultHand
+        root = nil
+        currentPlayer = .black
+        selectedNewNode = false
+        selectedNode = nil
+        availablePositions = []
+        post(name: handUpdateNotification, object: (blackHand,Color.black))
     }
     
     /**
@@ -128,7 +144,7 @@ class Hive {
                 
                 //if the piece just placed/moved is a new piece, then:
                 if selectedNewNode {
-                    NotificationCenter.default.post(name: didPlaceNewPiece, object: nil)
+                    post(name: didPlaceNewPiece, object: nil)
                     
                     //update black/white hands
                     let key = selectedNode!.identity
@@ -143,7 +159,7 @@ class Hive {
                         whiteHand.remove(at: whiteHand.index(forKey: $0)!)
                     }
                     
-                    NotificationCenter.default.post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
+                    post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
                     selectedNewNode = false
                 }
                 
@@ -158,7 +174,7 @@ class Hive {
             selectedNode = node
             availablePositions = node.uniqueAvailableMoves()
             if selectedNewNode {
-                NotificationCenter.default.post(name: didCancelNewPiece, object: nil)
+                post(name: didCancelNewPiece, object: nil)
                 selectedNewNode = false
             }
         }
@@ -182,7 +198,7 @@ class Hive {
         selectedNode = nil
         availablePositions = []
         selectedNewNode = false
-        NotificationCenter.default.post(name: didCancelNewPiece, object: nil)
+        post(name: didCancelNewPiece, object: nil)
         if root == nil {
             delegate?.hiveStructureRemoved()
         }

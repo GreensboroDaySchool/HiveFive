@@ -98,17 +98,23 @@ class HandCollectionViewController: UICollectionViewController {
         
     }
     
+    private var orientationIsLandscape = UIDevice.current.orientation.isLandscape
+    
     private func updateBoundsAccordingToNodeSize() {
         if let collectionView = collectionView {
             let current = collectionView.bounds.size
             switch UIDevice.current.orientation {
             case .landscapeLeft: fallthrough
-            case .landscapeRight:
-                collectionView.bounds.size = CGSize(width: nodeSize, height: current.height)
+            case .landscapeRight: orientationIsLandscape = true
             case .portraitUpsideDown: fallthrough
-            case .portrait:
-                collectionView.bounds.size = CGSize(width: current.width, height: nodeSize)
+            case .portrait: orientationIsLandscape = false
             default: break
+            }
+            
+            if orientationIsLandscape {
+                collectionView.bounds.size = CGSize(width: nodeSize, height: current.height)
+            } else {
+                collectionView.bounds.size = CGSize(width: current.width, height: nodeSize)
             }
         }
     }
