@@ -1,5 +1,5 @@
 //
-//  NodeColorScheme.swift
+//  NodeViewProfile.swift
 //  Hive Five
 //
 //  Created by Jiachen Ren on 4/7/18.
@@ -25,21 +25,12 @@ struct Profile {
     }
     
     func save() {
-        let dict = 
-        keyPaths.forEach {keyPath in
-            let key = keyPath.key
-            switch keyPath.valueType() {
-            case .bool(let bool): bools[key] = bool
-            case .number(let num): numbers[key] = num
-            case .color(let color): colors[key] = color
-            }
-        }
+        var properties = [String:Any]()
+        keyPaths.forEach {properties[$0.key] = $0.getValue()}
         let context = CoreData.context
         let profile = NodeViewProfile(context: context)
         profile.name = name
-        profile.colors = colors as NSObject
-        profile.nums = numbers as NSObject
-        profile.bools = bools as NSObject
+        profile.properties = properties as NSObject
         try? context.save()
     }
     
@@ -51,20 +42,15 @@ struct Profile {
     }
     
     static func load(_ profile: NodeViewProfile) -> Profile {
-        let colors = profile.colors as! [String:UIColor]
-        let numbers = profile.nums as! [String:CGFloat]
-        let bools = profile.bools as! [String:Bool]
+        let properties = profile.properties as! [String:Any]
         let name = profile.name!
         
         var profile = Profile(name: name, keyPaths: [])
-        
-        func process(_ property: String, _ value: Any) -> KPHackable {
-            return KPHacker.make(from: property, value: value)
-        }
-        
-        profile.keyPaths.append(contentsOf: colors.map{process($0.key, $0.value)})
-        profile.keyPaths.append(contentsOf: numbers.map{process($0.key, $0.value)})
-        profile.keyPaths.append(contentsOf: bools.map{process($0.key, $0.value)})
+        profile.keyPaths.append(contentsOf:
+            properties.map{
+                KPHacker.make(from: $0.key, value: $0.value)
+            }
+        )
         return profile
     }
 }
