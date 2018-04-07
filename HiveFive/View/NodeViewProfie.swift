@@ -10,7 +10,12 @@ import Foundation
 import UIKit
 
 struct Profile {
-    static let defaultProfile = Profile(name: "default", keyPaths: defaultKeyPaths)
+    static let defaultProfile: Profile = {
+        if savedProfiles().count == 0 {
+            Profile(name: "#default", keyPaths: defaultKeyPaths).save()
+        }
+        return load(savedProfiles{$0.name == "#default"}[0])
+    }()
 
     var name: String
     var keyPaths: [KPHackable]
@@ -20,15 +25,13 @@ struct Profile {
     }
     
     func save() {
-        var colors = [String:String]()
-        var numbers = [String:CGFloat]()
-        var bools = [String:Bool]()
+        let dict = 
         keyPaths.forEach {keyPath in
             let key = keyPath.key
             switch keyPath.valueType() {
             case .bool(let bool): bools[key] = bool
             case .number(let num): numbers[key] = num
-            case .color(let color): colors[key] = color.hexString
+            case .color(let color): colors[key] = color
             }
         }
         let context = CoreData.context
@@ -48,7 +51,7 @@ struct Profile {
     }
     
     static func load(_ profile: NodeViewProfile) -> Profile {
-        let colors = profile.colors as! [String:String]
+        let colors = profile.colors as! [String:UIColor]
         let numbers = profile.nums as! [String:CGFloat]
         let bools = profile.bools as! [String:Bool]
         let name = profile.name!
@@ -59,7 +62,7 @@ struct Profile {
             return KPHacker.make(from: property, value: value)
         }
         
-        profile.keyPaths.append(contentsOf: colors.map{process($0.key, UIColor(hexString: $0.value))})
+        profile.keyPaths.append(contentsOf: colors.map{process($0.key, $0.value)})
         profile.keyPaths.append(contentsOf: numbers.map{process($0.key, $0.value)})
         profile.keyPaths.append(contentsOf: bools.map{process($0.key, $0.value)})
         return profile
