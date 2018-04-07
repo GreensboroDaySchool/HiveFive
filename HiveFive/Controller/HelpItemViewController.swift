@@ -10,6 +10,11 @@ import UIKit
 
 class HelpItemViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nodeBoard: BoardView!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var demonstrationBoard: BoardView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

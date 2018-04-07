@@ -347,12 +347,12 @@ enum Identity: String {
         .dummy:"𝝬"
     ]
     
-    case grasshopper
-    case queenBee
-    case beetle
-    case spider
-    case soldierAnt
-    case dummy
+    case grasshopper = "Grasshopper"
+    case queenBee = "Queen Bee"
+    case beetle = "Beetle"
+    case spider = "Spider"
+    case soldierAnt = "Soldier Ant"
+    case dummy = "Dummy"
     
     var defaultPattern: String {
         get {return Identity.defaultPatterns[self]!}

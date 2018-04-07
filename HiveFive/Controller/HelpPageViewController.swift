@@ -89,5 +89,52 @@ class HelpPageViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
+
+//MARK: Data Source
+struct NodeDescription {
+    var identity: Identity
+    var description: String
+    var demonstration: HexNode // the node of concern, selected.
+}
+
+var nodeDescriptions: [NodeDescription] = [
+    .init(
+            identity: .grasshopper,
+            description: "Grasshopper can jump across consecutive nodes oriented at the same direction." +
+            "It can not jump over to the very end, however, if there exist a discontinuity between the starting point and the destination." +
+            "There are three grasshoppers at each player's disposal by the default rule.",
+            demonstration: Hive.defaultHive.root!
+
+    ),
+    .init(
+            identity: .queenBee,
+            description: "This is the most important piece in the game. " +
+                    "It can only move by one step at a time and can not squeeze into tiny openings. " +
+                    "The queen bee has to be out on the board within the first four moves.",
+            demonstration: Hive.defaultHive.root!
+    ),
+    .init(
+            identity: .spider,
+            description: "Moves three steps at a time. Cannot move back to previous positions in these three steps. " +
+                    "Cannot squeeze into tiny openings either.",
+            demonstration: Hive.defaultHive.root!
+    ),
+    .init(
+            identity: .soldierAnt,
+            description: "This is probably the most useful insect in the game - " +
+                    " it can go anywhere outside the hive structure in one move. ",
+            demonstration: Hive.defaultHive.root!
+    ),
+    .init(
+            identity: .beetle,
+            description: "If used wisely, you can use the beetle to drive your opponent insane - " +
+                    "the rule concerning the beetle is quite complicated though. " +
+                    "First thing first - the beetle can go on top of another piece! (Including another beetle)." +
+                    "It can also squeeze into tiny openings. This makes it extremely useful. " +
+                    "When the beetle is on top of another piece, it suppress the other piece, overriding" +
+                    "the color of the suppressed piece. In english, it replaces the suppressed node" +
+                    "and locks it in place.",
+            demonstration: Hive.defaultHive.root!
+    ),
+]

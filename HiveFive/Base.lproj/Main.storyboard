@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -345,7 +346,48 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uB-yU-RRV" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLy-hC-TqX" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="244.5" y="28" width="110.5" height="110.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="oLy-hC-TqX" secondAttribute="height" multiplier="1:1" id="W11-2A-pZO"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DRZ-f8-f5y" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="280.5" width="335" height="366.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="XXX is an awesome species!" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80i-QW-FEQ">
+                                        <rect key="frame" x="20" y="154.5" width="335" height="110"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAW-SN-WKP">
+                                        <rect key="frame" x="20" y="63" width="174" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="oLy-hC-TqX" firstAttribute="height" secondItem="80i-QW-FEQ" secondAttribute="height" id="Cqp-Zk-OLj"/>
+                                    <constraint firstItem="80i-QW-FEQ" firstAttribute="width" secondItem="DRZ-f8-f5y" secondAttribute="width" id="DGz-Ay-Tb6"/>
+                                    <constraint firstItem="80i-QW-FEQ" firstAttribute="height" secondItem="DRZ-f8-f5y" secondAttribute="height" multiplier="0.3" id="F6R-HR-FJZ"/>
+                                    <constraint firstItem="oLy-hC-TqX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iAW-SN-WKP" secondAttribute="trailing" id="GEh-3k-UZh"/>
+                                    <constraint firstAttribute="trailing" secondItem="DRZ-f8-f5y" secondAttribute="trailing" constant="20" id="LFU-XB-SPU"/>
+                                    <constraint firstItem="80i-QW-FEQ" firstAttribute="centerX" secondItem="DRZ-f8-f5y" secondAttribute="centerX" id="Mcy-9B-8jP"/>
+                                    <constraint firstItem="iAW-SN-WKP" firstAttribute="leading" secondItem="3uB-yU-RRV" secondAttribute="leading" constant="20" id="OUd-fV-BeX"/>
+                                    <constraint firstItem="80i-QW-FEQ" firstAttribute="top" secondItem="oLy-hC-TqX" secondAttribute="bottom" constant="16" id="SWc-2v-5Vi"/>
+                                    <constraint firstAttribute="trailing" secondItem="oLy-hC-TqX" secondAttribute="trailing" constant="20" id="atS-mj-kgm"/>
+                                    <constraint firstItem="DRZ-f8-f5y" firstAttribute="leading" secondItem="3uB-yU-RRV" secondAttribute="leading" constant="20" id="ds3-YL-MwX"/>
+                                    <constraint firstItem="oLy-hC-TqX" firstAttribute="top" secondItem="3uB-yU-RRV" secondAttribute="top" constant="28" id="jlW-Yw-eBA"/>
+                                    <constraint firstAttribute="bottom" secondItem="DRZ-f8-f5y" secondAttribute="bottom" constant="20" id="m4N-oQ-tIU"/>
+                                    <constraint firstItem="DRZ-f8-f5y" firstAttribute="top" secondItem="80i-QW-FEQ" secondAttribute="bottom" constant="16" id="ofR-QH-vW5"/>
+                                    <constraint firstItem="iAW-SN-WKP" firstAttribute="centerY" secondItem="oLy-hC-TqX" secondAttribute="centerY" id="vlE-NM-ZVC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -357,6 +399,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KUR-Eu-33p"/>
                     </view>
+                    <connections>
+                        <outlet property="demonstrationBoard" destination="DRZ-f8-f5y" id="WT2-Yx-xBH"/>
+                        <outlet property="descriptionTextView" destination="80i-QW-FEQ" id="lZ6-vZ-MuI"/>
+                        <outlet property="nameLabel" destination="iAW-SN-WKP" id="b5c-Il-z7i"/>
+                        <outlet property="nodeBoard" destination="oLy-hC-TqX" id="PLw-Pc-WqW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXt-m3-yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -657,7 +705,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-l0-ewa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5553" y="1295"/>
+            <point key="canvasLocation" x="3843" y="1747"/>
         </scene>
     </scenes>
 </document>
