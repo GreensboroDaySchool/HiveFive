@@ -10,8 +10,11 @@ import UIKit
 
 class ContainerViewController: SlideMenuController {
 
+    @IBOutlet weak var notificationLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(themeDidUpdate(_:)),
@@ -20,6 +23,23 @@ class ContainerViewController: SlideMenuController {
         )
         
         // Do any additional setup after loading the view.
+        notificationLabel.isHidden = true
+        notificationLabel.clipsToBounds = true
+        notificationLabel.layer.cornerRadius = uiCornerRadius
+    }
+    
+    /**
+     Flashes a notification in the center of the screen
+     */
+    private func displayNotification(msg: String) {
+        notificationLabel.isHidden = false
+        notificationLabel.text = msg
+        UIView.animate(withDuration: 1.5, animations: {[unowned self] in
+            self.notificationLabel.alpha = 0
+            }, completion: {_ in
+                self.notificationLabel.alpha = 1.0
+                self.notificationLabel.isHidden = true
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +50,7 @@ class ContainerViewController: SlideMenuController {
     @objc func themeDidUpdate(_ notification: Notification) {
         let patterns = notification.object as! [Identity:String]
         print("received \(patterns)")
+        displayNotification(msg: "Theme Updated")
         closeLeft()
     }
     

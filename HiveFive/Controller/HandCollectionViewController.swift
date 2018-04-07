@@ -18,7 +18,7 @@ class HandCollectionViewController: UICollectionViewController {
     
     var hand = Hive.defaultHand
     var color: Color = .black
-    var patterns = Identity.defaultPatterns
+    var patterns = designatedTheme().patterns
 
     var nodeSize = preferredNodeSizes[nodeSizeIndex()] {
         didSet {

@@ -13,6 +13,12 @@ import UIKit
  Keep constants organized
  */
 let themeUpdateNotification = Notification.Name("themeUpdated")
+let defaultTheme = themes[0].name
+let themeId = "theme"
+func designatedTheme() -> Theme {
+    return Theme.decode(get(id: themeId) as? String ?? defaultTheme)
+}
+
 let handUpdateNotification = Notification.Name("handUpdated")
 let didSelectNewNodeNotification = Notification.Name("selectedNewNode")
 let didCancelNewPiece = Notification.Name("cancelledSelectedNewNode")

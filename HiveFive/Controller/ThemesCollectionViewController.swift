@@ -12,89 +12,6 @@ private let reuseIdentifier = "cell3"
 
 class ThemesCollectionViewController: UICollectionViewController {
 
-    // MARK: Data Source
-    struct Theme {
-        var name: String
-        var patterns: [Identity:String]
-    }
-
-    /**
-     */
-    var themes: [Theme] = [
-        .init(name: "Mathematics", patterns: [
-            .grasshopper:"𝝣",
-            .queenBee:"𝝠",
-            .beetle:"𝝧",
-            .spider:"𝝮",
-            .soldierAnt:"𝝭",
-            .dummy:"𝝬"
-        ]),
-        .init(name: "Chinese", patterns: [
-            .grasshopper:"蜢",
-            .queenBee:"皇",
-            .beetle:"甲",
-            .spider:"蛛",
-            .soldierAnt:"蚁",
-            .dummy:"笨"
-        ]),
-        .init(name: "Letters", patterns: [
-            .grasshopper:"𝔾",
-            .queenBee:"ℚ",
-            .beetle:"𝔹",
-            .spider:"𝕊",
-            .soldierAnt:"𝔸",
-            .dummy:"𝔻"
-        ]),
-        .init(name: "Chess Dark", patterns: [
-            .grasshopper:"♞",
-            .queenBee:"♛",
-            .beetle:"♟",
-            .spider:"♝",
-            .soldierAnt:"♜",
-            .dummy:"♚"
-        ]),
-        .init(name: "Chess Light", patterns: [
-            .grasshopper:"♘",
-            .queenBee:"♕",
-            .beetle:"♙",
-            .spider:"♗",
-            .soldierAnt:"♖",
-            .dummy:"♔"
-        ]),
-        .init(name: "Currency", patterns: [
-            .grasshopper:"$",
-            .queenBee:"€",
-            .beetle:"¥",
-            .spider:"¢",
-            .soldierAnt:"£",
-            .dummy:"₽"
-        ]),
-        .init(name: "Stars", patterns: [
-            .grasshopper:"✡︎",
-            .queenBee:"✪",
-            .beetle:"✶",
-            .spider:"★",
-            .soldierAnt:"✩",
-            .dummy:"▲"
-        ]),
-        .init(name: "Physics", patterns: [
-            .grasshopper:"𝜞︎",
-            .queenBee:"𝜟",
-            .beetle:"𝜭",
-            .spider:"𝜮",
-            .soldierAnt:"𝜴",
-            .dummy:"𝜩"
-        ]),
-        .init(name: "Skewed", patterns: [
-            .grasshopper:"𝞝",
-            .queenBee:"𝞡",
-            .beetle:"𝞨",
-            .spider:"𝞚",
-            .soldierAnt:"𝞧",
-            .dummy:"𝞦"
-        ]),
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -184,9 +101,103 @@ class ThemesCollectionViewController: UICollectionViewController {
             name: themeUpdateNotification,
             object: theme.patterns
         )
+        save(id: themeId, obj: theme.encode())
 //        collectionView.visibleCells.forEach{($0 as! ThemesCollectionViewCell).bezel.backgroundColor = nil}
 //        (collectionView.cellForItem(at: indexPath) as! ThemesCollectionViewCell).bezel.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
         navigationController?.popToRootViewController(animated: true)
     }
 
 }
+
+// MARK: Data Source
+struct Theme {
+    var name: String
+    var patterns: [Identity:String]
+    
+    func encode() -> String {
+        return name
+    }
+    
+    static func decode(_ name: String) -> Theme {
+        return themes.filter{$0.name == name}[0]
+    }
+}
+
+/**
+ Themes
+ */
+var themes: [Theme] = [
+    .init(name: "Mathematics", patterns: [
+        .grasshopper:"𝝣",
+        .queenBee:"𝝠",
+        .beetle:"𝝧",
+        .spider:"𝝮",
+        .soldierAnt:"𝝭",
+        .dummy:"𝝬"
+        ]),
+    .init(name: "Chinese", patterns: [
+        .grasshopper:"蜢",
+        .queenBee:"皇",
+        .beetle:"甲",
+        .spider:"蛛",
+        .soldierAnt:"蚁",
+        .dummy:"笨"
+        ]),
+    .init(name: "Letters", patterns: [
+        .grasshopper:"𝔾",
+        .queenBee:"ℚ",
+        .beetle:"𝔹",
+        .spider:"𝕊",
+        .soldierAnt:"𝔸",
+        .dummy:"𝔻"
+        ]),
+    .init(name: "Chess Dark", patterns: [
+        .grasshopper:"♞",
+        .queenBee:"♛",
+        .beetle:"♟",
+        .spider:"♝",
+        .soldierAnt:"♜",
+        .dummy:"♚"
+        ]),
+    .init(name: "Chess Light", patterns: [
+        .grasshopper:"♘",
+        .queenBee:"♕",
+        .beetle:"♙",
+        .spider:"♗",
+        .soldierAnt:"♖",
+        .dummy:"♔"
+        ]),
+    .init(name: "Currency", patterns: [
+        .grasshopper:"$",
+        .queenBee:"€",
+        .beetle:"¥",
+        .spider:"¢",
+        .soldierAnt:"£",
+        .dummy:"₽"
+        ]),
+    .init(name: "Stars", patterns: [
+        .grasshopper:"✡︎",
+        .queenBee:"✪",
+        .beetle:"✶",
+        .spider:"★",
+        .soldierAnt:"✩",
+        .dummy:"▲"
+        ]),
+    .init(name: "Physics", patterns: [
+        .grasshopper:"𝜞︎",
+        .queenBee:"𝜟",
+        .beetle:"𝜭",
+        .spider:"𝜮",
+        .soldierAnt:"𝜴",
+        .dummy:"𝜩"
+        ]),
+    .init(name: "Skewed", patterns: [
+        .grasshopper:"𝞝",
+        .queenBee:"𝞡",
+        .beetle:"𝞨",
+        .spider:"𝞚",
+        .soldierAnt:"𝞧",
+        .dummy:"𝞦"
+        ]),
+]
+

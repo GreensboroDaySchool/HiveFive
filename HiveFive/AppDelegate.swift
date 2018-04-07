@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @objc func rotated(_ notification: Notification) {
-        debugPrint((notification.object as? UIDevice)?.orientation.isLandscape ?? "no value")
+//        debugPrint((notification.object as? UIDevice)?.orientation.isLandscape ?? "no value")
     }
     
     /**

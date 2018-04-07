@@ -86,6 +86,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             name: toolBarVisibilityNotification,
             object: nil
         )
+        
+        //MARK: additional setup
+        board.patterns = designatedTheme().patterns
     }
     
     
