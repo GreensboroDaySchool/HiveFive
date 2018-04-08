@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+/**
+ Original Core Data + Key Path Hacker by Jiachen Ren
+ */
 struct Profile {
     static let defaultProfile: Profile = {
         if savedProfiles().count == 0 {
@@ -22,6 +25,21 @@ struct Profile {
 
     func apply(on nodeView: NodeView) {
         keyPaths.forEach{$0.apply(on: nodeView)}
+    }
+    
+    typealias Category = (colors: [KPHackable], bools: [KPHackable], numbers: [KPHackable])
+    
+    func categorize() -> Category {
+        let colors = keyPaths.filter{$0.getValue() is UIColor}
+        let numbers = keyPaths.filter{$0.getValue() is CGFloat}
+        let bools = keyPaths.filter{$0.getValue() is Bool}
+        return (colors: colors, numbers: numbers, bools: bools)
+    }
+    
+    func updated(key: String, val: Any) -> Profile {
+        var preserved = keyPaths.filter{$0.key != key}
+        preserved.append(KPHacker.make(from: key, value: val))
+        return Profile(name: name, keyPaths: preserved)
     }
     
     func save() {
@@ -53,22 +71,19 @@ struct Profile {
         )
         return profile
     }
-}
-
-enum CustomValue {
-    case bool(Bool)
-    case number(CGFloat)
-    case color(UIColor)
+    
+    static func load(_ profileName: String) -> Profile {
+        return load(savedProfiles{$0.name == profileName}[0])
+    }
 }
 
 /*
- Destroy type safety.
+ Destroy type safety, container for KPNamespace
  */
 protocol KPHackable {
     func apply<T>(on obj: T)
     func setValue<T>(_ val: T) -> KPHackable
     func getValue() -> Any
-    func valueType() -> CustomValue
     var key: String {get}
     typealias KeyValuePair = (key: String, value: Any)
 }
@@ -109,17 +124,6 @@ struct KPNamespace<RootType,Value>: KPHackable {
 
     func encode() -> KeyValuePair {
         return (key: key, value: getValue())
-    }
-    
-    func valueType() -> CustomValue {
-        if value is CGFloat {
-            return .number(value as! CGFloat)
-        }else if value is UIColor {
-            return .color(value as! UIColor)
-        }else if value is Bool {
-            return .bool(value as! Bool)
-        }
-        fatalError("unsupported type \(value)")
     }
 }
 

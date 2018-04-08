@@ -74,3 +74,7 @@ func get(id: String) -> Any? {
 func post(name: NSNotification.Name, object: Any?) {
     NotificationCenter.default.post(name: name, object: object, userInfo: nil)
 }
+
+func post(name: NSNotification.Name, object: Any?, userInfo: [AnyHashable : Any]?) {
+    NotificationCenter.default.post(name: name, object: object, userInfo: userInfo)
+}

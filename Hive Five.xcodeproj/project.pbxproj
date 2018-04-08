@@ -25,6 +25,9 @@
 		322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF743207676EF008A98F7 /* MenuTableViewController.swift */; };
 		322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */; };
 		3281AC2E2079365C00DE7EDA /* NodeViewProfie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281AC2D2079365C00DE7EDA /* NodeViewProfie.swift */; };
+		3281AC302079A0CD00DE7EDA /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281AC2F2079A0CD00DE7EDA /* ToggleTableViewCell.swift */; };
+		3281AC322079A15F00DE7EDA /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281AC312079A15F00DE7EDA /* ColorTableViewCell.swift */; };
+		3281AC342079A1C300DE7EDA /* NumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281AC332079A1C300DE7EDA /* NumberTableViewCell.swift */; };
 		328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */; };
 		328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */; };
 		328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19B2076A7890056CB0C /* DefaultStructure.swift */; };
@@ -593,6 +596,9 @@
 		322EF743207676EF008A98F7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
 		3281AC2D2079365C00DE7EDA /* NodeViewProfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeViewProfie.swift; sourceTree = "<group>"; };
+		3281AC2F2079A0CD00DE7EDA /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
+		3281AC312079A15F00DE7EDA /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		3281AC332079A1C300DE7EDA /* NumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTableViewCell.swift; sourceTree = "<group>"; };
 		328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewController.swift; sourceTree = "<group>"; };
 		328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewCell.swift; sourceTree = "<group>"; };
 		328EE19B2076A7890056CB0C /* DefaultStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStructure.swift; sourceTree = "<group>"; };
@@ -1214,6 +1220,9 @@
 			children = (
 				328EE1982076955A0056CB0C /* ThemesCollectionViewCell.swift */,
 				328EE19F2076DE5E0056CB0C /* HandCollectionViewCell.swift */,
+				3281AC2F2079A0CD00DE7EDA /* ToggleTableViewCell.swift */,
+				3281AC312079A15F00DE7EDA /* ColorTableViewCell.swift */,
+				3281AC332079A1C300DE7EDA /* NumberTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2658,6 +2667,7 @@
 				33F75562FA9B0F0F2493B3D8 /* TextField.swift in Sources */,
 				33F7525D3C7806E8D1441866 /* GradientSlider.swift in Sources */,
 				33F758A7BB8D64FDA6D629DD /* SegmentedControl.swift in Sources */,
+				3281AC322079A15F00DE7EDA /* ColorTableViewCell.swift in Sources */,
 				33F75170870EFDA4F639DFD7 /* DatePickerViewController.swift in Sources */,
 				33F758FB688623BEC1FAFD68 /* ColorPickerViewController.swift in Sources */,
 				33F7598F05400F330CECDEFA /* ItemWithImage.swift in Sources */,
@@ -2683,12 +2693,14 @@
 				33F75390F7DBB6B59E33BF83 /* TelegramPickerViewController.swift in Sources */,
 				33F750C7811BFDD0BB1DD06D /* PickerViewViewController.swift in Sources */,
 				33F75CE9325AB811EAB6C0F2 /* OneTextFieldViewController.swift in Sources */,
+				3281AC342079A1C300DE7EDA /* NumberTableViewCell.swift in Sources */,
 				33F75574844037562BB14C5A /* TwoTextFieldsViewController.swift in Sources */,
 				33F75A609D20ED02C1632B51 /* Assets.swift in Sources */,
 				33F751F347DFE7DBE157E9AB /* PhotoLibraryPickerViewController.swift in Sources */,
 				33F753B0E7951944B280D37E /* AttributedTextBlock.swift in Sources */,
 				33F75CDDB905DA477DB9A9F8 /* TextViewController.swift in Sources */,
 				33F751BE127262D1BE5C3D9D /* Date+Extension.swift in Sources */,
+				3281AC302079A0CD00DE7EDA /* ToggleTableViewCell.swift in Sources */,
 				33F75DEC8B8092B23B774DBF /* Array+Extensions.swift in Sources */,
 				33F75748490186AB0E6B0C61 /* Common+Extensions.swift in Sources */,
 				33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */,

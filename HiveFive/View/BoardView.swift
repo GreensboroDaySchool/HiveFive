@@ -84,6 +84,20 @@ import UIKit
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupTapRecognizer()
+        observe(profileUpdatedNotification, #selector(profileDidUpdate(_:))) // The current profile as changed
+        observe(kpHackableUpdateNotification, #selector(profileDidUpdate(_:))) // A single property in the current profile has changed
+    }
+    
+    @objc private func profileDidUpdate(_ notification: Notification) {
+        let profile = currentProfile() // This might be quite expensive, retriving from Core Data
+        nodeViews.forEach{profile.apply(on: $0)}
+        redrawSubviews()
+    }
+    
+    
+    deinit {
+        // Not necessary for iOS 9.0 up
+        NotificationCenter.default.removeObserver(self)
     }
     
     /**
@@ -133,7 +147,7 @@ import UIKit
         nodeViews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
         paths.sort{$0.route.translation.z < $1.route.translation.z} // sort according to z coordinate, toppest node get added last.
         paths.forEach {
-            addSubview(NodeView(path: $0))
+            addSubview(NodeView(path: $0, profile: currentProfile()))
         }
         updateNodeRadius()
         updateNodeCoordinates()
@@ -185,7 +199,7 @@ import UIKit
             let dummy = HexNode()
             dummy.neighbors[position.dir.opposite()] = position.node // make a uni-directional connection
             let path = Path(route: route, destination: dummy)
-            addSubview(NodeView(path: path))
+            addSubview(NodeView(path: path, profile: currentProfile()))
         }
         updateNodeRadius()
         updateNodeCoordinates()

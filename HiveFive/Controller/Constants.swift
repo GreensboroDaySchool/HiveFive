@@ -25,6 +25,8 @@ let didCancelNewPiece = Notification.Name("cancelledSelectedNewNode")
 let didPlaceNewPiece = Notification.Name("placeSelectedNewPiece")
 let requiresQueenNotification = Notification.Name(rawValue: "requireQueen")
 let displayMsgNotification = Notification.Name("requestDisplayMsg")
+let kpHackableUpdateNotification = Notification.Name("kpHackableUpdated")
+let kpHackableUpdateCancelledNotification = Notification.Name("kpHackableUpdateCancelled")
 
 //MARK: User Default
 //Note: posted value is always the new value
@@ -57,3 +59,11 @@ func shouldShowAlerts() -> Bool  {
     return get(id: showAlertsId) as? Bool ?? defaultShowAlerts
 }
 
+let currentProfileId = "currentProfile"
+let profileUpdatedNotification = Notification.Name(currentProfileId)
+func currentProfileName() -> String {
+    return get(id: currentProfileId) as? String ?? "#default"
+}
+func currentProfile() -> Profile {
+    return Profile.load(currentProfileName())
+}

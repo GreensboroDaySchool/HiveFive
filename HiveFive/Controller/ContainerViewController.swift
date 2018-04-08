@@ -52,14 +52,6 @@ class ContainerViewController: SlideMenuController {
                 self.notificationLabel.alpha = 1.0
                 self.notificationLabel.isHidden = true
         })
-        
-        let alert = UIAlertController(style: .alert)
-        alert.addColorPicker(color: .blue) { color in
-            // action with selected color
-        }
-        alert.childViewControllers[0].preferredContentSize.height = 400
-        alert.addAction(title: "Done", style: .cancel)
-        alert.show()
     }
 
     override func didReceiveMemoryWarning() {
