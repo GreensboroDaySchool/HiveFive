@@ -11,6 +11,7 @@ import UIKit
 
 /**
  Original Core Data + Key Path Hacker by Jiachen Ren
+ TODO: rename to ProfileManager
  */
 struct Profile {
     static let defaultProfile: Profile = {
@@ -50,6 +51,10 @@ struct Profile {
         profile.name = name
         profile.properties = properties as NSObject
         try? context.save()
+    }
+    
+    static func delete(name profileName: String) {
+        CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == profileName}
     }
     
     static func savedProfiles(_ shouldInclude: (NodeViewProfile) -> Bool = {_ in return true}) -> [NodeViewProfile] {

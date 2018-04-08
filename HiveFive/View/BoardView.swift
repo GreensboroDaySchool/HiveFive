@@ -89,7 +89,10 @@ import UIKit
     }
     
     @objc private func profileDidUpdate(_ notification: Notification) {
-        let profile = currentProfile() // This might be quite expensive, retriving from Core Data
+        apply(profile: currentProfile()) // This might be quite expensive, retriving from Core Data
+    }
+    
+    func apply(profile: Profile) {
         nodeViews.forEach{profile.apply(on: $0)}
         redrawSubviews()
     }

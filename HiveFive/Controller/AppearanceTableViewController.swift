@@ -14,7 +14,8 @@ class AppearanceTableViewController: UITableViewController {
     var items = [
         "Themes",
         "User Interface",
-        "Color Scheme"
+        "Color Scheme",
+        "Profiles"
     ]
 
     override func viewDidLoad() {

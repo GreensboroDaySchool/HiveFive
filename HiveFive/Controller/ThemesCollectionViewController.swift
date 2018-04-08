@@ -75,7 +75,7 @@ class ThemesCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    private func prepareCell(_ cell: ThemesCollectionViewCell, theme: Theme) {
+    func prepareCell(_ cell: ThemesCollectionViewCell, theme: Theme) {
         cell.boardView.patterns = theme.patterns
         cell.boardView.isUserInteractionEnabled = false
         cell.boardView.nodeRadius = currentNodeSize() / 2
@@ -220,6 +220,14 @@ var themes: [Theme] = [
         .spider:"𝞚",
         .soldierAnt:"𝞧",
         .dummy:"𝞦"
+        ]),
+    .init(name: "Trigrams", patterns: [
+        .grasshopper:"☱",
+        .queenBee:"☲",
+        .beetle:"☳",
+        .spider:"☵",
+        .soldierAnt:"☴",
+        .dummy:"☶"
         ]),
 ]
 
