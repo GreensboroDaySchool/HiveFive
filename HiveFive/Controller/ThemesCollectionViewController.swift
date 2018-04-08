@@ -12,16 +12,28 @@ private let reuseIdentifier = "cell3"
 
 class ThemesCollectionViewController: UICollectionViewController {
 
+    var cached = [IndexPath:UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
         // Do any additional setup after loading the view.
+        preloadRenderedThemes()
+    }
+    
+    /**
+     Preloads rendered themes into cached dictionary. This solved the issue of lagging.
+     */
+    private func preloadRenderedThemes() {
+        themes.enumerated().map{(IndexPath(row: $0.offset, section: 0), $0.element)}
+            .forEach { (indexPath, theme) in
+                let cell = collectionView!.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
+                prepareCell(cell, theme: theme)
+                cached[indexPath] = cell.asImage()
+                }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +65,18 @@ class ThemesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
-        let theme = themes[indexPath.row]
+        if let cachedImg = cached[indexPath] {
+            cell.contentView.isHidden = true
+            cell.backgroundView = UIImageView(image: cachedImg)
+        } else {
+            prepareCell(cell, theme: themes[indexPath.row])
+            if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
+            cached[indexPath] = cell.asImage()
+        }
+        return cell
+    }
+    
+    private func prepareCell(_ cell: ThemesCollectionViewCell, theme: Theme) {
         cell.boardView.patterns = theme.patterns
         cell.boardView.isUserInteractionEnabled = false
         //        cell.boardView.nodeRadius = 30 TODO: preferred node size
@@ -61,7 +84,6 @@ class ThemesCollectionViewController: UICollectionViewController {
         cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name
         if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
-        return cell
     }
     
 

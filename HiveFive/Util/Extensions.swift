@@ -386,3 +386,31 @@ extension NSObject {
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
     }
 }
+
+extension UIImage {
+    /**
+     - Warning: causes the image to be blurry
+     */
+    convenience init(view: UIView) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in:UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(cgImage: image!.cgImage!)
+    }
+}
+
+
+extension UIView {
+    
+    /**
+     Using a function since `var image` might conflict with an existing variable
+     (like on `UIImageView`)
+     */
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
