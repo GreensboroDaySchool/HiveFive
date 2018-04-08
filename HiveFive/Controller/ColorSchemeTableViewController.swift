@@ -50,7 +50,7 @@ class ColorSchemeTableViewController: UITableViewController {
     
     @objc private func kpHackableDidUpdate(_ notification: Notification) {
         updateCategories()
-        tableView.reloadData() // Could be optimized with reload data at rows
+        tableView.reloadRows(at: [notification.userInfo!["IndexPath"] as! IndexPath], with: .automatic) // Could be optimized with reload data at rows
         deselectAll()
     }
     
@@ -100,7 +100,9 @@ class ColorSchemeTableViewController: UITableViewController {
         default: fatalError("no such index")
         }
         
-        (cell as! KPAssociate).kpHackable = categories[indexPath.section][indexPath.row]
+        let associate = (cell as! KPAssociate)
+        associate.kpHackable = categories[indexPath.section][indexPath.row]
+        associate.indexPath = indexPath
         
         return cell
     }
@@ -138,11 +140,11 @@ protocol KPAssociate: class {
 extension KPAssociate {
     
     func postUpdate(_ kpHackable: KPHackable) {
-        post(name: kpHackableUpdateNotification, object: kpHackable, userInfo: ["IndexPath":indexPath as Any])
+        post(name: kpHackableUpdateNotification, object: kpHackable, userInfo: ["IndexPath":indexPath! as Any])
     }
     
     func cancelUpdate() {
-        post(name: kpHackableUpdateCancelledNotification, object: (kpHackable,indexPath), userInfo: ["IndexPath":indexPath as Any])
+        post(name: kpHackableUpdateCancelledNotification, object: (kpHackable,indexPath), userInfo: ["IndexPath":indexPath! as Any])
     }
     
     func handleValueUpdate(_ updatedValue: Any) {

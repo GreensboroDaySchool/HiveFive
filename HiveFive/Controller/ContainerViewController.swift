@@ -46,12 +46,20 @@ class ContainerViewController: SlideMenuController {
         if !shouldShowAlerts() {return}
         notificationLabel.isHidden = false
         notificationLabel.text = msg
-        UIView.animate(withDuration: 1.5, animations: {[unowned self] in
-            self.notificationLabel.alpha = 0
-            }, completion: {_ in
-                self.notificationLabel.alpha = 1.0
-                self.notificationLabel.isHidden = true
-        })
+        
+
+        notificationLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
+//        self.view!.addSubview(notificationLabel)
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseOut, animations: {() -> Void in
+            self.notificationLabel.transform = CGAffineTransform.identity
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 1, animations: {[unowned self] in
+                self.notificationLabel.alpha = 0
+                }, completion: {_ in
+                    self.notificationLabel.alpha = 1
+                    self.notificationLabel.isHidden = true
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
