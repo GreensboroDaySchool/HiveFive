@@ -59,7 +59,6 @@ class ThemesCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return themes.count
     }
 
@@ -79,7 +78,7 @@ class ThemesCollectionViewController: UICollectionViewController {
     private func prepareCell(_ cell: ThemesCollectionViewCell, theme: Theme) {
         cell.boardView.patterns = theme.patterns
         cell.boardView.isUserInteractionEnabled = false
-        //        cell.boardView.nodeRadius = 30 TODO: preferred node size
+        cell.boardView.nodeRadius = currentNodeSize() / 2
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name

@@ -69,6 +69,8 @@ class Hive {
     
     private var selectedNewNode = false
     
+    var hasEnded = false
+    
     var blackHand: Hand
     var whiteHand: Hand
     var currentPlayer: Color = .black
@@ -105,6 +107,7 @@ class Hive {
         selectedNewNode = false
         selectedNode = nil
         availablePositions = []
+        hasEnded = false
         post(name: handUpdateNotification, object: (blackHand,Color.black))
     }
     
@@ -115,38 +118,42 @@ class Hive {
      - Todo: Implement
      */
     func select(node: HexNode) {
+        if hasEnded {
+            post(name: displayMsgNotification, object: "Hit Restart ↻")
+            return
+        }
         switch node.identity {
         case .dummy:
             if let selected = selectedNode {
                 let available = node.neighbors.available()
-                if available.count == 0 { // special case, first piece!
+                if available.count == 0 { // Special case, first piece!
                     root = selectedNode
                 } else {
                     let dest = available[0]
                     let position = Position(node: dest.node, dir: dest.dir.opposite())
 
-                    // if the root moves, then the root coordinate needs to be updated
+                    // If the root moves, then the root coordinate needs to be updated
                     if selected === root {
                         let route = root!.derivePaths().filter{$0.destination === position.node}[0]
                             .route.append([position.dir])
                         delegate?.rootNodeDidMove(by: route)
                     }
 
-                    //move to the designated position
+                    // Move to the designated position
                     selected.move(to: position)
                     
-                    //record the move
+                    // Record the move
                     //TODO: DEBUG!
                     let origins = selected.neighbors.available()
                         .map{Position(node: $0.node, dir: $0.dir.opposite())}
                     history.push(move: Move(selected, from: origins.first, to: position))
                 }
                 
-                //if the piece just placed/moved is a new piece, then:
+                // If the piece just placed/moved is a new piece, then:
                 if selectedNewNode {
                     post(name: didPlaceNewPiece, object: nil)
                     
-                    //update black/white hands
+                    // Update black/white hands
                     let key = selectedNode!.identity
                     switch currentPlayer {
                     case .black: blackHand.updateValue(blackHand[key]! - 1, forKey: key)
@@ -162,12 +169,13 @@ class Hive {
                 }
                 post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
                 
-                delegate?.structureDidUpdate() //notify the delegate that the structure has updated
+                delegate?.structureDidUpdate() // Notify the delegate that the structure has updated
                 currentPlayer = currentPlayer.opposite
             }
+            updateGameState() // Detect if a winner has emerged.
         default:
             if node.color != currentPlayer {
-                //this prevents current player from selecting opponent's pieces
+                // Prevent the current player from selecting opponent's pieces
                 return
             }
             selectedNode = node
@@ -180,7 +188,31 @@ class Hive {
     }
     
     /**
-     - Todo: Implement!
+     Update the state of the hive based on who's winning/losing.
+     */
+    func updateGameState() {
+        if let winner = detectWinnder() {
+            hasEnded = true
+            let msg = "\(winner == .black ? "Black" : "White") Wins!"
+            post(name: displayMsgNotification, object: msg)
+        }
+    }
+    
+    /**
+     - Returns: The color of the winning player; nil if not found.
+     */
+    func detectWinnder() -> Color? {
+        if let root = root {
+            let candidates = root.connectedNodes().filter{$0.identity == .queenBee && $0.neighbors.available().count == 6}
+            if candidates.count == 1 {
+                return candidates[0].color.opposite
+            }
+        }
+        return nil
+    }
+    
+    /**
+     Selects a new node that is going to be connected to the hive.
      */
     func select(newNode: HexNode) {
         selectedNode = newNode

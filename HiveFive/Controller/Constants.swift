@@ -44,6 +44,8 @@ let defaultNodeSize = 1 //the index of the node size
 func nodeSizeIndex() -> Int {
     return get(id: preferredNodeSizeId) as? Int ?? defaultNodeSize
 }
+/// - Note: returns current **diameter** of each node
+let currentNodeSize: () -> CGFloat = {preferredNodeSizes[nodeSizeIndex()]}
 
 let rectangularUiId = "rectangularUI"
 let defaultUseRectangularUI = false

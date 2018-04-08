@@ -687,11 +687,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uun-XR-iht" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="218" height="191"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="218" height="218"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0c-ao-se1">
-                                            <rect key="frame" x="0.0" y="191" width="218" height="87"/>
+                                            <rect key="frame" x="0.0" y="218" width="218" height="60"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULh-F1-Arf">
                                                     <rect key="frame" x="86" y="8" width="45" height="21"/>
@@ -700,7 +700,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80463934075342458" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="ULh-F1-Arf" firstAttribute="centerX" secondItem="c0c-ao-se1" secondAttribute="centerX" id="62w-yY-RQx"/>
                                                 <constraint firstItem="ULh-F1-Arf" firstAttribute="top" secondItem="c0c-ao-se1" secondAttribute="top" constant="8" id="NHh-R0-gR6"/>
@@ -710,7 +710,7 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="Uun-XR-iht" firstAttribute="top" secondItem="A6U-eN-R0s" secondAttribute="top" id="1lm-C3-A4J"/>
-                                    <constraint firstItem="c0c-ao-se1" firstAttribute="width" secondItem="Uun-XR-iht" secondAttribute="height" multiplier="217:190" id="5wP-7D-SFv"/>
+                                    <constraint firstItem="c0c-ao-se1" firstAttribute="width" secondItem="Uun-XR-iht" secondAttribute="height" multiplier="1:1" id="5wP-7D-SFv"/>
                                     <constraint firstItem="c0c-ao-se1" firstAttribute="leading" secondItem="A6U-eN-R0s" secondAttribute="leading" id="HzX-Pf-XEB"/>
                                     <constraint firstItem="Uun-XR-iht" firstAttribute="leading" secondItem="A6U-eN-R0s" secondAttribute="leading" id="LQz-2e-Nfd"/>
                                     <constraint firstItem="c0c-ao-se1" firstAttribute="top" secondItem="Uun-XR-iht" secondAttribute="bottom" id="P9z-jo-Rzz"/>
