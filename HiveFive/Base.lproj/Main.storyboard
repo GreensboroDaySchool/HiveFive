@@ -798,6 +798,7 @@
                                         <constraint firstAttribute="trailing" secondItem="Xr3-mw-u6W" secondAttribute="trailing" constant="15" id="AfY-KW-BhG"/>
                                         <constraint firstItem="Xr3-mw-u6W" firstAttribute="centerY" secondItem="fuw-7O-bZu" secondAttribute="centerY" id="PHm-1a-XEz"/>
                                         <constraint firstItem="Xr3-mw-u6W" firstAttribute="leading" secondItem="Q7e-RC-7ky" secondAttribute="trailing" constant="8" id="ZZW-9H-uWo"/>
+                                        <constraint firstItem="Q7e-RC-7ky" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2MA-FG-4zU" secondAttribute="trailing" constant="8" id="agr-tv-oZe"/>
                                         <constraint firstItem="Q7e-RC-7ky" firstAttribute="centerY" secondItem="2MA-FG-4zU" secondAttribute="centerY" id="kno-qW-EDF"/>
                                         <constraint firstItem="Q7e-RC-7ky" firstAttribute="height" secondItem="2MA-FG-4zU" secondAttribute="height" id="ltg-dH-PKf"/>
                                         <constraint firstItem="2MA-FG-4zU" firstAttribute="leading" secondItem="fuw-7O-bZu" secondAttribute="leadingMargin" constant="7" id="mb0-7A-GZC"/>
@@ -842,7 +843,7 @@
                                     <outlet property="switch" destination="dSq-3l-iFX" id="5PX-YG-7N0"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="numberCell" id="4Pg-8F-TZd" customClass="NumberTableViewCell" customModule="Hive_Five" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="numberCell" id="4Pg-8F-TZd" customClass="NumberTableViewCell" customModule="Hive_Five" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Pg-8F-TZd" id="8Al-6C-x4Q">
@@ -972,7 +973,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twG-pa-s6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4780" y="1576.4617691154424"/>
+            <point key="canvasLocation" x="4714" y="1746"/>
         </scene>
     </scenes>
 </document>

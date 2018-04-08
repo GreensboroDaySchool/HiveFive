@@ -13,6 +13,9 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
+    
+    var pendingText: String? = ""
+    
     var indexPath: IndexPath?
     var kpHackable: KPHackable? {
         didSet {
@@ -35,7 +38,43 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
     }
     
     func didSelect() {
+        let alert = UIAlertController(style: .alert, title: nameLabel.text)
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "# between 0 & 1"
+            
+//            let imgView = UIImageView(image: #imageLiteral(resourceName: "hashtag_img"))
+//            imgView.tintColor
+            
+            textField.left(image: #imageLiteral(resourceName: "pencil_img"), color: .black)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.keyboardAppearance = .default
+            textField.keyboardType = .decimalPad
+            textField.returnKeyType = .done
+            textField.action {[unowned self] textField in
+                self.pendingText = textField.text
+            }
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel){[unowned self] _ in
+            self.cancelUpdate()
+        })
+        alert.addAction(UIAlertAction(title: "OK", style: .default){[unowned self] _ in
+            if let number = Double(self.pendingText!) {
+                if number <= 1 && number >= 0 {
+                    self.handleValueUpdate(CGFloat(number))
+                    return
+                }
+            }
+            post(name: displayMsgNotification, object: "Invalid Input")
+        })
         
+        alert.show()
     }
 
 }

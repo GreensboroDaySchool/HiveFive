@@ -13,7 +13,6 @@ class ToggleTableViewCell: UITableViewCell, KPAssociate {
     @IBOutlet weak var `switch`: UISwitch!
     @IBOutlet weak var nameLabel: UILabel!
     var indexPath: IndexPath?
-    var switchToggled: ((Bool) -> ())?
     var kpHackable: KPHackable? {
         didSet {
             `switch`.isOn = kpHackable?.getValue() as! Bool
@@ -33,10 +32,9 @@ class ToggleTableViewCell: UITableViewCell, KPAssociate {
     }
     
     func didSelect() {
-        
     }
     
     @IBAction func switchToggled(_ sender: UISwitch) {
-        self.switchToggled?(sender.isOn)
+        handleValueUpdate(sender.isOn)
     }
 }

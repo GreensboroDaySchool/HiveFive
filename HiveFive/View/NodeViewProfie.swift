@@ -73,7 +73,12 @@ struct Profile {
     }
     
     static func load(_ profileName: String) -> Profile {
-        return load(savedProfiles{$0.name == profileName}[0])
+        let savedProfiles = self.savedProfiles{$0.name == profileName}
+        if savedProfiles.count == 0 {
+            print("No profiles with name \(profileName) were found, default profile loaded")
+            return defaultProfile
+        }
+        return load(savedProfiles[0])
     }
 }
 
@@ -128,25 +133,25 @@ struct KPNamespace<RootType,Value>: KPHackable {
 }
 
 let defaultKeyPaths: [KPHackable] = [
-    KPNamespace(keyPath: \NodeView.isMonochromatic, key: "Monochromatic", value: false),
-    KPNamespace(keyPath: \NodeView.monocromaticColor, key: "Theme Color", value: .black),
-    KPNamespace(keyPath: \NodeView.monocromaticSelectedColor, key: "Selected Color", value: .red),
+    KPNamespace(keyPath: \NodeView.isMonochromatic, key: "Monochromatic", value: true),
+    KPNamespace(keyPath: \NodeView.monocromaticColor, key: "Theme", value: .black),
+    KPNamespace(keyPath: \NodeView.monocromaticSelectedColor, key: "Selected", value: .red),
     
-    KPNamespace(keyPath: \NodeView.whiteBorderColor, key: "White Border Color", value: .black),
-    KPNamespace(keyPath: \NodeView.whiteFillColor, key: "White Fill Color", value: .white),
-    KPNamespace(keyPath: \NodeView.blackBorderColor, key: "Black Border Color", value: .black),
-    KPNamespace(keyPath: \NodeView.blackFillColor, key: "Black Fill Color", value: .lightGray),
+    KPNamespace(keyPath: \NodeView.whiteBorderColor, key: "White Border", value: .black),
+    KPNamespace(keyPath: \NodeView.whiteFillColor, key: "White Fill", value: .white),
+    KPNamespace(keyPath: \NodeView.blackBorderColor, key: "Black Border", value: .black),
+    KPNamespace(keyPath: \NodeView.blackFillColor, key: "Black Fill", value: .lightGray),
     
-    KPNamespace(keyPath: \NodeView.selectedBorderColor, key: "Selected Border Color", value: .orange),
-    KPNamespace(keyPath: \NodeView.selectedFillColor, key: "Selected Fill Color", value: UIColor.orange.withAlphaComponent(0.2)),
-    KPNamespace(keyPath: \NodeView.selectedIdentityColor, key: "Selected Identity Color", value: .orange),
+    KPNamespace(keyPath: \NodeView.selectedBorderColor, key: "Selected Border", value: .orange),
+    KPNamespace(keyPath: \NodeView.selectedFillColor, key: "Selected Fill", value: UIColor.orange.withAlphaComponent(0.2)),
+    KPNamespace(keyPath: \NodeView.selectedIdentityColor, key: "Selected Identity", value: .orange),
     
-    KPNamespace(keyPath: \NodeView.dummyColor, key: "Dummy Color", value: .green),
+    KPNamespace(keyPath: \NodeView.dummyColor, key: "Dummy", value: .green),
     KPNamespace(keyPath: \NodeView.dummyColorAlpha, key: "Dummy Color Alpha", value: 0.2),
     
-    KPNamespace(keyPath: \NodeView.borderWidthRatio, key: "Border Width Ratio", value: 0.01),
-    KPNamespace(keyPath: \NodeView.overlapShrinkRatio, key: "Overlap Shrink Ratio", value: 0.92),
-    KPNamespace(keyPath: \NodeView.selectedBorderWidthRatio, key: "Selected Border Width Ratio", value: 0.01),
-    KPNamespace(keyPath: \NodeView.dummyBorderWidthRatio, key: "Dummy Border Width Ratio", value: 0.01),
-    KPNamespace(keyPath: \NodeView.displayRadiusRatio, key: "Display Radius Ratio", value: 0.9375),
+    KPNamespace(keyPath: \NodeView.borderWidthRatio, key: "Border Width", value: 0.01),
+    KPNamespace(keyPath: \NodeView.overlapShrinkRatio, key: "Overlap Shrink", value: 0.92),
+    KPNamespace(keyPath: \NodeView.selectedBorderWidthRatio, key: "Selected Border Width", value: 0.01),
+    KPNamespace(keyPath: \NodeView.dummyBorderWidthRatio, key: "Dummy Border Width", value: 0.01),
+    KPNamespace(keyPath: \NodeView.displayRadiusRatio, key: "Display Radius", value: 0.9375),
 ]

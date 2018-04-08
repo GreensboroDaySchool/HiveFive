@@ -19,7 +19,7 @@ class ColorSchemeTableViewController: UITableViewController {
     }
     
     var categories = [[KPHackable]]()
-    var categoryNames = ["Colors", "Booleans", "Numbers"]
+    var categoryNames = ["Colors", "Booleans", "Numbers & Ratios"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,5 +150,6 @@ extension KPAssociate {
         CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == currentProfileName()} // Delete existing profile
         updated.save() // Save updated profile into Core Data
         self.postUpdate(self.kpHackable!.setValue(updatedValue)) // Post update notification
+        post(name: displayMsgNotification, object: ("\(kpHackable!.key) : \(updatedValue)"))
     }
 }
