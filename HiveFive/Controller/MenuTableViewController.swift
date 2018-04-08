@@ -28,6 +28,13 @@ class MenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // MARK: notification binding
+        observe(tableViewCellHeightUpdatedNotification, #selector(cellHeightDidUpdate(_:)))
+    }
+    
+    @objc private func cellHeightDidUpdate(_ notification: Notification) {
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +63,10 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: menuItems[indexPath.row], sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(tableViewCellHeight())
     }
 
     /*

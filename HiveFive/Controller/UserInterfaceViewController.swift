@@ -14,13 +14,20 @@ class UserInterfaceViewController: UIViewController {
     @IBOutlet weak var preferredNodeSizeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var rectangularUiSwitch: UISwitch!
     
+    @IBOutlet weak var cellHeightLabel: UILabel!
+    @IBOutlet weak var cellHeightSlider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // MARK: additional setup
         tabBarVisibilitySwitch.isOn = toolBarShouldBeVisible()
         preferredNodeSizeSegmentedControl.selectedSegmentIndex = nodeSizeIndex()
         rectangularUiSwitch.isOn = shouldUseRectangularUI()
-        // Do any additional setup after loading the view.
+        
+        let cellHeight = tableViewCellHeight()
+        cellHeightLabel.text = String(Double(cellHeight))
+        cellHeightSlider.value = Float(cellHeight)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +59,18 @@ class UserInterfaceViewController: UIViewController {
         
     }
     
+    @IBAction func cellHeightSliderValueChanged(_ sender: UISlider) {
+        let value = Int(roundf(sender.value))
+        cellHeightLabel.text = String("\(value) px")
+        sender.value = Float(value) // Update the value of the slider as well.
+    }
+    
+    @IBAction func cellHeightSliderEditingDidEnd(_ sender: UISlider) {
+        let value = Int(roundf(sender.value))
+        save(id: tableViewCellHeightId, obj: value)
+        post(name: tableViewCellHeightUpdatedNotification, object: value)
+        post(name: displayMsgNotification, object: "Cell Height: \(value) px")
+    }
     
     /*
     // MARK: - Navigation

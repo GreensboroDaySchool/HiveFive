@@ -19,7 +19,7 @@ class ColorSchemeTableViewController: UITableViewController {
     }
     
     var categories = [[KPHackable]]()
-    var categoryNames = ["Colors", "Booleans", "Numbers & Ratios"]
+    var categoryNames = ["Booleans", "Colors", "Numbers & Ratios"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class ColorSchemeTableViewController: UITableViewController {
     }
     
     private func deconstruct(_ category: Profile.Category) -> [[KPHackable]] {
-        return [category.colors, category.bools, category.numbers]
+        return [category.bools, category.colors, category.numbers]
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,8 +94,8 @@ class ColorSchemeTableViewController: UITableViewController {
         var cell: UITableViewCell
         
         switch indexPath.section {
-        case 0: cell = makeCell(colorCellId)
-        case 1: cell = makeCell(boolCellId)
+        case 0: cell = makeCell(boolCellId)
+        case 1: cell = makeCell(colorCellId)
         case 2: cell = makeCell(numberCellId)
         default: fatalError("no such index")
         }
@@ -113,6 +113,10 @@ class ColorSchemeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         (tableView.cellForRow(at: indexPath) as! KPAssociate).didSelect()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50 // TODO: figure out the best height
     }
 
 
