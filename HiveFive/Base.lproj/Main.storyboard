@@ -34,37 +34,11 @@
                                 <rect key="frame" x="0.0" y="21" width="375" height="44"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <items>
-                                    <barButtonItem style="plain" id="4C1-d7-k4f">
-                                        <view key="customView" contentMode="scaleToFill" id="GkN-zj-c7r" customClass="MenuIconView" customModule="Hive_Five" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="5.5" width="33" height="33"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKc-cj-CRp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
-                                                    <connections>
-                                                        <action selector="menuButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zgA-k0-Lh2"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="bKc-cj-CRp" secondAttribute="bottom" id="iDL-6w-DDZ"/>
-                                                <constraint firstItem="bKc-cj-CRp" firstAttribute="top" secondItem="GkN-zj-c7r" secondAttribute="top" id="ieL-Nf-ZKa"/>
-                                                <constraint firstAttribute="trailing" secondItem="bKc-cj-CRp" secondAttribute="trailing" id="l6G-oQ-7SW"/>
-                                                <constraint firstItem="bKc-cj-CRp" firstAttribute="leading" secondItem="GkN-zj-c7r" secondAttribute="leading" id="ypc-70-Fqw"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.80040667809999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="iconLineWidth">
-                                                    <real key="value" value="4.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="lineCap">
-                                                    <integer key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
+                                    <barButtonItem title="Item" image="menu_img" id="scs-Kv-dUK">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="BYZ-38-t0r" id="P3O-9v-3wf"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="biv-kj-bt6"/>
                                     <barButtonItem title="Hive 5" id="eUg-SK-hRw">
@@ -247,6 +221,14 @@
             </objects>
             <point key="canvasLocation" x="-119.2" y="693.55322338830592"/>
         </scene>
+        <!--Introduction-->
+        <scene sceneID="ovV-od-iPz">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Introduction" storyboardName="LaunchScreen" referencedIdentifier="Introduction" id="3Tb-oo-s7r" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASA-QE-KxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2617" y="620"/>
+        </scene>
         <!--Container View Controller-->
         <scene sceneID="isu-MS-Z38">
             <objects>
@@ -321,6 +303,7 @@
                     <connections>
                         <segue destination="XHV-c3-uOX" kind="show" identifier="Appearance" id="x4N-U8-a2r"/>
                         <segue destination="q35-QE-sCb" kind="showDetail" identifier="Help" id="h3J-ZO-kqx"/>
+                        <segue destination="3Tb-oo-s7r" kind="show" identifier="About" id="qVS-Hk-oBk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHU-2G-apJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -976,4 +959,7 @@
             <point key="canvasLocation" x="4714" y="1746"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu_img" width="33" height="33"/>
+    </resources>
 </document>

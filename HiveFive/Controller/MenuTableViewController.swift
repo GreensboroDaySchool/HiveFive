@@ -12,7 +12,7 @@ private let reuseIdentifier = "cell1"
 class MenuTableViewController: UITableViewController {
 
     let menuItems = [
-        "Settings",
+//        "Settings",
         "Appearance",
         "Help",
         "About"

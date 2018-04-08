@@ -43,10 +43,6 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
             textField.becomeFirstResponder()
             textField.textColor = .black
             textField.placeholder = "# between 0 & 1"
-            
-//            let imgView = UIImageView(image: #imageLiteral(resourceName: "hashtag_img"))
-//            imgView.tintColor
-            
             textField.left(image: #imageLiteral(resourceName: "pencil_img"), color: .black)
             textField.leftViewPadding = 12
             textField.borderWidth = 1
@@ -78,11 +74,4 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
         alert.show()
     }
 
-}
-
-extension String {
-    subscript(range: CountableClosedRange<Int>) -> String {
-        return enumerated().filter{$0.offset >= range.first! && $0.offset < range.last!}
-            .reduce(""){$0 + String($1.element)}
-    }
 }
