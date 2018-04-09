@@ -140,15 +140,12 @@ class Hive {
                     }
                     
                     // Record the move
-                    //TODO: DEBUG!
                     let origins = selected.neighbors.available()
                         .map{Position(node: $0.node, dir: $0.dir.opposite())}
                     history.push(move: Move(selected, from: origins.first, to: position))
 
                     // Move to the designated position
                     selected.move(to: position)
-                    
-                    
                 }
                 
                 // If the piece just placed/moved is a new piece, then:
@@ -161,18 +158,13 @@ class Hive {
                     case .black: blackHand.updateValue(blackHand[key]! - 1, forKey: key)
                     case .white: whiteHand.updateValue(whiteHand[key]! - 1, forKey: key)
                     }
-                    blackHand.keys.filter{blackHand[$0]! == 0}.forEach {
-                        blackHand.remove(at: blackHand.index(forKey: $0)!)
-                    }
-                    whiteHand.keys.filter{whiteHand[$0]! == 0}.forEach {
-                        whiteHand.remove(at: whiteHand.index(forKey: $0)!)
-                    }
                     selectedNewNode = false
                 }
                 
                 // Pass the player's turn
                 passTurn()
             }
+            
             updateGameState() // Detect if a winner has emerged.
         default:
             if node.color != currentPlayer {
@@ -185,6 +177,18 @@ class Hive {
                 post(name: didCancelNewPiece, object: nil)
                 selectedNewNode = false
             }
+        }
+    }
+    
+    /**
+     Remove used up nodes from each player's hands
+     */
+    private func removeExhaustedNodes() {
+        blackHand.keys.filter{blackHand[$0]! == 0}.forEach {
+            blackHand.remove(at: blackHand.index(forKey: $0)!)
+        }
+        whiteHand.keys.filter{whiteHand[$0]! == 0}.forEach {
+            whiteHand.remove(at: whiteHand.index(forKey: $0)!)
         }
     }
     
@@ -368,8 +372,8 @@ class Hive {
         if history.popped.count == 0 {return}
         if let node = history.restore() {
             switch currentPlayer {
-            case .black: whiteHand[node.identity]! -= 1
-            case .white: blackHand[node.identity]! -= 1
+            case .black: blackHand[node.identity]! -= 1
+            case .white: whiteHand[node.identity]! -= 1
             }
         }
         passTurn()
@@ -379,6 +383,7 @@ class Hive {
      Passes the current player's turn
      */
     private func passTurn(handChanged: Bool = true) {
+        removeExhaustedNodes()
         if handChanged {
             post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
         }
