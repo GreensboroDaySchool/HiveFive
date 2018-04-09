@@ -345,23 +345,50 @@ class Hive {
      */
     func availablePositions(color: Color) -> [Position] {
         guard let root = root else {return []}
+        let positions = root.connectedNodes().filter{$0.neighbors[.below] == nil}.map{node in
+            node.neighbors.empty().filter{$0.rawValue < 6}
+                .map{Position(node: node, dir: $0)}
+            }.flatMap{$0}
+        
         var paths = root.derivePaths()
         let path = Path(destination: root, route: Route(directions: []))
         paths.insert(path, at: 0)
-        let dummy = Identity.dummy.new(color: color)
-        return paths.filter{$0.destination.color == color}
-            .map{($0, $0.destination.neighbors.empty())}
-            .map{(arg) -> [Path] in
-            let (path, dirs) = arg
-            return dirs.map{Path(
-                destination: path.destination,
-                route: path.route.append([$0]))
+        
+        // Pair paths with positions
+        typealias Pair = (path: Path, pos: Position)
+        var paired = [Pair]()
+        positions.forEach {position in
+            paths.forEach { path in
+                if path.destination === position.node {
+                    paired.append((path,position))
+                }
             }
-            }.flatMap{$0}
-            .map{$0.route}
-            .filterDuplicates(isDuplicate: ==)
-            .map{Position.resolve(from: root, following: $0)}
-            .filter{dummy.canPlace(at: $0)}
+        }
+        
+        let uniquePairs = paired.filterDuplicates {
+            $0.path.route.append([$0.pos.dir]) == $1.path.route.append([$1.pos.dir])
+        }
+        
+        return uniquePairs.map{$0.pos}.filter{Identity.dummy.new(color: color).canPlace(at: $0)}
+    }
+    
+    /**
+     Transform a hive from 3D to 2D
+     TODO: debug
+     */
+    func flattened() -> HexNode {
+        let newRoot = root!.clone()
+        newRoot.connectedNodes().forEach{node in
+            if node.neighbors[.above] != nil {
+                node.color = Hive.traverse(from: node, toward: .above).color
+                node.neighbors[.above] = nil
+            }
+        }
+        return newRoot
+    }
+    
+    func pathTo(node: HexNode) -> Path {
+        return root!.derivePaths().filter{$0.destination === node}[0]
     }
     
     

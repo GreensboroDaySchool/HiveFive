@@ -358,6 +358,23 @@ class HexNode: IdentityProtocol {
     func hasNeighbor(_ other: HexNode) -> Direction? {
         return neighbors.contains(other)
     }
+    
+    func clone() -> HexNode {
+        var cloned = [HexNode]()
+        return clone(cloned: &cloned)
+    }
+
+    private func clone(cloned: inout [HexNode]) -> HexNode {
+        let new = identity.new(color: color)
+        new.neighbors = neighbors
+        cloned.append(new)
+        new.neighbors.available().map{$0.node}
+            .filter{node in !(cloned.contains{$0 === node})}
+            .forEach {node in
+            node.clone()
+            }
+        return new
+    }
 }
 
 /**
