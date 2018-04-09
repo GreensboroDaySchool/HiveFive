@@ -138,15 +138,17 @@ class Hive {
                             .route.append([position.dir])
                         delegate?.rootNodeDidMove(by: route)
                     }
-
-                    // Move to the designated position
-                    selected.move(to: position)
                     
                     // Record the move
                     //TODO: DEBUG!
                     let origins = selected.neighbors.available()
                         .map{Position(node: $0.node, dir: $0.dir.opposite())}
                     history.push(move: Move(selected, from: origins.first, to: position))
+
+                    // Move to the designated position
+                    selected.move(to: position)
+                    
+                    
                 }
                 
                 // If the piece just placed/moved is a new piece, then:
@@ -167,10 +169,9 @@ class Hive {
                     }
                     selectedNewNode = false
                 }
-                post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
                 
-                delegate?.structureDidUpdate() // Notify the delegate that the structure has updated
-                currentPlayer = currentPlayer.opposite
+                // Pass the player's turn
+                passTurn()
             }
             updateGameState() // Detect if a winner has emerged.
         default:
@@ -203,7 +204,12 @@ class Hive {
      */
     func detectWinnder() -> Color? {
         if let root = root {
-            let candidates = root.connectedNodes().filter{$0.identity == .queenBee && $0.neighbors.available().count == 6}
+            let candidates = root.connectedNodes()
+                .filter{$0.identity == .queenBee
+                    && $0.neighbors.available().filter{
+                            $0.dir.is2D
+                        }.count == 6
+                }
             if candidates.count == 1 {
                 return candidates[0].color.opposite
             }
@@ -339,6 +345,49 @@ class Hive {
     }
     
     /**
+     Revert the history of the hive to one step before.
+     */
+    func revert() {
+        if history.moves.count == 0 {return}
+        if let node = history.pop() {
+            let identity = node.identity
+            switch currentPlayer {
+            case .black where whiteHand[identity] != nil: whiteHand[identity]! += 1
+            case .black: whiteHand[identity] = 1
+            case .white where blackHand[identity] != nil: blackHand[identity]! += 1
+            case .white: blackHand[identity] = 1
+            }
+        }
+        passTurn()
+    }
+    
+    /**
+     Restore the history of the hive to one step after.
+     */
+    func restore() {
+        if history.popped.count == 0 {return}
+        if let node = history.restore() {
+            switch currentPlayer {
+            case .black: whiteHand[node.identity]! -= 1
+            case .white: blackHand[node.identity]! -= 1
+            }
+        }
+        passTurn()
+    }
+    
+    /**
+     Passes the current player's turn
+     */
+    private func passTurn(handChanged: Bool = true) {
+        if handChanged {
+            post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
+        }
+        delegate?.structureDidUpdate()
+        selectedNode = nil
+        currentPlayer = currentPlayer.opposite
+    }
+    
+    /**
      Positions in the hive in which a new node could be placed at.
      - Todo: Debug!!
      - Parameter color: The color of the new piece.
@@ -468,14 +517,16 @@ struct Move {
 
 class History {
     var moves = [Move]()
+    var popped = [Move]()
     
     /**
      Pops the last move from history stack and restore hive state
-     - Returns: A node is the node was added; otherwise nil.
+     - Returns: A node if the node was added; otherwise nil.
      */
     func pop() -> HexNode? {
         if moves.count == 0 {return nil}
         let move = moves.removeLast()
+        popped.append(move)
         if let from = move.from {
             move.node.move(to: from)
             return nil
@@ -483,6 +534,18 @@ class History {
             move.node.disconnect()
             return move.node
         }
+    }
+    
+    /**
+     Restore reverted history
+     - Returns: The new node that was placed on the board; otherwise nil.
+     */
+    func restore() -> HexNode? {
+        if popped.count == 0 {return nil}
+        let move = popped.removeLast()
+        move.node.move(to: move.to)
+        moves.append(move)
+        return move.from == nil ? move.node : nil
     }
     
     /**

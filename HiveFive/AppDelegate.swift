@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        SlideMenuOptions.contentViewScale = 0.8 // Check this out, pretty cool!
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.rotated(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         Utils.executeOnce(id: "setup", setup)
         return true

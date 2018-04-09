@@ -76,3 +76,5 @@ let defaultTableViewCellHeight: Int = 70
 func tableViewCellHeight() -> Int {
     return get(id: tableViewCellHeightId) as? Int ?? defaultTableViewCellHeight
 }
+
+

@@ -75,12 +75,16 @@ class ContainerViewController: SlideMenuController {
     }
     
     override func awakeFromNib() {
-        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Main") {
-            self.mainViewController = controller
+        if let main = self.storyboard?.instantiateViewController(withIdentifier: "Main") {
+            self.mainViewController = main
             self.delegate = mainViewController as? SlideMenuControllerDelegate
         }
-        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "Left") {
-            self.leftViewController = controller
+        if let left = self.storyboard?.instantiateViewController(withIdentifier: "Left") {
+            self.leftViewController = left
+        }
+        if let right = self.storyboard?.instantiateViewController(withIdentifier: "Right") {
+            self.rightViewController = right
+            right.preferredContentSize = view.bounds.size
         }
         super.awakeFromNib()
     }

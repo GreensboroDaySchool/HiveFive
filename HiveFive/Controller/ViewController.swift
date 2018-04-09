@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var pan: UIPanGestureRecognizer!
     @IBOutlet var pinch: UIPinchGestureRecognizer!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var hiveBarItem: UIBarButtonItem!
     
     /**
      This variable records the previous translation to detect change
@@ -67,28 +68,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         
         //MARK: Notification binding
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeDidUpdate(_:)),
-            name: themeUpdateNotification,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didSelectNewNode(_:)),
-            name: didSelectNewNodeNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(toolBarVisibilityDidUpdate(_:)),
-            name: toolBarVisibilityNotification,
-            object: nil
-        )
+        observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
+        observe(didSelectNewNodeNotification, #selector(didSelectNewNode(_:)))
+        observe(toolBarVisibilityNotification, #selector(toolBarVisibilityDidUpdate(_:)))
         
         //MARK: additional setup
         board.patterns = designatedTheme().patterns
+        hiveBarItem.image = [#imageLiteral(resourceName: "hive_img"),#imageLiteral(resourceName: "hive_2_img"),#imageLiteral(resourceName: "solid_honeycomb"),#imageLiteral(resourceName: "bee")].random()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        hive.delegate = self // establish communication with Model
+        board.delegate = self // establish communication with View
     }
     
     
@@ -151,13 +142,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         lastTranslation = current
     }
     
-    @IBAction func menuButtonTapped(_ sender: Any) {
-        container?.openLeft() //open menu
+    
+    @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
+        switch sender.tag {
+        case 0: container?.openLeft()
+        case 1: hive.revert()
+        case 2: hive.restore()
+        case 3: restart()
+        default: break
+        }
     }
     
-    @IBAction func restartButtonTapped(_ sender: UIBarButtonItem) {
-        restart()
-    }
+    
     
     func restart() {
         board.clear()
@@ -198,22 +194,27 @@ extension ViewController: HiveDelegate {
      */
     func structureDidUpdate() {
         board.root = hive.root
+        post(name: structureDidUpdateNotification, object: nil)
     }
     
     func selectedNodeDidUpdate() {
         board.updateSelectedNode(hive.selectedNode)
+        post(name: selectedNodeDidUpdateNotification, object: nil)
     }
     
     func availablePositionsDidUpdate() {
         board.availablePositions = hive.availablePositions
+        post(name: availablePositionsDidUpdateNotification, object: nil)
     }
 
     func rootNodeDidMove(by route: Route) {
         board.rootNodeMoved(by: route)
+        post(name: rootNodeDidMoveNotification, object: route)
     }
     
     func hiveStructureRemoved() {
         board.clear()
+        post(name: hiveStructureRemovedNotification, object: nil)
     }
     
 }
@@ -225,6 +226,10 @@ extension ViewController: SlideMenuControllerDelegate {
      Disable pan gesture controls when menu will become visible.
      */
     func leftWillOpen() {
+        pan.cancel()
+    }
+    
+    func rightWillOpen() {
         pan.cancel()
     }
 }

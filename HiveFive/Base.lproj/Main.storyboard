@@ -37,18 +37,30 @@
                                     <barButtonItem title="Item" image="menu_img" id="scs-Kv-dUK">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <action selector="menuButtonTapped:" destination="BYZ-38-t0r" id="P3O-9v-3wf"/>
+                                            <action selector="barButtonPressed:" destination="BYZ-38-t0r" id="Qwe-kD-Ceq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="h9N-Gn-2sf"/>
+                                    <barButtonItem tag="1" title="Item" image="backward_arrow" id="SLK-fB-BUo">
+                                        <connections>
+                                            <action selector="barButtonPressed:" destination="BYZ-38-t0r" id="xhj-O7-Mw0"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="biv-kj-bt6"/>
-                                    <barButtonItem title="Hive 5" id="eUg-SK-hRw">
+                                    <barButtonItem title="Hive 5" image="hive_2_img" id="eUg-SK-hRw">
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vqb-wU-pqe"/>
-                                    <barButtonItem systemItem="refresh" id="9Mw-Kp-ny3">
+                                    <barButtonItem tag="2" image="forward_arrow" id="bmc-kT-oL3">
+                                        <connections>
+                                            <action selector="barButtonPressed:" destination="BYZ-38-t0r" id="jWc-Ef-DFh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cq3-8O-eZk"/>
+                                    <barButtonItem tag="3" systemItem="refresh" id="9Mw-Kp-ny3">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <action selector="restartButtonTapped:" destination="BYZ-38-t0r" id="VXz-nv-4fv"/>
+                                            <action selector="barButtonPressed:" destination="BYZ-38-t0r" id="3XY-UG-Sg4"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -133,6 +145,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="hiveBarItem" destination="eUg-SK-hRw" id="gV0-Xe-cYy"/>
                         <outlet property="pan" destination="LvY-iL-J2i" id="Lke-5m-Fwz"/>
                         <outlet property="pinch" destination="xUd-sL-zuV" id="PmC-gK-GYE"/>
                         <outlet property="toolBar" destination="thm-Y4-BRI" id="u8C-hG-8rQ"/>
@@ -228,6 +241,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASA-QE-KxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2617" y="620"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qIz-Xo-dCu">
+            <objects>
+                <navigationController storyboardIdentifier="Right" id="8IS-2q-oaH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eca-uo-Owt">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3lF-bM-SEv" kind="relationship" relationship="rootViewController" id="DHk-2O-RvI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qJz-44-tNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="798" y="-779"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="qgg-SW-HEA">
+            <objects>
+                <viewController id="3lF-bM-SEv" customClass="HistoryViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fgm-pF-o68">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7B-l6-dtc" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S7B-l6-dtc" firstAttribute="bottom" secondItem="0m7-yZ-3uO" secondAttribute="bottom" id="RJI-py-DXX"/>
+                            <constraint firstItem="S7B-l6-dtc" firstAttribute="trailing" secondItem="0m7-yZ-3uO" secondAttribute="trailing" id="pXx-Ip-Alf"/>
+                            <constraint firstItem="S7B-l6-dtc" firstAttribute="leading" secondItem="0m7-yZ-3uO" secondAttribute="leading" id="qRy-Dw-4Le"/>
+                            <constraint firstItem="S7B-l6-dtc" firstAttribute="top" secondItem="0m7-yZ-3uO" secondAttribute="top" id="zsQ-pQ-dWB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0m7-yZ-3uO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="History" id="b34-mF-kok">
+                        <barButtonItem key="leftBarButtonItem" image="backward_arrow" id="gvV-n3-krR">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="barButtonTapped:" destination="3lF-bM-SEv" id="8av-au-Gop"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="1" image="forward_arrow" id="S6R-ge-pXc">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="barButtonTapped:" destination="3lF-bM-SEv" id="WPM-qn-rLW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="boardView" destination="S7B-l6-dtc" id="uat-GP-bga"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V2g-AM-RQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="-1023.2383808095952"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="isu-MS-Z38">
@@ -1127,6 +1200,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backward_arrow" width="33" height="33"/>
+        <image name="forward_arrow" width="33" height="33"/>
+        <image name="hive_2_img" width="33" height="33"/>
         <image name="menu_img" width="33" height="33"/>
     </resources>
 </document>

@@ -414,3 +414,9 @@ extension UIView {
         }
     }
 }
+
+extension Array {
+    func random() -> Element {
+        return self[Int(Double.random() * Double(count))]
+    }
+}

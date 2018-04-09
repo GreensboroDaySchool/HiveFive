@@ -36,6 +36,8 @@ enum Direction: Int {
     }
     static let xyDirections: [Direction] = Direction.allDirections.filter{$0.rawValue < 6}
     
+    var is2D: Bool {return rawValue < 6}
+    
     //Horizontal locations
     case up = 0, upRight, downRight, down, downLeft, upLeft
 
