@@ -215,6 +215,26 @@ import UIKit
         if subviews.count == 0 {
             return
         }
+        
+        let hiveBounds = hiveStructureBounds()
+        let minX = hiveBounds.minX
+        let minY = hiveBounds.minY
+        let width = hiveBounds.width
+        let height = hiveBounds.height
+        
+        let hiveCtr = CGPoint(x: minX + width / 2, y: minY + height / 2)
+        let boardCtr = CGPoint(x: bounds.midX, y: bounds.midY)
+        let translation = hiveCtr - boardCtr
+        rootCoordinate = rootCoordinate - translation
+    }
+    
+    /**
+     - Returns: The bounds of the hive structure
+     */
+    func hiveStructureBounds() -> CGRect {
+        if subviews.count == 0 {
+            return CGRect.zero
+        }
         let frames = subviews.map{$0.frame}
         let xCos = frames
             .map{$0.origin.x}
@@ -234,10 +254,27 @@ import UIKit
         let width = maxX - minX
         let height = maxY - minY
         
-        let hiveCtr = CGPoint(x: minX + width / 2, y: minY + height / 2)
-        let boardCtr = CGPoint(x: bounds.midX, y: bounds.midY)
-        let translation = hiveCtr - boardCtr
-        rootCoordinate = rootCoordinate - translation
+        return CGRect(x: minX, y: minY, width: width, height: height)
+    }
+    
+    /**
+     Update node size according to the bounds of board view.
+     - Todo: DEBUG
+     - Parameter fillRatio: The percentage of bounds to be filled
+     */
+    func sizeStructureToFit(fillRatio: CGFloat) {
+        if subviews.count <= 1 {return}
+        let translations = root!.derivePaths().map{$0.route.translation}
+        let sortedX = translations.sorted{$0.x < $1.x}
+        let sortedY = translations.sorted{$0.y < $1.y}
+        let minX = sortedX.first!.x, maxX = sortedX.last!.x
+        let minY = sortedY.first!.y, maxY = sortedY.last!.y
+        let cols = maxX - minX
+        let rows = maxY - minY
+        
+        let diameter = width < height ? bounds.width / CGFloat(cols) : bounds.height / CGFloat(rows)
+        nodeRadius = diameter / 2 * fillRatio
+        redrawSubviews()
     }
     
     /**

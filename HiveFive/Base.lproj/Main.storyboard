@@ -48,7 +48,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="biv-kj-bt6"/>
                                     <barButtonItem title="Hive 5" image="hive_2_img" id="eUg-SK-hRw">
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vqb-wU-pqe"/>
                                     <barButtonItem tag="2" image="forward_arrow" id="bmc-kT-oL3">

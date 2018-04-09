@@ -71,10 +71,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
         observe(didSelectNewNodeNotification, #selector(didSelectNewNode(_:)))
         observe(toolBarVisibilityNotification, #selector(toolBarVisibilityDidUpdate(_:)))
+        observe(profileUpdatedNotification, #selector(updateToolBarItemTint))
+        observe(kpHackableUpdateNotification, #selector(updateToolBarItemTint))
         
         //MARK: additional setup
         board.patterns = designatedTheme().patterns
         hiveBarItem.image = [#imageLiteral(resourceName: "hive_img"),#imageLiteral(resourceName: "hive_2_img"),#imageLiteral(resourceName: "solid_honeycomb"),#imageLiteral(resourceName: "bee")].random()
+        updateToolBarItemTint()
+    }
+    
+    @objc private func updateToolBarItemTint() {
+        toolBar.items?.forEach{$0.tintColor = currentProfile().keyPaths.filter{$0.key == "Theme"}[0].getValue() as? UIColor} // Hack... bad practice
     }
     
     override func viewWillAppear(_ animated: Bool) {

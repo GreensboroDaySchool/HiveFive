@@ -42,6 +42,7 @@ class HistoryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        boardView.sizeStructureToFit(fillRatio: 0.9)
         boardView.centerHiveStructure()
     }
     
@@ -51,6 +52,8 @@ class HistoryViewController: UIViewController {
         case 1: hive.restore()
         default: break
         }
+        boardView.sizeStructureToFit(fillRatio: 0.9)
+        boardView.centerHiveStructure()
     }
     
     /*
