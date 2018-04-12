@@ -111,6 +111,17 @@ import UIKit
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapOnBoard))
         tap.delegate = self
         addGestureRecognizer(tap)
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapped))
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.delegate = self
+        addGestureRecognizer(doubleTap)
+        
+    }
+    
+    @objc func doubleTapped() {
+        sizeStructureToFit(fillRatio: 0.8)
+        centerHiveStructure()
     }
     
     /**
