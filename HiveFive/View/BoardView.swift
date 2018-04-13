@@ -70,6 +70,8 @@ import UIKit
         didSet {updateAvailablePositions()}
     }
     
+    var profile: Profile = currentProfile()
+    
     var nodeViews: [NodeView] {
         get {
             return subviews.map{$0 as? NodeView}.filter{$0 != nil}.map{$0!}
@@ -89,7 +91,9 @@ import UIKit
     }
     
     @objc private func profileDidUpdate(_ notification: Notification) {
-        apply(profile: currentProfile()) // This might be quite expensive, retriving from Core Data
+        let profile = currentProfile()
+        self.profile = profile
+        apply(profile: profile) // This might be quite expensive, retriving from Core Data
     }
     
     func apply(profile: Profile) {
@@ -161,7 +165,7 @@ import UIKit
         nodeViews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
         paths.sort{$0.route.translation.z < $1.route.translation.z} // sort according to z coordinate, toppest node get added last.
         paths.forEach {
-            addSubview(NodeView(path: $0, profile: currentProfile()))
+            addSubview(NodeView(path: $0, profile: profile))
         }
         updateNodeRadius()
         updateNodeCoordinates()
