@@ -50,6 +50,7 @@
 		32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
 		32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
 		32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D154206BEFFF008444F4 /* BoardView.swift */; };
+		32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7EA1020804BF200BCBDDD /* Sound.swift */; };
 		33F75004D62237AAA4CAAF79 /* Thailand.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75D3F037D4E62A707CEF2 /* Thailand.png */; };
 		33F7500FABBAE005F0FDC817 /* IQ.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75AFC564D26F6595B120C /* IQ.png */; };
 		33F7501C8B1E0A89B49721AC /* LocalePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75FD798B4A8B2C9F01ED9 /* LocalePickerViewController.swift */; };
@@ -624,6 +625,7 @@
 		32D1D14B206BEAAC008444F4 /* Spider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
 		32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
 		32D1D154206BEFFF008444F4 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		32F7EA1020804BF200BCBDDD /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		33F750078A79A8B3430F6169 /* Dominica.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dominica.png; sourceTree = "<group>"; };
 		33F7500E858BC268F89BB5B9 /* VE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VE.png; sourceTree = "<group>"; };
 		33F75010D867DBABFE956653 /* AttributedTextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextBlock.swift; sourceTree = "<group>"; };
@@ -1215,6 +1217,7 @@
 		322EF74020766E98008A98F7 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				32F7EA1020804BF200BCBDDD /* Sound.swift */,
 				322EF73E20766E91008A98F7 /* SlideMenuController.swift */,
 				33F757BA21C0589D936E7671 /* Alerts & Pickers */,
 			);
@@ -2661,6 +2664,7 @@
 				32B109AE206EECC20065E465 /* Vec2D.swift in Sources */,
 				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
 				322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */,
+				32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */,
 				322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */,
 				321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */,
 				32B109AB206E8D360065E465 /* Navigation.swift in Sources */,
