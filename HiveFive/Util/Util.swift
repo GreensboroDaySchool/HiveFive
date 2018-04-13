@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 public class Utils {
     
@@ -77,4 +78,18 @@ func post(name: NSNotification.Name, object: Any?) {
 
 func post(name: NSNotification.Name, object: Any?, userInfo: [AnyHashable : Any]?) {
     NotificationCenter.default.post(name: name, object: object, userInfo: userInfo)
+}
+
+func playSound(_ name: String) {
+    var alarmAudioPlayer: AVAudioPlayer?
+    if let sound = NSDataAsset(name: name) {
+        do {
+            try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try! AVAudioSession.sharedInstance().setActive(true)
+            try alarmAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileType.wav.rawValue)
+            alarmAudioPlayer!.play()
+        } catch {
+            print("error initializing AVAudioPlayer")
+        }
+    }
 }

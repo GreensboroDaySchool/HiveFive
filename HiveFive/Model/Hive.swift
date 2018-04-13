@@ -146,6 +146,9 @@ class Hive {
 
                     // Move to the designated position
                     selected.move(to: position)
+                    
+                    // Play piece moved/placed sound effect
+                    Sound.play(file: "落子#1", fileExtension: "mp3", numberOfLoops: 0)
                 }
                 
                 // If the piece just placed/moved is a new piece, then:

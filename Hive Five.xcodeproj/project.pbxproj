@@ -51,6 +51,7 @@
 		32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
 		32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D154206BEFFF008444F4 /* BoardView.swift */; };
 		32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7EA1020804BF200BCBDDD /* Sound.swift */; };
+		32F7EA1320804F9700BCBDDD /* 落子#1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */; };
 		33F75004D62237AAA4CAAF79 /* Thailand.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75D3F037D4E62A707CEF2 /* Thailand.png */; };
 		33F7500FABBAE005F0FDC817 /* IQ.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75AFC564D26F6595B120C /* IQ.png */; };
 		33F7501C8B1E0A89B49721AC /* LocalePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75FD798B4A8B2C9F01ED9 /* LocalePickerViewController.swift */; };
@@ -626,6 +627,7 @@
 		32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
 		32D1D154206BEFFF008444F4 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		32F7EA1020804BF200BCBDDD /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "落子#1.mp3"; sourceTree = "<group>"; };
 		33F750078A79A8B3430F6169 /* Dominica.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dominica.png; sourceTree = "<group>"; };
 		33F7500E858BC268F89BB5B9 /* VE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VE.png; sourceTree = "<group>"; };
 		33F75010D867DBABFE956653 /* AttributedTextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextBlock.swift; sourceTree = "<group>"; };
@@ -1181,6 +1183,7 @@
 		2CFCE465206B00880041EDD1 /* HiveFive */ = {
 			isa = PBXGroup;
 			children = (
+				32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */,
 				322EF74020766E98008A98F7 /* Lib */,
 				3291A3222073FDB300DBF9B2 /* Controller */,
 				32B109AC206EECAC0065E465 /* Util */,
@@ -2185,6 +2188,7 @@
 				33F75B6223F2FD22636F7E29 /* Ghana.png in Resources */,
 				33F75093FDCFABD9D850B344 /* Haiti.png in Resources */,
 				33F75E00A921A19679B9DBF8 /* India.png in Resources */,
+				32F7EA1320804F9700BCBDDD /* 落子#1.mp3 in Resources */,
 				33F75F14DCC509F550FB7A09 /* Italy.png in Resources */,
 				33F75AEF86FBB7512F6DD201 /* Japan.png in Resources */,
 				33F754144B1EF3C2923B4349 /* Kenya.png in Resources */,
