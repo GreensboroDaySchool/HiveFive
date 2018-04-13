@@ -217,7 +217,7 @@ import UIKit
             let dummy = HexNode()
             dummy.neighbors[position.dir.opposite()] = position.node // make a uni-directional connection
             let path = Path(route: route, destination: dummy)
-            addSubview(NodeView(path: path, profile: currentProfile()))
+            addSubview(NodeView(path: path, profile: profile))
         }
         updateNodeRadius()
         updateNodeCoordinates()
