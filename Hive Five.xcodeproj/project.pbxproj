@@ -14,6 +14,24 @@
 		2C4E755E20824C2E0035994D /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755C20824C2E0035994D /* Help.storyboard */; };
 		2C4E756120824D310035994D /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755F20824D310035994D /* Menu.storyboard */; };
 		2C4E756420824D6C0035994D /* Appearance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E756220824D6C0035994D /* Appearance.storyboard */; };
+		2C4E75B52082B1D10035994D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E75B42082B1D10035994D /* main.swift */; };
+		2C4E75B92082B1F10035994D /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9620829D3400E0F62A /* Extension+Dictionary.swift */; };
+		2C4E75BA2082B1F10035994D /* Extension+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9820829D4D00E0F62A /* Extension+NSObject.swift */; };
+		2C4E75BB2082B1F10035994D /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9A20829D8600E0F62A /* Extension+Date.swift */; };
+		2C4E75BC2082B1F10035994D /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9C20829DAD00E0F62A /* Extension+Decimal.swift */; };
+		2C4E75BD2082B1F10035994D /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9E20829DCA00E0F62A /* Extension+Double.swift */; };
+		2C4E75BE2082B1F10035994D /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA020829DE100E0F62A /* Extension+Array.swift */; };
+		2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
+		2C4E75C02082B1F60035994D /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
+		2C4E75C12082B1F60035994D /* DefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19B2076A7890056CB0C /* DefaultStructure.swift */; };
+		2C4E75C22082B1F60035994D /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D149206BEA9F008444F4 /* Grasshopper.swift */; };
+		2C4E75C32082B1F60035994D /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
+		2C4E75C42082B1F60035994D /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
+		2C4E75C52082B1F60035994D /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
+		2C4E75C62082B1F60035994D /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7568984C9D4FED040BE69 /* Neighbors.swift */; };
+		2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
+		2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
+		2C4E75C92082B1F60035994D /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
 		2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE195D206E77C400733FA0 /* NodeView.swift */; };
 		2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE466206B00880041EDD1 /* AppDelegate.swift */; };
 		2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE468206B00880041EDD1 /* ViewController.swift */; };
@@ -599,6 +617,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C4E75B02082B1D10035994D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2C4E754F208247190035994D /* HFInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFInterface.swift; sourceTree = "<group>"; };
 		2C4E7552208247950035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/History.storyboard; sourceTree = "<group>"; };
@@ -607,6 +637,8 @@
 		2C4E755D20824C2E0035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Help.storyboard; sourceTree = "<group>"; };
 		2C4E756020824D310035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Menu.storyboard; sourceTree = "<group>"; };
 		2C4E756320824D6C0035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Appearance.storyboard; sourceTree = "<group>"; };
+		2C4E75B22082B1D10035994D /* HiveFive Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiveFive Server"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C4E75B42082B1D10035994D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2CCE195D206E77C400733FA0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		2CFCE463206B00880041EDD1 /* Hive Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hive Five.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE466206B00880041EDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1182,6 +1214,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C4E75AF2082B1D10035994D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CFCE460206B00880041EDD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1231,10 +1270,19 @@
 			path = HiveFiveCommon;
 			sourceTree = "<group>";
 		};
+		2C4E75B32082B1D10035994D /* HiveFive Server */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E75B42082B1D10035994D /* main.swift */,
+			);
+			path = "HiveFive Server";
+			sourceTree = "<group>";
+		};
 		2CFCE45A206B00880041EDD1 = {
 			isa = PBXGroup;
 			children = (
 				2C4E7596208298580035994D /* HiveFiveCommon */,
+				2C4E75B32082B1D10035994D /* HiveFive Server */,
 				2CFCE465206B00880041EDD1 /* HiveFive */,
 				2CFCE4C3206C60590041EDD1 /* HiveFive Tests */,
 				2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */,
@@ -1248,6 +1296,7 @@
 				2CFCE463206B00880041EDD1 /* Hive Five.app */,
 				2CFCE4B4206C603C0041EDD1 /* HiveFive UITests.xctest */,
 				2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */,
+				2C4E75B22082B1D10035994D /* HiveFive Server */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2179,6 +2228,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C4E75B12082B1D10035994D /* HiveFive Server */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C4E75B82082B1D10035994D /* Build configuration list for PBXNativeTarget "HiveFive Server" */;
+			buildPhases = (
+				2C4E75AE2082B1D10035994D /* Sources */,
+				2C4E75AF2082B1D10035994D /* Frameworks */,
+				2C4E75B02082B1D10035994D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HiveFive Server";
+			productName = "HiveFive Server";
+			productReference = 2C4E75B22082B1D10035994D /* HiveFive Server */;
+			productType = "com.apple.product-type.tool";
+		};
 		2CFCE462206B00880041EDD1 /* Hive Five */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CFCE48B206B00880041EDD1 /* Build configuration list for PBXNativeTarget "Hive Five" */;
@@ -2238,10 +2304,14 @@
 		2CFCE45B206B00880041EDD1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Greensboro Day School";
 				TargetAttributes = {
+					2C4E75B12082B1D10035994D = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					2CFCE462206B00880041EDD1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -2274,6 +2344,7 @@
 				2CFCE462206B00880041EDD1 /* Hive Five */,
 				2CFCE4B3206C603C0041EDD1 /* HiveFive UITests */,
 				2CFCE4C1206C60590041EDD1 /* HiveFive Tests */,
+				2C4E75B12082B1D10035994D /* HiveFive Server */,
 			);
 		};
 /* End PBXProject section */
@@ -2765,6 +2836,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C4E75AE2082B1D10035994D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4E75BD2082B1F10035994D /* Extension+Double.swift in Sources */,
+				2C4E75BC2082B1F10035994D /* Extension+Decimal.swift in Sources */,
+				2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */,
+				2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */,
+				2C4E75C12082B1F60035994D /* DefaultStructure.swift in Sources */,
+				2C4E75B52082B1D10035994D /* main.swift in Sources */,
+				2C4E75C02082B1F60035994D /* Beetle.swift in Sources */,
+				2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */,
+				2C4E75C92082B1F60035994D /* Spider.swift in Sources */,
+				2C4E75C22082B1F60035994D /* Grasshopper.swift in Sources */,
+				2C4E75BB2082B1F10035994D /* Extension+Date.swift in Sources */,
+				2C4E75C62082B1F60035994D /* Neighbors.swift in Sources */,
+				2C4E75B92082B1F10035994D /* Extension+Dictionary.swift in Sources */,
+				2C4E75C52082B1F60035994D /* Navigation.swift in Sources */,
+				2C4E75BA2082B1F10035994D /* Extension+NSObject.swift in Sources */,
+				2C4E75BE2082B1F10035994D /* Extension+Array.swift in Sources */,
+				2C4E75C32082B1F60035994D /* HexNode.swift in Sources */,
+				2C4E75C42082B1F60035994D /* Hive.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CFCE45F206B00880041EDD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2982,6 +3078,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2C4E75B62082B1D10035994D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		2C4E75B72082B1D10035994D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		2CFCE489206B00880041EDD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3190,6 +3314,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C4E75B82082B1D10035994D /* Build configuration list for PBXNativeTarget "HiveFive Server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C4E75B62082B1D10035994D /* Debug */,
+				2C4E75B72082B1D10035994D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2CFCE45E206B00880041EDD1 /* Build configuration list for PBXProject "Hive Five" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
