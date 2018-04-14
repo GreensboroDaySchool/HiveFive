@@ -196,6 +196,7 @@ extension ViewController: BoardViewDelegate {
 }
 
 extension ViewController: HiveDelegate {
+    
     /**
      Transfer the updated root structure from hive to boardview for display
      */
@@ -222,6 +223,27 @@ extension ViewController: HiveDelegate {
     func hiveStructureRemoved() {
         board.clear()
         post(name: hiveStructureRemovedNotification, object: nil)
+    }
+    
+    func handDidUpdate(hand: Hand, color: Color) {
+        post(name: handUpdateNotification, object: (hand,color))
+    }
+    
+    func didPlace(newNode: HexNode) {
+        post(name: didPlaceNewPiece, object: nil)
+    }
+    
+    func didDeselect() {
+        post(name: didCancelNewPiece, object: nil)
+    }
+    
+    func gameHasEnded() {
+        post(name: displayMsgNotification, object: "Hit Restart ↻")
+    }
+    
+    func didWin(player: Color) {
+        let msg = "\(player == .black ? "Black" : "White") Wins!"
+        post(name: displayMsgNotification, object: msg)
     }
     
 }

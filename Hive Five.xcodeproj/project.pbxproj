@@ -1347,7 +1347,6 @@
 		322EF74020766E98008A98F7 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				32B109AD206EECC20065E465 /* Vec2D.swift */,
 				33F757BA21C0589D936E7671 /* Alerts & Pickers */,
 				322EF73E20766E91008A98F7 /* SlideMenuController.swift */,
 				32F7EA1020804BF200BCBDDD /* Sound.swift */,
@@ -1391,6 +1390,7 @@
 		32D1D144206BE9BE008444F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				32B109AD206EECC20065E465 /* Vec2D.swift */,
 				32D1D147206BEA8A008444F4 /* Beetle.swift */,
 				328EE19B2076A7890056CB0C /* DefaultStructure.swift */,
 				32D1D149206BEA9F008444F4 /* Grasshopper.swift */,

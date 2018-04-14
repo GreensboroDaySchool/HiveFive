@@ -108,7 +108,7 @@ class Hive {
         selectedNode = nil
         availablePositions = []
         hasEnded = false
-        post(name: handUpdateNotification, object: (blackHand,Color.black))
+        delegate?.handDidUpdate(hand: blackHand, color: .black)
     }
     
     /**
@@ -119,7 +119,7 @@ class Hive {
      */
     func select(node: HexNode) {
         if hasEnded {
-            post(name: displayMsgNotification, object: "Hit Restart ↻")
+            delegate?.gameHasEnded()
             return
         }
         switch node.identity {
@@ -153,7 +153,7 @@ class Hive {
                 
                 // If the piece just placed/moved is a new piece, then:
                 if selectedNewNode {
-                    post(name: didPlaceNewPiece, object: nil)
+                    delegate?.didPlace(newNode: selected)
                     
                     // Update black/white hands
                     let key = selectedNode!.identity
@@ -177,7 +177,7 @@ class Hive {
             selectedNode = node
             availablePositions = node.uniqueAvailableMoves()
             if selectedNewNode {
-                post(name: didCancelNewPiece, object: nil)
+                delegate?.didDeselect()
                 selectedNewNode = false
             }
         }
@@ -201,8 +201,7 @@ class Hive {
     func updateGameState() {
         if let winner = detectWinnder() {
             hasEnded = true
-            let msg = "\(winner == .black ? "Black" : "White") Wins!"
-            post(name: displayMsgNotification, object: msg)
+            delegate?.didWin(player: winner)
         }
     }
     
@@ -239,10 +238,10 @@ class Hive {
      The user has touched blank space between nodes, should cancel selection.
      */
     func cancelSelection() {
+        delegate?.didDeselect()
         selectedNode = nil
         availablePositions = []
         selectedNewNode = false
-        post(name: didCancelNewPiece, object: nil)
         if root == nil {
             delegate?.hiveStructureRemoved()
         }
@@ -388,7 +387,8 @@ class Hive {
     private func passTurn(handChanged: Bool = true) {
         removeExhaustedNodes()
         if handChanged {
-            post(name: handUpdateNotification, object: (opponentHand,nextPlayer))
+            // Present the opponent's hand, since it is now the next player's turn
+            delegate?.handDidUpdate(hand: opponentHand, color: nextPlayer)
         }
         delegate?.structureDidUpdate()
         selectedNode = nil
@@ -448,7 +448,6 @@ class Hive {
         return root!.derivePaths().filter{$0.destination === node}[0]
     }
     
-    
 }
 
 protocol HiveDelegate {
@@ -457,6 +456,11 @@ protocol HiveDelegate {
     func availablePositionsDidUpdate()
     func rootNodeDidMove(by route: Route)
     func hiveStructureRemoved()
+    func handDidUpdate(hand: Hand, color: Color)
+    func didPlace(newNode: HexNode)
+    func didDeselect()
+    func gameHasEnded()
+    func didWin(player: Color)
 }
 
 /**

@@ -94,6 +94,16 @@ extension HistoryViewController: BoardViewDelegate {
 
 // Bad quality code...
 extension HistoryViewController: HiveDelegate {
+    func handDidUpdate(hand: Hand, color: Color) {}
+    
+    func didPlace(newNode: HexNode) {}
+    
+    func didDeselect() {}
+    
+    func gameHasEnded() {}
+    
+    func didWin(player: Color) {}
+    
     /**
      Transfer the updated root structure from hive to boardview for display
      */

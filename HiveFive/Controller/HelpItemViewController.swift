@@ -121,6 +121,16 @@ extension HelpItemViewController: BoardViewDelegate {
 }
 
 extension HelpItemViewController: HiveDelegate {
+    func handDidUpdate(hand: Hand, color: Color) {}
+    
+    func didPlace(newNode: HexNode) {}
+    
+    func didDeselect() {}
+    
+    func gameHasEnded() {}
+    
+    func didWin(player: Color) {}
+    
 
     func structureDidUpdate() {
         demonstrationBoard.root = hive.root

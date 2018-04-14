@@ -35,7 +35,7 @@ class HandCollectionViewController: UICollectionViewController {
         didSet {
             updateBoundsAccordingToNodeSize()
             updateFlowLayout()
-            
+        
             //OMG!!! What a solution, I encountered the exact same bug!
             //https://stackoverflow.com/questions/45391651/cell-size-not-updating-after-changing-flow-layouts-itemsize
             //I am getting so good at search stack overflow...
