@@ -230,6 +230,8 @@ extension ViewController: HiveDelegate {
     }
     
     func didPlace(newNode: HexNode) {
+        // Play piece moved/placed sound effect
+        Sound.play(file: "落子#1", fileExtension: "mp3", numberOfLoops: 0)
         post(name: didPlaceNewPiece, object: nil)
     }
     

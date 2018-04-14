@@ -23,7 +23,6 @@
 		2C4E75BE2082B1F10035994D /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA020829DE100E0F62A /* Extension+Array.swift */; };
 		2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
 		2C4E75C02082B1F60035994D /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
-		2C4E75C12082B1F60035994D /* DefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE19B2076A7890056CB0C /* DefaultStructure.swift */; };
 		2C4E75C22082B1F60035994D /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D149206BEA9F008444F4 /* Grasshopper.swift */; };
 		2C4E75C32082B1F60035994D /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
 		2C4E75C42082B1F60035994D /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
@@ -58,6 +57,7 @@
 		320FDBB720829FAC00E0F62A /* Extension+CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB620829FAC00E0F62A /* Extension+CGPoint.swift */; };
 		320FDBB92082A25600E0F62A /* Extension+Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB82082A25600E0F62A /* Extension+Vec2D.swift */; };
 		320FDBBB2082A4F300E0F62A /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
+		320FDBBD2082B2DF00E0F62A /* Extension+Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBBC2082B2DF00E0F62A /* Extension+Hive.swift */; };
 		321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED2E2077D27800805F74 /* MenuIconView.swift */; };
 		321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceViewController.swift */; };
 		321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED322078256900805F74 /* ColorSchemeTableViewController.swift */; };
@@ -670,6 +670,7 @@
 		320FDBB420829F8D00E0F62A /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
 		320FDBB620829FAC00E0F62A /* Extension+CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGPoint.swift"; sourceTree = "<group>"; };
 		320FDBB82082A25600E0F62A /* Extension+Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Vec2D.swift"; sourceTree = "<group>"; };
+		320FDBBC2082B2DF00E0F62A /* Extension+Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Hive.swift"; sourceTree = "<group>"; };
 		321CED2E2077D27800805F74 /* MenuIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconView.swift; sourceTree = "<group>"; };
 		321CED302077D9D400805F74 /* UserInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceViewController.swift; sourceTree = "<group>"; };
 		321CED322078256900805F74 /* ColorSchemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTableViewController.swift; sourceTree = "<group>"; };
@@ -1304,6 +1305,7 @@
 		2CFCE465206B00880041EDD1 /* HiveFive */ = {
 			isa = PBXGroup;
 			children = (
+				328EE19B2076A7890056CB0C /* DefaultStructure.swift */,
 				320FDBA420829E4900E0F62A /* Util */,
 				320FDB9420829C9D00E0F62A /* Extension */,
 				3291A3222073FDB300DBF9B2 /* Controller */,
@@ -1381,6 +1383,7 @@
 				320FDBB420829F8D00E0F62A /* Extension+CGFloat.swift */,
 				320FDBB620829FAC00E0F62A /* Extension+CGPoint.swift */,
 				320FDBB82082A25600E0F62A /* Extension+Vec2D.swift */,
+				320FDBBC2082B2DF00E0F62A /* Extension+Hive.swift */,
 			);
 			path = Native;
 			sourceTree = "<group>";
@@ -1441,7 +1444,6 @@
 			children = (
 				32B109AD206EECC20065E465 /* Vec2D.swift */,
 				32D1D147206BEA8A008444F4 /* Beetle.swift */,
-				328EE19B2076A7890056CB0C /* DefaultStructure.swift */,
 				32D1D149206BEA9F008444F4 /* Grasshopper.swift */,
 				32B109A8206C646F0065E465 /* HexNode.swift */,
 				32D1D142206BE9A1008444F4 /* Hive.swift */,
@@ -2844,7 +2846,6 @@
 				2C4E75BC2082B1F10035994D /* Extension+Decimal.swift in Sources */,
 				2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */,
 				2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */,
-				2C4E75C12082B1F60035994D /* DefaultStructure.swift in Sources */,
 				2C4E75B52082B1D10035994D /* main.swift in Sources */,
 				2C4E75C02082B1F60035994D /* Beetle.swift in Sources */,
 				2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */,
@@ -2962,6 +2963,7 @@
 				33F751C0028669CD8BA9657C /* UIView+Extensions.swift in Sources */,
 				33F7584C49D596CA1504FFFF /* UIColor+Extensions.swift in Sources */,
 				33F752932D5A9CEEBE693B97 /* UIImage+Extensions.swift in Sources */,
+				320FDBBD2082B2DF00E0F62A /* Extension+Hive.swift in Sources */,
 				33F75405FD53F7127CE2D50A /* Optional+Extensions.swift in Sources */,
 				321E1657207B0D5B0053C87A /* HistoryViewController.swift in Sources */,
 				33F751153A05A17FC8A45EC5 /* UITextView+Extensions.swift in Sources */,
@@ -3084,7 +3086,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DEVELOPMENT_TEAM = AM89ND2ZY7;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -3098,7 +3100,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DEVELOPMENT_TEAM = AM89ND2ZY7;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

@@ -108,7 +108,7 @@ public class Vec2D: CustomStringConvertible, Equatable {
     }
     
     public func clone(_ vec: Vec2D) -> Vec2D {
-        return Vec2D(point: self.cgPoint)
+        return Vec2D(x: x, y: y)
     }
     
     public class func angleBetween(_ vec1: Vec2D, _ vec2: Vec2D) -> Float {
