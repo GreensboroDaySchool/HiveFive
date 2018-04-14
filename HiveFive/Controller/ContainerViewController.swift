@@ -75,14 +75,15 @@ class ContainerViewController: SlideMenuController {
     }
     
     override func awakeFromNib() {
-        if let main = self.storyboard?.instantiateViewController(withIdentifier: "Main") {
+        if let main = HFInterface.Board.initialViewController {
             self.mainViewController = main
             self.delegate = mainViewController as? SlideMenuControllerDelegate
         }
-        if let left = self.storyboard?.instantiateViewController(withIdentifier: "Left") {
+        if let left = HFInterface.Menu.initialViewController {
             self.leftViewController = left
         }
-        if let right = self.storyboard?.instantiateViewController(withIdentifier: "Right") {
+        //Place the History view in the right sliding view
+        if let right = HFInterface.History.initialViewController {
             self.rightViewController = right
             right.preferredContentSize = view.bounds.size
         }

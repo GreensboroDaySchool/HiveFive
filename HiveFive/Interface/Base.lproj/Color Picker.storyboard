@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lJA-jM-Li0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Color Picker View Controller-->
+        <scene sceneID="dCQ-YT-GyI">
+            <objects>
+                <viewController storyboardIdentifier="ColorPicker" id="lJA-jM-Li0" customClass="ColorPickerViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cnj-ON-LQm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CR6-oe-jko">
+                                <rect key="frame" x="37.5" y="410" width="300" height="249"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvU-RU-Uv1" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="-4" width="304" height="91"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOU-pn-50Q" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="79" width="304" height="91"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHn-B5-qMG" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="162" width="304" height="91"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eOU-pn-50Q" firstAttribute="height" secondItem="hvU-RU-Uv1" secondAttribute="height" id="1QX-oV-S2Z"/>
+                                    <constraint firstItem="eOU-pn-50Q" firstAttribute="height" secondItem="aHn-B5-qMG" secondAttribute="height" id="8G3-Kr-skW"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTp-AV-og3">
+                                <rect key="frame" x="38" y="28" width="300" height="374"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uV5-9P-WUe">
+                                        <rect key="frame" x="0.0" y="8" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="uV5-9P-WUe" secondAttribute="height" multiplier="1:1" id="KCz-AE-fMk"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                <size key="value" width="0.0" height="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="uV5-9P-WUe" firstAttribute="top" secondItem="pTp-AV-og3" secondAttribute="top" constant="8" id="8ld-fg-e7x"/>
+                                    <constraint firstItem="uV5-9P-WUe" firstAttribute="centerX" secondItem="pTp-AV-og3" secondAttribute="centerX" id="LCS-wl-uHU"/>
+                                    <constraint firstItem="uV5-9P-WUe" firstAttribute="width" secondItem="pTp-AV-og3" secondAttribute="width" id="T7G-oA-ZZN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CR6-oe-jko" firstAttribute="top" secondItem="pTp-AV-og3" secondAttribute="bottom" constant="8" id="7wt-xb-8bP"/>
+                            <constraint firstItem="CR6-oe-jko" firstAttribute="centerX" secondItem="dUl-bd-gQ0" secondAttribute="centerX" id="9kD-sq-TSy"/>
+                            <constraint firstItem="pTp-AV-og3" firstAttribute="top" secondItem="dUl-bd-gQ0" secondAttribute="top" constant="8" id="HhR-kK-RR9"/>
+                            <constraint firstItem="CR6-oe-jko" firstAttribute="width" secondItem="Cnj-ON-LQm" secondAttribute="width" multiplier="0.8" id="J6u-fr-CSk"/>
+                            <constraint firstItem="pTp-AV-og3" firstAttribute="centerX" secondItem="dUl-bd-gQ0" secondAttribute="centerX" id="KBJ-8t-k98"/>
+                            <constraint firstItem="pTp-AV-og3" firstAttribute="height" secondItem="CR6-oe-jko" secondAttribute="height" multiplier="1.5" id="VUU-Kf-cDK"/>
+                            <constraint firstItem="dUl-bd-gQ0" firstAttribute="bottom" secondItem="CR6-oe-jko" secondAttribute="bottom" constant="8" id="ozz-6q-njy"/>
+                            <constraint firstItem="pTp-AV-og3" firstAttribute="width" secondItem="CR6-oe-jko" secondAttribute="width" id="vuY-28-HGc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dUl-bd-gQ0"/>
+                    </view>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="eOU-pn-50Q" id="qqa-kF-bIK"/>
+                        <outlet property="colorView" destination="uV5-9P-WUe" id="muG-Yk-Rf0"/>
+                        <outlet property="hueSlider" destination="aHn-B5-qMG" id="ays-ly-bhf"/>
+                        <outlet property="mainStackView" destination="CR6-oe-jko" id="eT8-Rr-bU2"/>
+                        <outlet property="saturationSlider" destination="hvU-RU-Uv1" id="HLU-az-eVx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gKK-fm-fg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="1788"/>
+        </scene>
+    </scenes>
+</document>
