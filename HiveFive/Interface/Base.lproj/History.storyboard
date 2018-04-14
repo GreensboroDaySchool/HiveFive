@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uE7-hb-iD9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Qb1-G6-iG6">
+            <objects>
+                <navigationController storyboardIdentifier="Right" id="uE7-hb-iD9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TbQ-iE-aaO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="etR-RY-W5h" kind="relationship" relationship="rootViewController" id="Gjo-Kk-3hT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhg-4B-LDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="319" y="-391"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="hUm-Mr-JUQ">
+            <objects>
+                <viewController id="etR-RY-W5h" customClass="HistoryViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sOX-Ns-Ipv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdx-ei-gaE" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gdx-ei-gaE" firstAttribute="trailing" secondItem="U1w-8N-Hax" secondAttribute="trailing" id="749-Rh-amC"/>
+                            <constraint firstItem="Gdx-ei-gaE" firstAttribute="leading" secondItem="U1w-8N-Hax" secondAttribute="leading" id="Cj0-W1-iOa"/>
+                            <constraint firstItem="Gdx-ei-gaE" firstAttribute="bottom" secondItem="U1w-8N-Hax" secondAttribute="bottom" id="LeB-5x-g7m"/>
+                            <constraint firstItem="Gdx-ei-gaE" firstAttribute="top" secondItem="U1w-8N-Hax" secondAttribute="top" id="qOb-ft-5vb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="U1w-8N-Hax"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="History" id="b5P-xQ-aK8">
+                        <barButtonItem key="leftBarButtonItem" image="backward_arrow" id="WZm-yg-xwJ">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="barButtonTapped:" destination="etR-RY-W5h" id="e7M-4V-yfE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="1" image="forward_arrow" id="rus-0X-unK">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="barButtonTapped:" destination="etR-RY-W5h" id="V3e-Ub-l0y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="boardView" destination="Gdx-ei-gaE" id="Pv9-gh-yik"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sgW-uQ-ee9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1370" y="-391"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backward_arrow" width="33" height="33"/>
+        <image name="forward_arrow" width="33" height="33"/>
+    </resources>
+</document>

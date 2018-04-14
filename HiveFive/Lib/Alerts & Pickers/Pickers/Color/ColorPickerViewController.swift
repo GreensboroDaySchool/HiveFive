@@ -17,8 +17,7 @@ extension UIAlertController {
         }
         buttonSelection.isEnabled = true
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "ColorPicker") as? ColorPickerViewController else { return }
+        guard let vc = HFInterface.ColorPicker.initialViewController as? ColorPickerViewController else { return }
         set(vc: vc)
         
         set(title: color.hexString, font: .systemFont(ofSize: 17), color: color)
