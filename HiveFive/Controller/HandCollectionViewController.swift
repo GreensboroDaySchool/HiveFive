@@ -1,10 +1,21 @@
-//
-//  HandCollectionViewController.swift
-//  Hive Five
-//
-//  Created by Jiachen Ren on 4/5/18.
-//  Copyright © 2018 Greensboro Day School. All rights reserved.
-//
+/**
+ *
+ *  This file is part of Hive Five.
+ *
+ *  Hive Five is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Hive Five is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Hive Five.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 import UIKit
 
@@ -104,11 +115,9 @@ class HandCollectionViewController: UICollectionViewController {
         if let collectionView = collectionView {
             let current = collectionView.bounds.size
             switch UIDevice.current.orientation {
-            case .landscapeLeft: fallthrough
-            case .landscapeRight: orientationIsLandscape = true
-            case .portraitUpsideDown: fallthrough
+            case .landscapeLeft, .landscapeRight: orientationIsLandscape = true
             case .portrait: orientationIsLandscape = false
-            default: break
+            default: return
             }
             
             if orientationIsLandscape {
@@ -143,13 +152,9 @@ class HandCollectionViewController: UICollectionViewController {
         if let orientation = (notification.object as? UIDevice)?.orientation {
             let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
             switch orientation {
-            case .landscapeLeft: fallthrough
-            case .landscapeRight:
-                flowLayout.scrollDirection = .vertical
-            case .portraitUpsideDown: fallthrough
-            case .portrait:
-                flowLayout.scrollDirection = .horizontal
-            default: break
+            case .landscapeLeft, .landscapeRight: flowLayout.scrollDirection = .vertical
+            case .portrait: flowLayout.scrollDirection = .horizontal
+            default: return
             }
             collectionView?.reloadData()
         }
