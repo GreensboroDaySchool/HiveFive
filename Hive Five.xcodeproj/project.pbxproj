@@ -1190,9 +1190,18 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		2C4E7596208298580035994D /* HiveFiveCommon */ = {
+			isa = PBXGroup;
+			children = (
+				32D1D144206BE9BE008444F4 /* Model */,
+			);
+			path = HiveFiveCommon;
+			sourceTree = "<group>";
+		};
 		2CFCE45A206B00880041EDD1 = {
 			isa = PBXGroup;
 			children = (
+				2C4E7596208298580035994D /* HiveFiveCommon */,
 				2CFCE465206B00880041EDD1 /* HiveFive */,
 				2CFCE4C3206C60590041EDD1 /* HiveFive Tests */,
 				2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */,
@@ -1216,7 +1225,6 @@
 				3291A3222073FDB300DBF9B2 /* Controller */,
 				2C4E754E2082463C0035994D /* Interface */,
 				322EF74020766E98008A98F7 /* Lib */,
-				32D1D144206BE9BE008444F4 /* Model */,
 				32B109AC206EECAC0065E465 /* Util */,
 				32D1D14F206BEE71008444F4 /* View */,
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
