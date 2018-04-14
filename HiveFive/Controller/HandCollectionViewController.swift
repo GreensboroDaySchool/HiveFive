@@ -115,11 +115,9 @@ class HandCollectionViewController: UICollectionViewController {
         if let collectionView = collectionView {
             let current = collectionView.bounds.size
             switch UIDevice.current.orientation {
-            case .landscapeLeft: fallthrough
-            case .landscapeRight: orientationIsLandscape = true
-            case .portraitUpsideDown: fallthrough
+            case .landscapeLeft, .landscapeRight: orientationIsLandscape = true
             case .portrait: orientationIsLandscape = false
-            default: break
+            default: return
             }
             
             if orientationIsLandscape {
@@ -154,13 +152,9 @@ class HandCollectionViewController: UICollectionViewController {
         if let orientation = (notification.object as? UIDevice)?.orientation {
             let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
             switch orientation {
-            case .landscapeLeft: fallthrough
-            case .landscapeRight:
-                flowLayout.scrollDirection = .vertical
-            case .portraitUpsideDown: fallthrough
-            case .portrait:
-                flowLayout.scrollDirection = .horizontal
-            default: break
+            case .landscapeLeft, .landscapeRight: flowLayout.scrollDirection = .vertical
+            case .portrait: flowLayout.scrollDirection = .horizontal
+            default: return
             }
             collectionView?.reloadData()
         }
