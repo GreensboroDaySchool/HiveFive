@@ -18,7 +18,7 @@
  */
 
 import Foundation
-import UIKit
+
 
 public class Vec2D: CustomStringConvertible, Equatable {
     
