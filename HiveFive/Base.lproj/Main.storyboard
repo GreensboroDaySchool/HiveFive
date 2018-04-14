@@ -163,7 +163,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-120.08995502248877" y="31.199999999999999"/>
+            <point key="canvasLocation" x="798" y="906"/>
         </scene>
         <!--Hand Collection View Controller-->
         <scene sceneID="QOj-RQ-jrY">
@@ -232,7 +232,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwG-jC-wNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-119.2" y="693.55322338830592"/>
+            <point key="canvasLocation" x="798" y="1788"/>
         </scene>
         <!--Introduction-->
         <scene sceneID="ovV-od-iPz">
@@ -240,7 +240,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="Introduction" storyboardName="LaunchScreen" referencedIdentifier="Introduction" id="3Tb-oo-s7r" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASA-QE-KxI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="620"/>
+            <point key="canvasLocation" x="2921" y="905"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qIz-Xo-dCu">
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2g-AM-RQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="-1023.2383808095952"/>
+            <point key="canvasLocation" x="1850" y="-779"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="isu-MS-Z38">
@@ -381,7 +381,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHU-2G-apJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2879" y="-38"/>
+            <point key="canvasLocation" x="2921" y="41"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yb8-BC-7Br">
@@ -397,7 +397,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9SW-pG-kXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3732" y="-222"/>
+            <point key="canvasLocation" x="3855" y="-779"/>
         </scene>
         <!--Help-->
         <scene sceneID="L7R-ib-fZI">
@@ -433,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e84-Ip-LMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4596" y="-523"/>
+            <point key="canvasLocation" x="4745" y="-779"/>
         </scene>
         <!--Help Item View Controller-->
         <scene sceneID="VVN-1v-wv0">
@@ -508,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXt-m3-yrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5484" y="-1111.3943028485758"/>
+            <point key="canvasLocation" x="1849" y="905"/>
         </scene>
         <!--User Interface-->
         <scene sceneID="Ewy-tP-LOJ">
@@ -728,7 +728,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y96-UO-ymF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5504.8000000000002" y="-196.10194902548727"/>
+            <point key="canvasLocation" x="4745" y="40"/>
         </scene>
         <!--Menu Navigation-->
         <scene sceneID="90P-N7-hue">
@@ -779,7 +779,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZF2-Qn-EL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3671" y="756"/>
+            <point key="canvasLocation" x="3854" y="905"/>
         </scene>
         <!--Themes-->
         <scene sceneID="nwJ-v5-fFo">
@@ -851,7 +851,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1y8-dV-jty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4744.8000000000002" y="754.27286356821594"/>
+            <point key="canvasLocation" x="4745" y="904"/>
         </scene>
         <!--Color Scheme-->
         <scene sceneID="Qjk-v3-YYi">
@@ -1037,7 +1037,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgi-l0-ewa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3843" y="1747"/>
+            <point key="canvasLocation" x="3854" y="1788"/>
         </scene>
         <!--Color Picker View Controller-->
         <scene sceneID="8i5-Qz-Sxc">
@@ -1051,13 +1051,13 @@
                                 <rect key="frame" x="37.5" y="410" width="300" height="249"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-lF-fhu" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
-                                        <rect key="frame" x="-2" y="-4" width="304" height="91"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="83"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5h-n1-fME" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
-                                        <rect key="frame" x="-2" y="79" width="304" height="91"/>
+                                        <rect key="frame" x="0.0" y="83" width="300" height="83"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsV-On-qvx" customClass="GradientSlider" customModule="Hive_Five" customModuleProvider="target">
-                                        <rect key="frame" x="-2" y="162" width="304" height="91"/>
+                                        <rect key="frame" x="0.0" y="166" width="300" height="83"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1124,7 +1124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twG-pa-s6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4714" y="1746"/>
+            <point key="canvasLocation" x="2921" y="1788"/>
         </scene>
         <!--Profiles-->
         <scene sceneID="Gam-q8-KA5">
@@ -1196,7 +1196,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgw-Av-6MI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5610" y="1007"/>
+            <point key="canvasLocation" x="4745" y="1788"/>
         </scene>
     </scenes>
     <resources>
