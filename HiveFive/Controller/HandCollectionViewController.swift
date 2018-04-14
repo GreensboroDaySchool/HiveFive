@@ -253,9 +253,7 @@ class HandCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
-        NotificationCenter.default.post(
-            name: didSelectNewNodeNotification,
-            object: hand.keyValuePairs[indexPath.row].key.new(color: color))
+        post(name: didSelectNewNodeNotification, object: hand.keyValuePairs[indexPath.row].key.new(color: color))
     }
 
     // MARK: UICollectionViewDelegate

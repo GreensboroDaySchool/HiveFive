@@ -29,21 +29,15 @@ public class Vec2D: CustomStringConvertible, Equatable {
     public var description: String {
         return "[\(self.x), \(self.y)]"
     }
-    var x: CGFloat
-    var y: CGFloat
+    var x: Float
+    var y: Float
     
-    var cgPoint: CGPoint {
-        return CGPoint(x: x, y: y)
-    }
-    
-    required public init(x: CGFloat, y: CGFloat) {
+    required public init(x: Float, y: Float) {
         self.x = x
         self.y = y
     }
     
-    convenience init(point: CGPoint) {
-        self.init(x: point.x, y: point.y)
-    }
+    
     
     convenience init() {
         self.init(x: 0, y: 0)
@@ -61,13 +55,13 @@ public class Vec2D: CustomStringConvertible, Equatable {
         return self
     }
     
-    public func mult(_ n: CGFloat) -> Vec2D {
+    public func mult(_ n: Float) -> Vec2D {
         self.x *= n
         self.y *= n
         return self
     }
     
-    public func div(_ n: CGFloat) -> Vec2D {
+    public func div(_ n: Float) -> Vec2D {
         self.x /= n
         self.y /= n
         return self
@@ -81,33 +75,33 @@ public class Vec2D: CustomStringConvertible, Equatable {
         return self
     }
     
-    public func mag() -> CGFloat {
+    public func mag() -> Float {
         return sqrt(self.x * self.x + self.y * self.y)
     }
     
-    public func limit(_ n: CGFloat) -> Vec2D {
+    public func limit(_ n: Float) -> Vec2D {
         if self.mag() * self.mag() > n * n {
             return self.norm().mult(n)
         }
         return self
     }
     
-    public func setMag(_ n: CGFloat) -> Vec2D {
+    public func setMag(_ n: Float) -> Vec2D {
         return self.norm().mult(n)
     }
     
-    public func rotate(_ angle: CGFloat) -> Vec2D {
+    public func rotate(_ angle: Float) -> Vec2D {
         let temp = self.x
         self.x = self.x * cos(angle) + self.y * sin(angle)
         self.y = temp * sin(angle) + self.y * cos(angle)
         return self
     }
     
-    public func heading() -> CGFloat {
+    public func heading() -> Float {
         return atan2(self.y, self.x)
     }
     
-    public func dist(_ vec: Vec2D) -> CGFloat {
+    public func dist(_ vec: Vec2D) -> Float {
         let dx = self.x - vec.x
         let dy = self.y - vec.y
         return sqrt(dx * dx + dy * dy)
@@ -117,7 +111,7 @@ public class Vec2D: CustomStringConvertible, Equatable {
         return Vec2D(point: self.cgPoint)
     }
     
-    public class func angleBetween(_ vec1: Vec2D, _ vec2: Vec2D) -> CGFloat {
+    public class func angleBetween(_ vec1: Vec2D, _ vec2: Vec2D) -> Float {
         if vec1.x == 0.0 && vec1.y == 0.0 {
             return 0.0
         } else if vec2.x == 0.0 && vec2.y == 0.0 {
@@ -125,13 +119,13 @@ public class Vec2D: CustomStringConvertible, Equatable {
         } else {
             let dot = vec1.x * vec2.x + vec1.y * vec2.y
             let amt = dot / (vec1.mag() * vec2.mag())
-            return amt <= -1.0 ? CGFloat.pi : (amt >= 1.0 ? 0.0 : acos(amt))
+            return amt <= -1.0 ? Float.pi : (amt >= 1.0 ? 0.0 : acos(amt))
         }
     }
     
     public class func random() -> Vec2D {
-        let seed1 = CGFloat(arc4random_uniform(0x186A0)) - 0xC350
-        let seed2 = CGFloat(arc4random_uniform(0x186A0)) - 0xC350
+        let seed1 = Float(arc4random_uniform(0x186A0)) - 0xC350
+        let seed2 = Float(arc4random_uniform(0x186A0)) - 0xC350
         return Vec2D(x: seed1, y: seed2).norm()
     }
 }

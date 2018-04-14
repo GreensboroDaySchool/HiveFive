@@ -18,8 +18,6 @@
  */
 
 import Foundation
-import CoreData
-import UIKit
 
 /**
  This is the parent of Hive, QueenBee, Beetle, Grasshopper, Spider, and SoldierAnt,

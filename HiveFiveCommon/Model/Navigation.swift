@@ -18,7 +18,6 @@
  */
 
 import Foundation
-import UIKit
 
 /**
        _____(up)_____
@@ -119,11 +118,11 @@ struct Route: Equatable {
      - Parameter radius: The radius of each node
      - Returns: Position relative to root
      */
-    func relativeCoordinate(radius: CGFloat) -> CGPoint {
+    func relativeCoordinate(radius: Float) -> Vec2D {
         let translation = self.translation
-        let x = CGFloat(translation.x) * radius * 1.5
-        let y = CGFloat(translation.y) * radius * sin(.pi / 3)
-        return CGPoint(x: x, y: y)
+        let x = Float(translation.x) * radius * 1.5
+        let y = Float(translation.y) * radius * sin(.pi / 3)
+        return Vec2D(x: x, y: y)
     }
 
     func append(_ directions: [Direction]) -> Route {

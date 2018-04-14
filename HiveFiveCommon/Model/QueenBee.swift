@@ -18,6 +18,7 @@
  */
 
 import Foundation
+
 class QueenBee: HexNode {
     
     override var identity: Identity {

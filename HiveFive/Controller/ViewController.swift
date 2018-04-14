@@ -117,7 +117,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
          */
         let escapeDir = Vec2D(point: origin)
             .sub(Vec2D(point: focus)) //translate to focus's coordinate system by subtracting it
-            .mult(scale) //elongate or shrink according to the scale.
+            .mult(Float(scale)) //elongate or shrink according to the scale.
         
         //Compensating change in coordinate, since escapeDir is now in focus's coordinate system.
         board.rootCoordinate = escapeDir

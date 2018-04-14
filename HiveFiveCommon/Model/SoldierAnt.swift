@@ -18,6 +18,7 @@
  */
 
 import Foundation
+
 class SoldierAnt: HexNode {
     override var identity: Identity {
         return .soldierAnt

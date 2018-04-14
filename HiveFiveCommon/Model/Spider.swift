@@ -18,6 +18,7 @@
  */
 
 import Foundation
+
 class Spider: HexNode {
     override var identity: Identity {
         return .spider

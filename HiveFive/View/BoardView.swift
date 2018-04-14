@@ -304,7 +304,7 @@ import UIKit
      so that the physical location & structure of the node views remains unchanged.
      */
     func rootNodeMoved(by route: Route) {
-        rootCoordinate = rootCoordinate + route.relativeCoordinate(radius: nodeRadius).flipY()
+        rootCoordinate = rootCoordinate + route.relativeCoordinate(radius: Float(nodeRadius)).cgPoint.flipY()
     }
     
     /**

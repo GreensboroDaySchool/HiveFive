@@ -239,10 +239,10 @@ class NodeView: UIView {
      */
     private func update() {
         let route = path.route
-        var offset = route.relativeCoordinate(radius: radius)
+        let offset = route.relativeCoordinate(radius: Float(radius))
         offset.y *= -1 // the y coordinate on screen is inverted
         self.frame = CGRect(
-            origin: rootCoordinate + offset,
+            origin: rootCoordinate + offset.cgPoint,
             size: calculateSize(radius: radius)
         )
     }
@@ -363,12 +363,13 @@ class NodeView: UIView {
      */
     private func pathForPolygon(radius: CGFloat, sides: Int) -> UIBezierPath {
         let path = UIBezierPath()
-        let step = CGFloat.pi * 2 / CGFloat(sides)
-        path.move(to: Vec2D(x: cos(step), y: sin(step)).setMag(radius).cgPoint)
+        let step = Float.pi * 2 / Float(sides)
+        let r = Float(radius)
+        path.move(to: Vec2D(x: cos(step), y: sin(step)).setMag(r).cgPoint)
         for i in 1...(sides - 1) {
-            let angle = step * CGFloat(i + 1)
+            let angle = step * Float(i + 1)
             let dir = Vec2D(x: cos(angle), y: sin(angle))
-                .setMag(radius).cgPoint
+                .setMag(r).cgPoint
             path.addLine(to: dir)
         }
         path.close()
