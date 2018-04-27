@@ -23,7 +23,7 @@ import Foundation
  The actual game has no boards, but we need an invisible board that is able to traverse/modify the HexNode ADT.
  This is the Model of the MVC design pattern
  */
-class Hive {
+class Hive: Codable {
     
     /**
      There should only be one instance of Hive throughout the application
@@ -356,6 +356,11 @@ class Hive {
         return root!.derivePaths().filter{$0.destination === node}[0]
     }
     
+    required init(from decoder: Decoder){
+        history = History()
+        blackHand = Hive.defaultHand
+        whiteHand = Hive.defaultHand
+    }
 }
 
 protocol HiveDelegate {

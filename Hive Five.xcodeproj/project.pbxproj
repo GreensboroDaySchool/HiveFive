@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0169A72092AAA000398D34 /* Swifter+Serializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */; };
+		2C016A942092B55500398D34 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C016A8C2092B54500398D34 /* Swifter.framework */; };
+		2C016A972092B8CD00398D34 /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */; };
+		2C016A9A2092B8E000398D34 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E760B2082BDD80035994D /* Game.swift */; };
+		2C016A9B2092B8E000398D34 /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */; };
+		2C016A9C2092B8E000398D34 /* Hive5Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76082082BD8B0035994D /* Hive5Server.swift */; };
+		2C016A9D2092B8E000398D34 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761C2082C4090035994D /* Client.swift */; };
+		2C016A9E2092B8E000398D34 /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76122082BEF60035994D /* ServerTransport.swift */; };
+		2C016A9F2092B8E000398D34 /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76212082D7A00035994D /* TransportOperation.swift */; };
+		2C016AA420935DD300398D34 /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016AA320935DD300398D34 /* Hive+Encodable.swift */; };
+		2C016AA520935DD300398D34 /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016AA320935DD300398D34 /* Hive+Encodable.swift */; };
 		2C4E7550208247190035994D /* HFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E754F208247190035994D /* HFInterface.swift */; };
 		2C4E7553208247950035994D /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E7551208247950035994D /* History.storyboard */; };
 		2C4E755620824A300035994D /* Board.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755420824A300035994D /* Board.storyboard */; };
@@ -31,6 +42,13 @@
 		2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
 		2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
 		2C4E75C92082B1F60035994D /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
+		2C4E76092082BD8B0035994D /* Hive5Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76082082BD8B0035994D /* Hive5Server.swift */; };
+		2C4E760C2082BDD80035994D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E760B2082BDD80035994D /* Game.swift */; };
+		2C4E76132082BEF60035994D /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76122082BEF60035994D /* ServerTransport.swift */; };
+		2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */; };
+		2C4E761D2082C4090035994D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761C2082C4090035994D /* Client.swift */; };
+		2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761F2082C9A50035994D /* SwifterClient.swift */; };
+		2C4E76222082D7A00035994D /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76212082D7A00035994D /* TransportOperation.swift */; };
 		2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE195D206E77C400733FA0 /* NodeView.swift */; };
 		2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE466206B00880041EDD1 /* AppDelegate.swift */; };
 		2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE468206B00880041EDD1 /* ViewController.swift */; };
@@ -601,6 +619,104 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2C016A6D2092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C839B6E19422CFF003A6950;
+			remoteInfo = SwifterSampleiOS;
+		};
+		2C016A6F2092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CA4813B19A2EA8D0030B30D;
+			remoteInfo = SwifterSampleOSX;
+		};
+		2C016A712092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7AE893E71C05127900A29F63;
+			remoteInfo = SwifteriOS;
+		};
+		2C016A732092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7AE893FB1C0512C400A29F63;
+			remoteInfo = SwifterMac;
+		};
+		2C016A752092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 269B47A11D3AAAE20042D137;
+			remoteInfo = SwiftertvOS;
+		};
+		2C016A772092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CCD875C1C66099B0068099B;
+			remoteInfo = SwifteriOSTests;
+		};
+		2C016A792092B52900398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CCD87791C660EA30068099B;
+			remoteInfo = SwifterOSXTests;
+		};
+		2C016A852092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7C839B6E19422CFF003A6950;
+			remoteInfo = SwifterSampleiOS;
+		};
+		2C016A872092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CA4813B19A2EA8D0030B30D;
+			remoteInfo = SwifterSampleOSX;
+		};
+		2C016A892092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7AE893E71C05127900A29F63;
+			remoteInfo = SwifteriOS;
+		};
+		2C016A8B2092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7AE893FB1C0512C400A29F63;
+			remoteInfo = SwifterMac;
+		};
+		2C016A8D2092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 269B47A11D3AAAE20042D137;
+			remoteInfo = SwiftertvOS;
+		};
+		2C016A8F2092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CCD875C1C66099B0068099B;
+			remoteInfo = SwifteriOSTests;
+		};
+		2C016A912092B54500398D34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CCD87791C660EA30068099B;
+			remoteInfo = SwifterOSXTests;
+		};
 		2CFCE4B9206C603C0041EDD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CFCE45B206B00880041EDD1 /* Project object */;
@@ -630,6 +746,60 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifter+Serializers.swift"; sourceTree = "<group>"; };
+		2C016A262092B52900398D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C016A282092B52900398D34 /* SwiftertvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftertvOS.h; sourceTree = "<group>"; };
+		2C016A292092B52900398D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C016A2B2092B52900398D34 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		2C016A2D2092B52900398D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C016A2F2092B52900398D34 /* SwifteriOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwifteriOS.h; sourceTree = "<group>"; };
+		2C016A302092B52900398D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C016A322092B52900398D34 /* SwifterMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwifterMac.h; sourceTree = "<group>"; };
+		2C016A332092B52900398D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C016A352092B52900398D34 /* PingServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingServer.swift; sourceTree = "<group>"; };
+		2C016A362092B52900398D34 /* SwifterTestsWebSocketSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterTestsWebSocketSession.swift; sourceTree = "<group>"; };
+		2C016A372092B52900398D34 /* SwifterTestsHttpParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterTestsHttpParser.swift; sourceTree = "<group>"; };
+		2C016A382092B52900398D34 /* IOSafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSafetyTests.swift; sourceTree = "<group>"; };
+		2C016A392092B52900398D34 /* SwifterTestsStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterTestsStringExtensions.swift; sourceTree = "<group>"; };
+		2C016A3A2092B52900398D34 /* SwifterTestsHttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterTestsHttpRouter.swift; sourceTree = "<group>"; };
+		2C016A3C2092B52900398D34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C016A3E2092B52900398D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2C016A3F2092B52900398D34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2C016A402092B52900398D34 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2C016A412092B52900398D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2C016A422092B52900398D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C016A432092B52900398D34 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Swifter.xcodeproj; sourceTree = "<group>"; };
+		2C016A472092B52900398D34 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2C016A482092B52900398D34 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
+		2C016A4A2092B52900398D34 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2C016A4B2092B52900398D34 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2C016A4D2092B52900398D34 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2C016A4E2092B52900398D34 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2C016A4F2092B52900398D34 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2C016A502092B52900398D34 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		2C016A512092B52900398D34 /* Swifter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Swifter.podspec; sourceTree = "<group>"; };
+		2C016A532092B52900398D34 /* DemoServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoServer.swift; sourceTree = "<group>"; };
+		2C016A542092B52900398D34 /* Scopes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scopes.swift; sourceTree = "<group>"; };
+		2C016A552092B52900398D34 /* WebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSockets.swift; sourceTree = "<group>"; };
+		2C016A562092B52900398D34 /* HttpServerIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServerIO.swift; sourceTree = "<group>"; };
+		2C016A572092B52900398D34 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		2C016A582092B52900398D34 /* Socket+Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Socket+Server.swift"; sourceTree = "<group>"; };
+		2C016A592092B52900398D34 /* String+SHA1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SHA1.swift"; sourceTree = "<group>"; };
+		2C016A5A2092B52900398D34 /* String+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+File.swift"; sourceTree = "<group>"; };
+		2C016A5B2092B52900398D34 /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
+		2C016A5C2092B52900398D34 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		2C016A5D2092B52900398D34 /* HttpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
+		2C016A5E2092B52900398D34 /* HttpServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServer.swift; sourceTree = "<group>"; };
+		2C016A5F2092B52900398D34 /* Errno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errno.swift; sourceTree = "<group>"; };
+		2C016A602092B52900398D34 /* Socket+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Socket+File.swift"; sourceTree = "<group>"; };
+		2C016A612092B52900398D34 /* String+BASE64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+BASE64.swift"; sourceTree = "<group>"; };
+		2C016A622092B52900398D34 /* String+Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Misc.swift"; sourceTree = "<group>"; };
+		2C016A632092B52900398D34 /* HttpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRouter.swift; sourceTree = "<group>"; };
+		2C016A642092B52900398D34 /* HttpParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpParser.swift; sourceTree = "<group>"; };
+		2C016A652092B52900398D34 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		2C016A7B2092B54500398D34 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = swifter/XCode/Swifter.xcodeproj; sourceTree = "<group>"; };
+		2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+HiveDelegate.swift"; sourceTree = "<group>"; };
+		2C016AA320935DD300398D34 /* Hive+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hive+Encodable.swift"; sourceTree = "<group>"; };
 		2C4E754F208247190035994D /* HFInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFInterface.swift; sourceTree = "<group>"; };
 		2C4E7552208247950035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/History.storyboard; sourceTree = "<group>"; };
 		2C4E755520824A300035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Board.storyboard; sourceTree = "<group>"; };
@@ -639,6 +809,13 @@
 		2C4E756320824D6C0035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Appearance.storyboard; sourceTree = "<group>"; };
 		2C4E75B22082B1D10035994D /* HiveFive Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiveFive Server"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4E75B42082B1D10035994D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2C4E76082082BD8B0035994D /* Hive5Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive5Server.swift; sourceTree = "<group>"; };
+		2C4E760B2082BDD80035994D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		2C4E76122082BEF60035994D /* ServerTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTransport.swift; sourceTree = "<group>"; };
+		2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterServerTransport.swift; sourceTree = "<group>"; };
+		2C4E761C2082C4090035994D /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		2C4E761F2082C9A50035994D /* SwifterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterClient.swift; sourceTree = "<group>"; };
+		2C4E76212082D7A00035994D /* TransportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportOperation.swift; sourceTree = "<group>"; };
 		2CCE195D206E77C400733FA0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		2CFCE463206B00880041EDD1 /* Hive Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hive Five.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE466206B00880041EDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1219,6 +1396,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C016A942092B55500398D34 /* Swifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,6 +1424,211 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C016A222092B52900398D34 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A7B2092B54500398D34 /* Swifter.xcodeproj */,
+				2C016A232092B52900398D34 /* swifter */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		2C016A232092B52900398D34 /* swifter */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A242092B52900398D34 /* XCode */,
+				2C016A482092B52900398D34 /* .swift-version */,
+				2C016A492092B52900398D34 /* swifter */,
+				2C016A4A2092B52900398D34 /* LICENSE */,
+				2C016A4B2092B52900398D34 /* .swiftlint.yml */,
+				2C016A4C2092B52900398D34 /* Example */,
+				2C016A4E2092B52900398D34 /* README.md */,
+				2C016A4F2092B52900398D34 /* .gitignore */,
+				2C016A502092B52900398D34 /* Package.swift */,
+				2C016A512092B52900398D34 /* Swifter.podspec */,
+				2C016A522092B52900398D34 /* Sources */,
+			);
+			path = swifter;
+			sourceTree = "<group>";
+		};
+		2C016A242092B52900398D34 /* XCode */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A252092B52900398D34 /* SwifteriOSTests */,
+				2C016A272092B52900398D34 /* SwiftertvOS */,
+				2C016A2A2092B52900398D34 /* Resources */,
+				2C016A2C2092B52900398D34 /* SwifterOSXTests */,
+				2C016A2E2092B52900398D34 /* SwifteriOS */,
+				2C016A312092B52900398D34 /* SwifterMac */,
+				2C016A342092B52900398D34 /* SwifterTestsCommon */,
+				2C016A3B2092B52900398D34 /* SwifterSampleiOS */,
+				2C016A432092B52900398D34 /* Swifter.xcodeproj */,
+				2C016A462092B52900398D34 /* SwifterSampleOSX */,
+			);
+			path = XCode;
+			sourceTree = "<group>";
+		};
+		2C016A252092B52900398D34 /* SwifteriOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A262092B52900398D34 /* Info.plist */,
+			);
+			path = SwifteriOSTests;
+			sourceTree = "<group>";
+		};
+		2C016A272092B52900398D34 /* SwiftertvOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A282092B52900398D34 /* SwiftertvOS.h */,
+				2C016A292092B52900398D34 /* Info.plist */,
+			);
+			path = SwiftertvOS;
+			sourceTree = "<group>";
+		};
+		2C016A2A2092B52900398D34 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A2B2092B52900398D34 /* logo.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2C016A2C2092B52900398D34 /* SwifterOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A2D2092B52900398D34 /* Info.plist */,
+			);
+			path = SwifterOSXTests;
+			sourceTree = "<group>";
+		};
+		2C016A2E2092B52900398D34 /* SwifteriOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A2F2092B52900398D34 /* SwifteriOS.h */,
+				2C016A302092B52900398D34 /* Info.plist */,
+			);
+			path = SwifteriOS;
+			sourceTree = "<group>";
+		};
+		2C016A312092B52900398D34 /* SwifterMac */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A322092B52900398D34 /* SwifterMac.h */,
+				2C016A332092B52900398D34 /* Info.plist */,
+			);
+			path = SwifterMac;
+			sourceTree = "<group>";
+		};
+		2C016A342092B52900398D34 /* SwifterTestsCommon */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A352092B52900398D34 /* PingServer.swift */,
+				2C016A362092B52900398D34 /* SwifterTestsWebSocketSession.swift */,
+				2C016A372092B52900398D34 /* SwifterTestsHttpParser.swift */,
+				2C016A382092B52900398D34 /* IOSafetyTests.swift */,
+				2C016A392092B52900398D34 /* SwifterTestsStringExtensions.swift */,
+				2C016A3A2092B52900398D34 /* SwifterTestsHttpRouter.swift */,
+			);
+			path = SwifterTestsCommon;
+			sourceTree = "<group>";
+		};
+		2C016A3B2092B52900398D34 /* SwifterSampleiOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A3C2092B52900398D34 /* ViewController.swift */,
+				2C016A3D2092B52900398D34 /* Main.storyboard */,
+				2C016A3F2092B52900398D34 /* Images.xcassets */,
+				2C016A402092B52900398D34 /* Launch Screen.storyboard */,
+				2C016A412092B52900398D34 /* AppDelegate.swift */,
+				2C016A422092B52900398D34 /* Info.plist */,
+			);
+			path = SwifterSampleiOS;
+			sourceTree = "<group>";
+		};
+		2C016A442092B52900398D34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A6E2092B52900398D34 /* SwifterSampleiOS.app */,
+				2C016A702092B52900398D34 /* SwifterSampleOSX */,
+				2C016A722092B52900398D34 /* Swifter.framework */,
+				2C016A742092B52900398D34 /* Swifter.framework */,
+				2C016A762092B52900398D34 /* Swifter.framework */,
+				2C016A782092B52900398D34 /* SwifteriOSTests.xctest */,
+				2C016A7A2092B52900398D34 /* SwifterOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C016A462092B52900398D34 /* SwifterSampleOSX */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A472092B52900398D34 /* main.swift */,
+			);
+			path = SwifterSampleOSX;
+			sourceTree = "<group>";
+		};
+		2C016A492092B52900398D34 /* swifter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = swifter;
+			sourceTree = "<group>";
+		};
+		2C016A4C2092B52900398D34 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A4D2092B52900398D34 /* main.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		2C016A522092B52900398D34 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A532092B52900398D34 /* DemoServer.swift */,
+				2C016A542092B52900398D34 /* Scopes.swift */,
+				2C016A552092B52900398D34 /* WebSockets.swift */,
+				2C016A562092B52900398D34 /* HttpServerIO.swift */,
+				2C016A572092B52900398D34 /* Process.swift */,
+				2C016A582092B52900398D34 /* Socket+Server.swift */,
+				2C016A592092B52900398D34 /* String+SHA1.swift */,
+				2C016A5A2092B52900398D34 /* String+File.swift */,
+				2C016A5B2092B52900398D34 /* Files.swift */,
+				2C016A5C2092B52900398D34 /* HttpRequest.swift */,
+				2C016A5D2092B52900398D34 /* HttpResponse.swift */,
+				2C016A5E2092B52900398D34 /* HttpServer.swift */,
+				2C016A5F2092B52900398D34 /* Errno.swift */,
+				2C016A602092B52900398D34 /* Socket+File.swift */,
+				2C016A612092B52900398D34 /* String+BASE64.swift */,
+				2C016A622092B52900398D34 /* String+Misc.swift */,
+				2C016A632092B52900398D34 /* HttpRouter.swift */,
+				2C016A642092B52900398D34 /* HttpParser.swift */,
+				2C016A652092B52900398D34 /* Socket.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2C016A7C2092B54500398D34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C016A862092B54500398D34 /* SwifterSampleiOS.app */,
+				2C016A882092B54500398D34 /* SwifterSampleOSX */,
+				2C016A8A2092B54500398D34 /* Swifter.framework */,
+				2C016A8C2092B54500398D34 /* Swifter.framework */,
+				2C016A8E2092B54500398D34 /* Swifter.framework */,
+				2C016A902092B54500398D34 /* SwifteriOSTests.xctest */,
+				2C016A922092B54500398D34 /* SwifterOSXTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C016A932092B55500398D34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2C4E754E2082463C0035994D /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -1265,7 +1648,9 @@
 		2C4E7596208298580035994D /* HiveFiveCommon */ = {
 			isa = PBXGroup;
 			children = (
-				320FDBBA2082A4A100E0F62A /* Extension */,
+				2C4E76072082BD710035994D /* Server */,
+				2C4E76112082BEC00035994D /* Transport */,
+				320FDB9520829CCD00E0F62A /* Utilities */,
 				32D1D144206BE9BE008444F4 /* Model */,
 			);
 			path = HiveFiveCommon;
@@ -1274,9 +1659,56 @@
 		2C4E75B32082B1D10035994D /* HiveFive Server */ = {
 			isa = PBXGroup;
 			children = (
+				2C4E761E2082C98F0035994D /* Server */,
+				2C4E761B2082C3AD0035994D /* Transport */,
 				2C4E75B42082B1D10035994D /* main.swift */,
+				2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */,
 			);
 			path = "HiveFive Server";
+			sourceTree = "<group>";
+		};
+		2C4E76072082BD710035994D /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E760A2082BDBA0035994D /* Game */,
+				2C4E76082082BD8B0035994D /* Hive5Server.swift */,
+				2C4E761C2082C4090035994D /* Client.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		2C4E760A2082BDBA0035994D /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E760B2082BDD80035994D /* Game.swift */,
+				2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		2C4E76112082BEC00035994D /* Transport */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E76122082BEF60035994D /* ServerTransport.swift */,
+				2C4E76212082D7A00035994D /* TransportOperation.swift */,
+			);
+			path = Transport;
+			sourceTree = "<group>";
+		};
+		2C4E761B2082C3AD0035994D /* Transport */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */,
+			);
+			path = Transport;
+			sourceTree = "<group>";
+		};
+		2C4E761E2082C98F0035994D /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E761F2082C9A50035994D /* SwifterClient.swift */,
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 		2CFCE45A206B00880041EDD1 = {
@@ -1288,6 +1720,8 @@
 				2CFCE4C3206C60590041EDD1 /* HiveFive Tests */,
 				2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */,
 				2CFCE464206B00880041EDD1 /* Products */,
+				2C016A222092B52900398D34 /* Dependencies */,
+				2C016A932092B55500398D34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1346,7 +1780,7 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		320FDB9520829CCD00E0F62A /* CrossPlatform */ = {
+		320FDB9520829CCD00E0F62A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				320FDB9620829D3400E0F62A /* Extension+Dictionary.swift */,
@@ -1356,7 +1790,7 @@
 				320FDB9E20829DCA00E0F62A /* Extension+Double.swift */,
 				320FDBA020829DE100E0F62A /* Extension+Array.swift */,
 			);
-			path = CrossPlatform;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		320FDBA420829E4900E0F62A /* Util */ = {
@@ -1385,14 +1819,6 @@
 				320FDBBC2082B2DF00E0F62A /* Extension+Hive.swift */,
 			);
 			path = Native;
-			sourceTree = "<group>";
-		};
-		320FDBBA2082A4A100E0F62A /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				320FDB9520829CCD00E0F62A /* CrossPlatform */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		322EF74020766E98008A98F7 /* Lib */ = {
@@ -1451,6 +1877,7 @@
 				32D1D145206BEA6F008444F4 /* QueenBee.swift */,
 				32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */,
 				32D1D14B206BEAAC008444F4 /* Spider.swift */,
+				2C016AA320935DD300398D34 /* Hive+Encodable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2340,6 +2767,16 @@
 			mainGroup = 2CFCE45A206B00880041EDD1;
 			productRefGroup = 2CFCE464206B00880041EDD1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2C016A7C2092B54500398D34 /* Products */;
+					ProjectRef = 2C016A7B2092B54500398D34 /* Swifter.xcodeproj */;
+				},
+				{
+					ProductGroup = 2C016A442092B52900398D34 /* Products */;
+					ProjectRef = 2C016A432092B52900398D34 /* Swifter.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2CFCE462206B00880041EDD1 /* Hive Five */,
@@ -2349,6 +2786,107 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2C016A6E2092B52900398D34 /* SwifterSampleiOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwifterSampleiOS.app;
+			remoteRef = 2C016A6D2092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A702092B52900398D34 /* SwifterSampleOSX */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = SwifterSampleOSX;
+			remoteRef = 2C016A6F2092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A722092B52900398D34 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 2C016A712092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A742092B52900398D34 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 2C016A732092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A762092B52900398D34 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 2C016A752092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A782092B52900398D34 /* SwifteriOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwifteriOSTests.xctest;
+			remoteRef = 2C016A772092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A7A2092B52900398D34 /* SwifterOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwifterOSXTests.xctest;
+			remoteRef = 2C016A792092B52900398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A862092B54500398D34 /* SwifterSampleiOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwifterSampleiOS.app;
+			remoteRef = 2C016A852092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A882092B54500398D34 /* SwifterSampleOSX */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = SwifterSampleOSX;
+			remoteRef = 2C016A872092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A8A2092B54500398D34 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 2C016A892092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A8C2092B54500398D34 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 2C016A8B2092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A8E2092B54500398D34 /* Swifter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Swifter.framework;
+			remoteRef = 2C016A8D2092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A902092B54500398D34 /* SwifteriOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwifteriOSTests.xctest;
+			remoteRef = 2C016A8F2092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C016A922092B54500398D34 /* SwifterOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwifterOSXTests.xctest;
+			remoteRef = 2C016A912092B54500398D34 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2CFCE461206B00880041EDD1 /* Resources */ = {
@@ -2841,22 +3379,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C4E76092082BD8B0035994D /* Hive5Server.swift in Sources */,
 				2C4E75BD2082B1F10035994D /* Extension+Double.swift in Sources */,
+				2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */,
 				2C4E75BC2082B1F10035994D /* Extension+Decimal.swift in Sources */,
+				2C4E761D2082C4090035994D /* Client.swift in Sources */,
 				2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */,
 				2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */,
 				2C4E75B52082B1D10035994D /* main.swift in Sources */,
 				2C4E75C02082B1F60035994D /* Beetle.swift in Sources */,
+				2C4E76222082D7A00035994D /* TransportOperation.swift in Sources */,
 				2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */,
 				2C4E75C92082B1F60035994D /* Spider.swift in Sources */,
 				2C4E75C22082B1F60035994D /* Grasshopper.swift in Sources */,
+				2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */,
 				2C4E75BB2082B1F10035994D /* Extension+Date.swift in Sources */,
 				2C4E75C62082B1F60035994D /* Neighbors.swift in Sources */,
 				2C4E75B92082B1F10035994D /* Extension+Dictionary.swift in Sources */,
 				2C4E75C52082B1F60035994D /* Navigation.swift in Sources */,
+				2C4E760C2082BDD80035994D /* Game.swift in Sources */,
 				2C4E75BA2082B1F10035994D /* Extension+NSObject.swift in Sources */,
+				2C0169A72092AAA000398D34 /* Swifter+Serializers.swift in Sources */,
+				2C4E76132082BEF60035994D /* ServerTransport.swift in Sources */,
 				2C4E75BE2082B1F10035994D /* Extension+Array.swift in Sources */,
 				2C4E75C32082B1F60035994D /* HexNode.swift in Sources */,
+				2C016AA520935DD300398D34 /* Hive+Encodable.swift in Sources */,
+				2C016A972092B8CD00398D34 /* Game+HiveDelegate.swift in Sources */,
 				2C4E75C42082B1F60035994D /* Hive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2868,8 +3416,10 @@
 				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */,
 				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
+				2C016A9C2092B8E000398D34 /* Hive5Server.swift in Sources */,
 				328EE1A02076DE5E0056CB0C /* HandCollectionViewCell.swift in Sources */,
 				328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */,
+				2C016A9E2092B8E000398D34 /* ServerTransport.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				321E1653207A91FE0053C87A /* ProfilesCollectionViewController.swift in Sources */,
 				321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */,
@@ -2884,6 +3434,7 @@
 				321CED7920783D5500805F74 /* HelpItemViewController.swift in Sources */,
 				321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */,
 				320FDBB120829F5F00E0F62A /* Extension+CGContext.swift in Sources */,
+				2C016A9A2092B8E000398D34 /* Game.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				3281AC2E2079365C00DE7EDA /* NodeViewProfie.swift in Sources */,
 				320FDBB320829F7200E0F62A /* Extension+UIColor.swift in Sources */,
@@ -2909,6 +3460,7 @@
 				320FDBA120829DE100E0F62A /* Extension+Array.swift in Sources */,
 				320FDB9B20829D8600E0F62A /* Extension+Date.swift in Sources */,
 				33F75A7BAF7A4F3CDD42F60F /* Button.swift in Sources */,
+				2C016A9B2092B8E000398D34 /* Game+HiveDelegate.swift in Sources */,
 				33F75562FA9B0F0F2493B3D8 /* TextField.swift in Sources */,
 				33F7525D3C7806E8D1441866 /* GradientSlider.swift in Sources */,
 				33F758A7BB8D64FDA6D629DD /* SegmentedControl.swift in Sources */,
@@ -2917,9 +3469,11 @@
 				33F75170870EFDA4F639DFD7 /* DatePickerViewController.swift in Sources */,
 				33F758FB688623BEC1FAFD68 /* ColorPickerViewController.swift in Sources */,
 				320FDB9720829D3400E0F62A /* Extension+Dictionary.swift in Sources */,
+				2C016A9F2092B8E000398D34 /* TransportOperation.swift in Sources */,
 				33F7598F05400F330CECDEFA /* ItemWithImage.swift in Sources */,
 				320FDBBF2082BEC500E0F62A /* DefaultStructure.swift in Sources */,
 				33F756956CF04E182399D20B /* ImagePickerViewController.swift in Sources */,
+				2C016AA420935DD300398D34 /* Hive+Encodable.swift in Sources */,
 				320FDBB720829FAC00E0F62A /* Extension+CGPoint.swift in Sources */,
 				33F7572908B2C72735ACE390 /* CountryCell.swift in Sources */,
 				33F752002AE7BCA83FBFB8B7 /* CurrencyCell.swift in Sources */,
@@ -2954,6 +3508,7 @@
 				33F75DEC8B8092B23B774DBF /* Array+Extensions.swift in Sources */,
 				320FDBAD20829F2900E0F62A /* Extension+UIGestureRecognizer.swift in Sources */,
 				2C4E7550208247190035994D /* HFInterface.swift in Sources */,
+				2C016A9D2092B8E000398D34 /* Client.swift in Sources */,
 				33F75748490186AB0E6B0C61 /* Common+Extensions.swift in Sources */,
 				33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */,
 				321E1655207AB43F0053C87A /* ProfileNameTableViewCell.swift in Sources */,
@@ -3010,6 +3565,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2C016A3D2092B52900398D34 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C016A3E2092B52900398D34 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		2C4E7551208247950035994D /* History.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3085,7 +3648,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AM89ND2ZY7;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -3099,7 +3662,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AM89ND2ZY7;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
