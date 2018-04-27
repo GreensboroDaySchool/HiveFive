@@ -160,13 +160,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    
-    
     func restart() {
         board.clear()
         hive.reset()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

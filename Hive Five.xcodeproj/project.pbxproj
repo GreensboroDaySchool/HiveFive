@@ -103,6 +103,7 @@
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
 		32B109AB206E8D360065E465 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
 		32B109AE206EECC20065E465 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
+		32C0D6E52093BFD2003456D8 /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C0D6E42093BFD2003456D8 /* HiveMaster.swift */; };
 		32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
 		32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
 		32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D149206BEA9F008444F4 /* Grasshopper.swift */; };
@@ -875,6 +876,7 @@
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		32B109AA206E8D360065E465 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		32B109AD206EECC20065E465 /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
+		32C0D6E42093BFD2003456D8 /* HiveMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveMaster.swift; sourceTree = "<group>"; };
 		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		32D1D145206BEA6F008444F4 /* QueenBee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
 		32D1D147206BEA8A008444F4 /* Beetle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beetle.swift; sourceTree = "<group>"; };
@@ -1864,9 +1866,18 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		32C0D6E32093BF03003456D8 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				32C0D6E42093BFD2003456D8 /* HiveMaster.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
 		32D1D144206BE9BE008444F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				32C0D6E32093BF03003456D8 /* AI */,
 				32B109AD206EECC20065E465 /* Vec2D.swift */,
 				32D1D147206BEA8A008444F4 /* Beetle.swift */,
 				32D1D149206BEA9F008444F4 /* Grasshopper.swift */,
@@ -3512,6 +3523,7 @@
 				33F75748490186AB0E6B0C61 /* Common+Extensions.swift in Sources */,
 				33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */,
 				321E1655207AB43F0053C87A /* ProfileNameTableViewCell.swift in Sources */,
+				32C0D6E52093BFD2003456D8 /* HiveMaster.swift in Sources */,
 				320FDBA920829EF000E0F62A /* Extension+UIView.swift in Sources */,
 				33F755EE5A07C9ED6375B6FD /* String+Extensions.swift in Sources */,
 				33F751C0028669CD8BA9657C /* UIView+Extensions.swift in Sources */,
@@ -3786,7 +3798,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DEVELOPMENT_TEAM = AM89ND2ZY7;
 				INFOPLIST_FILE = "$(SRCROOT)/HiveFive/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3802,7 +3814,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DEVELOPMENT_TEAM = AM89ND2ZY7;
 				INFOPLIST_FILE = "$(SRCROOT)/HiveFive/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

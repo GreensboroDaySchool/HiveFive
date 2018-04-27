@@ -232,13 +232,13 @@ var themes: [Theme] = [
         .soldierAnt:"𝞧",
         .dummy:"𝞦"
         ]),
-    .init(name: "Trigrams", patterns: [
-        .grasshopper:"☱",
-        .queenBee:"☲",
-        .beetle:"☳",
-        .spider:"☵",
-        .soldierAnt:"☴",
-        .dummy:"☶"
+    .init(name: "Digits", patterns: [
+        .grasshopper:"0",
+        .queenBee:"5",
+        .beetle:"1",
+        .spider:"3",
+        .soldierAnt:"8",
+        .dummy:"6"
         ]),
 ]
 
