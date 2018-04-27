@@ -1,5 +1,4 @@
 import Foundation
-import Swifter
 
 class Hive5Server {
     let transport: ServerTransport
