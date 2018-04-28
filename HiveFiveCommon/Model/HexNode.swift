@@ -367,6 +367,7 @@ class HexNode: IdentityProtocol {
     func clone() -> HexNode{
         let node = identity.new(color: color)
         node.neighbors = neighbors
+        return node
     }
 }
 
