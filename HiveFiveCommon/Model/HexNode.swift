@@ -360,23 +360,13 @@ class HexNode: IdentityProtocol {
         return neighbors.contains(other)
     }
     
-    // TODO: debug
-    func clone() -> HexNode {
-        var cloned = [HexNode]()
-        return clone(cloned: &cloned)
-    }
-
-    // TODO: debug
-    private func clone(cloned: inout [HexNode]) -> HexNode {
-        let new = identity.new(color: color)
-        new.neighbors = neighbors
-        cloned.append(new)
-        new.neighbors.available().map{$0.node}
-            .filter{node in !(cloned.contains{$0 === node})}
-            .forEach {node in
-            let _ = node.clone() // Stopped here
-            }
-        return new
+    /**
+     A newly instantiated HexNode that is identical to the current node.
+     - Note: Includes possibly invalid neighbor references.
+     */
+    func clone() -> HexNode{
+        let node = identity.new(color: color)
+        node.neighbors = neighbors
     }
 }
 

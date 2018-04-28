@@ -305,7 +305,6 @@ class Hive: Codable {
     
     /**
      Positions in the hive in which a new node could be placed at.
-     - Todo: Debug!!
      - Parameter color: The color of the new piece.
      */
     func availablePositions(color: Color) -> [Position] {
@@ -336,26 +335,27 @@ class Hive: Codable {
         
         return uniquePairs.map{$0.pos}.filter{Identity.dummy.new(color: color).canPlace(at: $0)}
     }
-    
-    /**
-     Transform a hive from 3D to 2D
-     TODO: debug
-     */
-    func flattened() -> HexNode {
-        let newRoot = root!.clone()
-        newRoot.connectedNodes().forEach{node in
-            if node.neighbors[.above] != nil {
-                node.color = Hive.traverse(from: node, toward: .above).color
-                node.neighbors[.above] = nil
-            }
-        }
-        return newRoot
-    }
-    
+
     func pathTo(node: HexNode) -> Path {
         return root!.derivePaths().filter{$0.destination === node}[0]
     }
     
+    /**
+     It is meaningless to be able to make clones of each individual nodes;
+     This method makes a copy of all of the nodes connected to root, i.e. the entire hive.
+     - Todo: DEBUG
+     */
+    static func clone(root: HexNode) -> HexNode {
+        let newRoot = root.clone()
+        newRoot.neighbors.available().forEach {
+            let newNeighbor = $0.node.clone()
+            newNeighbor.neighbors[$0.dir.opposite()] = nil // Terminate connection with root
+            let cloned = Hive.clone(root: newNeighbor)
+            cloned.move(to: $0.dir, of: newRoot)
+        }
+        return newRoot
+    }
+
     required init(from decoder: Decoder) throws{
         history = History()
         root = try Hive.decodeHive(from: decoder)
