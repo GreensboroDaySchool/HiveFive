@@ -41,6 +41,11 @@ class SwifterClient: Client {
         switch op {
         case .didJoin(color: let color): send([ "op": "didJoin", "color": color.rawValue, "token": token ])
         case .leave(reason: let reason): send([ "op": "leave", "reason": reason ])
+        case .guestDidJoin(guestColor: let color, guestName: let name): send([
+            "op": "guestDidJoin",
+            "guestColor": color.rawValue,
+            "guestName": name
+            ])
         default: debugPrint("cannot send unimplemented operator", op)
         }
     }

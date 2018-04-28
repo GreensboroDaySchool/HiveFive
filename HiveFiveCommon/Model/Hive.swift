@@ -356,10 +356,10 @@ class Hive: Codable {
         return root!.derivePaths().filter{$0.destination === node}[0]
     }
     
-    required init(from decoder: Decoder){
+    required init(from decoder: Decoder) throws{
         history = History()
-        blackHand = Hive.defaultHand
-        whiteHand = Hive.defaultHand
+        root = try Hive.decodeHive(from: decoder)
+        (blackHand, whiteHand) = try Hive.decodeHands(from: decoder)
     }
 }
 

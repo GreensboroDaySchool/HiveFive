@@ -9,8 +9,18 @@
 import Foundation
 import Swifter
 
-/*
- WebSocket Server Transport, implemented with Swifter framework
+/**
+ WebSocket ServerTransport
+ 
+ The server side transportation provider implemented with the Swifter framework.
+ 
+ Why use WebSocket? For one reason, WebSocket is a widely used standard
+ for bidirectional communication supported by many platforms. Thus if we
+ want to rewrite this game into a web version, this protocol will ensure
+ maximum compatibility. The communication protocol is simple, and can be
+ wrapped around with TLS to ensure maximum. Also, many public CDNs support
+ WebSockets, while basically none of them supports native TCP transports.
+ 
  */
 class SwifterServerTransport: ServerTransport {
     let http: HttpServer

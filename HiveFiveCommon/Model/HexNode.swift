@@ -30,12 +30,15 @@ class HexNode: IdentityProtocol {
     var identity: Identity {
         get {return .dummy}
     }
+    //Node: hashValue may not be the ObjectIdentifier of the node. In multi-player enviorment, its synced to the server's hashValue
+    lazy var hashValue: Int = ObjectIdentifier(self).hashValue
 
     /**
      Initializer must specify the color
      */
     init(color: Color) {
         self.color = color
+        self.hashValue = ObjectIdentifier(self).hashValue
     }
     
     /**

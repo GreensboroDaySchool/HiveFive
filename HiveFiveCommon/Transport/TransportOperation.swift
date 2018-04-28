@@ -12,6 +12,7 @@ enum TransportOperation {
     case createRoom(roomNumber: UInt16)
     case join(name: String)
     case didJoin(color: Color)
+    case guestDidJoin(guestColor: Color, guestName: String)
     case leave(reason: String)
     
     //Just a generic error

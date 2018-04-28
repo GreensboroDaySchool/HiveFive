@@ -28,6 +28,11 @@ class Game{
         guest?.kick(for: reason)
         host.kick(for: reason)
     }
+    
+    func on(guestJoin guest: Client){
+        self.guest = guest
+        try? host.send(.guestDidJoin(guestColor: guest.color!, guestName: guest.name))
+    }
 }
 
 //To the extend of the original gameEnded, we have more states

@@ -11,7 +11,7 @@ class Hive5Server {
         self.transport = transport
     }
     
-    /*
+    /**
      Handles new clients
      Note: this is a pre-join checking method
      
@@ -24,6 +24,7 @@ class Hive5Server {
             //Only able to join when the state is waiting
             if case .waiting = existingRoom.state {
                 existingRoom.guest = client
+                existingRoom.on(guestJoin: client)
                 //Tell the client that it did join the room with this color
                 client.didJoin(game: existingRoom, as: existingRoom.host.color!.opposite)
                 return existingRoom
