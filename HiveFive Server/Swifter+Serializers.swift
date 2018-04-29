@@ -10,11 +10,16 @@ import Swifter
 import Foundation
 
 extension WebSocketSession {
-    func json(_ data: [String:Any]){
-        guard let data = (try? JSONSerialization.data(withJSONObject: data, options: .init(rawValue: 0))) else { return }
-        guard let string = String(data: data, encoding: .utf8) else { return }
-        writeText(string)
+    func writeHFMessage(_ message: HFTransportModel) throws {
+        let encoder = JSONEncoder()
+        var encodedData: Data = try message.encode(withJSONEncoder: encoder)
+        guard let encodedString = String(data: encodedData, encoding: .utf8) else { throw HFCodingError.encodingError("unable to convert encoded json to string") }
+        writeText(encodedString)
     }
-    
-    func error(_ message: String = "invalid message"){ json(["op": "error", "message": message]) }
+}
+
+extension HFTransportModel {
+    func encode(withJSONEncoder encoder: JSONEncoder) throws -> Data {
+        return try encoder.encode(self)
+    }
 }

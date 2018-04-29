@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game{
+class Game: Equatable{
     let host: Client
     let id: Int
     let hive: Hive
@@ -24,19 +24,38 @@ class Game{
         self.state = .waiting
     }
     
-    func end(for reason: String) {
-        guest?.kick(for: reason)
-        host.kick(for: reason)
+    func end(reason: String) {
+        updateState(.ended, reason: reason)
+    }
+    
+    /**
+     Update the state of the game
+     
+     - important: always use this method instead of directly accessing the state method
+     */
+    func updateState(_ newState: GameState, reason: String){
+        self.state = newState
+        let message = HFTransportGameStateUpdate(newState: newState, reason: reason)
+        try? host.send(message)
+        try? guest?.send(message)
     }
     
     func on(guestJoin guest: Client){
         self.guest = guest
-        try? host.send(.guestDidJoin(guestColor: guest.color!, guestName: guest.name))
+        guest.color = host.color!.opposite
+        try? host.send(HFTransportGuestDidJoin(guestName: guest.name, guestColor: guest.color!))
+        //Tell the guest to sync the hive
+        try? guest.send(HFTransportSynchronize(hive: hive))
+        updateState(.playing, reason: "guest joined the game")
+    }
+    
+    static func ==(lhs: Game, rhs: Game) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 
 //To the extend of the original gameEnded, we have more states
-enum GameState{
+enum GameState: String{
     case waiting //We are still waiting for another player to join
     case playing //The game is on
     case ended //The game has ended

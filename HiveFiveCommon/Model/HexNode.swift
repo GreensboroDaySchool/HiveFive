@@ -383,12 +383,19 @@ class HexNode: IdentityProtocol {
 /**
  Extend from Int for convenience during serialization
  */
-enum Color: Int {
+enum Color: Int, CustomStringConvertible {
     case black = 0, white
     
     var opposite: Color {
         get {
             return (self == .black ? .white : .black)
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .black: return "black"
+        case .white: return "white"
         }
     }
 }

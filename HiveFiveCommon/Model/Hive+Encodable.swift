@@ -131,7 +131,9 @@ extension HexNode: Hashable {
     static func == (lhs: HexNode, rhs: HexNode) -> Bool { return lhs.hashValue == rhs.hashValue }
 }
 
-extension Identity: CodingKey {}
+extension Identity: CodingKey, Codable { }
+extension GameState: Codable { }
+extension Color: Codable { }
 
 enum HFCodingError: Error {
     case decodingError(String)
