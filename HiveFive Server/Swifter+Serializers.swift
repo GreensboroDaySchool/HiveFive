@@ -12,7 +12,7 @@ import Foundation
 extension WebSocketSession {
     func writeHFMessage(_ message: HFTransportModel) throws {
         let encoder = JSONEncoder()
-        var encodedData: Data = try message.encode(withJSONEncoder: encoder)
+        let encodedData: Data = try message.encode(withJSONEncoder: encoder)
         guard let encodedString = String(data: encodedData, encoding: .utf8) else { throw HFCodingError.encodingError("unable to convert encoded json to string") }
         writeText(encodedString)
     }

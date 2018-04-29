@@ -108,6 +108,7 @@ class SwifterServerTransport: ServerTransport {
         case "leave": return try decoder.decode(HFTransportLeave.self, from: message)
         case "sync": return try decoder.decode(HFTransportSynchronize.self, from: message)
         case "requestSync": return try decoder.decode(HFTransportRequestSynchronize.self, from: message)
+        case "gameStateUpdate": return try decoder.decode(HFTransportGameStateUpdate.self, from: message)
         default: throw HFCodingError.decodingError("unknown operaotr '\(op)' from the message")
         }
     }
