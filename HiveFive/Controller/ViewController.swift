@@ -184,10 +184,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
 extension ViewController: BoardViewDelegate {
     func didTap(on node: HexNode) {
-        if node.color != hive.currentPlayer && node.identity != .dummy {
-            post(name: displayMsgNotification, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
+        switch hive.select(node: node) {
+        case .tappedWrongNode: post(name: displayMsgNotification, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
+        case .violatedImmobilized4: post(name: displayMsgNotification, object: "Cannot Move")
+        default: return
         }
-        hive.select(node: node)
     }
     
     func didTapOnBoard() {

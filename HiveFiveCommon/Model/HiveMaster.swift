@@ -12,5 +12,14 @@ import Foundation
  A simple computer opponent for the Hive board game.
  */
 class HiveMaster {
+    var color: Color
+    
+    /**
+     Black always goes first.
+     */
+    init(color: Color) {
+        self.color = color
+    }
+    
     
 }

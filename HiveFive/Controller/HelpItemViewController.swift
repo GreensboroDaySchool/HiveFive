@@ -107,7 +107,7 @@ extension HelpItemViewController: BoardViewDelegate {
         if node.identity == .dummy {return} // Moves are not allowed.
         let preserved = node.color
         node.color = hive.currentPlayer
-        hive.select(node: node)
+        let _ = hive.select(node: node)
         node.color = preserved
     }
     

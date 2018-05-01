@@ -38,8 +38,14 @@ class Hive: Codable {
     
     /**
      Whether the queen is required to be on the board in the first 4 moves.
+     Defaults to true.
      */
-    var queenOutInFirstFour = true
+    var queen4 = true
+    
+    /**
+     Whether the pieces can move in the first 4 moves.
+     */
+    var immobilized4 = true
     
     /**
      Default hand of a player by Hive's rule
@@ -67,8 +73,14 @@ class Hive: Codable {
         didSet {delegate?.selectedNodeDidUpdate()}
     }
     
+    /**
+     Whether the user has selected a new node.
+     */
     private var selectedNewNode = false
     
+    /**
+     Game State
+     */
     var hasEnded = false
     
     var blackHand: Hand
@@ -112,15 +124,24 @@ class Hive: Codable {
     }
     
     /**
+     Checks if the player violates immobilized4 rule.
+     - Returns: False if the rule is violated.
+     - Todo: I might have misinterpretted this rule.
+     */
+    func canMove(color: Color) -> Bool {
+        return !immobilized4 || containsNode{$0.valueEquals(QueenBee(color: color))}
+    }
+    
+    /**
      The hive reacts according to the type of node that is selected and the node that is previously selected.
      1) If QueenBee is previously selected and now a destination node is selected, the hive would
      react by moving QueenBee to the destination node and tell the delegate that the structure has updated.
      - Todo: Implement
      */
-    func select(node: HexNode) {
+    func select(node: HexNode) -> ExitStatus {
         if hasEnded {
             delegate?.gameHasEnded()
-            return
+            return .gameEnded
         }
         switch node.identity {
         case .dummy:
@@ -166,18 +187,30 @@ class Hive: Codable {
             }
             
             updateGameState() // Detect if a winner has emerged.
+            return .normal
         default:
             if node.color != currentPlayer {
                 // Prevent the current player from selecting opponent's pieces
-                return
+                return .tappedWrongNode
+            } else if immobilized4 && !canMove(color: currentPlayer) {
+                return .violatedImmobilized4
             }
+            
             selectedNode = node
             availablePositions = node.uniqueAvailableMoves()
             if selectedNewNode {
                 delegate?.didDeselect()
                 selectedNewNode = false
             }
+            return .normal
         }
+    }
+    
+    enum ExitStatus {
+        case violatedImmobilized4
+        case tappedWrongNode
+        case gameEnded
+        case normal
     }
     
     /**
@@ -295,8 +328,15 @@ class Hive: Codable {
     private func passTurn(handChanged: Bool = true) {
         removeExhaustedNodes()
         if handChanged {
+            // Check if any rules are violated, and if, enforce them.
+            var hand = opponentHand
+            if queen4 && countNodes(criterion: {$0.color == nextPlayer}) == 3
+                && !containsNode{$0.identity == .queenBee && $0.color == nextPlayer} {
+                // Force the player to delt a queen bee
+                hand = [.queenBee : 1]
+            }
             // Present the opponent's hand, since it is now the next player's turn
-            delegate?.handDidUpdate(hand: opponentHand, color: nextPlayer)
+            delegate?.handDidUpdate(hand: hand, color: nextPlayer)
         }
         delegate?.structureDidUpdate()
         selectedNode = nil
@@ -338,6 +378,18 @@ class Hive: Codable {
 
     func pathTo(node: HexNode) -> Path {
         return root!.derivePaths().filter{$0.destination === node}[0]
+    }
+    
+    /**
+     Count the number of nodes in the hive that meet the given criterion.
+     - Parameter criterion: The criterion by which a node should meet in order to be counted.
+     */
+    func countNodes(criterion: (HexNode) -> Bool) -> Int {
+        return root?.connectedNodes().filter(criterion).count ?? 0
+    }
+    
+    func containsNode(criterion: (HexNode) -> Bool) -> Bool {
+        return root?.connectedNodes().contains(where: criterion) ?? false
     }
 
     required init(from decoder: Decoder) throws{

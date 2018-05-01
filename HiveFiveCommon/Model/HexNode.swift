@@ -370,6 +370,7 @@ class HexNode: IdentityProtocol {
     
     /**
      Make a copy of all of the nodes that are connected to root, i.e. the entire hive.
+     This can be quite tricky...
      */
     static func clone(root: HexNode) -> HexNode {
         let paths = root.derivePaths()
@@ -385,6 +386,12 @@ class HexNode: IdentityProtocol {
             }
         }
         return newRoot
+    }
+}
+
+extension HexNode {
+    func valueEquals(_ node: HexNode) -> Bool {
+        return identity == node.identity && color == node.color
     }
 }
 

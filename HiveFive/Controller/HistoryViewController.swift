@@ -84,7 +84,7 @@ extension HistoryViewController: BoardViewDelegate {
         if node.color != hive.currentPlayer && node.identity != .dummy {
             post(name: displayMsgNotification, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
         }
-        hive.select(node: node)
+        let _ = hive.select(node: node)
     }
     
     func didTapOnBoard() {
