@@ -362,12 +362,29 @@ class HexNode: IdentityProtocol {
     
     /**
      A newly instantiated HexNode that is identical to the current node.
-     - Note: Includes possibly invalid neighbor references.
+     - Note: Does not include possibly invalid neighbor references.
      */
     func clone() -> HexNode{
-        let node = identity.new(color: color)
-        node.neighbors = neighbors
-        return node
+        return identity.new(color: color)
+    }
+    
+    /**
+     Make a copy of all of the nodes that are connected to root, i.e. the entire hive.
+     */
+    static func clone(root: HexNode) -> HexNode {
+        let paths = root.derivePaths()
+        let newRoot = root.clone()
+        paths.forEach{(route, destination) in
+            let newNode = destination.clone()
+            newNode.neighbors = newRoot.neighbors // Put the new node at the position of the original node
+            let dirs = route.directions
+            if dirs.count == 1 { // Immediate neighbors of root are handled with caution
+                newNode.move(to: dirs.first!, of: newRoot)
+            } else {
+                newNode.move(by: route)
+            }
+        }
+        return newRoot
     }
 }
 

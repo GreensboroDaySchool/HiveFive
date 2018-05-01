@@ -109,6 +109,8 @@
 		32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
 		32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
 		32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D154206BEFFF008444F4 /* BoardView.swift */; };
+		32F2A9DA2097E0D6008E2407 /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2A9D92097E0D6008E2407 /* HiveMaster.swift */; };
+		32F2A9DD2097E14A008E2407 /* HiveMaster_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2A9DB2097E14A008E2407 /* HiveMaster_Tests.swift */; };
 		32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7EA1020804BF200BCBDDD /* Sound.swift */; };
 		32F7EA1320804F9700BCBDDD /* 落子#1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */; };
 		33F75004D62237AAA4CAAF79 /* Thailand.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75D3F037D4E62A707CEF2 /* Thailand.png */; };
@@ -882,6 +884,8 @@
 		32D1D14B206BEAAC008444F4 /* Spider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
 		32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
 		32D1D154206BEFFF008444F4 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		32F2A9D92097E0D6008E2407 /* HiveMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveMaster.swift; sourceTree = "<group>"; };
+		32F2A9DB2097E14A008E2407 /* HiveMaster_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveMaster_Tests.swift; sourceTree = "<group>"; };
 		32F7EA1020804BF200BCBDDD /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "落子#1.mp3"; sourceTree = "<group>"; };
 		33F750078A79A8B3430F6169 /* Dominica.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dominica.png; sourceTree = "<group>"; };
@@ -1769,6 +1773,7 @@
 			children = (
 				2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */,
 				2CFCE4C6206C60590041EDD1 /* Info.plist */,
+				32F2A9DB2097E14A008E2407 /* HiveMaster_Tests.swift */,
 			);
 			path = "HiveFive Tests";
 			sourceTree = "<group>";
@@ -1879,6 +1884,7 @@
 				32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */,
 				32D1D14B206BEAAC008444F4 /* Spider.swift */,
 				2C016AA320935DD300398D34 /* Hive+Encodable.swift */,
+				32F2A9D92097E0D6008E2407 /* HiveMaster.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3513,6 +3519,7 @@
 				33F75748490186AB0E6B0C61 /* Common+Extensions.swift in Sources */,
 				33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */,
 				321E1655207AB43F0053C87A /* ProfileNameTableViewCell.swift in Sources */,
+				32F2A9DA2097E0D6008E2407 /* HiveMaster.swift in Sources */,
 				320FDBA920829EF000E0F62A /* Extension+UIView.swift in Sources */,
 				33F755EE5A07C9ED6375B6FD /* String+Extensions.swift in Sources */,
 				33F751C0028669CD8BA9657C /* UIView+Extensions.swift in Sources */,
@@ -3547,6 +3554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */,
+				32F2A9DD2097E14A008E2407 /* HiveMaster_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

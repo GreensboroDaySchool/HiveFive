@@ -339,22 +339,6 @@ class Hive: Codable {
     func pathTo(node: HexNode) -> Path {
         return root!.derivePaths().filter{$0.destination === node}[0]
     }
-    
-    /**
-     It is meaningless to be able to make clones of each individual nodes;
-     This method makes a copy of all of the nodes connected to root, i.e. the entire hive.
-     - Todo: DEBUG
-     */
-    static func clone(root: HexNode) -> HexNode {
-        let newRoot = root.clone()
-        newRoot.neighbors.available().forEach {
-            let newNeighbor = $0.node.clone()
-            newNeighbor.neighbors[$0.dir.opposite()] = nil // Terminate connection with root
-            let cloned = Hive.clone(root: newNeighbor)
-            cloned.move(to: $0.dir, of: newRoot)
-        }
-        return newRoot
-    }
 
     required init(from decoder: Decoder) throws{
         history = History()
