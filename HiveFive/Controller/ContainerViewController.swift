@@ -23,6 +23,7 @@ import UIKit
 class ContainerViewController: SlideMenuController {
 
     @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,9 @@ class ContainerViewController: SlideMenuController {
         )
         
         // Do any additional setup after loading the view.
-        notificationLabel.isHidden = true
-        notificationLabel.clipsToBounds = true
-        notificationLabel.layer.cornerRadius = uiCornerRadius
+        visualEffectView.isHidden = true
+        visualEffectView.clipsToBounds = true
+        visualEffectView.layer.cornerRadius = uiCornerRadius
     }
     
     @objc func receivedNotificationRequest(_ notification: Notification) {
@@ -56,20 +57,20 @@ class ContainerViewController: SlideMenuController {
      */
     private func displayNotification(msg: String) {
         if !shouldShowAlerts() {return}
-        notificationLabel.isHidden = false
+        visualEffectView.isHidden = false
         notificationLabel.text = msg
         
 
-        notificationLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
+        visualEffectView.transform = CGAffineTransform(scaleX: 0, y: 0)
 //        self.view!.addSubview(notificationLabel)
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseOut, animations: {() -> Void in
-            self.notificationLabel.transform = CGAffineTransform.identity
+            self.visualEffectView.transform = CGAffineTransform.identity
         }) { _ in
             UIView.animate(withDuration: 0.5, delay: 1, animations: {[unowned self] in
-                self.notificationLabel.alpha = 0
+                self.visualEffectView.alpha = 0
                 }, completion: {_ in
-                    self.notificationLabel.alpha = 1
-                    self.notificationLabel.isHidden = true
+                    self.visualEffectView.alpha = 1
+                    self.visualEffectView.isHidden = true
             })
         }
     }

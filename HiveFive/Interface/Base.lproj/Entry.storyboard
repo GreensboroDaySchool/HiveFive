@@ -19,39 +19,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBM-LB-n3R">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3o2-Yd-Fi0">
                                 <rect key="frame" x="112" y="268.5" width="150" height="150"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.9044574058219178" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S4F-qF-233">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBM-LB-n3R">
+                                            <rect key="frame" x="0.0" y="-0.5" width="150" height="150"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="oBM-LB-n3R" secondAttribute="height" multiplier="1:1" id="08m-rf-pbk"/>
+                                                <constraint firstAttribute="height" constant="150" id="rDw-cn-3cA"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Notification Message">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="26" name="GillSans"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="oBM-LB-n3R" secondAttribute="trailing" id="7yw-Z2-xTt"/>
+                                        <constraint firstItem="oBM-LB-n3R" firstAttribute="leading" secondItem="S4F-qF-233" secondAttribute="leading" id="Meh-kM-zWd"/>
+                                        <constraint firstItem="oBM-LB-n3R" firstAttribute="top" secondItem="S4F-qF-233" secondAttribute="top" id="cyn-10-bhU"/>
+                                        <constraint firstAttribute="bottom" secondItem="oBM-LB-n3R" secondAttribute="bottom" id="nO1-nk-qog"/>
+                                    </constraints>
+                                </view>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="oBM-LB-n3R" secondAttribute="height" multiplier="1:1" id="08m-rf-pbk"/>
-                                    <constraint firstAttribute="height" constant="150" id="rDw-cn-3cA"/>
+                                    <constraint firstAttribute="height" constant="150" id="5QM-53-oih"/>
+                                    <constraint firstAttribute="width" secondItem="3o2-Yd-Fi0" secondAttribute="height" multiplier="1:1" id="l0H-4g-vvz"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Notification Message">
-                                        <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <font key="NSFont" size="26" name="GillSans"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oBM-LB-n3R" firstAttribute="centerX" secondItem="2se-Ev-q8C" secondAttribute="centerX" id="ZPi-8I-1Rj"/>
-                            <constraint firstItem="oBM-LB-n3R" firstAttribute="centerY" secondItem="2se-Ev-q8C" secondAttribute="centerY" id="hL4-sD-P1T"/>
+                            <constraint firstItem="3o2-Yd-Fi0" firstAttribute="centerY" secondItem="2se-Ev-q8C" secondAttribute="centerY" id="JPk-7i-A2K"/>
+                            <constraint firstItem="3o2-Yd-Fi0" firstAttribute="centerX" secondItem="2se-Ev-q8C" secondAttribute="centerX" id="Uef-Qg-uaM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2se-Ev-q8C"/>
                     </view>
                     <connections>
                         <outlet property="notificationLabel" destination="oBM-LB-n3R" id="lb6-ay-ELE"/>
+                        <outlet property="visualEffectView" destination="3o2-Yd-Fi0" id="5Ul-7L-jRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ri-Ir-5OJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
