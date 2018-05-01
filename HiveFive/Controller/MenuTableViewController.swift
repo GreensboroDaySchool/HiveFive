@@ -25,6 +25,7 @@ class MenuTableViewController: UITableViewController {
     let menuItems = [
 //        "Settings",
         "Appearance",
+        "Rules",
         "Help",
         "About"
     ]

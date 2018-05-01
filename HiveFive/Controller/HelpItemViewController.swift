@@ -28,7 +28,10 @@ class HelpItemViewController: UIViewController {
     
     var nodeDescription: NodeDescription?
     var hive: Hive = {
-        return Hive()
+        let hive = Hive()
+        hive.immobilized4 = false // Turn off rule violation checks
+        hive.queen4 = false
+        return hive
     }()
     
     override func viewDidLoad() {
