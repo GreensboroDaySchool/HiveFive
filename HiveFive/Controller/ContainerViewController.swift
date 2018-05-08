@@ -29,18 +29,9 @@ class ContainerViewController: SlideMenuController {
         super.viewDidLoad()
         
         //MARK: Notification binding
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeDidUpdate(_:)),
-            name: themeUpdateNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(receivedNotificationRequest(_:)),
-            name: displayMsgNotification,
-            object: nil
-        )
+        observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
+        observe(displayMsgNotification, #selector(receivedNotificationRequest(_:)))
+       
         
         // Do any additional setup after loading the view.
         visualEffectView.isHidden = true
