@@ -73,16 +73,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         observe(toolBarVisibilityNotification, #selector(toolBarVisibilityDidUpdate(_:)))
         observe(profileUpdatedNotification, #selector(updateToolBarItemTint))
         observe(kpHackableUpdateNotification, #selector(updateToolBarItemTint))
+        observe(queen4UpdateNotification, #selector(updateQueen4))
+        observe(immobilized4UpdateNotification, #selector(updateImmobilized4))
+        
         
         //MARK: additional setup
         board.patterns = designatedTheme().patterns
         hiveBarItem.image = [#imageLiteral(resourceName: "hive_img"),#imageLiteral(resourceName: "hive_2_img"),#imageLiteral(resourceName: "solid_honeycomb"),#imageLiteral(resourceName: "bee")].random()
         updateToolBarItemTint()
+        hive.queen4 = useQueen4() // Could be better organized
+        hive.immobilized4 = useImmobilized4()
     }
     
-    @objc private func updateToolBarItemTint() {
-        toolBar.items?.forEach{$0.tintColor = currentProfile().keyPaths.filter{$0.key == "Theme"}[0].getValue() as? UIColor} // Hack... bad practice
-    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         hive.delegate = self // establish communication with Model
@@ -279,4 +282,17 @@ extension ViewController {
     @objc func toolBarVisibilityDidUpdate(_ notification: Notification) {
         toolBar.isHidden = !toolBarShouldBeVisible()
     }
+    
+    @objc private func updateToolBarItemTint() {
+        toolBar.items?.forEach{$0.tintColor = currentProfile().keyPaths.filter{$0.key == "Theme"}[0].getValue() as? UIColor} // Hack... bad practice
+    }
+
+    @objc func updateQueen4() {
+        hive.queen4 = useQueen4()
+    }
+    
+    @objc func updateImmobilized4() {
+        hive.immobilized4 = useImmobilized4()
+    }
+    
 }

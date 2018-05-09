@@ -100,6 +100,8 @@
 		328EE1A22076EE940056CB0C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1A12076EE940056CB0C /* Constants.swift */; };
 		3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */; };
 		3291A329207524C400DBF9B2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3291A328207524C400DBF9B2 /* Util.swift */; };
+		32AC584220A245C400A3001F /* Rules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AC584120A245C400A3001F /* Rules.storyboard */; };
+		32AC584420A3662A00A3001F /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AC584320A3662A00A3001F /* RulesViewController.swift */; };
 		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
 		32B109AB206E8D360065E465 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
 		32B109AE206EECC20065E465 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
@@ -874,6 +876,8 @@
 		328EE1A12076EE940056CB0C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiveFive.xcdatamodel; sourceTree = "<group>"; };
 		3291A328207524C400DBF9B2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		32AC584120A245C400A3001F /* Rules.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rules.storyboard; sourceTree = "<group>"; };
+		32AC584320A3662A00A3001F /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		32B109AA206E8D360065E465 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		32B109AD206EECC20065E465 /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
@@ -1645,6 +1649,7 @@
 				2C4E755C20824C2E0035994D /* Help.storyboard */,
 				2C4E755F20824D310035994D /* Menu.storyboard */,
 				2C4E756220824D6C0035994D /* Appearance.storyboard */,
+				32AC584120A245C400A3001F /* Rules.storyboard */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1866,6 +1871,7 @@
 				328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */,
 				321CED302077D9D400805F74 /* UserInterfaceViewController.swift */,
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
+				32AC584320A3662A00A3001F /* RulesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3262,6 +3268,7 @@
 				33F7577DFB0FC4F1DECF1681 /* MQ.png in Resources */,
 				33F75505C93E385BF07288B1 /* MR.png in Resources */,
 				33F75E1ECCB0A2F09574E0D0 /* MS.png in Resources */,
+				32AC584220A245C400A3001F /* Rules.storyboard in Resources */,
 				33F75FE9A6C40585D5E83082 /* MT.png in Resources */,
 				33F75AD715783E714AA7C9F4 /* MU.png in Resources */,
 				33F7592953B3418A2922B92F /* MV.png in Resources */,
@@ -3476,6 +3483,7 @@
 				3281AC322079A15F00DE7EDA /* ColorTableViewCell.swift in Sources */,
 				33F75170870EFDA4F639DFD7 /* DatePickerViewController.swift in Sources */,
 				33F758FB688623BEC1FAFD68 /* ColorPickerViewController.swift in Sources */,
+				32AC584420A3662A00A3001F /* RulesViewController.swift in Sources */,
 				320FDB9720829D3400E0F62A /* Extension+Dictionary.swift in Sources */,
 				2C016A9F2092B8E000398D34 /* TransportOperation.swift in Sources */,
 				33F7598F05400F330CECDEFA /* ItemWithImage.swift in Sources */,

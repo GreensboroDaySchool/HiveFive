@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ym0-aH-5ks">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rules-->
+        <scene sceneID="wmR-B7-daU">
+            <objects>
+                <viewController storyboardIdentifier="Rules" title="Rules" id="ym0-aH-5ks" customClass="RulesViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S29-cc-BuO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Queen 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y1-km-VI5">
+                                <rect key="frame" x="8" y="131" width="66" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haK-9I-Zs9">
+                                <rect key="frame" x="318" y="126" width="51" height="31"/>
+                                <connections>
+                                    <action selector="queen4SwitchValueChanged:" destination="ym0-aH-5ks" eventType="valueChanged" id="PGc-om-Y0s"/>
+                                </connections>
+                            </switch>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If this is on, the queen been must be placed on the board in the first 4 pieces." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrs-sf-Akq">
+                                <rect key="frame" x="4" y="165" width="367" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="bSe-rS-caI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="After changing any of the following rules, restart the game to ensure that they get applied." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENP-Cc-ix7">
+                                <rect key="frame" x="4" y="28" width="367" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="O2R-C9-r17"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Immobilized 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7S-8c-TIg">
+                                <rect key="frame" x="8" y="268" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8j-JR-Gdd">
+                                <rect key="frame" x="318" y="263" width="51" height="31"/>
+                                <connections>
+                                    <action selector="immobilized4SwitchValueChanged:" destination="ym0-aH-5ks" eventType="valueChanged" id="pwU-TL-SZQ"/>
+                                </connections>
+                            </switch>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If this is on, pieces on the board cannot be moved until the queen bee is placed." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tam-6y-CzL">
+                                <rect key="frame" x="4" y="302" width="367" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="1D8-Fz-D8Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="top" secondItem="LW9-th-6PT" secondAttribute="top" constant="8" id="9MF-Li-Fzi"/>
+                            <constraint firstItem="tam-6y-CzL" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="Ahd-pT-GgH"/>
+                            <constraint firstItem="B7S-8c-TIg" firstAttribute="centerY" secondItem="k8j-JR-Gdd" secondAttribute="centerY" id="CUx-4z-h5r"/>
+                            <constraint firstItem="k8j-JR-Gdd" firstAttribute="top" secondItem="Hrs-sf-Akq" secondAttribute="bottom" constant="8" id="F2i-ge-mtK"/>
+                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="tam-6y-CzL" secondAttribute="trailing" constant="4" id="G0W-97-mFY"/>
+                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="ENP-Cc-ix7" secondAttribute="trailing" constant="4" id="J0i-v3-amS"/>
+                            <constraint firstItem="4Y1-km-VI5" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="8" id="W3e-9b-jV3"/>
+                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="top" secondItem="LW9-th-6PT" secondAttribute="top" constant="8" id="WvH-XQ-h80"/>
+                            <constraint firstItem="haK-9I-Zs9" firstAttribute="top" secondItem="ENP-Cc-ix7" secondAttribute="bottom" constant="8" id="ZqZ-bA-DuP"/>
+                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="ENP-Cc-ix7" secondAttribute="trailing" constant="4" id="aAu-c3-y4K"/>
+                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="eH8-N8-wgL"/>
+                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="ivH-1p-k0h"/>
+                            <constraint firstItem="B7S-8c-TIg" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="8" id="jh3-aO-Ak7"/>
+                            <constraint firstItem="tam-6y-CzL" firstAttribute="top" secondItem="k8j-JR-Gdd" secondAttribute="bottom" constant="8" id="kNu-2X-2Ni"/>
+                            <constraint firstItem="Hrs-sf-Akq" firstAttribute="top" secondItem="haK-9I-Zs9" secondAttribute="bottom" constant="8" id="nc9-RM-xoO"/>
+                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="k8j-JR-Gdd" secondAttribute="trailing" constant="8" id="pUN-yF-i9M"/>
+                            <constraint firstItem="4Y1-km-VI5" firstAttribute="centerY" secondItem="haK-9I-Zs9" secondAttribute="centerY" id="pnI-Ft-r1i"/>
+                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="haK-9I-Zs9" secondAttribute="trailing" constant="8" id="qbo-Ud-zNf"/>
+                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="Hrs-sf-Akq" secondAttribute="trailing" constant="4" id="rF4-db-iBA"/>
+                            <constraint firstItem="Hrs-sf-Akq" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="vkT-UB-dIr"/>
+                            <constraint firstItem="haK-9I-Zs9" firstAttribute="top" secondItem="ENP-Cc-ix7" secondAttribute="bottom" constant="8" id="wIp-gS-Jvi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LW9-th-6PT"/>
+                    </view>
+                    <connections>
+                        <outlet property="immobilized4Switch" destination="k8j-JR-Gdd" id="lo8-ae-tmQ"/>
+                        <outlet property="queen4Switch" destination="haK-9I-Zs9" id="S4c-9Z-nEj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tet-CC-H2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143" y="143"/>
+        </scene>
+    </scenes>
+</document>

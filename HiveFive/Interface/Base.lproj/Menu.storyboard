@@ -37,6 +37,7 @@
                         <segue destination="hur-c5-Z6l" kind="show" identifier="About" id="iAS-wG-jKc"/>
                         <segue destination="TtN-nD-ZXT" kind="show" identifier="Help" id="aLC-kW-8Ru"/>
                         <segue destination="jgV-NQ-cvi" kind="show" identifier="Appearance" id="o4q-Kr-bcg"/>
+                        <segue destination="Pva-yA-Rd4" kind="show" identifier="Rules" id="Ts5-Uc-oNw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edd-jN-m7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,6 +67,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDW-08-8JF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3626" y="40"/>
+        </scene>
+        <!--Rules-->
+        <scene sceneID="Mu0-C3-gwc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Rules" id="Pva-yA-Rd4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CgL-1A-p8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3635" y="-191"/>
         </scene>
         <!--Help-->
         <scene sceneID="L4n-bA-gqu">
