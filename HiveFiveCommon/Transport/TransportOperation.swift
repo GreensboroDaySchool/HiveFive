@@ -20,6 +20,23 @@ extension HFTransportModel {
     static var guestDidJoin: HFTransportGuestDidJoin.Type { return HFTransportGuestDidJoin.self }
 }
 
+protocol DecodingDecoder {
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
+}
+
+func constructHFModel(_ message: Data, type: String, with decoder: DecodingDecoder) throws -> HFTransportModel {
+    switch type {
+    case "createRoom": return try decoder.decode(HFTransportCreateRoom.self, from: message)
+    case "join": return try decoder.decode(HFTransportJoin.self, from: message)
+    case "didJoin": return try decoder.decode(HFTransportDidJoin.self, from: message)
+    case "leave": return try decoder.decode(HFTransportLeave.self, from: message)
+    case "sync": return try decoder.decode(HFTransportSynchronize.self, from: message)
+    case "requestSync": return try decoder.decode(HFTransportRequestSynchronize.self, from: message)
+    case "gameStateUpdate": return try decoder.decode(HFTransportGameStateUpdate.self, from: message)
+    default: throw HFCodingError.decodingError("unknown operaotr '\(type)' from the message")
+    }
+}
+
 /**
  [Client] -> [Server]
  

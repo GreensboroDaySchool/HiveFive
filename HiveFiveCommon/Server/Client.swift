@@ -33,6 +33,7 @@ class Client: Hashable, CustomStringConvertible {
         self.game = game
         self.color = color
         try? send(HFTransportDidJoin(token: token, roomNumber: game.id, color: color))
+        try? send(HFTransportSynchronize(hive: game.hive))
     }
     
     //This is where the Client class handles all the messages sent to it

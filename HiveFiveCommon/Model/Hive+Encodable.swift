@@ -39,12 +39,24 @@ extension Hive{
     }
     
     func encode(to coder: Encoder) throws {
-        guard let root = root else { throw HFCodingError.encodingError("root node not defined") }
-        guard let nodes = allNodes else { throw HFCodingError.encodingError("nodes not defined") }
+        //create an container
         var container = coder.container(keyedBy: HFHiveCoderKeys.self)
         
-        //encode all the objects
+        //encode hands
+        var blackHandContainer = container.nestedContainer(keyedBy: Identity.self, forKey: .blackHands)
+        try blackHand.forEach{ try blackHandContainer.encode($0.value, forKey: $0.key) }
+        var whiteHandContainer = container.nestedContainer(keyedBy: Identity.self, forKey: .whiteHands)
+        try whiteHand.forEach{ try whiteHandContainer.encode($0.value, forKey: $0.key)}
+        
+        //start of the game - root is nil, encode -1 to the root hash
         var referencesContainer = container.nestedUnkeyedContainer(forKey: .references)
+        guard let root = root else {
+            try container.encode(-1, forKey: .rootNode)
+            return
+        }
+        guard let nodes = allNodes else { throw HFCodingError.encodingError("nodes not defined") }
+        
+        //encode all the objects
         try nodes.forEach{
             node in
             var nodeContainer = referencesContainer.nestedContainer(keyedBy: HFHiveCoderKeys.HFHiveNodeCoderKeys.self)
@@ -63,19 +75,19 @@ extension Hive{
         
         //encode root reference
         try container.encode(root.hashValue, forKey: .rootNode)
-        
-        //encode hands
-        var blackHandContainer = container.nestedContainer(keyedBy: Identity.self, forKey: .blackHands)
-        try blackHand.forEach{ try blackHandContainer.encode($0.value, forKey: $0.key) }
-        var whiteHandContainer = container.nestedContainer(keyedBy: Identity.self, forKey: .whiteHands)
-        try whiteHand.forEach{ try whiteHandContainer.encode($0.value, forKey: $0.key)}
     }
 }
 
 extension Hive {
-    static func decodeHive(from coder: Decoder) throws -> HexNode {
-        var nodes = [Int:(HexNode,[Int])]()
+    static func decodeHive(from coder: Decoder) throws -> HexNode? {
         let container = try coder.container(keyedBy: HFHiveCoderKeys.self)
+        
+        //see if there is a root hash first
+        let rootHash = try container.decode(Int.self, forKey: .rootNode)
+        //return nil if there isn't one
+        if rootHash == -1 { return nil }
+        
+        var nodes = [Int:(HexNode,[Int])]()
         var referencesContainer = try container.nestedUnkeyedContainer(forKey: .references)
         
         //First, instantiate all nodes
@@ -109,7 +121,6 @@ extension Hive {
         }
         
         //Last, obtain the root node from nodes pool
-        let rootHash = try container.decode(Int.self, forKey: .rootNode)
         guard let root = nodes[rootHash]?.0 else { throw HFCodingError.decodingError("root node not found from hash") }
         
         return root

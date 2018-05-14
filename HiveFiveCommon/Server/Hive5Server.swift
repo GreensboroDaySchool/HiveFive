@@ -41,6 +41,7 @@ class Hive5Server {
         if let existingRoom = games.reduce((Game?).none, { $1.id == roomNumber ? $1 : $0 }) {
             //Only able to join when the state is waiting
             if case .waiting = existingRoom.state {
+                clients.append(client)
                 existingRoom.guest = client
                 //Tell the client that it did join the room with this color
                 client.didJoin(game: existingRoom, as: existingRoom.host.color!.opposite)

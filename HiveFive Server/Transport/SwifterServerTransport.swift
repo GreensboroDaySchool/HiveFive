@@ -38,7 +38,7 @@ class SwifterServerTransport: ServerTransport {
                     client in
                     guard handled == false else { return }
                     guard let client = client as? SwifterClient else { return }
-                    if client.session?.hashValue == session.hashValue {
+                    if client.session?.objectHash == session.objectHash {
                         client.onMessage(decodedMessage)
                         handled = true
                     }
@@ -62,7 +62,9 @@ class SwifterServerTransport: ServerTransport {
             case let message as HFTransportJoin:
                 //Check for previous instantiated client if the token is present
                 if let token = message.token {
+                    print("found the token: \(token)")
                     let player = server.clients.reduce(Client?.none){
+                        print("matching: \($1.token)")
                         return $1.token == token ? $1 : $0
                     }
                     if let swifterPlayer = player as? SwifterClient {
@@ -99,17 +101,6 @@ class SwifterServerTransport: ServerTransport {
             else { throw HFCodingError.decodingError("unable to decode message") }
         guard let op = deserialized["op"] as? String
             else { throw HFCodingError.decodingError("unable to decode message operator") }
-        let decoder = JSONDecoder()
-        
-        switch op {
-        case "createRoom": return try decoder.decode(HFTransportCreateRoom.self, from: message)
-        case "join": return try decoder.decode(HFTransportJoin.self, from: message)
-        case "didJoin": return try decoder.decode(HFTransportDidJoin.self, from: message)
-        case "leave": return try decoder.decode(HFTransportLeave.self, from: message)
-        case "sync": return try decoder.decode(HFTransportSynchronize.self, from: message)
-        case "requestSync": return try decoder.decode(HFTransportRequestSynchronize.self, from: message)
-        case "gameStateUpdate": return try decoder.decode(HFTransportGameStateUpdate.self, from: message)
-        default: throw HFCodingError.decodingError("unknown operaotr '\(op)' from the message")
-        }
+        return try constructHFModel(message, type: op, with: JSONDecoder())
     }
 }

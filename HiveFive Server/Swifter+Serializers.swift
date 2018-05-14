@@ -23,3 +23,9 @@ extension HFTransportModel {
         return try encoder.encode(self)
     }
 }
+
+extension JSONDecoder: DecodingDecoder { }
+
+extension WebSocketSession {
+    var objectHash: Int { return ObjectIdentifier(self).hashValue }
+}

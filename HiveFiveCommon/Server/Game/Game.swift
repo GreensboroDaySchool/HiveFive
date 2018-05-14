@@ -43,9 +43,6 @@ class Game: Equatable{
     func on(guestJoin guest: Client){
         self.guest = guest
         guest.color = host.color!.opposite
-        try? host.send(HFTransportGuestDidJoin(guestName: guest.name, guestColor: guest.color!))
-        //Tell the guest to sync the hive
-        try? guest.send(HFTransportSynchronize(hive: hive))
         updateState(.playing, reason: "guest joined the game")
     }
     
