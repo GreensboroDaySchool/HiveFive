@@ -18,6 +18,7 @@
  */
 
 import UIKit
+import Hive5Common
 
 private let reuseIdentifier = "cell3"
 

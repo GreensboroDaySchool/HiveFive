@@ -19,6 +19,7 @@
 
 import UIKit
 import CoreData
+import Hive5Common
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

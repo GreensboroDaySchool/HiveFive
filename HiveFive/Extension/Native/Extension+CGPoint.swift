@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Hive5Common
 
 extension CGPoint {
     

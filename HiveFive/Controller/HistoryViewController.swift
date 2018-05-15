@@ -18,6 +18,7 @@
  */
 
 import UIKit
+import Hive5Common
 
 // MARK: hive delegation
 let structureDidUpdateNotification = Notification.Name("structureDidUpdate")

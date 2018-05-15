@@ -18,6 +18,7 @@
  */
 
 import Foundation
+import Hive5Common
 
 /**
  Default hive structure for viewing/debugging purposes

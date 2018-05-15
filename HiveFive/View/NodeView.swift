@@ -18,6 +18,7 @@
  */
 
 import UIKit
+import Hive5Common
 
 @IBDesignable
 class NodeView: UIView {

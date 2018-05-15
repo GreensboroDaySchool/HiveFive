@@ -9,15 +9,6 @@
 /* Begin PBXBuildFile section */
 		2C0169A72092AAA000398D34 /* Swifter+Serializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */; };
 		2C016A942092B55500398D34 /* Swifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C016A8C2092B54500398D34 /* Swifter.framework */; };
-		2C016A972092B8CD00398D34 /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */; };
-		2C016A9A2092B8E000398D34 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E760B2082BDD80035994D /* Game.swift */; };
-		2C016A9B2092B8E000398D34 /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */; };
-		2C016A9C2092B8E000398D34 /* Hive5Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76082082BD8B0035994D /* Hive5Server.swift */; };
-		2C016A9D2092B8E000398D34 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761C2082C4090035994D /* Client.swift */; };
-		2C016A9E2092B8E000398D34 /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76122082BEF60035994D /* ServerTransport.swift */; };
-		2C016A9F2092B8E000398D34 /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76212082D7A00035994D /* TransportOperation.swift */; };
-		2C016AA420935DD300398D34 /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016AA320935DD300398D34 /* Hive+Encodable.swift */; };
-		2C016AA520935DD300398D34 /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C016AA320935DD300398D34 /* Hive+Encodable.swift */; };
 		2C4E7550208247190035994D /* HFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E754F208247190035994D /* HFInterface.swift */; };
 		2C4E7553208247950035994D /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E7551208247950035994D /* History.storyboard */; };
 		2C4E755620824A300035994D /* Board.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755420824A300035994D /* Board.storyboard */; };
@@ -26,30 +17,12 @@
 		2C4E756120824D310035994D /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755F20824D310035994D /* Menu.storyboard */; };
 		2C4E756420824D6C0035994D /* Appearance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E756220824D6C0035994D /* Appearance.storyboard */; };
 		2C4E75B52082B1D10035994D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E75B42082B1D10035994D /* main.swift */; };
-		2C4E75B92082B1F10035994D /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9620829D3400E0F62A /* Extension+Dictionary.swift */; };
-		2C4E75BA2082B1F10035994D /* Extension+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9820829D4D00E0F62A /* Extension+NSObject.swift */; };
-		2C4E75BB2082B1F10035994D /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9A20829D8600E0F62A /* Extension+Date.swift */; };
-		2C4E75BC2082B1F10035994D /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9C20829DAD00E0F62A /* Extension+Decimal.swift */; };
-		2C4E75BD2082B1F10035994D /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9E20829DCA00E0F62A /* Extension+Double.swift */; };
-		2C4E75BE2082B1F10035994D /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA020829DE100E0F62A /* Extension+Array.swift */; };
-		2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
-		2C4E75C02082B1F60035994D /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
-		2C4E75C22082B1F60035994D /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D149206BEA9F008444F4 /* Grasshopper.swift */; };
-		2C4E75C32082B1F60035994D /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
-		2C4E75C42082B1F60035994D /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
-		2C4E75C52082B1F60035994D /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
-		2C4E75C62082B1F60035994D /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7568984C9D4FED040BE69 /* Neighbors.swift */; };
-		2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
-		2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
-		2C4E75C92082B1F60035994D /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
-		2C4E76092082BD8B0035994D /* Hive5Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76082082BD8B0035994D /* Hive5Server.swift */; };
-		2C4E760C2082BDD80035994D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E760B2082BDD80035994D /* Game.swift */; };
-		2C4E76132082BEF60035994D /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76122082BEF60035994D /* ServerTransport.swift */; };
 		2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */; };
-		2C4E761D2082C4090035994D /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761C2082C4090035994D /* Client.swift */; };
 		2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761F2082C9A50035994D /* SwifterClient.swift */; };
-		2C4E76222082D7A00035994D /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76212082D7A00035994D /* TransportOperation.swift */; };
 		2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE195D206E77C400733FA0 /* NodeView.swift */; };
+		2CDD6C5D20AA4BA100124EAE /* Hive5Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */; };
+		2CDD6C5E20AA4BA100124EAE /* Hive5Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2CE6696820AA5E8A007F472D /* NSObject+Observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE6696720AA5E8A007F472D /* NSObject+Observe.swift */; };
 		2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE466206B00880041EDD1 /* AppDelegate.swift */; };
 		2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE468206B00880041EDD1 /* ViewController.swift */; };
 		2CFCE46C206B00880041EDD1 /* Entry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46A206B00880041EDD1 /* Entry.storyboard */; };
@@ -57,12 +30,6 @@
 		2CFCE471206B00880041EDD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */; };
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
-		320FDB9720829D3400E0F62A /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9620829D3400E0F62A /* Extension+Dictionary.swift */; };
-		320FDB9920829D4D00E0F62A /* Extension+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9820829D4D00E0F62A /* Extension+NSObject.swift */; };
-		320FDB9B20829D8600E0F62A /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9A20829D8600E0F62A /* Extension+Date.swift */; };
-		320FDB9D20829DAD00E0F62A /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9C20829DAD00E0F62A /* Extension+Decimal.swift */; };
-		320FDB9F20829DCA00E0F62A /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDB9E20829DCA00E0F62A /* Extension+Double.swift */; };
-		320FDBA120829DE100E0F62A /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA020829DE100E0F62A /* Extension+Array.swift */; };
 		320FDBA320829E2800E0F62A /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA220829E2800E0F62A /* CoreData.swift */; };
 		320FDBA720829ED700E0F62A /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA620829ED700E0F62A /* Extension+UIImage.swift */; };
 		320FDBA920829EF000E0F62A /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA820829EF000E0F62A /* Extension+UIView.swift */; };
@@ -74,7 +41,6 @@
 		320FDBB520829F8D00E0F62A /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB420829F8D00E0F62A /* Extension+CGFloat.swift */; };
 		320FDBB720829FAC00E0F62A /* Extension+CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB620829FAC00E0F62A /* Extension+CGPoint.swift */; };
 		320FDBB92082A25600E0F62A /* Extension+Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB82082A25600E0F62A /* Extension+Vec2D.swift */; };
-		320FDBBB2082A4F300E0F62A /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D142206BE9A1008444F4 /* Hive.swift */; };
 		320FDBBD2082B2DF00E0F62A /* Extension+Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBBC2082B2DF00E0F62A /* Extension+Hive.swift */; };
 		321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED2E2077D27800805F74 /* MenuIconView.swift */; };
 		321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceViewController.swift */; };
@@ -100,16 +66,7 @@
 		328EE1A22076EE940056CB0C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328EE1A12076EE940056CB0C /* Constants.swift */; };
 		3291A3272075245400DBF9B2 /* HiveFive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3291A3252075245400DBF9B2 /* HiveFive.xcdatamodeld */; };
 		3291A329207524C400DBF9B2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3291A328207524C400DBF9B2 /* Util.swift */; };
-		32B109A9206C646F0065E465 /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109A8206C646F0065E465 /* HexNode.swift */; };
-		32B109AB206E8D360065E465 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AA206E8D360065E465 /* Navigation.swift */; };
-		32B109AE206EECC20065E465 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B109AD206EECC20065E465 /* Vec2D.swift */; };
-		32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D145206BEA6F008444F4 /* QueenBee.swift */; };
-		32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D147206BEA8A008444F4 /* Beetle.swift */; };
-		32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D149206BEA9F008444F4 /* Grasshopper.swift */; };
-		32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14B206BEAAC008444F4 /* Spider.swift */; };
-		32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */; };
 		32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1D154206BEFFF008444F4 /* BoardView.swift */; };
-		32F2A9DA2097E0D6008E2407 /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2A9D92097E0D6008E2407 /* HiveMaster.swift */; };
 		32F2A9DD2097E14A008E2407 /* HiveMaster_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2A9DB2097E14A008E2407 /* HiveMaster_Tests.swift */; };
 		32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7EA1020804BF200BCBDDD /* Sound.swift */; };
 		32F7EA1320804F9700BCBDDD /* 落子#1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */; };
@@ -181,7 +138,6 @@
 		33F751DC3605FE5B0510F4AF /* CX.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75E800254D1AF106E347A /* CX.png */; };
 		33F751E93AE703F68D287764 /* Vatican-City.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75E473F72BC6CA326DD02 /* Vatican-City.png */; };
 		33F751ECA537209DEAA4D91D /* Azerbaijan.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F753B0E601995C02934590 /* Azerbaijan.png */; };
-		33F751EE8399CC8C67CF1A35 /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7568984C9D4FED040BE69 /* Neighbors.swift */; };
 		33F751EF2FA20F9ADB0252FF /* Liberia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F751A82FB1B16D3F14082B /* Liberia.png */; };
 		33F751EFAA9202ACFC833095 /* France.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75027419E69351F9A9881 /* France.png */; };
 		33F751F04D9958395F54CE99 /* QA.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F756B241F64E9112B84D45 /* QA.png */; };
@@ -745,6 +701,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		2CDD6C5B20AA4B5500124EAE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2CDD6C5E20AA4BA100124EAE /* Hive5Common.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -800,8 +767,6 @@
 		2C016A642092B52900398D34 /* HttpParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpParser.swift; sourceTree = "<group>"; };
 		2C016A652092B52900398D34 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		2C016A7B2092B54500398D34 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = swifter/XCode/Swifter.xcodeproj; sourceTree = "<group>"; };
-		2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+HiveDelegate.swift"; sourceTree = "<group>"; };
-		2C016AA320935DD300398D34 /* Hive+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hive+Encodable.swift"; sourceTree = "<group>"; };
 		2C4E754F208247190035994D /* HFInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFInterface.swift; sourceTree = "<group>"; };
 		2C4E7552208247950035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/History.storyboard; sourceTree = "<group>"; };
 		2C4E755520824A300035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Board.storyboard; sourceTree = "<group>"; };
@@ -811,14 +776,12 @@
 		2C4E756320824D6C0035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Appearance.storyboard; sourceTree = "<group>"; };
 		2C4E75B22082B1D10035994D /* HiveFive Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiveFive Server"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4E75B42082B1D10035994D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		2C4E76082082BD8B0035994D /* Hive5Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive5Server.swift; sourceTree = "<group>"; };
-		2C4E760B2082BDD80035994D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		2C4E76122082BEF60035994D /* ServerTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTransport.swift; sourceTree = "<group>"; };
 		2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterServerTransport.swift; sourceTree = "<group>"; };
-		2C4E761C2082C4090035994D /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		2C4E761F2082C9A50035994D /* SwifterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterClient.swift; sourceTree = "<group>"; };
-		2C4E76212082D7A00035994D /* TransportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportOperation.swift; sourceTree = "<group>"; };
 		2CCE195D206E77C400733FA0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
+		2CDD6C2520AA48B600124EAE /* libHive5Common iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libHive5Common iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CE6696720AA5E8A007F472D /* NSObject+Observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Observe.swift"; sourceTree = "<group>"; };
 		2CFCE463206B00880041EDD1 /* Hive Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hive Five.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE466206B00880041EDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CFCE468206B00880041EDD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -832,12 +795,6 @@
 		2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HiveFive Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		320FDB9620829D3400E0F62A /* Extension+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Dictionary.swift"; sourceTree = "<group>"; };
-		320FDB9820829D4D00E0F62A /* Extension+NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSObject.swift"; sourceTree = "<group>"; };
-		320FDB9A20829D8600E0F62A /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
-		320FDB9C20829DAD00E0F62A /* Extension+Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Decimal.swift"; sourceTree = "<group>"; };
-		320FDB9E20829DCA00E0F62A /* Extension+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
-		320FDBA020829DE100E0F62A /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
 		320FDBA220829E2800E0F62A /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		320FDBA620829ED700E0F62A /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 		320FDBA820829EF000E0F62A /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
@@ -874,17 +831,7 @@
 		328EE1A12076EE940056CB0C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3291A3262075245400DBF9B2 /* HiveFive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiveFive.xcdatamodel; sourceTree = "<group>"; };
 		3291A328207524C400DBF9B2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		32B109A8206C646F0065E465 /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
-		32B109AA206E8D360065E465 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		32B109AD206EECC20065E465 /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
-		32D1D142206BE9A1008444F4 /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
-		32D1D145206BEA6F008444F4 /* QueenBee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
-		32D1D147206BEA8A008444F4 /* Beetle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beetle.swift; sourceTree = "<group>"; };
-		32D1D149206BEA9F008444F4 /* Grasshopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
-		32D1D14B206BEAAC008444F4 /* Spider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
-		32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
 		32D1D154206BEFFF008444F4 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
-		32F2A9D92097E0D6008E2407 /* HiveMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveMaster.swift; sourceTree = "<group>"; };
 		32F2A9DB2097E14A008E2407 /* HiveMaster_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveMaster_Tests.swift; sourceTree = "<group>"; };
 		32F7EA1020804BF200BCBDDD /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		32F7EA1220804F9700BCBDDD /* 落子#1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "落子#1.mp3"; sourceTree = "<group>"; };
@@ -1097,7 +1044,6 @@
 		33F7566C2D7465F7459198B2 /* ML.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ML.png; sourceTree = "<group>"; };
 		33F75670CE1BE320AB26A175 /* HK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HK.png; sourceTree = "<group>"; };
 		33F756805F782E909ECB57AC /* LR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LR.png; sourceTree = "<group>"; };
-		33F7568984C9D4FED040BE69 /* Neighbors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neighbors.swift; sourceTree = "<group>"; };
 		33F7569DD20DA3D03EBF537A /* Benin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Benin.png; sourceTree = "<group>"; };
 		33F756A458D8E8EF686F87CA /* Congo-(Republic).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Congo-(Republic).png"; sourceTree = "<group>"; };
 		33F756B166C23D623BC410AE /* Burundi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Burundi.png; sourceTree = "<group>"; };
@@ -1408,6 +1354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDD6C5D20AA4BA100124EAE /* Hive5Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,6 +1576,7 @@
 		2C016A932092B55500398D34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CDD6C2520AA48B600124EAE /* libHive5Common iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1649,17 +1597,6 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
-		2C4E7596208298580035994D /* HiveFiveCommon */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E76072082BD710035994D /* Server */,
-				2C4E76112082BEC00035994D /* Transport */,
-				320FDB9520829CCD00E0F62A /* Utilities */,
-				32D1D144206BE9BE008444F4 /* Model */,
-			);
-			path = HiveFiveCommon;
-			sourceTree = "<group>";
-		};
 		2C4E75B32082B1D10035994D /* HiveFive Server */ = {
 			isa = PBXGroup;
 			children = (
@@ -1669,34 +1606,6 @@
 				2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */,
 			);
 			path = "HiveFive Server";
-			sourceTree = "<group>";
-		};
-		2C4E76072082BD710035994D /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E760A2082BDBA0035994D /* Game */,
-				2C4E76082082BD8B0035994D /* Hive5Server.swift */,
-				2C4E761C2082C4090035994D /* Client.swift */,
-			);
-			path = Server;
-			sourceTree = "<group>";
-		};
-		2C4E760A2082BDBA0035994D /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E760B2082BDD80035994D /* Game.swift */,
-				2C016A952092B8CA00398D34 /* Game+HiveDelegate.swift */,
-			);
-			path = Game;
-			sourceTree = "<group>";
-		};
-		2C4E76112082BEC00035994D /* Transport */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E76122082BEF60035994D /* ServerTransport.swift */,
-				2C4E76212082D7A00035994D /* TransportOperation.swift */,
-			);
-			path = Transport;
 			sourceTree = "<group>";
 		};
 		2C4E761B2082C3AD0035994D /* Transport */ = {
@@ -1718,7 +1627,7 @@
 		2CFCE45A206B00880041EDD1 = {
 			isa = PBXGroup;
 			children = (
-				2C4E7596208298580035994D /* HiveFiveCommon */,
+				2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */,
 				2C4E75B32082B1D10035994D /* HiveFive Server */,
 				2CFCE465206B00880041EDD1 /* HiveFive */,
 				2CFCE4C3206C60590041EDD1 /* HiveFive Tests */,
@@ -1786,19 +1695,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		320FDB9520829CCD00E0F62A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				320FDB9620829D3400E0F62A /* Extension+Dictionary.swift */,
-				320FDB9820829D4D00E0F62A /* Extension+NSObject.swift */,
-				320FDB9A20829D8600E0F62A /* Extension+Date.swift */,
-				320FDB9C20829DAD00E0F62A /* Extension+Decimal.swift */,
-				320FDB9E20829DCA00E0F62A /* Extension+Double.swift */,
-				320FDBA020829DE100E0F62A /* Extension+Array.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		320FDBA420829E4900E0F62A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1823,6 +1719,7 @@
 				320FDBB620829FAC00E0F62A /* Extension+CGPoint.swift */,
 				320FDBB82082A25600E0F62A /* Extension+Vec2D.swift */,
 				320FDBBC2082B2DF00E0F62A /* Extension+Hive.swift */,
+				2CE6696720AA5E8A007F472D /* NSObject+Observe.swift */,
 			);
 			path = Native;
 			sourceTree = "<group>";
@@ -1868,25 +1765,6 @@
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		32D1D144206BE9BE008444F4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				32B109AD206EECC20065E465 /* Vec2D.swift */,
-				32D1D147206BEA8A008444F4 /* Beetle.swift */,
-				32D1D149206BEA9F008444F4 /* Grasshopper.swift */,
-				32B109A8206C646F0065E465 /* HexNode.swift */,
-				32D1D142206BE9A1008444F4 /* Hive.swift */,
-				32B109AA206E8D360065E465 /* Navigation.swift */,
-				33F7568984C9D4FED040BE69 /* Neighbors.swift */,
-				32D1D145206BEA6F008444F4 /* QueenBee.swift */,
-				32D1D14D206BEAB9008444F4 /* SoldierAnt.swift */,
-				32D1D14B206BEAAC008444F4 /* Spider.swift */,
-				2C016AA320935DD300398D34 /* Hive+Encodable.swift */,
-				32F2A9D92097E0D6008E2407 /* HiveMaster.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		32D1D14F206BEE71008444F4 /* View */ = {
@@ -2687,6 +2565,7 @@
 				2CFCE45F206B00880041EDD1 /* Sources */,
 				2CFCE460206B00880041EDD1 /* Frameworks */,
 				2CFCE461206B00880041EDD1 /* Resources */,
+				2CDD6C5B20AA4B5500124EAE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3386,33 +3265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4E76092082BD8B0035994D /* Hive5Server.swift in Sources */,
-				2C4E75BD2082B1F10035994D /* Extension+Double.swift in Sources */,
 				2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */,
-				2C4E75BC2082B1F10035994D /* Extension+Decimal.swift in Sources */,
-				2C4E761D2082C4090035994D /* Client.swift in Sources */,
-				2C4E75BF2082B1F60035994D /* Vec2D.swift in Sources */,
-				2C4E75C72082B1F60035994D /* QueenBee.swift in Sources */,
 				2C4E75B52082B1D10035994D /* main.swift in Sources */,
-				2C4E75C02082B1F60035994D /* Beetle.swift in Sources */,
-				2C4E76222082D7A00035994D /* TransportOperation.swift in Sources */,
-				2C4E75C82082B1F60035994D /* SoldierAnt.swift in Sources */,
-				2C4E75C92082B1F60035994D /* Spider.swift in Sources */,
-				2C4E75C22082B1F60035994D /* Grasshopper.swift in Sources */,
 				2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */,
-				2C4E75BB2082B1F10035994D /* Extension+Date.swift in Sources */,
-				2C4E75C62082B1F60035994D /* Neighbors.swift in Sources */,
-				2C4E75B92082B1F10035994D /* Extension+Dictionary.swift in Sources */,
-				2C4E75C52082B1F60035994D /* Navigation.swift in Sources */,
-				2C4E760C2082BDD80035994D /* Game.swift in Sources */,
-				2C4E75BA2082B1F10035994D /* Extension+NSObject.swift in Sources */,
 				2C0169A72092AAA000398D34 /* Swifter+Serializers.swift in Sources */,
-				2C4E76132082BEF60035994D /* ServerTransport.swift in Sources */,
-				2C4E75BE2082B1F10035994D /* Extension+Array.swift in Sources */,
-				2C4E75C32082B1F60035994D /* HexNode.swift in Sources */,
-				2C016AA520935DD300398D34 /* Hive+Encodable.swift in Sources */,
-				2C016A972092B8CD00398D34 /* Game+HiveDelegate.swift in Sources */,
-				2C4E75C42082B1F60035994D /* Hive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3422,11 +3278,8 @@
 			files = (
 				32D1D155206BEFFF008444F4 /* BoardView.swift in Sources */,
 				322EF74620767A26008A98F7 /* AppearanceTableViewController.swift in Sources */,
-				32D1D146206BEA6F008444F4 /* QueenBee.swift in Sources */,
-				2C016A9C2092B8E000398D34 /* Hive5Server.swift in Sources */,
 				328EE1A02076DE5E0056CB0C /* HandCollectionViewCell.swift in Sources */,
 				328EE197207694FF0056CB0C /* ThemesCollectionViewController.swift in Sources */,
-				2C016A9E2092B8E000398D34 /* ServerTransport.swift in Sources */,
 				2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */,
 				321E1653207A91FE0053C87A /* ProfilesCollectionViewController.swift in Sources */,
 				321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */,
@@ -3434,19 +3287,15 @@
 				321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */,
 				322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* ViewController.swift in Sources */,
-				32D1D14A206BEA9F008444F4 /* Grasshopper.swift in Sources */,
 				320FDBAF20829F4100E0F62A /* Extension+CGRect.swift in Sources */,
 				328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */,
 				3291A329207524C400DBF9B2 /* Util.swift in Sources */,
 				321CED7920783D5500805F74 /* HelpItemViewController.swift in Sources */,
 				321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */,
 				320FDBB120829F5F00E0F62A /* Extension+CGContext.swift in Sources */,
-				2C016A9A2092B8E000398D34 /* Game.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				3281AC2E2079365C00DE7EDA /* NodeViewProfie.swift in Sources */,
 				320FDBB320829F7200E0F62A /* Extension+UIColor.swift in Sources */,
-				32B109AE206EECC20065E465 /* Vec2D.swift in Sources */,
-				32D1D14E206BEAB9008444F4 /* SoldierAnt.swift in Sources */,
 				322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */,
 				32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */,
 				320FDBA320829E2800E0F62A /* CoreData.swift in Sources */,
@@ -3454,33 +3303,21 @@
 				322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */,
 				320FDBB520829F8D00E0F62A /* Extension+CGFloat.swift in Sources */,
 				321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */,
-				32B109AB206E8D360065E465 /* Navigation.swift in Sources */,
-				32B109A9206C646F0065E465 /* HexNode.swift in Sources */,
-				32D1D148206BEA8A008444F4 /* Beetle.swift in Sources */,
-				32D1D14C206BEAAC008444F4 /* Spider.swift in Sources */,
-				320FDB9920829D4D00E0F62A /* Extension+NSObject.swift in Sources */,
 				328EE19E2076DC3C0056CB0C /* HandCollectionViewController.swift in Sources */,
-				33F751EE8399CC8C67CF1A35 /* Neighbors.swift in Sources */,
 				328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */,
 				328EE1A22076EE940056CB0C /* Constants.swift in Sources */,
 				33F75E170A5700F149EB63A8 /* Label.swift in Sources */,
 				320FDBAB20829F0A00E0F62A /* Extension+NSAttributedString.swift in Sources */,
-				320FDBA120829DE100E0F62A /* Extension+Array.swift in Sources */,
-				320FDB9B20829D8600E0F62A /* Extension+Date.swift in Sources */,
 				33F75A7BAF7A4F3CDD42F60F /* Button.swift in Sources */,
-				2C016A9B2092B8E000398D34 /* Game+HiveDelegate.swift in Sources */,
 				33F75562FA9B0F0F2493B3D8 /* TextField.swift in Sources */,
 				33F7525D3C7806E8D1441866 /* GradientSlider.swift in Sources */,
+				2CE6696820AA5E8A007F472D /* NSObject+Observe.swift in Sources */,
 				33F758A7BB8D64FDA6D629DD /* SegmentedControl.swift in Sources */,
-				320FDB9F20829DCA00E0F62A /* Extension+Double.swift in Sources */,
 				3281AC322079A15F00DE7EDA /* ColorTableViewCell.swift in Sources */,
 				33F75170870EFDA4F639DFD7 /* DatePickerViewController.swift in Sources */,
 				33F758FB688623BEC1FAFD68 /* ColorPickerViewController.swift in Sources */,
-				320FDB9720829D3400E0F62A /* Extension+Dictionary.swift in Sources */,
-				2C016A9F2092B8E000398D34 /* TransportOperation.swift in Sources */,
 				33F7598F05400F330CECDEFA /* ItemWithImage.swift in Sources */,
 				33F756956CF04E182399D20B /* ImagePickerViewController.swift in Sources */,
-				2C016AA420935DD300398D34 /* Hive+Encodable.swift in Sources */,
 				320FDBB720829FAC00E0F62A /* Extension+CGPoint.swift in Sources */,
 				33F7572908B2C72735ACE390 /* CountryCell.swift in Sources */,
 				33F752002AE7BCA83FBFB8B7 /* CurrencyCell.swift in Sources */,
@@ -3515,11 +3352,9 @@
 				33F75DEC8B8092B23B774DBF /* Array+Extensions.swift in Sources */,
 				320FDBAD20829F2900E0F62A /* Extension+UIGestureRecognizer.swift in Sources */,
 				2C4E7550208247190035994D /* HFInterface.swift in Sources */,
-				2C016A9D2092B8E000398D34 /* Client.swift in Sources */,
 				33F75748490186AB0E6B0C61 /* Common+Extensions.swift in Sources */,
 				33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */,
 				321E1655207AB43F0053C87A /* ProfileNameTableViewCell.swift in Sources */,
-				32F2A9DA2097E0D6008E2407 /* HiveMaster.swift in Sources */,
 				320FDBA920829EF000E0F62A /* Extension+UIView.swift in Sources */,
 				33F755EE5A07C9ED6375B6FD /* String+Extensions.swift in Sources */,
 				33F751C0028669CD8BA9657C /* UIView+Extensions.swift in Sources */,
@@ -3532,9 +3367,7 @@
 				33F75AED5EF3481B5E5716EF /* UIImageView+Extensions.swift in Sources */,
 				33F751F79A47EA550EA8707C /* UISearchBar+Extensions.swift in Sources */,
 				33F75F9B9E2978BD16183CEC /* UITextField+Extensions.swift in Sources */,
-				320FDBBB2082A4F300E0F62A /* Hive.swift in Sources */,
 				33F755736FB68BE48944030F /* UIApplication+Extensions.swift in Sources */,
-				320FDB9D20829DAD00E0F62A /* Extension+Decimal.swift in Sources */,
 				33F7584AB2E74E534E173945 /* UIViewController+Extensions.swift in Sources */,
 				33F75E5F106D9B41087B1BE0 /* UIAlertController+Extensions.swift in Sources */,
 				33F754BE11B2DE9FA63663CC /* UISegmentedControl+Extensions.swift in Sources */,

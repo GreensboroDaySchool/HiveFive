@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Hive5Common
 
 extension Hive {
     /**

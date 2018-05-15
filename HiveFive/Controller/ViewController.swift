@@ -18,6 +18,7 @@
  */
 
 import UIKit
+import Hive5Common
 
 /**
  This is the Controller of the MVC design pattern.

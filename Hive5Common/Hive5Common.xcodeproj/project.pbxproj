@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2CDD6CCB20AA4C6900124EAE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB020AA4C6900124EAE /* Game.swift */; };
+		2CDD6CCC20AA4C6900124EAE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB020AA4C6900124EAE /* Game.swift */; };
+		2CDD6CCD20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB120AA4C6900124EAE /* Game+HiveDelegate.swift */; };
+		2CDD6CCE20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB120AA4C6900124EAE /* Game+HiveDelegate.swift */; };
+		2CDD6CCF20AA4C6900124EAE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB220AA4C6900124EAE /* Client.swift */; };
+		2CDD6CD020AA4C6900124EAE /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB220AA4C6900124EAE /* Client.swift */; };
+		2CDD6CD120AA4C6900124EAE /* Hive5Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB320AA4C6900124EAE /* Hive5Server.swift */; };
+		2CDD6CD220AA4C6900124EAE /* Hive5Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB320AA4C6900124EAE /* Hive5Server.swift */; };
+		2CDD6CD320AA4C6900124EAE /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB520AA4C6900124EAE /* Spider.swift */; };
+		2CDD6CD420AA4C6900124EAE /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB520AA4C6900124EAE /* Spider.swift */; };
+		2CDD6CD520AA4C6900124EAE /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB620AA4C6900124EAE /* Navigation.swift */; };
+		2CDD6CD620AA4C6900124EAE /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB620AA4C6900124EAE /* Navigation.swift */; };
+		2CDD6CD720AA4C6900124EAE /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB720AA4C6900124EAE /* SoldierAnt.swift */; };
+		2CDD6CD820AA4C6900124EAE /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB720AA4C6900124EAE /* SoldierAnt.swift */; };
+		2CDD6CD920AA4C6900124EAE /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB820AA4C6900124EAE /* Vec2D.swift */; };
+		2CDD6CDA20AA4C6900124EAE /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB820AA4C6900124EAE /* Vec2D.swift */; };
+		2CDD6CDB20AA4C6900124EAE /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB920AA4C6900124EAE /* Hive.swift */; };
+		2CDD6CDC20AA4C6900124EAE /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB920AA4C6900124EAE /* Hive.swift */; };
+		2CDD6CDD20AA4C6900124EAE /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBA20AA4C6900124EAE /* Hive+Encodable.swift */; };
+		2CDD6CDE20AA4C6900124EAE /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBA20AA4C6900124EAE /* Hive+Encodable.swift */; };
+		2CDD6CDF20AA4C6900124EAE /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBB20AA4C6900124EAE /* HiveMaster.swift */; };
+		2CDD6CE020AA4C6900124EAE /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBB20AA4C6900124EAE /* HiveMaster.swift */; };
+		2CDD6CE120AA4C6900124EAE /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBC20AA4C6900124EAE /* Neighbors.swift */; };
+		2CDD6CE220AA4C6900124EAE /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBC20AA4C6900124EAE /* Neighbors.swift */; };
+		2CDD6CE320AA4C6900124EAE /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBD20AA4C6900124EAE /* Beetle.swift */; };
+		2CDD6CE420AA4C6900124EAE /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBD20AA4C6900124EAE /* Beetle.swift */; };
+		2CDD6CE520AA4C6900124EAE /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBE20AA4C6900124EAE /* Grasshopper.swift */; };
+		2CDD6CE620AA4C6900124EAE /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBE20AA4C6900124EAE /* Grasshopper.swift */; };
+		2CDD6CE720AA4C6900124EAE /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBF20AA4C6900124EAE /* QueenBee.swift */; };
+		2CDD6CE820AA4C6900124EAE /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CBF20AA4C6900124EAE /* QueenBee.swift */; };
+		2CDD6CE920AA4C6900124EAE /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC020AA4C6900124EAE /* HexNode.swift */; };
+		2CDD6CEA20AA4C6900124EAE /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC020AA4C6900124EAE /* HexNode.swift */; };
+		2CDD6CEB20AA4C6900124EAE /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC220AA4C6900124EAE /* ServerTransport.swift */; };
+		2CDD6CEC20AA4C6900124EAE /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC220AA4C6900124EAE /* ServerTransport.swift */; };
+		2CDD6CED20AA4C6900124EAE /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */; };
+		2CDD6CEE20AA4C6900124EAE /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */; };
+		2CDD6CEF20AA4C6900124EAE /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */; };
+		2CDD6CF020AA4C6900124EAE /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */; };
+		2CDD6CF120AA4C6900124EAE /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */; };
+		2CDD6CF220AA4C6900124EAE /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */; };
+		2CDD6CF320AA4C6900124EAE /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */; };
+		2CDD6CF420AA4C6900124EAE /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */; };
+		2CDD6CF720AA4C6900124EAE /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */; };
+		2CDD6CF820AA4C6900124EAE /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */; };
+		2CDD6CF920AA4C6900124EAE /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */; };
+		2CDD6CFA20AA4C6900124EAE /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */; };
+		2CDD6D0220AA5B4100124EAE /* Hive5Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDD6D0120AA5B4100124EAE /* Hive5Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CDD6D0320AA5B4100124EAE /* Hive5Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDD6D0120AA5B4100124EAE /* Hive5Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2CDD6C3A20AA4A0100124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CDD6C3D20AA4A0100124EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CDD6C4D20AA4A3900124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CDD6CB020AA4C6900124EAE /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		2CDD6CB120AA4C6900124EAE /* Game+HiveDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Game+HiveDelegate.swift"; sourceTree = "<group>"; };
+		2CDD6CB220AA4C6900124EAE /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		2CDD6CB320AA4C6900124EAE /* Hive5Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hive5Server.swift; sourceTree = "<group>"; };
+		2CDD6CB520AA4C6900124EAE /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
+		2CDD6CB620AA4C6900124EAE /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		2CDD6CB720AA4C6900124EAE /* SoldierAnt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
+		2CDD6CB820AA4C6900124EAE /* Vec2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
+		2CDD6CB920AA4C6900124EAE /* Hive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
+		2CDD6CBA20AA4C6900124EAE /* Hive+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hive+Encodable.swift"; sourceTree = "<group>"; };
+		2CDD6CBB20AA4C6900124EAE /* HiveMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiveMaster.swift; sourceTree = "<group>"; };
+		2CDD6CBC20AA4C6900124EAE /* Neighbors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neighbors.swift; sourceTree = "<group>"; };
+		2CDD6CBD20AA4C6900124EAE /* Beetle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beetle.swift; sourceTree = "<group>"; };
+		2CDD6CBE20AA4C6900124EAE /* Grasshopper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
+		2CDD6CBF20AA4C6900124EAE /* QueenBee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
+		2CDD6CC020AA4C6900124EAE /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
+		2CDD6CC220AA4C6900124EAE /* ServerTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTransport.swift; sourceTree = "<group>"; };
+		2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportOperation.swift; sourceTree = "<group>"; };
+		2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
+		2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Dictionary.swift"; sourceTree = "<group>"; };
+		2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
+		2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Decimal.swift"; sourceTree = "<group>"; };
+		2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
+		2CDD6D0120AA5B4100124EAE /* Hive5Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hive5Common.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2CDD6C3620AA4A0100124EAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CDD6C4620AA4A3900124EAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CDD6BE620AA466100124EAE = {
+			isa = PBXGroup;
+			children = (
+				2CDD6C3B20AA4A0100124EAE /* Source */,
+				2CDD6BF020AA466100124EAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2CDD6BF020AA466100124EAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6C3A20AA4A0100124EAE /* Hive5Common.framework */,
+				2CDD6C4D20AA4A3900124EAE /* Hive5Common.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2CDD6C3B20AA4A0100124EAE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CB420AA4C6900124EAE /* Model */,
+				2CDD6CAE20AA4C6900124EAE /* Server */,
+				2CDD6CC120AA4C6900124EAE /* Transport */,
+				2CDD6CC420AA4C6900124EAE /* Utilities */,
+				2CDD6C3D20AA4A0100124EAE /* Info.plist */,
+				2CDD6D0120AA5B4100124EAE /* Hive5Common.h */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		2CDD6CAE20AA4C6900124EAE /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CAF20AA4C6900124EAE /* Game */,
+				2CDD6CB220AA4C6900124EAE /* Client.swift */,
+				2CDD6CB320AA4C6900124EAE /* Hive5Server.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		2CDD6CAF20AA4C6900124EAE /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CB020AA4C6900124EAE /* Game.swift */,
+				2CDD6CB120AA4C6900124EAE /* Game+HiveDelegate.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		2CDD6CB420AA4C6900124EAE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CB520AA4C6900124EAE /* Spider.swift */,
+				2CDD6CB620AA4C6900124EAE /* Navigation.swift */,
+				2CDD6CB720AA4C6900124EAE /* SoldierAnt.swift */,
+				2CDD6CB820AA4C6900124EAE /* Vec2D.swift */,
+				2CDD6CB920AA4C6900124EAE /* Hive.swift */,
+				2CDD6CBA20AA4C6900124EAE /* Hive+Encodable.swift */,
+				2CDD6CBB20AA4C6900124EAE /* HiveMaster.swift */,
+				2CDD6CBC20AA4C6900124EAE /* Neighbors.swift */,
+				2CDD6CBD20AA4C6900124EAE /* Beetle.swift */,
+				2CDD6CBE20AA4C6900124EAE /* Grasshopper.swift */,
+				2CDD6CBF20AA4C6900124EAE /* QueenBee.swift */,
+				2CDD6CC020AA4C6900124EAE /* HexNode.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2CDD6CC120AA4C6900124EAE /* Transport */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CC220AA4C6900124EAE /* ServerTransport.swift */,
+				2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */,
+			);
+			path = Transport;
+			sourceTree = "<group>";
+		};
+		2CDD6CC420AA4C6900124EAE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */,
+				2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */,
+				2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */,
+				2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */,
+				2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2CDD6C3720AA4A0100124EAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CDD6D0220AA5B4100124EAE /* Hive5Common.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CDD6C4720AA4A3900124EAE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CDD6D0320AA5B4100124EAE /* Hive5Common.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2CDD6C3920AA4A0100124EAE /* Hive5CommoniOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CDD6C3F20AA4A0100124EAE /* Build configuration list for PBXNativeTarget "Hive5CommoniOS" */;
+			buildPhases = (
+				2CDD6C3520AA4A0100124EAE /* Sources */,
+				2CDD6C3620AA4A0100124EAE /* Frameworks */,
+				2CDD6C3720AA4A0100124EAE /* Headers */,
+				2CDD6C3820AA4A0100124EAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hive5CommoniOS;
+			productName = Hive5Common;
+			productReference = 2CDD6C3A20AA4A0100124EAE /* Hive5Common.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2CDD6C4320AA4A3900124EAE /* Hive5CommonMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CDD6C4A20AA4A3900124EAE /* Build configuration list for PBXNativeTarget "Hive5CommonMac" */;
+			buildPhases = (
+				2CDD6C4420AA4A3900124EAE /* Sources */,
+				2CDD6C4620AA4A3900124EAE /* Frameworks */,
+				2CDD6C4720AA4A3900124EAE /* Headers */,
+				2CDD6C4920AA4A3900124EAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hive5CommonMac;
+			productName = Hive5Common;
+			productReference = 2CDD6C4D20AA4A3900124EAE /* Hive5Common.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2CDD6BE720AA466100124EAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Greensboro Day School";
+				TargetAttributes = {
+					2CDD6C3920AA4A0100124EAE = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 2CDD6BEA20AA466100124EAE /* Build configuration list for PBXProject "Hive5Common" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2CDD6BE620AA466100124EAE;
+			productRefGroup = 2CDD6BF020AA466100124EAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2CDD6C3920AA4A0100124EAE /* Hive5CommoniOS */,
+				2CDD6C4320AA4A3900124EAE /* Hive5CommonMac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2CDD6C3820AA4A0100124EAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CDD6C4920AA4A3900124EAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CDD6C3520AA4A0100124EAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CDD6CD720AA4C6900124EAE /* SoldierAnt.swift in Sources */,
+				2CDD6CF120AA4C6900124EAE /* Extension+Dictionary.swift in Sources */,
+				2CDD6CCD20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */,
+				2CDD6CE920AA4C6900124EAE /* HexNode.swift in Sources */,
+				2CDD6CF920AA4C6900124EAE /* Extension+Date.swift in Sources */,
+				2CDD6CD920AA4C6900124EAE /* Vec2D.swift in Sources */,
+				2CDD6CEF20AA4C6900124EAE /* Extension+Double.swift in Sources */,
+				2CDD6CE720AA4C6900124EAE /* QueenBee.swift in Sources */,
+				2CDD6CDD20AA4C6900124EAE /* Hive+Encodable.swift in Sources */,
+				2CDD6CF720AA4C6900124EAE /* Extension+Decimal.swift in Sources */,
+				2CDD6CD520AA4C6900124EAE /* Navigation.swift in Sources */,
+				2CDD6CD320AA4C6900124EAE /* Spider.swift in Sources */,
+				2CDD6CDF20AA4C6900124EAE /* HiveMaster.swift in Sources */,
+				2CDD6CE120AA4C6900124EAE /* Neighbors.swift in Sources */,
+				2CDD6CD120AA4C6900124EAE /* Hive5Server.swift in Sources */,
+				2CDD6CCF20AA4C6900124EAE /* Client.swift in Sources */,
+				2CDD6CF320AA4C6900124EAE /* Extension+Array.swift in Sources */,
+				2CDD6CED20AA4C6900124EAE /* TransportOperation.swift in Sources */,
+				2CDD6CCB20AA4C6900124EAE /* Game.swift in Sources */,
+				2CDD6CEB20AA4C6900124EAE /* ServerTransport.swift in Sources */,
+				2CDD6CE320AA4C6900124EAE /* Beetle.swift in Sources */,
+				2CDD6CDB20AA4C6900124EAE /* Hive.swift in Sources */,
+				2CDD6CE520AA4C6900124EAE /* Grasshopper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CDD6C4420AA4A3900124EAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CDD6CD820AA4C6900124EAE /* SoldierAnt.swift in Sources */,
+				2CDD6CF220AA4C6900124EAE /* Extension+Dictionary.swift in Sources */,
+				2CDD6CCE20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */,
+				2CDD6CEA20AA4C6900124EAE /* HexNode.swift in Sources */,
+				2CDD6CFA20AA4C6900124EAE /* Extension+Date.swift in Sources */,
+				2CDD6CDA20AA4C6900124EAE /* Vec2D.swift in Sources */,
+				2CDD6CF020AA4C6900124EAE /* Extension+Double.swift in Sources */,
+				2CDD6CE820AA4C6900124EAE /* QueenBee.swift in Sources */,
+				2CDD6CDE20AA4C6900124EAE /* Hive+Encodable.swift in Sources */,
+				2CDD6CF820AA4C6900124EAE /* Extension+Decimal.swift in Sources */,
+				2CDD6CD620AA4C6900124EAE /* Navigation.swift in Sources */,
+				2CDD6CD420AA4C6900124EAE /* Spider.swift in Sources */,
+				2CDD6CE020AA4C6900124EAE /* HiveMaster.swift in Sources */,
+				2CDD6CE220AA4C6900124EAE /* Neighbors.swift in Sources */,
+				2CDD6CD220AA4C6900124EAE /* Hive5Server.swift in Sources */,
+				2CDD6CD020AA4C6900124EAE /* Client.swift in Sources */,
+				2CDD6CF420AA4C6900124EAE /* Extension+Array.swift in Sources */,
+				2CDD6CEE20AA4C6900124EAE /* TransportOperation.swift in Sources */,
+				2CDD6CCC20AA4C6900124EAE /* Game.swift in Sources */,
+				2CDD6CEC20AA4C6900124EAE /* ServerTransport.swift in Sources */,
+				2CDD6CE420AA4C6900124EAE /* Beetle.swift in Sources */,
+				2CDD6CDC20AA4C6900124EAE /* Hive.swift in Sources */,
+				2CDD6CE620AA4C6900124EAE /* Grasshopper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2CDD6BF420AA466100124EAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2CDD6BF520AA466100124EAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2CDD6C4020AA4A0100124EAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.Hive5Common;
+				PRODUCT_MODULE_NAME = Hive5Common;
+				PRODUCT_NAME = Hive5Common;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2CDD6C4120AA4A0100124EAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.Hive5Common;
+				PRODUCT_MODULE_NAME = Hive5Common;
+				PRODUCT_NAME = Hive5Common;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2CDD6C4B20AA4A3900124EAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.Hive5Common;
+				PRODUCT_MODULE_NAME = Hive5Common;
+				PRODUCT_NAME = Hive5Common;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2CDD6C4C20AA4A3900124EAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.Hive5Common;
+				PRODUCT_MODULE_NAME = Hive5Common;
+				PRODUCT_NAME = Hive5Common;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CDD6BEA20AA466100124EAE /* Build configuration list for PBXProject "Hive5Common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CDD6BF420AA466100124EAE /* Debug */,
+				2CDD6BF520AA466100124EAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CDD6C3F20AA4A0100124EAE /* Build configuration list for PBXNativeTarget "Hive5CommoniOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CDD6C4020AA4A0100124EAE /* Debug */,
+				2CDD6C4120AA4A0100124EAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CDD6C4A20AA4A3900124EAE /* Build configuration list for PBXNativeTarget "Hive5CommonMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CDD6C4B20AA4A3900124EAE /* Debug */,
+				2CDD6C4C20AA4A3900124EAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2CDD6BE720AA466100124EAE /* Project object */;
+}
