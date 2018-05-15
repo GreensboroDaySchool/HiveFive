@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LoggerAPI",
+        "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
+        "state": {
+          "branch": null,
+          "revision": "5041f2673aa75d6e973d9b6bd3956bc5068387c8",
+          "version": "1.7.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

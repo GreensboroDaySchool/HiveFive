@@ -1,6 +1,0 @@
-[submodule "swifter"]
-	path = swifter
-	url = https://github.com/httpswift/swifter.git
-[submodule "Dependencies/swifter"]
-	path = Dependencies/swifter
-	url = https://github.com/httpswift/swifter.git
