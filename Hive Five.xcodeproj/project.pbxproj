@@ -19,6 +19,8 @@
 		2C4E75B52082B1D10035994D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E75B42082B1D10035994D /* main.swift */; };
 		2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */; };
 		2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761F2082C9A50035994D /* SwifterClient.swift */; };
+		2CC29E3C20AA631600C68000 /* Rules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC29E2C20AA631600C68000 /* Rules.storyboard */; };
+		2CC29E3E20AA632B00C68000 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC29E3D20AA632B00C68000 /* RulesViewController.swift */; };
 		2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE195D206E77C400733FA0 /* NodeView.swift */; };
 		2CDD6C5D20AA4BA100124EAE /* Hive5Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */; };
 		2CDD6C5E20AA4BA100124EAE /* Hive5Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -778,6 +780,8 @@
 		2C4E75B42082B1D10035994D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterServerTransport.swift; sourceTree = "<group>"; };
 		2C4E761F2082C9A50035994D /* SwifterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterClient.swift; sourceTree = "<group>"; };
+		2CC29E2D20AA631600C68000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Rules.storyboard; sourceTree = "<group>"; };
+		2CC29E3D20AA632B00C68000 /* RulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		2CCE195D206E77C400733FA0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		2CDD6C2520AA48B600124EAE /* libHive5Common iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libHive5Common iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1585,6 +1589,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4E754F208247190035994D /* HFInterface.swift */,
+				2CC29E2C20AA631600C68000 /* Rules.storyboard */,
 				2CFCE46A206B00880041EDD1 /* Entry.storyboard */,
 				2CFCE46F206B00880041EDD1 /* LaunchScreen.storyboard */,
 				2C4E7551208247950035994D /* History.storyboard */,
@@ -1750,6 +1755,7 @@
 		3291A3222073FDB300DBF9B2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2CC29E3D20AA632B00C68000 /* RulesViewController.swift */,
 				322EF74520767A26008A98F7 /* AppearanceTableViewController.swift */,
 				321CED322078256900805F74 /* ColorSchemeTableViewController.swift */,
 				328EE1A12076EE940056CB0C /* Constants.swift */,
@@ -3141,6 +3147,7 @@
 				33F7577DFB0FC4F1DECF1681 /* MQ.png in Resources */,
 				33F75505C93E385BF07288B1 /* MR.png in Resources */,
 				33F75E1ECCB0A2F09574E0D0 /* MS.png in Resources */,
+				2CC29E3C20AA631600C68000 /* Rules.storyboard in Resources */,
 				33F75FE9A6C40585D5E83082 /* MT.png in Resources */,
 				33F75AD715783E714AA7C9F4 /* MU.png in Resources */,
 				33F7592953B3418A2922B92F /* MV.png in Resources */,
@@ -3370,6 +3377,7 @@
 				33F755736FB68BE48944030F /* UIApplication+Extensions.swift in Sources */,
 				33F7584AB2E74E534E173945 /* UIViewController+Extensions.swift in Sources */,
 				33F75E5F106D9B41087B1BE0 /* UIAlertController+Extensions.swift in Sources */,
+				2CC29E3E20AA632B00C68000 /* RulesViewController.swift in Sources */,
 				33F754BE11B2DE9FA63663CC /* UISegmentedControl+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3461,6 +3469,14 @@
 				2C4E756320824D6C0035994D /* Base */,
 			);
 			name = Appearance.storyboard;
+			sourceTree = "<group>";
+		};
+		2CC29E2C20AA631600C68000 /* Rules.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CC29E2D20AA631600C68000 /* Base */,
+			);
+			name = Rules.storyboard;
 			sourceTree = "<group>";
 		};
 		2CFCE46A206B00880041EDD1 /* Entry.storyboard */ = {

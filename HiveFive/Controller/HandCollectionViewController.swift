@@ -69,44 +69,14 @@ class HandCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view
         
         //MARK: Notification Binding
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handDidUpdate(_:)),
-            name: handUpdateNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeDidUpdate(_:)),
-            name: themeUpdateNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didCancelSelection(_:)),
-            name: didCancelNewPiece,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didPlaceSelection(_:)),
-            name: didPlaceNewPiece,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(preferredNodeSizeDidChange(_:)),
-            name: preferredNodeSizeNotification,
-            object: nil
-        )
+        observe(handUpdateNotification, #selector(handDidUpdate(_:)))
+        observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
+        observe(didCancelNewPiece, #selector(didCancelSelection(_:)))
+        observe(didPlaceNewPiece, #selector(didPlaceSelection(_:)))
+        observe(preferredNodeSizeNotification, #selector(preferredNodeSizeDidChange(_:)))
         
-        //detect orientation change
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(deviceOrientationDidChange(_:)),
-            name: NSNotification.Name.UIDeviceOrientationDidChange,
-            object: nil
-        )
+        // Detect orientation change
+        observe(NSNotification.Name.UIAccessibilityHearingDevicePairedEarDidChange, #selector(deviceOrientationDidChange(_:)))
         
     }
     

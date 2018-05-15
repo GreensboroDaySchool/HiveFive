@@ -88,4 +88,19 @@ func tableViewCellHeight() -> Int {
     return get(id: tableViewCellHeightId) as? Int ?? defaultTableViewCellHeight
 }
 
+//MARK: Rules
+
+let queen4Id = "queen4"
+let queen4UpdateNotification = Notification.Name(queen4Id)
+func useQueen4() -> Bool {
+    return get(id: queen4Id) as? Bool ?? true
+}
+
+let immobilized4Id = "immobilized4"
+let immobilized4UpdateNotification = Notification.Name(queen4Id)
+func useImmobilized4() -> Bool {
+    return get(id: immobilized4Id) as? Bool ?? true
+}
+
+
 
