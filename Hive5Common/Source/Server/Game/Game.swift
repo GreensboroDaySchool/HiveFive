@@ -9,12 +9,12 @@
 import Foundation
 
 public class Game: Equatable{
-    let host: Client
-    let id: Int
-    let hive: Hive
+    public let host: Client
+    public let id: Int
+    public let hive: Hive
     
-    var guest: Client?
-    var state: GameState
+    public var guest: Client?
+    private(set) public var state: GameState
     
     public init(host: Client, id: Int) {
         self.host = host

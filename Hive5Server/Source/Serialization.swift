@@ -17,6 +17,16 @@ extension HFTransportModel {
     func export() throws -> Data {
         return try sharedEncoder.encode(self)
     }
+    
+    func exportAsString() throws -> String {
+        guard let encoded = String(data: try export(), encoding: .utf8) else { throw HFCodingError.encodingError("Unable to encode encoded data to string") }
+        return encoded
+    }
+    
+    var description: String {
+        guard let exportedData = try? export() else { return "Encoding error" }
+        return String(data: exportedData, encoding: .utf8)!
+    }
 }
 
 /**

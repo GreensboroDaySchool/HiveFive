@@ -1,3 +1,9 @@
+#if os(Linux) || os(FreeBSD)
+import Glibc
+#else
+import Darwin
+#endif
+
 import Foundation
 import Hive5Common
 import WebSocket
@@ -16,6 +22,11 @@ fileprivate let server = Hive5Server(with: transport)
 HFLog.info("Starting server...")
 
 public let semaphore = DispatchSemaphore(value: 0)
+
+signal(SIGINT) {
+    _ in
+    semaphore.signal()
+}
 
 server.up()
 

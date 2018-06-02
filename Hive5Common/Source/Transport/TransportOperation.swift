@@ -79,6 +79,12 @@ public struct HFTransportDidJoin: HFTransportModel {
     public var token: Int
     public var roomNumber: Int
     public var color: Color
+    
+    public init(token: Int, roomNumber: Int, color: Color){
+        self.token = token
+        self.roomNumber = roomNumber
+        self.color = color
+    }
 }
 
 /**
@@ -99,11 +105,18 @@ public struct HFTransportGuestDidJoin: HFTransportModel {
  
  This message can be send by either the client or the server. This message
  indicates the client is about to leave the server and close the connection.
+ 
+ - Note:
+ This is probably one of the only models that will be instantiated by transports
  */
 public struct HFTransportLeave: HFTransportModel {
     public let op = "leave"
     
     public var reason: String
+    
+    public init(reason: String){
+        self.reason = reason
+    }
 }
 
 /**

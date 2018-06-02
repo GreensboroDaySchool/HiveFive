@@ -18,7 +18,7 @@ open class Client: Hashable, CustomStringConvertible {
     
     public var isHost: Bool { return game?.host == self }
     
-    private weak var server: Hive5Server?
+    public weak var server: Hive5Server?
     
     public init(name: String) {
         self.name = name
@@ -27,6 +27,7 @@ open class Client: Hashable, CustomStringConvertible {
     public func kick(for reason: String){
         try? send(HFTransportLeave(reason: reason))
         server?.on(clientLeave: self)
+        HFLog.info("Client \(self) is being kicked out of the server: \(reason)")
     }
     
     public func didJoin(game: Game, as color: Color) {
@@ -34,6 +35,14 @@ open class Client: Hashable, CustomStringConvertible {
         self.color = color
         try? send(HFTransportDidJoin(token: token, roomNumber: game.id, color: color))
         try? send(HFTransportSynchronize(hive: game.hive))
+    }
+    
+    /**
+     Sends the latest hive to the client
+     */
+    public func synchronizeHive(){
+        do{ try send(HFTransportSynchronize(hive: game!.hive)) }
+        catch{ HFLog.error("Unable to sync hive with client \(self): \(error)") }
     }
     
     //This is where the Client class handles all the messages sent to it

@@ -24,6 +24,15 @@ public class Hive5Server {
     }
     
     /**
+     Get the instance of the client with the token
+     */
+    public func client(withToken token: Int) -> Client? {
+        return clients.reduce(nil){
+            return $1.token == token ? $1 : $0
+        }
+    }
+    
+    /**
      Create a new Game, and send didJoin message to the client
      
      - note: The Client.color property should be set before using this method
@@ -37,6 +46,9 @@ public class Hive5Server {
         let game = Game(host: host, id: gameId)
         clients.append(host)
         games.append(game)
+        
+        HFLog.info("Client \(host) created a new game \(gameId)")
+        
         host.didJoin(game: game, as: host.color!)
         return game
     }
@@ -58,6 +70,9 @@ public class Hive5Server {
                 //Tell the client that it did join the room with this color
                 client.didJoin(game: existingRoom, as: existingRoom.host.color!.opposite)
                 existingRoom.on(guestJoin: client)
+                
+                HFLog.info("Client '\(client)' joined the server.")
+                
                 return existingRoom
             } else { client.kick(for: "Game is already on in this room") }
         } else { client.kick(for: "No room with number \(roomNumber) is found") }
@@ -74,6 +89,7 @@ public class Hive5Server {
         }
         client.game = nil
         clients.remove(at: clientIndex)
+        HFLog.info("Client \(client) left the server.")
     }
     
     public func on(unclaimedMessage op: HFTransportModel, replay: (HFTransportModel) throws -> ()) rethrows {
