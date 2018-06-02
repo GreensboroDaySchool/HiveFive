@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C95681020C24F7200D32C65 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95680F20C24F7200D32C65 /* Logger.swift */; };
+		2C95681120C24F7200D32C65 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95680F20C24F7200D32C65 /* Logger.swift */; };
 		2CDD6CCB20AA4C6900124EAE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB020AA4C6900124EAE /* Game.swift */; };
 		2CDD6CCC20AA4C6900124EAE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB020AA4C6900124EAE /* Game.swift */; };
 		2CDD6CCD20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB120AA4C6900124EAE /* Game+HiveDelegate.swift */; };
@@ -58,6 +60,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C95680B20C24F2300D32C65 /* Lighty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lighty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C95680D20C24F2C00D32C65 /* Lighty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lighty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C95680F20C24F7200D32C65 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		2CDD6C3A20AA4A0100124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDD6C3D20AA4A0100124EAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CDD6C4D20AA4A3900124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,11 +110,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C95680A20C24F2300D32C65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C95680D20C24F2C00D32C65 /* Lighty.framework */,
+				2C95680B20C24F2300D32C65 /* Lighty.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2CDD6BE620AA466100124EAE = {
 			isa = PBXGroup;
 			children = (
 				2CDD6C3B20AA4A0100124EAE /* Source */,
 				2CDD6BF020AA466100124EAE /* Products */,
+				2C95680A20C24F2300D32C65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,6 +205,7 @@
 				2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */,
 				2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */,
 				2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */,
+				2C95680F20C24F7200D32C65 /* Logger.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -314,6 +330,7 @@
 				2CDD6CF920AA4C6900124EAE /* Extension+Date.swift in Sources */,
 				2CDD6CD920AA4C6900124EAE /* Vec2D.swift in Sources */,
 				2CDD6CEF20AA4C6900124EAE /* Extension+Double.swift in Sources */,
+				2C95681020C24F7200D32C65 /* Logger.swift in Sources */,
 				2CDD6CE720AA4C6900124EAE /* QueenBee.swift in Sources */,
 				2CDD6CDD20AA4C6900124EAE /* Hive+Encodable.swift in Sources */,
 				2CDD6CF720AA4C6900124EAE /* Extension+Decimal.swift in Sources */,
@@ -344,6 +361,7 @@
 				2CDD6CFA20AA4C6900124EAE /* Extension+Date.swift in Sources */,
 				2CDD6CDA20AA4C6900124EAE /* Vec2D.swift in Sources */,
 				2CDD6CF020AA4C6900124EAE /* Extension+Double.swift in Sources */,
+				2C95681120C24F7200D32C65 /* Logger.swift in Sources */,
 				2CDD6CE820AA4C6900124EAE /* QueenBee.swift in Sources */,
 				2CDD6CDE20AA4C6900124EAE /* Hive+Encodable.swift in Sources */,
 				2CDD6CF820AA4C6900124EAE /* Extension+Decimal.swift in Sources */,

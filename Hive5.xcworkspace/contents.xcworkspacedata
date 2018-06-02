@@ -5,12 +5,467 @@
       location = "group:Cartfile">
    </FileRef>
    <FileRef
-      location = "group:Package.swift">
-   </FileRef>
-   <FileRef
       location = "group:Hive5Common/Hive5Common.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Hive Five.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Hive5Server.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Carthage"
+      name = "Carthage">
+      <Group
+         location = "group:Checkouts"
+         name = "Checkouts">
+         <Group
+            location = "group:Lighty"
+            name = "Lighty">
+            <Group
+               location = "group:Screenshots"
+               name = "Screenshots">
+               <FileRef
+                  location = "group:dark_theme.png">
+               </FileRef>
+               <FileRef
+                  location = "group:default_theme.png">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Lighty.xcodeproj">
+            </FileRef>
+            <FileRef
+               location = "group:LICENSE">
+            </FileRef>
+            <Group
+               location = "group:Tests"
+               name = "Tests">
+               <FileRef
+                  location = "group:LightyLoggerTests.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+            <FileRef
+               location = "group:Lighty.xcworkspace">
+            </FileRef>
+            <Group
+               location = "group:Pods"
+               name = "Pods">
+               <FileRef
+                  location = "group:Pods.xcodeproj">
+               </FileRef>
+               <Group
+                  location = "group:Target Support Files"
+                  name = "Target Support Files">
+                  <Group
+                     location = "group:Pods-iOS Sample"
+                     name = "Pods-iOS Sample">
+                     <FileRef
+                        location = "group:Pods-iOS Sample-resources.sh">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample-umbrella.h">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample-dummy.m">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample.debug.xcconfig">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample-acknowledgements.markdown">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample-frameworks.sh">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample.modulemap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample-acknowledgements.plist">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Pods-iOS Sample.release.xcconfig">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Info.plist">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:Lighty"
+                     name = "Lighty">
+                     <FileRef
+                        location = "group:Lighty.modulemap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Lighty-prefix.pch">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Lighty.xcconfig">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Info.plist">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Lighty-dummy.m">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Lighty-umbrella.h">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <FileRef
+                  location = "group:Manifest.lock">
+               </FileRef>
+               <Group
+                  location = "group:Local Podspecs"
+                  name = "Local Podspecs">
+                  <FileRef
+                     location = "group:Lighty.podspec.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <FileRef
+               location = "group:Package.swift">
+            </FileRef>
+            <Group
+               location = "group:Sample"
+               name = "Sample">
+               <Group
+                  location = "group:iOS Sample"
+                  name = "iOS Sample">
+                  <Group
+                     location = "group:iOS Sample"
+                     name = "iOS Sample">
+                     <FileRef
+                        location = "group:ViewController.swift">
+                     </FileRef>
+                     <Group
+                        location = "group:Assets.xcassets"
+                        name = "Assets.xcassets">
+                        <Group
+                           location = "group:AppIcon.appiconset"
+                           name = "AppIcon.appiconset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                     </Group>
+                     <Group
+                        location = "group:Base.lproj"
+                        name = "Base.lproj">
+                        <FileRef
+                           location = "group:LaunchScreen.storyboard">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Main.storyboard">
+                        </FileRef>
+                     </Group>
+                     <FileRef
+                        location = "group:AppDelegate.swift">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Info.plist">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:iOS Sample.xcodeproj">
+                  </FileRef>
+               </Group>
+            </Group>
+            <FileRef
+               location = "group:Gemfile">
+            </FileRef>
+            <Group
+               location = "group:Sources"
+               name = "Sources">
+               <FileRef
+                  location = "group:LightyLogger.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Info-iOS.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:Info-watchOS.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:Lighty.h">
+               </FileRef>
+               <FileRef
+                  location = "group:Info-tvOS.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:Info-macOS.plist">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Lighty.podspec">
+            </FileRef>
+            <FileRef
+               location = "group:Gemfile.lock">
+            </FileRef>
+            <FileRef
+               location = "group:Podfile">
+            </FileRef>
+            <FileRef
+               location = "group:Podfile.lock">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Build"
+         name = "Build">
+         <Group
+            location = "group:watchOS"
+            name = "watchOS">
+            <Group
+               location = "group:Lighty.framework"
+               name = "Lighty.framework">
+               <FileRef
+                  location = "group:Lighty">
+               </FileRef>
+               <Group
+                  location = "group:Headers"
+                  name = "Headers">
+                  <FileRef
+                     location = "group:Lighty-Swift.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Lighty.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Modules"
+                  name = "Modules">
+                  <Group
+                     location = "group:Lighty.swiftmodule"
+                     name = "Lighty.swiftmodule">
+                     <FileRef
+                        location = "group:i386.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:i386.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm.swiftmodule">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:module.modulemap">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Lighty.framework.dSYM">
+            </FileRef>
+            <FileRef
+               location = "group:7885BD6C-4484-3727-B8A0-38CEFBADBA67.bcsymbolmap">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:iOS"
+            name = "iOS">
+            <Group
+               location = "group:Lighty.framework"
+               name = "Lighty.framework">
+               <FileRef
+                  location = "group:Lighty">
+               </FileRef>
+               <Group
+                  location = "group:Headers"
+                  name = "Headers">
+                  <FileRef
+                     location = "group:Lighty-Swift.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Lighty.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Modules"
+                  name = "Modules">
+                  <Group
+                     location = "group:Lighty.swiftmodule"
+                     name = "Lighty.swiftmodule">
+                     <FileRef
+                        location = "group:i386.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:x86_64.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm64.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:x86_64.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:i386.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm64.swiftdoc">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:module.modulemap">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:6EE07384-728F-3030-9E09-B38FE45348A1.bcsymbolmap">
+            </FileRef>
+            <FileRef
+               location = "group:Lighty.framework.dSYM">
+            </FileRef>
+            <FileRef
+               location = "group:10EC1D15-554B-3280-9804-8F188F06479A.bcsymbolmap">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Mac"
+            name = "Mac">
+            <Group
+               location = "group:Lighty.framework"
+               name = "Lighty.framework">
+               <FileRef
+                  location = "group:Resources">
+               </FileRef>
+               <Group
+                  location = "group:Versions"
+                  name = "Versions">
+                  <Group
+                     location = "group:A"
+                     name = "A">
+                     <Group
+                        location = "group:Resources"
+                        name = "Resources">
+                        <FileRef
+                           location = "group:Info.plist">
+                        </FileRef>
+                     </Group>
+                     <FileRef
+                        location = "group:Lighty">
+                     </FileRef>
+                     <Group
+                        location = "group:Headers"
+                        name = "Headers">
+                        <FileRef
+                           location = "group:Lighty-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Lighty.h">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:Modules"
+                        name = "Modules">
+                        <Group
+                           location = "group:Lighty.swiftmodule"
+                           name = "Lighty.swiftmodule">
+                           <FileRef
+                              location = "group:x86_64.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:x86_64.swiftmodule">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:module.modulemap">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <FileRef
+                     location = "group:Current">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Lighty">
+               </FileRef>
+               <FileRef
+                  location = "group:Headers">
+               </FileRef>
+               <FileRef
+                  location = "group:Modules">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Lighty.framework.dSYM">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:tvOS"
+            name = "tvOS">
+            <FileRef
+               location = "group:3ACD3C27-56C1-3363-AEFB-109F31B3BA9F.bcsymbolmap">
+            </FileRef>
+            <Group
+               location = "group:Lighty.framework"
+               name = "Lighty.framework">
+               <FileRef
+                  location = "group:Lighty">
+               </FileRef>
+               <Group
+                  location = "group:Headers"
+                  name = "Headers">
+                  <FileRef
+                     location = "group:Lighty-Swift.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Lighty.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Modules"
+                  name = "Modules">
+                  <Group
+                     location = "group:Lighty.swiftmodule"
+                     name = "Lighty.swiftmodule">
+                     <FileRef
+                        location = "group:x86_64.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm64.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:x86_64.swiftmodule">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm64.swiftdoc">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:module.modulemap">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Lighty.framework.dSYM">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
 </Workspace>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Client: Hashable, CustomStringConvertible {
+open class Client: Hashable, CustomStringConvertible {
     public var name: String
     public var color: Color?
     public var game: Game?
@@ -40,17 +40,17 @@ public class Client: Hashable, CustomStringConvertible {
     public func onMessage(_ message: HFTransportModel){
         switch message {
         case is HFTransportRequestSynchronize:
-            guard let game = game else { debugPrint("[!] client \(self) requested to synchronize the game, but game is undefined"); break }
+            guard let game = game else { HFLog.warn("[!] client \(self) requested to synchronize the game, but game is undefined"); break }
             try? send(HFTransportSynchronize(hive: game.hive))
-        default: debugPrint("[!] unknown message '\(message.op)' passed into Client:onMessage()")
+        default: HFLog.warn("[!] unknown message '\(message.op)' passed into Client:onMessage()")
         }
     }
     
     //MARK: Implemented by Subclasses
     
-    public var hashValue: Int { fatalError("Client:hashValue not implemented") }
+    open var hashValue: Int { fatalError("Client:hashValue not implemented") }
     
-    public func send(_ message: HFTransportModel) throws { fatalError("Client:send() not implemented") }
+    open func send(_ message: HFTransportModel) throws { fatalError("Client:send() not implemented") }
     
     //MARK: Static Methods
     

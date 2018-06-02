@@ -1,5 +1,17 @@
 import Foundation
 
+/**
+ The wrapper class of Hive5 Server.
+ 
+ This class handles and manages clients, games, as well as overall states of the server.
+ Normally there will only be one server instance, but this class is also designed to
+ operate in multi-instance enviorments.
+ 
+ - important:
+ It is the `ServerTransport`'s responsibility to manage and recover communications.
+ This module provides a set of APIs to help transports abstract and serialize data.
+ This class is not responsible for the coding of messages and recovery of connections.
+ */
 public class Hive5Server {
     let transport: ServerTransport
     public var delegate: ServerDelegate?

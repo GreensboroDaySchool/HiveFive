@@ -15,16 +15,16 @@ public protocol HFTransportModel: Codable {
     var op: String { get }
 }
 
-public extension HFTransportModel {
-    public static var createRoom: HFTransportCreateRoom.Type { return HFTransportCreateRoom.self }
-    public static var guestDidJoin: HFTransportGuestDidJoin.Type { return HFTransportGuestDidJoin.self }
-}
+//public extension HFTransportModel {
+//    public static var createRoom: HFTransportCreateRoom.Type { return HFTransportCreateRoom.self }
+//    public static var guestDidJoin: HFTransportGuestDidJoin.Type { return HFTransportGuestDidJoin.self }
+//}
 
 public protocol DecodingDecoder {
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
 }
 
-func constructHFModel(_ message: Data, type: String, with decoder: DecodingDecoder) throws -> HFTransportModel {
+public func constructHFModel(_ message: Data, type: String, with decoder: DecodingDecoder) throws -> HFTransportModel {
     switch type {
     case "createRoom": return try decoder.decode(HFTransportCreateRoom.self, from: message)
     case "join": return try decoder.decode(HFTransportJoin.self, from: message)

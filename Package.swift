@@ -3,21 +3,29 @@
 import PackageDescription
 
 let package = Package(
-    name: "Hive5",
+    name: "Hive5Server",
     products: [
         .library(
             name: "Hive5Common",
-            targets: ["Hive5Common"])
+            targets: ["Hive5Common"]),
+        .executable(
+            name: "Hive5Server",
+            targets: ["Hive5Server"])
     ],
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/LoggerAPI.git", from: "1.7.3")
+        .package(url: "https://github.com/vapor/websocket.git", from: "1.0.1")
     ],
     targets: [
         .target(
             name: "Hive5Common",
-            dependencies: [
-                "LoggerAPI"
-            ],
+            dependencies: [],
             path: "./Hive5Common/Source"),
+        .target(
+            name: "Hive5Server",
+            dependencies: [
+                "Hive5Common",
+                "WebSocket"
+            ],
+            path: "./Hive5Server")
     ]
 )
