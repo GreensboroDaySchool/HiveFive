@@ -501,7 +501,7 @@
 		2CDD6C4020AA4A0100124EAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -516,7 +516,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.Hive5Common;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
 				PRODUCT_MODULE_NAME = Hive5Common;
 				PRODUCT_NAME = Hive5Common;
 				SKIP_INSTALL = YES;
@@ -545,7 +545,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.Hive5Common;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
 				PRODUCT_MODULE_NAME = Hive5Common;
 				PRODUCT_NAME = Hive5Common;
 				SKIP_INSTALL = YES;
