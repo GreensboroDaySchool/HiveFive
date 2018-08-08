@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view tag="233" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w31-Zd-dJr" userLabel="HiveBoardView" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="65" width="736" height="571"/>
+                            <view tag="233" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w31-Zd-dJr" userLabel="HiveBoardView" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="636" height="414"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -28,15 +28,15 @@
                                 </connections>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fu-2T-1SB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="X44-d6-3cN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fu-cG-N1p">
-                                <rect key="frame" x="0.0" y="21" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="21" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="g0e-Vy-pGs"/>
                                 </constraints>
@@ -73,20 +73,28 @@
                                 </items>
                             </toolbar>
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwT-yR-icT">
-                                <rect key="frame" x="0.0" y="314" width="736" height="100"/>
+                                <rect key="frame" x="636" y="0.0" width="100" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="1rT-jK-F7Y"/>
                                     <constraint firstAttribute="height" constant="100" id="Ukq-Ya-pb9"/>
+                                    <constraint firstAttribute="width" constant="100" id="eZU-es-fCg"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1rT-jK-F7Y"/>
+                                        <exclude reference="eZU-es-fCg"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="1rT-jK-F7Y"/>
                                         <exclude reference="Ukq-Ya-pb9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="Ukq-Ya-pb9"/>
+                                        <include reference="eZU-es-fCg"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -107,15 +115,24 @@
                             <constraint firstItem="6fu-2T-1SB" firstAttribute="bottom" secondItem="3Fu-cG-N1p" secondAttribute="bottom" id="Jyw-ez-A8O"/>
                             <constraint firstItem="w31-Zd-dJr" firstAttribute="top" secondItem="O5Y-8D-8f9" secondAttribute="top" id="LnW-mg-ipS"/>
                             <constraint firstItem="O5Y-8D-8f9" firstAttribute="bottom" secondItem="CwT-yR-icT" secondAttribute="bottom" id="Nd7-K8-QBn"/>
+                            <constraint firstItem="CwT-yR-icT" firstAttribute="top" secondItem="O5Y-8D-8f9" secondAttribute="bottom" constant="-100" id="Odz-Te-xKk">
+                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="O5Y-8D-8f9" firstAttribute="trailing" secondItem="6fu-2T-1SB" secondAttribute="trailing" id="Ow9-dm-qCB"/>
+                            <constraint firstItem="CwT-yR-icT" firstAttribute="leading" secondItem="w31-Zd-dJr" secondAttribute="trailing" id="QUT-9Q-pWN"/>
                             <constraint firstItem="CwT-yR-icT" firstAttribute="width" secondItem="rKW-N9-3Ui" secondAttribute="width" id="Sgf-tT-n0k"/>
+                            <constraint firstItem="w31-Zd-dJr" firstAttribute="top" secondItem="O5Y-8D-8f9" secondAttribute="top" id="TBa-wY-3xa"/>
+                            <constraint firstItem="CwT-yR-icT" firstAttribute="height" secondItem="O5Y-8D-8f9" secondAttribute="height" id="Tiy-pw-Hif"/>
                             <constraint firstItem="CwT-yR-icT" firstAttribute="bottom" secondItem="O5Y-8D-8f9" secondAttribute="bottom" id="TlI-Na-3Mf"/>
+                            <constraint firstItem="w31-Zd-dJr" firstAttribute="bottom" secondItem="O5Y-8D-8f9" secondAttribute="bottom" id="XGg-Wp-kxS"/>
                             <constraint firstItem="CwT-yR-icT" firstAttribute="centerX" secondItem="O5Y-8D-8f9" secondAttribute="centerX" id="YAg-b4-wnP"/>
                             <constraint firstItem="w31-Zd-dJr" firstAttribute="trailing" secondItem="O5Y-8D-8f9" secondAttribute="trailing" id="bL0-ma-MQ6"/>
                             <constraint firstItem="6fu-2T-1SB" firstAttribute="top" secondItem="rKW-N9-3Ui" secondAttribute="top" id="cpQ-bj-scf"/>
                             <constraint firstItem="CwT-yR-icT" firstAttribute="top" secondItem="w31-Zd-dJr" secondAttribute="bottom" id="dBv-L4-wok"/>
+                            <constraint firstItem="CwT-yR-icT" firstAttribute="trailing" secondItem="O5Y-8D-8f9" secondAttribute="trailing" id="exi-rT-xYo"/>
                             <constraint firstItem="3Fu-cG-N1p" firstAttribute="trailing" secondItem="O5Y-8D-8f9" secondAttribute="trailing" id="qka-Ku-BDc"/>
                             <constraint firstItem="CwT-yR-icT" firstAttribute="top" secondItem="O5Y-8D-8f9" secondAttribute="top" id="so5-YD-vKg"/>
+                            <constraint firstAttribute="bottom" secondItem="w31-Zd-dJr" secondAttribute="bottom" id="vf8-mA-Wz9"/>
                             <constraint firstItem="3Fu-cG-N1p" firstAttribute="leading" secondItem="O5Y-8D-8f9" secondAttribute="leading" id="vxO-i8-VZb"/>
                             <constraint firstItem="w31-Zd-dJr" firstAttribute="top" secondItem="3Fu-cG-N1p" secondAttribute="bottom" id="yR1-et-Few"/>
                         </constraints>
@@ -125,10 +142,17 @@
                                 <exclude reference="Iif-f1-Z8M"/>
                                 <exclude reference="E1G-O3-Ygg"/>
                                 <exclude reference="LnW-mg-ipS"/>
+                                <exclude reference="TBa-wY-3xa"/>
+                                <exclude reference="XGg-Wp-kxS"/>
+                                <exclude reference="vf8-mA-Wz9"/>
                                 <exclude reference="AO7-3n-2s5"/>
                                 <exclude reference="DPA-CC-wob"/>
                                 <exclude reference="Hot-Fp-t38"/>
+                                <exclude reference="Odz-Te-xKk"/>
+                                <exclude reference="QUT-9Q-pWN"/>
+                                <exclude reference="Tiy-pw-Hif"/>
                                 <exclude reference="TlI-Na-3Mf"/>
+                                <exclude reference="exi-rT-xYo"/>
                                 <exclude reference="so5-YD-vKg"/>
                             </mask>
                         </variation>
@@ -142,9 +166,10 @@
                             <mask key="constraints">
                                 <exclude reference="Iif-f1-Z8M"/>
                                 <exclude reference="Nd7-K8-QBn"/>
-                                <include reference="E1G-O3-Ygg"/>
+                                <exclude reference="E1G-O3-Ygg"/>
                                 <include reference="LnW-mg-ipS"/>
                                 <exclude reference="bL0-ma-MQ6"/>
+                                <include reference="vf8-mA-Wz9"/>
                                 <include reference="AO7-3n-2s5"/>
                                 <include reference="DPA-CC-wob"/>
                                 <include reference="Hot-Fp-t38"/>
@@ -153,6 +178,21 @@
                                 <exclude reference="YAg-b4-wnP"/>
                                 <exclude reference="dBv-L4-wok"/>
                                 <include reference="so5-YD-vKg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="TBa-wY-3xa"/>
+                                <include reference="XGg-Wp-kxS"/>
+                                <exclude reference="bL0-ma-MQ6"/>
+                                <exclude reference="yR1-et-Few"/>
+                                <exclude reference="Odz-Te-xKk"/>
+                                <include reference="QUT-9Q-pWN"/>
+                                <exclude reference="Sgf-tT-n0k"/>
+                                <include reference="Tiy-pw-Hif"/>
+                                <exclude reference="YAg-b4-wnP"/>
+                                <exclude reference="dBv-L4-wok"/>
+                                <include reference="exi-rT-xYo"/>
                             </mask>
                         </variation>
                     </view>
@@ -175,14 +215,14 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="798" y="906"/>
+            <point key="canvasLocation" x="797.28260869565224" y="905.79710144927549"/>
         </scene>
         <!--Hand Collection View Controller-->
         <scene sceneID="KJc-L4-wPL">
             <objects>
                 <collectionViewController id="cxX-k1-DIp" customClass="HandCollectionViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SaB-AM-gDT">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="NDu-uO-0IQ">
@@ -192,10 +232,10 @@
                             <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <visualEffectView key="backgroundView" opaque="NO" contentMode="scaleToFill" id="qfN-p4-ZKk">
-                            <rect key="frame" x="0.0" y="0.0" width="736" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="414"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BKj-fN-aYM">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="414"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                             <blurEffect style="light"/>
@@ -209,9 +249,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94P-OF-JAk" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="51"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPY-5c-cSl">
-                                                    <rect key="frame" x="58" y="-21" width="42" height="21"/>
+                                                    <rect key="frame" x="58" y="30" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
