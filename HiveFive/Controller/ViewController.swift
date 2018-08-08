@@ -84,6 +84,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         updateToolBarItemTint()
         hive.queen4 = useQueen4() // Could be better organized
         hive.immobilized4 = useImmobilized4()
+        
+        //MARK: toolbar setup (make tool bar transparent)
+        toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
     }
     
     
