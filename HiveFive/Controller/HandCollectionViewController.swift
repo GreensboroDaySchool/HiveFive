@@ -31,6 +31,9 @@ class HandCollectionViewController: UICollectionViewController {
     var hand = Hive.defaultHand
     var color: Color = .black
     var patterns = designatedTheme().patterns
+    var isIpad: Bool {
+        return traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
+    }
 
     var nodeSize = preferredNodeSizes[nodeSizeIndex()] {
         didSet {
@@ -83,6 +86,7 @@ class HandCollectionViewController: UICollectionViewController {
     private var orientationIsLandscape = UIDevice.current.orientation.isLandscape
     
     private func updateBoundsAccordingToNodeSize() {
+        if isIpad { return } // If size class is regular, then we leave the bounds as-is
         if let collectionView = collectionView {
             let current = collectionView.bounds.size
             switch UIDevice.current.orientation {
@@ -116,10 +120,10 @@ class HandCollectionViewController: UICollectionViewController {
     @objc func preferredNodeSizeDidChange(_ notification: Notification) {
         nodeSize = preferredNodeSizes[nodeSizeIndex()]
         updateFlowLayout()
-        
     }
     
     @objc func deviceOrientationDidChange(_ notification: Notification) {
+        if isIpad { return } // If size class is regular, then we leave the bounds as-is
         if let orientation = (notification.object as? UIDevice)?.orientation {
             let flowLayout = (collectionViewLayout as! UICollectionViewFlowLayout)
             switch orientation {
