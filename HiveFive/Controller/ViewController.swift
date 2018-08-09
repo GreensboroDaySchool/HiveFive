@@ -164,6 +164,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         case 1: hive.revert()
         case 2: hive.restore()
         case 3: restart()
+        case 4: board.centerHiveStructure()
         default: break
         }
     }

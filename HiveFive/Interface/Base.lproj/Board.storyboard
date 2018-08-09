@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hy-9z-FRh">
-    <device id="retina5_5" orientation="landscape">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="Main" id="3Hy-9z-FRh" customClass="ViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rKW-N9-3Ui" userLabel="RootView">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="233" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w31-Zd-dJr" userLabel="HiveBoardView" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="636" height="414"/>
+                                <rect key="frame" x="0.0" y="89" width="375" height="589"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -28,15 +28,15 @@
                                 </connections>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fu-2T-1SB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="X44-d6-3cN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fu-cG-N1p">
-                                <rect key="frame" x="0.0" y="21" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="45" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="g0e-Vy-pGs"/>
                                 </constraints>
@@ -54,8 +54,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="9QA-CB-ceu"/>
-                                    <barButtonItem title="Hive 5" image="hive_2_img" id="lnb-kT-yC3">
+                                    <barButtonItem tag="4" title="Hive 5" image="hive_2_img" id="lnb-kT-yC3">
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="barButtonPressed:" destination="3Hy-9z-FRh" id="3sc-nA-raX"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="S2R-sv-yXa"/>
                                     <barButtonItem tag="2" image="forward_arrow" id="hxR-DT-4p1">
@@ -73,7 +76,7 @@
                                 </items>
                             </toolbar>
                             <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwT-yR-icT">
-                                <rect key="frame" x="636" y="0.0" width="100" height="414"/>
+                                <rect key="frame" x="0.0" y="678" width="375" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="1rT-jK-F7Y"/>
                                     <constraint firstAttribute="height" constant="100" id="Ukq-Ya-pb9"/>
@@ -222,7 +225,7 @@
             <objects>
                 <collectionViewController id="cxX-k1-DIp" customClass="HandCollectionViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SaB-AM-gDT">
-                        <rect key="frame" x="0.0" y="0.0" width="100" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="NDu-uO-0IQ">
@@ -232,27 +235,27 @@
                             <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <visualEffectView key="backgroundView" opaque="NO" contentMode="scaleToFill" id="qfN-p4-ZKk">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="414"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BKj-fN-aYM">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="414"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
                             <blurEffect style="light"/>
                         </visualEffectView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell4" id="COc-ET-rx0" customClass="HandCollectionViewCell" customModule="Hive_Five" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="100" height="90"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell4" id="COc-ET-rx0" customClass="HandCollectionViewCell" customModule="Hive_Five" customModuleProvider="target">
+                                <rect key="frame" x="5" y="10" width="100" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94P-OF-JAk" customClass="BoardView" customModule="Hive_Five" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="51"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="90"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPY-5c-cSl">
-                                                    <rect key="frame" x="58" y="30" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPY-5c-cSl">
+                                                    <rect key="frame" x="58" y="69" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

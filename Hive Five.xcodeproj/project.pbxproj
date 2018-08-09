@@ -142,7 +142,6 @@
 		33F751EF2FA20F9ADB0252FF /* Liberia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F751A82FB1B16D3F14082B /* Liberia.png */; };
 		33F751EFAA9202ACFC833095 /* France.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75027419E69351F9A9881 /* France.png */; };
 		33F751F04D9958395F54CE99 /* QA.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F756B241F64E9112B84D45 /* QA.png */; };
-		33F751F347DFE7DBE157E9AB /* PhotoLibraryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F753835B8D5114A741280C /* PhotoLibraryPickerViewController.swift */; };
 		33F751F79A47EA550EA8707C /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7589C895E30C29AA6F783 /* UISearchBar+Extensions.swift */; };
 		33F752002AE7BCA83FBFB8B7 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F750C62D5B615D3965A5AE /* CurrencyCell.swift */; };
 		33F75206FF6A1AA36C673244 /* Brazil.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75DC763257E339E9BE1B9 /* Brazil.png */; };
@@ -181,13 +180,11 @@
 		33F752F04A8C839F9732DF28 /* Dominica.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F750078A79A8B3430F6169 /* Dominica.png */; };
 		33F7530149CF050129171D82 /* Guyana.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7518B32C7E6AEE766741C /* Guyana.png */; };
 		33F753073DD571FB2F791B0C /* SG.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F754BE1537194984911D78 /* SG.png */; };
-		33F753147CBFEAC3309FD957 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7526E785B602F44DAC719 /* LocationSearchResultsViewController.swift */; };
 		33F7531D0323FEABD42A419A /* TR.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75D9C6B187752C7EB9BF5 /* TR.png */; };
 		33F7532107C6F54D8DAAB2F7 /* JO.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75A062124DCDD235632F9 /* JO.png */; };
 		33F753233AEEA803DE48A80F /* MC.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75C6F0F1EBB920F0E79E7 /* MC.png */; };
 		33F7532365B8F5B167061D10 /* WS.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75FF414479AE0D63BA749 /* WS.png */; };
 		33F75324C3C73EC29E005ACE /* IS.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7599D34B6A038E4643576 /* IS.png */; };
-		33F75326DE47BB7BD114FACE /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F755A878712DDED95C82D0 /* Contact.swift */; };
 		33F75333A7CE26D83EA1262E /* Paraguay.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7524030B8A9598684E227 /* Paraguay.png */; };
 		33F75337DCFA54D14A8B9D1D /* RU.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F751E79335A28EA02B13E1 /* RU.png */; };
 		33F753409496E6318E70BA67 /* Nauru.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F759CECEA8B772BDC46CE8 /* Nauru.png */; };
@@ -199,10 +196,8 @@
 		33F7535CF8EFA6FC06FE9FD7 /* GG.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75AA640FDC2758769148A /* GG.png */; };
 		33F75360E0782305B0A72876 /* GY.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75E6B028416F26954ECE6 /* GY.png */; };
 		33F753631B3E81E3790B2486 /* GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75E94A249110FCF5956EE /* GS.png */; };
-		33F75365093B9A80BC65605A /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75125E88684D572F8D225 /* SearchHistoryManager.swift */; };
 		33F7537BDB000C6E527C517A /* Bahamas.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75CA69FC18E1491E29C35 /* Bahamas.png */; };
 		33F7538B33662E790C3238AC /* Sao-Tome-and-Principe.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F752B58D445707F50F3B7B /* Sao-Tome-and-Principe.png */; };
-		33F75390F7DBB6B59E33BF83 /* TelegramPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F753F0407E254B57A36F86 /* TelegramPickerViewController.swift */; };
 		33F7539858A094779DA7C3EA /* CI.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F751C3B7344026A66844DD /* CI.png */; };
 		33F753A0D984083CBF4B882E /* Zimbabwe.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7549A57ABF08BFD52821C /* Zimbabwe.png */; };
 		33F753B0E7951944B280D37E /* AttributedTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75010D867DBABFE956653 /* AttributedTextBlock.swift */; };
@@ -242,9 +237,7 @@
 		33F754D14AFC1889FFA1F0EF /* MW.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75B996BF3B2EA75A0115A /* MW.png */; };
 		33F754D601ED1CD6CBE6D54C /* AZ.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75F6F8B9A34AD89C843AB /* AZ.png */; };
 		33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75DBBC5981F1041D39915 /* Locale+Extensions.swift */; };
-		33F754DD0E6BD73E84EC75F0 /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75C91B7C1039F35640044 /* PhotoLayout.swift */; };
 		33F754E6CAC35994CCADF05A /* YT.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75C0BA2DDFFCCAB17B046 /* YT.png */; };
-		33F754ECCC11C94508788090 /* ItemWithPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75E6997E3CB019E1CB3A7 /* ItemWithPhoto.swift */; };
 		33F754F79AFC103E17EEC407 /* CC.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7574D6FFBA40FBBDA04A3 /* CC.png */; };
 		33F754F8C21C3349CB96E9E9 /* Malawi.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75F8EF4B083876103DBA8 /* Malawi.png */; };
 		33F755035FDD9919D8B96805 /* CD.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7588D213C2FE9726B1786 /* CD.png */; };
@@ -309,7 +302,6 @@
 		33F756F9DD2059CDC06E9055 /* Colombia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F750A60A97D9AE14B8ABD2 /* Colombia.png */; };
 		33F75705E4550D031ECC5277 /* KP.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F755311C57DB39177E14BB /* KP.png */; };
 		33F7570B2A70ACC00C5DDC32 /* PE.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75412F6814C480E79EB8A /* PE.png */; };
-		33F7571AF4E032CEE8074492 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75EBB83F1115D236F4B05 /* Address.swift */; };
 		33F7572500635ADF8A06C479 /* Fiji.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F753547A0ADA82FB64922F /* Fiji.png */; };
 		33F7572908B2C72735ACE390 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75C0E699F5441B6CDC6B4 /* CountryCell.swift */; };
 		33F757335C4414DAD6B652A0 /* BY.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F750CEDA28DBEF7A45E0E9 /* BY.png */; };
@@ -321,7 +313,6 @@
 		33F7575ABF8CCF161FE97F75 /* New Zealand.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7553796D46A967631FF51 /* New Zealand.png */; };
 		33F7575DC0272B4A14E0684A /* Sierra-Leone.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7588A00B15CBAAEFCEDEC /* Sierra-Leone.png */; };
 		33F757652418102480A504FA /* PR.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F751A6D09E6CB950807591 /* PR.png */; };
-		33F7576DDFE95A75B7697699 /* ContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75CBDDFBBB9E706CEFC83 /* ContactsPickerViewController.swift */; };
 		33F7576FE4AF747B791CA961 /* Zambia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F755222A9DB5908756CF3A /* Zambia.png */; };
 		33F7577A758B351BF0891D6C /* Poland.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F754DB1AFFE596530BBEBF /* Poland.png */; };
 		33F7577DFB0FC4F1DECF1681 /* MQ.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75F74FDBBD8743D017AE4 /* MQ.png */; };
@@ -348,12 +339,10 @@
 		33F75887A03A99DF59206BAD /* SV.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F754D9A8B117C883BE3208 /* SV.png */; };
 		33F7588A3FF5E465C3C052D1 /* Austria.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75E78679A44617AC76248 /* Austria.png */; };
 		33F7588A463500EDF7FA4184 /* GB.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F752F14493C955087AEC1F /* GB.png */; };
-		33F75890D890EC8B7517F99D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F757FAF03507BFF4440B88 /* Location.swift */; };
 		33F758A7BB8D64FDA6D629DD /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7590187E51E9F33848309 /* SegmentedControl.swift */; };
 		33F758B707142AB7E2DBB30D /* GR.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7503D49AEECB80E0D772E /* GR.png */; };
 		33F758BABA8724D4D83344BF /* GH.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75DFDC49989D7A495B6F5 /* GH.png */; };
 		33F758BC78C9D031A86B4539 /* JE.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F755B54AD44982BD713083 /* JE.png */; };
-		33F758CB2DF9678AB3E79BBE /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75E3135D4441D2F204ABC /* Contacts.swift */; };
 		33F758D287CC833F936D1624 /* HT.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75199DEC5F44DA3BCAB6A /* HT.png */; };
 		33F758D35A6BF8BFB2A16D2B /* Grenada.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75F7988EC0B39D301B669 /* Grenada.png */; };
 		33F758DF82F946209371E525 /* NP.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F759CE30B01783A5720682 /* NP.png */; };
@@ -398,7 +387,6 @@
 		33F75A4C025AD1503C7C325D /* MF.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7561612F7B1FE1AF0235D /* MF.png */; };
 		33F75A4CE908219C195EB76D /* IE.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75433B267D9D9D8C6D777 /* IE.png */; };
 		33F75A4FB513DD0BDFECC50F /* SX.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F757C687F47C4CB13442F4 /* SX.png */; };
-		33F75A609D20ED02C1632B51 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F758E05D58276F7785BB33 /* Assets.swift */; };
 		33F75A6EEDFFDBC270A9F9AF /* PG.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F751EE81EA4EF0C83625EE /* PG.png */; };
 		33F75A7BAF7A4F3CDD42F60F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F752D6966D513AB72C1369 /* Button.swift */; };
 		33F75A7CE6B2DA60C4A3E8FE /* RO.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F757B1C0469F504A430888 /* RO.png */; };
@@ -457,7 +445,6 @@
 		33F75C5C2C472EAD49022BE8 /* PY.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75BCD9D0B7C267BC334C1 /* PY.png */; };
 		33F75C5FD6C1F7501AA898F8 /* Trinidad-and-Tobago.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F752E419028EBB5595B367 /* Trinidad-and-Tobago.png */; };
 		33F75C611C812FD4A983FE01 /* Georgia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F753CD02ABA68E93284F3F /* Georgia.png */; };
-		33F75C6231D83AE385809B3E /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7520C3724B9E0F454AC88 /* LocationPickerViewController.swift */; };
 		33F75C62772D5A6BF8B8F7EF /* China.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7529C4630C6B686C89E1C /* China.png */; };
 		33F75C6EA6BE9DE1D1B7524F /* BS.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F757EBC3C1D23F29AE51B5 /* BS.png */; };
 		33F75C72D6817EA013842259 /* FJ.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75999A4D99F82C9409BA5 /* FJ.png */; };
@@ -517,7 +504,6 @@
 		33F75E0F117B12426F852591 /* ST.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75932F7AE26CBC543210F /* ST.png */; };
 		33F75E170A5700F149EB63A8 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F75228598796CB69EFF563 /* Label.swift */; };
 		33F75E1ECCB0A2F09574E0D0 /* MS.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75CDC94C6202DE5F78467 /* MS.png */; };
-		33F75E2EAB4B9A71743D2B1C /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F752F8C10DEAB9EFEBF5C0 /* ContactCell.swift */; };
 		33F75E322CA7EEA265CEACA4 /* BL.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F753BCF152A87ED6F8B6AD /* BL.png */; };
 		33F75E3600CCFE7352738991 /* Antigua-and-Barbuda.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F756F1AC18A5B23081DA3A /* Antigua-and-Barbuda.png */; };
 		33F75E4B752EE1131B294180 /* LC.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F75BE047A212B144DA348A /* LC.png */; };
@@ -560,7 +546,6 @@
 		33F75F833B4EFEB178507B6F /* AN.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7562F5E9084C0AC469D20 /* AN.png */; };
 		33F75F84B3274B9FE2923807 /* SO.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F757228E74765F294C6AD2 /* SO.png */; };
 		33F75F87F736359686126845 /* LR.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F756805F782E909ECB57AC /* LR.png */; };
-		33F75F8C044C852847C30AC5 /* LikeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F7522D865B294C936720F9 /* LikeButtonCell.swift */; };
 		33F75F8F39ABB3A6288405F1 /* Ecuador.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F7530CD116E984FABD430B /* Ecuador.png */; };
 		33F75F9B9E2978BD16183CEC /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F757DE7DA96FB7D90AF730 /* UITextField+Extensions.swift */; };
 		33F75FA001251897772E87FC /* Germany.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F758203BC421DFE24FDF27 /* Germany.png */; };
@@ -728,7 +713,6 @@
 		33F7511715689A1BAE3F784E /* RE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RE.png; sourceTree = "<group>"; };
 		33F751183559949ECEA65F04 /* Norway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Norway.png; sourceTree = "<group>"; };
 		33F75124C9496A3F8D31B715 /* SY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SY.png; sourceTree = "<group>"; };
-		33F75125E88684D572F8D225 /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
 		33F75126D85493446C8C5C7B /* GI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GI.png; sourceTree = "<group>"; };
 		33F7512CF12D39A3B9484284 /* MG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MG.png; sourceTree = "<group>"; };
 		33F7512D9B976BE9D08CC443 /* Saint-Vincent-and-the-Grenadines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Saint-Vincent-and-the-Grenadines.png"; sourceTree = "<group>"; };
@@ -765,19 +749,16 @@
 		33F751EED14E91C7052F61A6 /* CM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CM.png; sourceTree = "<group>"; };
 		33F752024903FB7D7BD93648 /* Solomon-Islands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Solomon-Islands.png"; sourceTree = "<group>"; };
 		33F75203EB2EC143A236A392 /* Aruba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Aruba.png; sourceTree = "<group>"; };
-		33F7520C3724B9E0F454AC88 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		33F7521A2B1B2143929A788F /* GD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GD.png; sourceTree = "<group>"; };
 		33F752206DD5CBA303A17402 /* Palau.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Palau.png; sourceTree = "<group>"; };
 		33F75225F6CC6E0203319126 /* PN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PN.png; sourceTree = "<group>"; };
 		33F752266D66A5725728316F /* Luxembourg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Luxembourg.png; sourceTree = "<group>"; };
 		33F75228598796CB69EFF563 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		33F7522D865B294C936720F9 /* LikeButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeButtonCell.swift; sourceTree = "<group>"; };
 		33F7522D989DC359ACFAE9CF /* Bosnia-and-Herzegovina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bosnia-and-Herzegovina.png"; sourceTree = "<group>"; };
 		33F7523118722B48F2BED451 /* IM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IM.png; sourceTree = "<group>"; };
 		33F752341AFFAC8A138C17E5 /* MU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MU.png; sourceTree = "<group>"; };
 		33F752359E915701ECB699F1 /* PL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PL.png; sourceTree = "<group>"; };
 		33F7524030B8A9598684E227 /* Paraguay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Paraguay.png; sourceTree = "<group>"; };
-		33F7526E785B602F44DAC719 /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
 		33F75281B0C50CAD1861A597 /* Suriname.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Suriname.png; sourceTree = "<group>"; };
 		33F752918E6BD3135817B009 /* Israel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Israel.png; sourceTree = "<group>"; };
 		33F7529AE42DA078A4E12FD0 /* BH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BH.png; sourceTree = "<group>"; };
@@ -802,7 +783,6 @@
 		33F752E43B43CD91744F73AD /* DJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DJ.png; sourceTree = "<group>"; };
 		33F752E7CDAD65E6B39D6B3A /* Saudi-Arabia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Saudi-Arabia.png"; sourceTree = "<group>"; };
 		33F752F14493C955087AEC1F /* GB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GB.png; sourceTree = "<group>"; };
-		33F752F8C10DEAB9EFEBF5C0 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		33F752FC2473A1803F4E9FF5 /* TM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TM.png; sourceTree = "<group>"; };
 		33F75306FAAF4A3CF22018BB /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		33F7530CD116E984FABD430B /* Ecuador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ecuador.png; sourceTree = "<group>"; };
@@ -815,7 +795,6 @@
 		33F75361767C0780E3467D4A /* AL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AL.png; sourceTree = "<group>"; };
 		33F75365DB1D7734189ED8E9 /* AF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AF.png; sourceTree = "<group>"; };
 		33F753784DA267B101EB61CD /* IN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IN.png; sourceTree = "<group>"; };
-		33F753835B8D5114A741280C /* PhotoLibraryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPickerViewController.swift; sourceTree = "<group>"; };
 		33F7538E8E048D024533AACF /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		33F75399C14357E74CBB6D9B /* DE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DE.png; sourceTree = "<group>"; };
 		33F753B0E601995C02934590 /* Azerbaijan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Azerbaijan.png; sourceTree = "<group>"; };
@@ -829,7 +808,6 @@
 		33F753E6633F36A4376E1419 /* MH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MH.png; sourceTree = "<group>"; };
 		33F753E715D9C828B3106376 /* Ireland.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ireland.png; sourceTree = "<group>"; };
 		33F753E8EB64C75ABD17405B /* Iceland.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Iceland.png; sourceTree = "<group>"; };
-		33F753F0407E254B57A36F86 /* TelegramPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelegramPickerViewController.swift; sourceTree = "<group>"; };
 		33F75400A72F3E1202B553FD /* BN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BN.png; sourceTree = "<group>"; };
 		33F75400CA182DDC18715E91 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		33F75405DAE0A51F7EE8E107 /* NL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NL.png; sourceTree = "<group>"; };
@@ -878,7 +856,6 @@
 		33F7558D0E450D6F2DAE7D5C /* United States of America.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "United States of America.png"; sourceTree = "<group>"; };
 		33F7558E8628F943913AF0D7 /* SD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SD.png; sourceTree = "<group>"; };
 		33F7559C438B820A37383EF7 /* MM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MM.png; sourceTree = "<group>"; };
-		33F755A878712DDED95C82D0 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		33F755B3AAAD63DA9D5A74F8 /* Kuwait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kuwait.png; sourceTree = "<group>"; };
 		33F755B54AD44982BD713083 /* JE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JE.png; sourceTree = "<group>"; };
 		33F755C465AED5D653CFD422 /* Chad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chad.png; sourceTree = "<group>"; };
@@ -939,7 +916,6 @@
 		33F757F197B079EA56F0F479 /* Slovenia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slovenia.png; sourceTree = "<group>"; };
 		33F757F2A215D6B7E567E616 /* BF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BF.png; sourceTree = "<group>"; };
 		33F757F4A92EB6E24E69DC23 /* Switzerland.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Switzerland.png; sourceTree = "<group>"; };
-		33F757FAF03507BFF4440B88 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		33F757FEB6ACC9C30146194D /* Singapore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Singapore.png; sourceTree = "<group>"; };
 		33F7580E797365C4FA679BBC /* South-Sudan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "South-Sudan.png"; sourceTree = "<group>"; };
 		33F75812E60D18ADABD9182F /* LI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LI.png; sourceTree = "<group>"; };
@@ -967,7 +943,6 @@
 		33F758B58A2443E20CD39470 /* GW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GW.png; sourceTree = "<group>"; };
 		33F758B82E13A422C2D91D1D /* ItemWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemWithImage.swift; sourceTree = "<group>"; };
 		33F758BDE06B307A2442E32A /* GM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GM.png; sourceTree = "<group>"; };
-		33F758E05D58276F7785BB33 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		33F758EB74DA0ABAFF914C4D /* AX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AX.png; sourceTree = "<group>"; };
 		33F758ED471682582CDA556A /* XK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XK.png; sourceTree = "<group>"; };
 		33F758F431973E309480B37D /* Russia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Russia.png; sourceTree = "<group>"; };
@@ -1077,12 +1052,10 @@
 		33F75C7983DE8EACF8A39854 /* MR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MR.png; sourceTree = "<group>"; };
 		33F75C80036CC9B82487B1EB /* Tuvalu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tuvalu.png; sourceTree = "<group>"; };
 		33F75C8510ABC2E157F8EA6D /* East-Timor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "East-Timor.png"; sourceTree = "<group>"; };
-		33F75C91B7C1039F35640044 /* PhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
 		33F75C9C21B36440816957E5 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		33F75CA69FC18E1491E29C35 /* Bahamas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bahamas.png; sourceTree = "<group>"; };
 		33F75CA71316D5CFE8E3F386 /* Denmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Denmark.png; sourceTree = "<group>"; };
 		33F75CB29CD4F2BBF903F8CC /* Japan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Japan.png; sourceTree = "<group>"; };
-		33F75CBDDFBBB9E706CEFC83 /* ContactsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsPickerViewController.swift; sourceTree = "<group>"; };
 		33F75CC75C7B9E151960CE0E /* AE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AE.png; sourceTree = "<group>"; };
 		33F75CDC94C6202DE5F78467 /* MS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MS.png; sourceTree = "<group>"; };
 		33F75CE2F75D9C323BB24362 /* SH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SH.png; sourceTree = "<group>"; };
@@ -1133,14 +1106,12 @@
 		33F75E157F1873066AFC8863 /* JM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JM.png; sourceTree = "<group>"; };
 		33F75E1AC908FE2B3C231E98 /* CV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CV.png; sourceTree = "<group>"; };
 		33F75E233FEF9E37F77C1C12 /* Bulgaria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bulgaria.png; sourceTree = "<group>"; };
-		33F75E3135D4441D2F204ABC /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		33F75E368ACFD941C9B8DA40 /* LocaleStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaleStore.swift; sourceTree = "<group>"; };
 		33F75E3C8DE1BA7198827B26 /* Micronesia-(Federated).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Micronesia-(Federated).png"; sourceTree = "<group>"; };
 		33F75E473F72BC6CA326DD02 /* Vatican-City.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vatican-City.png"; sourceTree = "<group>"; };
 		33F75E4AF29DF8E1A02D63D1 /* UG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UG.png; sourceTree = "<group>"; };
 		33F75E58824EB5049D495952 /* Madagascar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Madagascar.png; sourceTree = "<group>"; };
 		33F75E6034767A2012E70343 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		33F75E6997E3CB019E1CB3A7 /* ItemWithPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemWithPhoto.swift; sourceTree = "<group>"; };
 		33F75E6B028416F26954ECE6 /* GY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GY.png; sourceTree = "<group>"; };
 		33F75E758BD735D3276C3DF6 /* KG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KG.png; sourceTree = "<group>"; };
 		33F75E78679A44617AC76248 /* Austria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Austria.png; sourceTree = "<group>"; };
@@ -1153,7 +1124,6 @@
 		33F75E94A249110FCF5956EE /* GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GS.png; sourceTree = "<group>"; };
 		33F75EAF66176CE3D6147EE6 /* Peru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Peru.png; sourceTree = "<group>"; };
 		33F75EB5110F5DD25530AD31 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
-		33F75EBB83F1115D236F4B05 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		33F75ECBB326645713056328 /* EE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EE.png; sourceTree = "<group>"; };
 		33F75ED1244298F0E87063CB /* VN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VN.png; sourceTree = "<group>"; };
 		33F75ED1299DC371DECD18A8 /* YU.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YU.png; sourceTree = "<group>"; };
@@ -1435,15 +1405,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		33F7506B666D81E5F34B4816 /* PhotoLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				33F75149E18969390CBB27E0 /* Managers */,
-				33F753835B8D5114A741280C /* PhotoLibraryPickerViewController.swift */,
-			);
-			path = PhotoLibrary;
-			sourceTree = "<group>";
-		};
 		33F750A9D11CB84350D1C228 /* Viewers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1459,31 +1420,6 @@
 				33F7538E8E048D024533AACF /* ColorPickerViewController.swift */,
 			);
 			path = Color;
-			sourceTree = "<group>";
-		};
-		33F75100FFFAC1DC4DA767E6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				33F75EBB83F1115D236F4B05 /* Address.swift */,
-				33F757FAF03507BFF4440B88 /* Location.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		33F75148E80CC09D72B361C3 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				33F75125E88684D572F8D225 /* SearchHistoryManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		33F75149E18969390CBB27E0 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				33F758E05D58276F7785BB33 /* Assets.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		33F7522002CC952334091A25 /* Extensions */ = {
@@ -1522,42 +1458,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		33F7532E7179C9499CE96971 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				33F75E6997E3CB019E1CB3A7 /* ItemWithPhoto.swift */,
-				33F7522D865B294C936720F9 /* LikeButtonCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		33F75379AA158A233AE9A3F9 /* Date */ = {
 			isa = PBXGroup;
 			children = (
 				33F75BB0F08750A8EF089A56 /* DatePickerViewController.swift */,
 			);
 			path = Date;
-			sourceTree = "<group>";
-		};
-		33F753ADE50DA630D209AEF5 /* Telegram */ = {
-			isa = PBXGroup;
-			children = (
-				33F757AD9666D28828A3E508 /* Layouts */,
-				33F7532E7179C9499CE96971 /* Views */,
-				33F753F0407E254B57A36F86 /* TelegramPickerViewController.swift */,
-			);
-			path = Telegram;
-			sourceTree = "<group>";
-		};
-		33F753F75A6532F43BE94199 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				33F75148E80CC09D72B361C3 /* Managers */,
-				33F75100FFFAC1DC4DA767E6 /* Models */,
-				33F7520C3724B9E0F454AC88 /* LocationPickerViewController.swift */,
-				33F7526E785B602F44DAC719 /* LocationSearchResultsViewController.swift */,
-			);
-			path = Location;
 			sourceTree = "<group>";
 		};
 		33F7547447A84213F568BFE1 /* Managers */ = {
@@ -1611,22 +1517,6 @@
 			path = PickerView;
 			sourceTree = "<group>";
 		};
-		33F756DBC38FD2986B1B245B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				33F755A878712DDED95C82D0 /* Contact.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		33F757AD9666D28828A3E508 /* Layouts */ = {
-			isa = PBXGroup;
-			children = (
-				33F75C91B7C1039F35640044 /* PhotoLayout.swift */,
-			);
-			path = Layouts;
-			sourceTree = "<group>";
-		};
 		33F757BA21C0589D936E7671 /* Alerts & Pickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1638,45 +1528,14 @@
 			path = "Alerts & Pickers";
 			sourceTree = "<group>";
 		};
-		33F7580D6B27FEBDCCD9194C /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				33F75E3135D4441D2F204ABC /* Contacts.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		33F7584965EA7BC88BBA403F /* Contacts */ = {
-			isa = PBXGroup;
-			children = (
-				33F7580D6B27FEBDCCD9194C /* Managers */,
-				33F756DBC38FD2986B1B245B /* Models */,
-				33F758F6C6AB17E241AD7CD5 /* Views */,
-				33F75CBDDFBBB9E706CEFC83 /* ContactsPickerViewController.swift */,
-			);
-			path = Contacts;
-			sourceTree = "<group>";
-		};
-		33F758F6C6AB17E241AD7CD5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				33F752F8C10DEAB9EFEBF5C0 /* ContactCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		33F75992AA443E98DA3E0EEB /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
 				33F750CFC418FD323146AD9C /* Color */,
-				33F7584965EA7BC88BBA403F /* Contacts */,
 				33F75379AA158A233AE9A3F9 /* Date */,
 				33F7554EFC20098E836F6C6B /* Image */,
 				33F75CFD68278F633E99B7BC /* Locale */,
-				33F753F75A6532F43BE94199 /* Location */,
-				33F7506B666D81E5F34B4816 /* PhotoLibrary */,
 				33F756761505D3B20D9D34B9 /* PickerView */,
-				33F753ADE50DA630D209AEF5 /* Telegram */,
 				33F75AEC754231B80457322C /* TextFields */,
 			);
 			path = Pickers;
@@ -2871,26 +2730,11 @@
 				33F757A52B1F1C44006BAD63 /* LocaleInfo.swift in Sources */,
 				33F7569FFAB681717C306B7F /* LocaleStore.swift in Sources */,
 				33F7501C8B1E0A89B49721AC /* LocalePickerViewController.swift in Sources */,
-				33F75E2EAB4B9A71743D2B1C /* ContactCell.swift in Sources */,
-				33F75326DE47BB7BD114FACE /* Contact.swift in Sources */,
-				33F758CB2DF9678AB3E79BBE /* Contacts.swift in Sources */,
-				33F7576DDFE95A75B7697699 /* ContactsPickerViewController.swift in Sources */,
-				33F7571AF4E032CEE8074492 /* Address.swift in Sources */,
-				33F75890D890EC8B7517F99D /* Location.swift in Sources */,
-				33F75365093B9A80BC65605A /* SearchHistoryManager.swift in Sources */,
 				320FDBB92082A25600E0F62A /* Extension+Vec2D.swift in Sources */,
-				33F75C6231D83AE385809B3E /* LocationPickerViewController.swift in Sources */,
-				33F753147CBFEAC3309FD957 /* LocationSearchResultsViewController.swift in Sources */,
-				33F754ECCC11C94508788090 /* ItemWithPhoto.swift in Sources */,
-				33F75F8C044C852847C30AC5 /* LikeButtonCell.swift in Sources */,
-				33F754DD0E6BD73E84EC75F0 /* PhotoLayout.swift in Sources */,
-				33F75390F7DBB6B59E33BF83 /* TelegramPickerViewController.swift in Sources */,
 				33F750C7811BFDD0BB1DD06D /* PickerViewViewController.swift in Sources */,
 				33F75CE9325AB811EAB6C0F2 /* OneTextFieldViewController.swift in Sources */,
 				3281AC342079A1C300DE7EDA /* NumberTableViewCell.swift in Sources */,
 				33F75574844037562BB14C5A /* TwoTextFieldsViewController.swift in Sources */,
-				33F75A609D20ED02C1632B51 /* Assets.swift in Sources */,
-				33F751F347DFE7DBE157E9AB /* PhotoLibraryPickerViewController.swift in Sources */,
 				33F753B0E7951944B280D37E /* AttributedTextBlock.swift in Sources */,
 				33F75CDDB905DA477DB9A9F8 /* TextViewController.swift in Sources */,
 				33F751BE127262D1BE5C3D9D /* Date+Extension.swift in Sources */,
@@ -3037,8 +2881,9 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DEVELOPMENT_TEAM = AM89ND2ZY7;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -3051,8 +2896,9 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8WB2V923XT;
+				DEVELOPMENT_TEAM = AM89ND2ZY7;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -3179,7 +3025,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/HiveFive/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.hivefive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3195,7 +3041,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/HiveFive/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.greensboroday.hivefive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
