@@ -283,11 +283,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Greensboro Day School";
 				TargetAttributes = {
 					2CDD6C3920AA4A0100124EAE = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1000;
+					};
+					2CDD6C4320AA4A3900124EAE = {
 						LastSwiftMigration = 1000;
 					};
 				};
@@ -510,7 +513,7 @@
 		2CDD6C4020AA4A0100124EAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -589,7 +592,7 @@
 				PRODUCT_NAME = Hive5Common;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -620,7 +623,7 @@
 				PRODUCT_NAME = Hive5Common;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
