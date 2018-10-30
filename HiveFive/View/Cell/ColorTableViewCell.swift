@@ -51,7 +51,7 @@ class ColorSegueTableViewCell: UITableViewCell, KPAssociate {
         alert.addColorPicker(color: colorView.backgroundColor!) {[unowned self] color in
             self.handleValueUpdate(color)
         }
-        alert.childViewControllers[0].preferredContentSize.height = 400
+        alert.children[0].preferredContentSize.height = 400
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive) {[unowned self] _ in
             self.cancelUpdate()
         })

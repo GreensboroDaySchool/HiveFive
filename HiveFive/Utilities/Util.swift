@@ -95,7 +95,7 @@ func playSound(_ name: String) {
     var alarmAudioPlayer: AVAudioPlayer?
     if let sound = NSDataAsset(name: name) {
         do {
-            try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try! AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)), mode: .default)
             try! AVAudioSession.sharedInstance().setActive(true)
             try alarmAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileType.wav.rawValue)
             alarmAudioPlayer!.play()
@@ -103,4 +103,9 @@ func playSound(_ name: String) {
             print("error initializing AVAudioPlayer")
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

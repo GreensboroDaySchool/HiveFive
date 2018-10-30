@@ -79,7 +79,7 @@ class HandCollectionViewController: UICollectionViewController {
         observe(preferredNodeSizeNotification, #selector(preferredNodeSizeDidChange(_:)))
         
         // Detect orientation change
-        observe(NSNotification.Name.UIDeviceOrientationDidChange, #selector(deviceOrientationDidChange(_:)))
+        observe(UIDevice.orientationDidChangeNotification, #selector(deviceOrientationDidChange(_:)))
         
     }
     

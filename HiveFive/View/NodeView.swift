@@ -323,7 +323,7 @@ class NodeView: UIView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        let attributes : [NSAttributedStringKey:NSObject] = [
+        let attributes : [NSAttributedString.Key:NSObject] = [
             .paragraphStyle  : paragraphStyle,
             .font            : UIFont.systemFont(ofSize: radius),
             .foregroundColor : identityColor,

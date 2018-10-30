@@ -71,7 +71,7 @@ class HelpPageViewController: UIViewController {
             // Add child view controller view to container view
             let controller = storyboard!.instantiateViewController(withIdentifier: "HelpItem") as! HelpItemViewController
             controller.nodeDescription = element
-            addChildViewController(controller)
+            addChild(controller)
             
             
             controller.view.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class HelpPageViewController: UIViewController {
                 controller.view.heightAnchor.constraint(equalTo: containerView.heightAnchor)
                 ])
 
-            controller.didMove(toParentViewController: self)
+            controller.didMove(toParent: self)
         }
 
     }
