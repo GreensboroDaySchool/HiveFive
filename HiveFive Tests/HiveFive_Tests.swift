@@ -20,6 +20,7 @@
 import XCTest
 import CoreData
 @testable import Hive_Five
+@testable import Hive5Common
 
 class HiveFive_Tests: XCTestCase {
     

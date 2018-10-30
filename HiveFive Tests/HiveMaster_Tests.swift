@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import Hive_Five
+@testable import Hive5Common
 
 class HiveMaster_Tests: XCTestCase {
     

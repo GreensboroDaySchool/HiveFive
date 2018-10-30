@@ -45,16 +45,16 @@
 		2CDD6CEC20AA4C6900124EAE /* ServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC220AA4C6900124EAE /* ServerTransport.swift */; };
 		2CDD6CED20AA4C6900124EAE /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */; };
 		2CDD6CEE20AA4C6900124EAE /* TransportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */; };
-		2CDD6CEF20AA4C6900124EAE /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */; };
-		2CDD6CF020AA4C6900124EAE /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */; };
-		2CDD6CF120AA4C6900124EAE /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */; };
-		2CDD6CF220AA4C6900124EAE /* Extension+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */; };
-		2CDD6CF320AA4C6900124EAE /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */; };
-		2CDD6CF420AA4C6900124EAE /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */; };
-		2CDD6CF720AA4C6900124EAE /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */; };
-		2CDD6CF820AA4C6900124EAE /* Extension+Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */; };
-		2CDD6CF920AA4C6900124EAE /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */; };
-		2CDD6CFA20AA4C6900124EAE /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */; };
+		2CDD6CEF20AA4C6900124EAE /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC520AA4C6900124EAE /* Double.swift */; };
+		2CDD6CF020AA4C6900124EAE /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC520AA4C6900124EAE /* Double.swift */; };
+		2CDD6CF120AA4C6900124EAE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC620AA4C6900124EAE /* Dictionary.swift */; };
+		2CDD6CF220AA4C6900124EAE /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC620AA4C6900124EAE /* Dictionary.swift */; };
+		2CDD6CF320AA4C6900124EAE /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC720AA4C6900124EAE /* Array.swift */; };
+		2CDD6CF420AA4C6900124EAE /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC720AA4C6900124EAE /* Array.swift */; };
+		2CDD6CF720AA4C6900124EAE /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC920AA4C6900124EAE /* Decimal.swift */; };
+		2CDD6CF820AA4C6900124EAE /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CC920AA4C6900124EAE /* Decimal.swift */; };
+		2CDD6CF920AA4C6900124EAE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CCA20AA4C6900124EAE /* Date.swift */; };
+		2CDD6CFA20AA4C6900124EAE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CCA20AA4C6900124EAE /* Date.swift */; };
 		2CDD6D0220AA5B4100124EAE /* Hive5Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDD6D0120AA5B4100124EAE /* Hive5Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CDD6D0320AA5B4100124EAE /* Hive5Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDD6D0120AA5B4100124EAE /* Hive5Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -84,11 +84,11 @@
 		2CDD6CC020AA4C6900124EAE /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
 		2CDD6CC220AA4C6900124EAE /* ServerTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTransport.swift; sourceTree = "<group>"; };
 		2CDD6CC320AA4C6900124EAE /* TransportOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportOperation.swift; sourceTree = "<group>"; };
-		2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
-		2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Dictionary.swift"; sourceTree = "<group>"; };
-		2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
-		2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Decimal.swift"; sourceTree = "<group>"; };
-		2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
+		2CDD6CC520AA4C6900124EAE /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		2CDD6CC620AA4C6900124EAE /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		2CDD6CC720AA4C6900124EAE /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		2CDD6CC920AA4C6900124EAE /* Decimal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
+		2CDD6CCA20AA4C6900124EAE /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		2CDD6D0120AA5B4100124EAE /* Hive5Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hive5Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +110,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1396FC21880EAE00B3673B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CDD6CC520AA4C6900124EAE /* Double.swift */,
+				2CDD6CC620AA4C6900124EAE /* Dictionary.swift */,
+				2CDD6CC720AA4C6900124EAE /* Array.swift */,
+				2CDD6CC920AA4C6900124EAE /* Decimal.swift */,
+				2CDD6CCA20AA4C6900124EAE /* Date.swift */,
+				2C95680F20C24F7200D32C65 /* Logger.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2C95680A20C24F2300D32C65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,12 +213,7 @@
 		2CDD6CC420AA4C6900124EAE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2CDD6CC520AA4C6900124EAE /* Extension+Double.swift */,
-				2CDD6CC620AA4C6900124EAE /* Extension+Dictionary.swift */,
-				2CDD6CC720AA4C6900124EAE /* Extension+Array.swift */,
-				2CDD6CC920AA4C6900124EAE /* Extension+Decimal.swift */,
-				2CDD6CCA20AA4C6900124EAE /* Extension+Date.swift */,
-				2C95680F20C24F7200D32C65 /* Logger.swift */,
+				1F1396FC21880EAE00B3673B /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -324,23 +332,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CDD6CD720AA4C6900124EAE /* SoldierAnt.swift in Sources */,
-				2CDD6CF120AA4C6900124EAE /* Extension+Dictionary.swift in Sources */,
+				2CDD6CF120AA4C6900124EAE /* Dictionary.swift in Sources */,
 				2CDD6CCD20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */,
 				2CDD6CE920AA4C6900124EAE /* HexNode.swift in Sources */,
-				2CDD6CF920AA4C6900124EAE /* Extension+Date.swift in Sources */,
+				2CDD6CF920AA4C6900124EAE /* Date.swift in Sources */,
 				2CDD6CD920AA4C6900124EAE /* Vec2D.swift in Sources */,
-				2CDD6CEF20AA4C6900124EAE /* Extension+Double.swift in Sources */,
+				2CDD6CEF20AA4C6900124EAE /* Double.swift in Sources */,
 				2C95681020C24F7200D32C65 /* Logger.swift in Sources */,
 				2CDD6CE720AA4C6900124EAE /* QueenBee.swift in Sources */,
 				2CDD6CDD20AA4C6900124EAE /* Hive+Encodable.swift in Sources */,
-				2CDD6CF720AA4C6900124EAE /* Extension+Decimal.swift in Sources */,
+				2CDD6CF720AA4C6900124EAE /* Decimal.swift in Sources */,
 				2CDD6CD520AA4C6900124EAE /* Navigation.swift in Sources */,
 				2CDD6CD320AA4C6900124EAE /* Spider.swift in Sources */,
 				2CDD6CDF20AA4C6900124EAE /* HiveMaster.swift in Sources */,
 				2CDD6CE120AA4C6900124EAE /* Neighbors.swift in Sources */,
 				2CDD6CD120AA4C6900124EAE /* Hive5Server.swift in Sources */,
 				2CDD6CCF20AA4C6900124EAE /* Client.swift in Sources */,
-				2CDD6CF320AA4C6900124EAE /* Extension+Array.swift in Sources */,
+				2CDD6CF320AA4C6900124EAE /* Array.swift in Sources */,
 				2CDD6CED20AA4C6900124EAE /* TransportOperation.swift in Sources */,
 				2CDD6CCB20AA4C6900124EAE /* Game.swift in Sources */,
 				2CDD6CEB20AA4C6900124EAE /* ServerTransport.swift in Sources */,
@@ -355,23 +363,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CDD6CD820AA4C6900124EAE /* SoldierAnt.swift in Sources */,
-				2CDD6CF220AA4C6900124EAE /* Extension+Dictionary.swift in Sources */,
+				2CDD6CF220AA4C6900124EAE /* Dictionary.swift in Sources */,
 				2CDD6CCE20AA4C6900124EAE /* Game+HiveDelegate.swift in Sources */,
 				2CDD6CEA20AA4C6900124EAE /* HexNode.swift in Sources */,
-				2CDD6CFA20AA4C6900124EAE /* Extension+Date.swift in Sources */,
+				2CDD6CFA20AA4C6900124EAE /* Date.swift in Sources */,
 				2CDD6CDA20AA4C6900124EAE /* Vec2D.swift in Sources */,
-				2CDD6CF020AA4C6900124EAE /* Extension+Double.swift in Sources */,
+				2CDD6CF020AA4C6900124EAE /* Double.swift in Sources */,
 				2C95681120C24F7200D32C65 /* Logger.swift in Sources */,
 				2CDD6CE820AA4C6900124EAE /* QueenBee.swift in Sources */,
 				2CDD6CDE20AA4C6900124EAE /* Hive+Encodable.swift in Sources */,
-				2CDD6CF820AA4C6900124EAE /* Extension+Decimal.swift in Sources */,
+				2CDD6CF820AA4C6900124EAE /* Decimal.swift in Sources */,
 				2CDD6CD620AA4C6900124EAE /* Navigation.swift in Sources */,
 				2CDD6CD420AA4C6900124EAE /* Spider.swift in Sources */,
 				2CDD6CE020AA4C6900124EAE /* HiveMaster.swift in Sources */,
 				2CDD6CE220AA4C6900124EAE /* Neighbors.swift in Sources */,
 				2CDD6CD220AA4C6900124EAE /* Hive5Server.swift in Sources */,
 				2CDD6CD020AA4C6900124EAE /* Client.swift in Sources */,
-				2CDD6CF420AA4C6900124EAE /* Extension+Array.swift in Sources */,
+				2CDD6CF420AA4C6900124EAE /* Array.swift in Sources */,
 				2CDD6CEE20AA4C6900124EAE /* TransportOperation.swift in Sources */,
 				2CDD6CCC20AA4C6900124EAE /* Game.swift in Sources */,
 				2CDD6CEC20AA4C6900124EAE /* ServerTransport.swift in Sources */,
