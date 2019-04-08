@@ -14,7 +14,7 @@ public extension Array {
      - Parameter isDuplicate: Condition that is true when the two elements are duplicates
      - Return: The filtered Array containing no duplicates by filtering by given conditions
      */
-    public func filterDuplicates(isDuplicate: @escaping (_ lhs: Element, _ rhs: Element) -> Bool) -> [Element]{
+    func filterDuplicates(isDuplicate: @escaping (_ lhs: Element, _ rhs: Element) -> Bool) -> [Element]{
         var results = [Element]()
         forEach { element in
             let existingElements = results.filter {isDuplicate(element, $0)}
@@ -25,7 +25,7 @@ public extension Array {
         return results
     }
     
-    public func random() -> Element {
+    func random() -> Element {
         return self[Int(Double.random() * Double(count))]
     }
 }

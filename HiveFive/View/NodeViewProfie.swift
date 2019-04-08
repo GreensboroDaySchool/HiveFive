@@ -69,7 +69,7 @@ struct Profile {
     }
     
     static func savedProfiles(_ shouldInclude: (NodeViewProfile) -> Bool = {_ in return true}) -> [NodeViewProfile] {
-        if let profiles = try? CoreData.context.fetch(NodeViewProfile.fetchRequest()) as! [NodeViewProfile] {
+        if let profiles = try? CoreData.context.fetch(NodeViewProfile.fetchRequest()) as? [NodeViewProfile] {
             return profiles.filter(shouldInclude)
         }
         return []

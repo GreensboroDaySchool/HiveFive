@@ -59,7 +59,7 @@ public struct Neighbors: Equatable, Hashable {
      */
     public func remove(_ node: HexNode) -> Neighbors {
         var copied = self
-        guard let index = nodes.index(where: { $0 === node }) else {
+        guard let index = nodes.firstIndex(where: { $0 === node }) else {
             return copied
         }
         copied.nodes[index] = nil
@@ -93,13 +93,13 @@ public struct Neighbors: Equatable, Hashable {
         }
     }
     
-    public var hashValue: Int {
+    public func hash(into hasher: inout Hasher) {
         //djb2a over all the object identifiers
-        return nodes.reduce(5381) {
+        hasher.combine(nodes.reduce(5381) {
             var hash = 0
             if let node = $1 { hash = ObjectIdentifier(node).hashValue }
             return (($0 << 5) &+ $0) ^ (hash)
-        }
+        })
     }
     
     public static func ==(l: Neighbors, r: Neighbors) -> Bool {

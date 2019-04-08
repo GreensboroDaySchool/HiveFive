@@ -28,19 +28,19 @@ public class HFLog{
         fileprivate static let levels: [LogLevel] = [.verbose, .debug, .info, .warn, .error, .fatal]
         
         public static func < (lhs: HFLog.LogLevel, rhs: HFLog.LogLevel) -> Bool {
-            return levels.index(of: lhs)! < levels.index(of: rhs)!
+            return levels.firstIndex(of: lhs)! < levels.firstIndex(of: rhs)!
         }
         
         public static func <= (lhs: HFLog.LogLevel, rhs: HFLog.LogLevel) -> Bool {
-            return levels.index(of: lhs)! <= levels.index(of: rhs)!
+            return levels.firstIndex(of: lhs)! <= levels.firstIndex(of: rhs)!
         }
         
         public static func > (lhs: HFLog.LogLevel, rhs: HFLog.LogLevel) -> Bool {
-            return levels.index(of: lhs)! > levels.index(of: rhs)!
+            return levels.firstIndex(of: lhs)! > levels.firstIndex(of: rhs)!
         }
         
         public static func >= (lhs: HFLog.LogLevel, rhs: HFLog.LogLevel) -> Bool {
-            return levels.index(of: lhs)! >= levels.index(of: rhs)!
+            return levels.firstIndex(of: lhs)! >= levels.firstIndex(of: rhs)!
         }
     }
     

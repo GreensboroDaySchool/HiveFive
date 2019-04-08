@@ -19,15 +19,17 @@ public class HexNode: IdentityProtocol, Hashable {
     public var identity: Identity {
         get {return .dummy}
     }
+    
     //Node: hashValue may not be the ObjectIdentifier of the node. In multi-player enviorment, its synced to the server's hashValue
-    public lazy var hashValue: Int = ObjectIdentifier(self).hashValue
-
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self).hashValue)
+    }
+    
     /**
      Initializer must specify the color
      */
     public init(color: Color) {
         self.color = color
-        self.hashValue = ObjectIdentifier(self).hashValue
     }
     
     /**
@@ -383,7 +385,7 @@ public class HexNode: IdentityProtocol, Hashable {
 }
 
 public extension HexNode {
-    public func valueEquals(_ node: HexNode) -> Bool {
+    func valueEquals(_ node: HexNode) -> Bool {
         return identity == node.identity && color == node.color
     }
 }

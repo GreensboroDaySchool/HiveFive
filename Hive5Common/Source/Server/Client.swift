@@ -57,7 +57,9 @@ open class Client: Hashable, CustomStringConvertible {
     
     //MARK: Implemented by Subclasses
     
-    open var hashValue: Int { fatalError("Client:hashValue not implemented") }
+    public func hash(into hasher: inout Hasher) {
+        fatalError("Client:hash() not implemented")
+    }
     
     open func send(_ message: HFTransportModel) throws { fatalError("Client:send() not implemented") }
     

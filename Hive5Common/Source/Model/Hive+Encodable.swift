@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Hive{
-    public enum HFHiveCoderKeys: String, CodingKey {
+    enum HFHiveCoderKeys: String, CodingKey {
         case rootNode
         case references
         case blackHands
@@ -23,7 +23,7 @@ public extension Hive{
         }
     }
     
-    public var allNodes: Set<HexNode>? {
+    var allNodes: Set<HexNode>? {
         guard let root = root else { return nil }
         var set = Set<HexNode>()
         var processing = [HexNode]()
@@ -38,7 +38,7 @@ public extension Hive{
         return set.count > 0 ? set : nil
     }
     
-    public func encode(to coder: Encoder) throws {
+    func encode(to coder: Encoder) throws {
         //create an container
         var container = coder.container(keyedBy: HFHiveCoderKeys.self)
         
@@ -79,7 +79,7 @@ public extension Hive{
 }
 
 public extension Hive {
-    public static func decodeHive(from coder: Decoder) throws -> HexNode? {
+    static func decodeHive(from coder: Decoder) throws -> HexNode? {
         let container = try coder.container(keyedBy: HFHiveCoderKeys.self)
         
         //see if there is a root hash first
@@ -100,12 +100,10 @@ public extension Hive {
             guard let identity = Identity(rawValue: try nodeContainer.decode(Identity.RawValue.self, forKey: .identity)) else {
                 throw HFCodingError.decodingError("invalid stored value for identity")
             }
-            let hashValue = try nodeContainer.decode(Int.self, forKey: .identifier)
             let neighbors = try nodeContainer.decode([Int].self, forKey: .neighbors)
             
             let node = identity.new(color: color)
-            node.hashValue = hashValue
-            nodes[hashValue] = (node, neighbors)
+            nodes[node.hashValue] = (node, neighbors)
         }
         
         //Then, connects hive structures
@@ -126,7 +124,7 @@ public extension Hive {
         return root
     }
     
-    public static func decodeHands(from coder: Decoder) throws -> (black: Hand, white: Hand) {
+    static func decodeHands(from coder: Decoder) throws -> (black: Hand, white: Hand) {
         let container = try coder.container(keyedBy: HFHiveCoderKeys.self)
         let blackHandsContainer = try container.nestedContainer(keyedBy: Identity.self, forKey: .blackHands)
         var blackHand = Hand()

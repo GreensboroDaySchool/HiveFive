@@ -61,7 +61,7 @@ extension Hive {
      - Parameter shouldInclude: Whether the HiveStructure should be returned as part of the results.
      */
     static func savedStructures(_ shouldInclude: (HiveStructure) -> Bool = {_ in return true}) -> [HiveStructure] {
-        if let structures = try? CoreData.context.fetch(HiveStructure.fetchRequest()) as! [HiveStructure] {
+        if let structures = try? CoreData.context.fetch(HiveStructure.fetchRequest()) as? [HiveStructure] {
             return structures.filter(shouldInclude)
         }
         return []

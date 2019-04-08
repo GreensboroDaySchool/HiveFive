@@ -37,7 +37,7 @@ public class Game: Equatable{
         self.state = newState
         let message = HFTransportGameStateUpdate(newState: newState, reason: reason)
         try? host.send(message)
-        try? guest?.send(message)
+        ((try? guest?.send(message)) as ()??)
     }
     
     public func on(guestJoin guest: Client){

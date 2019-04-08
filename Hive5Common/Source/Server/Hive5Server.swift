@@ -80,12 +80,12 @@ public class Hive5Server {
     }
     
     public func on(clientLeave client: Client){
-        guard let clientIndex = clients.index(where: { $0 == client }) else { return }
+        guard let clientIndex = clients.firstIndex(where: { $0 == client }) else { return }
         //we have to clear people out when their opponent exit the game
         if let game = client.game {
             game.end(reason: "Opponent left the game")
             game.guest = nil
-            games.remove(at: games.index{ $0 == game }!)
+            games.remove(at: games.firstIndex{ $0 == game }!)
         }
         client.game = nil
         clients.remove(at: clientIndex)
