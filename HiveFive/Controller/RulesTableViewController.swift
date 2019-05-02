@@ -27,7 +27,7 @@ class RulesTableViewController: UITableViewController {
     }
     
     @IBAction func immobilized4SwitchValueChanged(_ sender: UISwitch) {
-        save(id: queen4Id, obj: sender.isOn)
+        save(id: immobilized4Id, obj: sender.isOn)
         post(name: immobilized4UpdateNotification, object: nil)
     }
 

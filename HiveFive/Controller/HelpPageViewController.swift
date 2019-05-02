@@ -109,11 +109,9 @@ struct NodeDescription {
 var nodeDescriptions: [NodeDescription] = [
     .init(
             identity: .grasshopper,
-            description: "Grasshopper can jump across consecutive nodes oriented at the same direction." +
-            "It can not jump over to the very end, however, if there exist a discontinuity between the starting point and the destination." +
-            "There are three grasshoppers at each player's disposal by the default rule.",
+            description: "Grasshopper can jump across consecutive nodes in the same direction." +
+            "It can not jump over to the very end, however, if there exist a discontinuity between the starting point and the destination.",
             demonstration: Hive.makeNewDefaultHive().root!
-
     ),
     .init(
             identity: .queenBee,
