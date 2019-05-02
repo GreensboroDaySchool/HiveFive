@@ -52,14 +52,14 @@ extension Hive {
         spider2.move(to: .down, of: grasshopper) // spider2 is right beneath grasshopper
         
         SoldierAnt(color: .white).move(to: .down, of: spider2)
-        QueenBee(color: .white).move(to: .upperLeft, of: beetle)
+        Mosquito(color: .white).move(to: .upperLeft, of: beetle)
         Grasshopper(color: .black).move(to: .lowerLeft, of: beetle)
         
         let hive = Hive()
         hive.root = spider
         
-        let blackHand: [Identity:Int] = [.grasshopper: 2, .queenBee: 1, .soldierAnt: 3, .beetle: 2]
-        let whiteHand: [Identity:Int] = [.grasshopper: 2, .queenBee: 1, .soldierAnt: 3, .beetle: 2]
+        let blackHand: [Identity: Int] = [.grasshopper: 2, .queenBee: 1, .soldierAnt: 3, .beetle: 2]
+        let whiteHand: [Identity: Int] = [.grasshopper: 2, .queenBee: 1, .soldierAnt: 3, .beetle: 2]
         hive.blackHand = blackHand
         hive.whiteHand = whiteHand
         return hive

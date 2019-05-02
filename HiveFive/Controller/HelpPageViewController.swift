@@ -143,4 +143,9 @@ var nodeDescriptions: [NodeDescription] = [
                     "and locks it in place.",
             demonstration: Hive.makeNewDefaultHive().root!
     ),
+    .init(
+        identity: .mosquito,
+        description: "When the mosquito is connected on the first level of the hive, it can mimic any of the pieces that it touches. A mosquito cannot mimic another mosquito, however. For example, when a mosquito is only touching another mosquito, it cannot move. When a mosquito mimics a beetle and gets on top of the hive structure, it stays as a beetle until it gets down.",
+        demonstration: Hive.makeNewDefaultHive().root!
+    )
 ]
