@@ -22,10 +22,10 @@ import Foundation
 /**
        _____(up)_____
       /              \
-  (upLeft)         (upRight)
+  (upperLeft)         (upperRight)
     /     Oh Yeah!     \
     \      Hive        /
- (downLeft)       (downRight)
+ (lowerLeft)       (lowerRight)
       \____(down)____/
  */
 public enum Direction: Int {
@@ -38,11 +38,11 @@ public enum Direction: Int {
     public var is2D: Bool {return rawValue < 6}
     
     //Horizontal locations
-    case up = 0, upRight, downRight, down, downLeft, upLeft
+    case up = 0, upperRight, lowerRight, down, lowerLeft, upperLeft
 
     //Vertical locations, the top node is always connected to the others (with a below pointed to the node below)
     //The node being suppressed should have all horizontal references set to nil
-    case below, above
+    case bottom, top
 
     /**
      I know there's a better way, but that would simply take too much time!
@@ -50,25 +50,25 @@ public enum Direction: Int {
      */
     public func opposite() -> Direction {
         switch self {
-        case .below: return .above
-        case .above: return .below
+        case .bottom: return .top
+        case .top: return .bottom
         default: return Direction(rawValue: (self.rawValue + 3) % 6)!
         }
     }
 
     public func horizontalFlip() -> Direction {
         switch self {
-        case .upRight: return .upLeft
-        case .upLeft: return .upRight
-        case .downLeft: return .downRight
-        case .downRight: return .downLeft
+        case .upperRight: return .upperLeft
+        case .upperLeft: return .upperRight
+        case .lowerLeft: return .lowerRight
+        case .lowerRight: return .lowerLeft
         default: fatalError("horizontalFlip() only applies to slanted directions")
         }
     }
 
     /**
-     e.g. Direction.up.adjacent() returns [.upLeft, .upRight]
-     - Attention: This method is not intended for down/below.
+     e.g. Direction.up.adjacent() returns [.upperLeft, .upperRight]
+     - Attention: This method is not intended for down/bottom.
      - Return: The adjacent directions of a certain direction
      use adjacent()[0] to get the next element counter-clockwise,
      use adjacent()[1] to get the next element clockwise
@@ -89,13 +89,13 @@ public enum Direction: Int {
     public func translation() -> Translation {
         switch self {
         case .up: return Translation(x: 0, y: 2, z: 0)
-        case .upRight: return Translation(x: 1, y: 1, z: 0)
-        case .downRight: return Translation(x: 1, y: -1, z: 0)
+        case .upperRight: return Translation(x: 1, y: 1, z: 0)
+        case .lowerRight: return Translation(x: 1, y: -1, z: 0)
         case .down: return Translation(x: 0, y: -2, z: 0)
-        case .downLeft: return Translation(x: -1, y: -1, z: 0)
-        case .upLeft: return Translation(x: -1, y: 1, z: 0)
-        case .below: return Translation(x: 0, y: 0, z: -1)
-        case .above: return Translation(x: 0, y: 0, z: 1)
+        case .lowerLeft: return Translation(x: -1, y: -1, z: 0)
+        case .upperLeft: return Translation(x: -1, y: 1, z: 0)
+        case .bottom: return Translation(x: 0, y: 0, z: -1)
+        case .top: return Translation(x: 0, y: 0, z: 1)
         }
     }
 }
@@ -157,7 +157,7 @@ public struct Route: Equatable {
      - Returns: The simplified route that leads to the exact same spot in less steps
      */
     public func simplified() -> Route {
-        // 0 = up, 1 = upRight, 2 = downRight, 3 = down, 4 = downLeft, 5 = upLeft, below, above
+        // 0 = up, 1 = upperRight, 2 = lowerRight, 3 = down, 4 = lowerLeft, 5 = upperLeft, bottom, top
         var dirs = [Int](repeating: 0, count: 8)
         directions.forEach{dirs[$0.rawValue] += 1}
         
@@ -168,41 +168,41 @@ public struct Route: Equatable {
             }
         }
 
-        //upLeft + upRight = up, downLeft + downRight = down, etc
+        //upperLeft + upperRight = up, lowerLeft + lowerRight = down, etc
         while (dirs[1] > 0 && dirs[5] > 0) {
-            dirs[1] -= 1 // - upRight
-            dirs[5] -= 1 // - upLeft
+            dirs[1] -= 1 // - upperRight
+            dirs[5] -= 1 // - upperLeft
             dirs[0] += 1 // + up
         }
 
         while (dirs[2] > 0 && dirs[4] > 0) {
-            dirs[2] -= 1 // - downRight
-            dirs[4] -= 1 // - downLeft
+            dirs[2] -= 1 // - lowerRight
+            dirs[4] -= 1 // - lowerLeft
             dirs[3] += 1 // + down
         }
 
         while (dirs[0] > 0 && dirs[2] > 0) {
             dirs[0] -= 1 // - up
-            dirs[2] -= 1 // - downRight
-            dirs[1] += 1 // + upRight
+            dirs[2] -= 1 // - lowerRight
+            dirs[1] += 1 // + upperRight
         }
 
         while (dirs[0] > 0 && dirs[4] > 0) {
             dirs[0] -= 1 // - up
-            dirs[4] -= 1 // - downLeft
-            dirs[5] += 1 // + upLeft
+            dirs[4] -= 1 // - lowerLeft
+            dirs[5] += 1 // + upperLeft
         }
 
         while (dirs[1] > 0 && dirs[3] > 0) {
-            dirs[1] -= 1 // - upRight
+            dirs[1] -= 1 // - upperRight
             dirs[3] -= 1 // - down
-            dirs[2] += 1 // + downRight
+            dirs[2] += 1 // + lowerRight
         }
 
         while (dirs[5] > 0 && dirs[3] > 0) {
-            dirs[5] -= 1 // - upLeft
+            dirs[5] -= 1 // - upperLeft
             dirs[3] -= 1 // - down
-            dirs[4] += 1 // + downLeft
+            dirs[4] += 1 // + lowerLeft
         }
 
         //reconstruct directions

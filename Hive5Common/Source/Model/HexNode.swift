@@ -146,7 +146,7 @@ public class HexNode: IdentityProtocol, Hashable {
 
     /**
      Checks if a certain piece could get move in a certain direction.
-     For example, if we have a node 'a', and 'a' has 'b' and 'c' at .upLeft, .upRight respectively,
+     For example, if we have a node 'a', and 'a' has 'b' and 'c' at .upperLeft, .upperRight respectively,
      Then the piece cannot move in the direction of .up; except when the piece is Beetle.
      Beetle should override this method to always return true.
      */
@@ -169,7 +169,7 @@ public class HexNode: IdentityProtocol, Hashable {
         let dummy = Identity.dummy.new(color: color)
         dummy.move(to: position)
         let opponents = dummy.neighbors.available()
-            .map{Hive.traverse(from: $0.node, toward: .above)}
+            .map{Hive.traverse(from: $0.node, toward: .top)}
             .filter{$0.color != color}
             .count
         dummy.disconnect()
@@ -264,7 +264,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Returns: Whether taking this node up will break the structure.
      */
     public func canDisconnect() -> Bool {
-        if self.neighbors[.above] != nil {return false} // little fucking beetle...
+        if self.neighbors[.top] != nil {return false} // little fucking beetle...
         let neighbors = self.neighbors // make a copy of the neighbors
         let numConnected = self.numConnected() // the number of pieces that are currently connected.
         self.disconnect() // temporarily disconnect with all neighbors

@@ -309,7 +309,7 @@ class NodeView: UIView {
      */
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         // if current node is not the topmost node, then ignore.
-        if node.neighbors[.above] != nil {return false}
+        if node.neighbors[.top] != nil {return false}
         // point is in relation to bounds.origin
         let ctr = bounds.origin.translate(bounds.midX, bounds.midY) // center of the hexagon
         return ctr.dist(to: point) < innerRadius // make sure the touch is within the inner radius, not the outer.
@@ -384,8 +384,8 @@ class NodeView: UIView {
     private func nodesBelow() -> Int {
         var current = node
         var count = 0
-        while current.neighbors[.below] != nil {
-            current = current.neighbors[.below]!
+        while current.neighbors[.bottom] != nil {
+            current = current.neighbors[.bottom]!
             count += 1
         }
         return count

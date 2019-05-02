@@ -26,11 +26,11 @@ public class Beetle: HexNode {
             return moves
         }
         
-        let base = Hive.traverse(from: self, toward: .below)
+        let base = Hive.traverse(from: self, toward: .bottom)
         moves.append(contentsOf: base.neighbors.available()
             .filter{$0.dir.rawValue < 6}
             .map{getTopNode(of: $0.node)}
-            .map{Position(node: $0, dir: .above)})
+            .map{Position(node: $0, dir: .top)})
         let moreMoves = base === self ? oneStepMoves().map{Position.resolve(from: base, following: $0)} :
             Direction.xyDirections.map{(dir: $0, node: base.neighbors[$0])}
             .filter{$0.node == nil}
@@ -51,6 +51,6 @@ public class Beetle: HexNode {
      - Returns: The node at the top of the stack
      */
     private func getTopNode(of base: HexNode) -> HexNode {
-        return Hive.traverse(from: base, toward: .above)
+        return Hive.traverse(from: base, toward: .top)
     }
 }

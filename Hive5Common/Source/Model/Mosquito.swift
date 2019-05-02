@@ -22,13 +22,13 @@ public class Mosquito: HexNode {
         let neighbors = self.neighbors.available()
         
         // If the mosquito is currently on top of the hive, then it moves as a beetle until it gets down.
-        if let base = self.neighbors[.below] {
+        if let base = self.neighbors[.bottom] {
             self.disconnect()
             let beetle = Identity.beetle.new(color: color)
-            beetle.move(to: .above, of: base)
+            beetle.move(to: .top, of: base)
             let positions = beetle.availableMoves()
             beetle.disconnect()
-            self.move(to: .above, of: base)
+            self.move(to: .top, of: base)
             return positions
         }
         

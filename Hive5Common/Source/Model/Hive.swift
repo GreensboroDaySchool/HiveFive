@@ -350,7 +350,7 @@ public class Hive: Codable {
      */
     public func availablePositions(color: Color) -> [Position] {
         guard let root = root else {return []}
-        let positions = root.connectedNodes().filter{$0.neighbors[.below] == nil}.map{node in
+        let positions = root.connectedNodes().filter{$0.neighbors[.bottom] == nil}.map{node in
             node.neighbors.empty().filter{$0.rawValue < 6}
                 .map{Position(node: node, dir: $0)}
             }.flatMap{$0}

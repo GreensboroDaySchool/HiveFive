@@ -46,7 +46,7 @@ public struct Neighbors: Equatable, Hashable {
     }
 
     /**
-    e.g. adjacent(of: .down) produces [(.downRight, node at self[.downRight), (.downLeft, node at self[.downLeft)])]
+    e.g. adjacent(of: .down) produces [(.lowerRight, node at self[.lowerRight), (.lowerLeft, node at self[.lowerLeft)])]
      - Returns: the adjacent localized node of the specified direction
      */
     public func adjacent(of dir: Direction) -> [(dir: Direction, node: HexNode?)] {
