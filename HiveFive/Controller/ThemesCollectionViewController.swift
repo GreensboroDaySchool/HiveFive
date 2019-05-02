@@ -113,7 +113,9 @@ var themes: [Theme] = [
         .beetle: "𝝧",
         .spider: "𝝮",
         .soldierAnt: "𝝭",
-        .dummy: "𝝬"
+        .dummy: "𝝬",
+        .mosquito: "𝝨",
+        .ladyBug: "𝝳"
         ]),
     .init(name: "Chinese", patterns: [
         .grasshopper: "蜢",

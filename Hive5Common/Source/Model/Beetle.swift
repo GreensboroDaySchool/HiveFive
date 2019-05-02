@@ -9,13 +9,15 @@
 
 import Foundation
 
+/// Beetles can squeeze into tiny openings
+/// Beetles move one step at a time and can go on top of any pieces.
+/// Beetles can stack on top of one another.
+/// When a beetle sits on top of another piece, it overrides it. 
 public class Beetle: HexNode {
     
     override public var identity: Identity {
         return .beetle
     }
-    
-    
     
     override public func availableMoves() -> [Position] {
         var moves = [Position]()

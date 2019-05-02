@@ -422,13 +422,15 @@ public enum Identity: String, CodingKey, Codable {
     /**
      A dictionary that defines the symbols that represent each node type
      */
-    public static var defaultPatterns: [Identity:String] = [
-        .grasshopper:"𝝣",
-        .queenBee:"𝝠",
-        .beetle:"𝝧",
-        .spider:"𝝮",
-        .soldierAnt:"𝝭",
-        .dummy:"𝝬"
+    public static var defaultPatterns: [Identity: String] = [
+        .grasshopper: "𝝣",
+        .queenBee: "𝝠",
+        .beetle: "𝝧",
+        .spider: "𝝮",
+        .soldierAnt: "𝝭",
+        .dummy: "𝝬",
+        .mosquito: "𝝨",
+        .ladyBug: "𝝳"
     ]
     
     case grasshopper = "Grasshopper"
@@ -437,6 +439,8 @@ public enum Identity: String, CodingKey, Codable {
     case spider = "Spider"
     case soldierAnt = "Soldier Ant"
     case dummy = "Dummy"
+    case mosquito = "Mosquito"
+    case ladyBug = "Lady Bug"
     
     public var defaultPattern: String {
         get {return Identity.defaultPatterns[self]!}
@@ -455,6 +459,8 @@ public enum Identity: String, CodingKey, Codable {
         case .spider: return Spider(color: color)
         case .soldierAnt: return SoldierAnt(color: color)
         case .dummy: return HexNode(color: color)
+        case .mosquito: return Mosquito(color: color)
+        case .ladyBug: return LadyBug(color: color)
         }
     }
 }

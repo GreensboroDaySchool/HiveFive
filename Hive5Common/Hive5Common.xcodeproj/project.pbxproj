@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FEA700B227A9FE400BF40D4 /* Mosquito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA700A227A9FE400BF40D4 /* Mosquito.swift */; };
+		1FEA700D227AA02F00BF40D4 /* LadyBug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA700C227AA02E00BF40D4 /* LadyBug.swift */; };
 		2C95681020C24F7200D32C65 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95680F20C24F7200D32C65 /* Logger.swift */; };
 		2C95681120C24F7200D32C65 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C95680F20C24F7200D32C65 /* Logger.swift */; };
 		2CDD6CCB20AA4C6900124EAE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD6CB020AA4C6900124EAE /* Game.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FEA700A227A9FE400BF40D4 /* Mosquito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosquito.swift; sourceTree = "<group>"; };
+		1FEA700C227AA02E00BF40D4 /* LadyBug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadyBug.swift; sourceTree = "<group>"; };
 		2C95680B20C24F2300D32C65 /* Lighty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lighty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C95680D20C24F2C00D32C65 /* Lighty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lighty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C95680F20C24F7200D32C65 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				2CDD6CBB20AA4C6900124EAE /* HiveMaster.swift */,
 				2CDD6CBC20AA4C6900124EAE /* Neighbors.swift */,
 				2CDD6CBD20AA4C6900124EAE /* Beetle.swift */,
+				1FEA700A227A9FE400BF40D4 /* Mosquito.swift */,
+				1FEA700C227AA02E00BF40D4 /* LadyBug.swift */,
 				2CDD6CBE20AA4C6900124EAE /* Grasshopper.swift */,
 				2CDD6CBF20AA4C6900124EAE /* QueenBee.swift */,
 				2CDD6CC020AA4C6900124EAE /* HexNode.swift */,
@@ -350,6 +356,7 @@
 				2CDD6CD520AA4C6900124EAE /* Navigation.swift in Sources */,
 				2CDD6CD320AA4C6900124EAE /* Spider.swift in Sources */,
 				2CDD6CDF20AA4C6900124EAE /* HiveMaster.swift in Sources */,
+				1FEA700D227AA02F00BF40D4 /* LadyBug.swift in Sources */,
 				2CDD6CE120AA4C6900124EAE /* Neighbors.swift in Sources */,
 				2CDD6CD120AA4C6900124EAE /* Hive5Server.swift in Sources */,
 				2CDD6CCF20AA4C6900124EAE /* Client.swift in Sources */,
@@ -357,6 +364,7 @@
 				2CDD6CED20AA4C6900124EAE /* TransportOperation.swift in Sources */,
 				2CDD6CCB20AA4C6900124EAE /* Game.swift in Sources */,
 				2CDD6CEB20AA4C6900124EAE /* ServerTransport.swift in Sources */,
+				1FEA700B227A9FE400BF40D4 /* Mosquito.swift in Sources */,
 				2CDD6CE320AA4C6900124EAE /* Beetle.swift in Sources */,
 				2CDD6CDB20AA4C6900124EAE /* Hive.swift in Sources */,
 				2CDD6CE520AA4C6900124EAE /* Grasshopper.swift in Sources */,
