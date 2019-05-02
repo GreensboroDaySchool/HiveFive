@@ -16,4 +16,10 @@ public class Mosquito: HexNode {
     override public var identity: Identity {
         return .mosquito
     }
+    
+    override public func availableMoves() -> [Position] {
+        let neighbors = self.neighbors.available()
+        print(neighbors)
+        return []
+    }
 }

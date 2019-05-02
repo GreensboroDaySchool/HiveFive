@@ -123,31 +123,39 @@ var themes: [Theme] = [
         .beetle: "甲",
         .spider: "蛛",
         .soldierAnt: "蚁",
-        .dummy: "笨"
+        .dummy: "笨",
+        .mosquito: "蚊",
+        .ladyBug: "瓢"
         ]),
-    .init(name: "Letters", patterns: [
+    .init(name: "Letters A", patterns: [
         .grasshopper: "𝔾",
         .queenBee: "ℚ",
         .beetle: "𝔹",
         .spider: "𝕊",
         .soldierAnt: "𝔸",
-        .dummy: "𝔻"
+        .dummy: "𝔻",
+        .mosquito: "𝕄",
+        .ladyBug: "𝕃"
         ]),
-    .init(name: "Chess Dark", patterns: [
-        .grasshopper: "♞",
-        .queenBee: "♛",
-        .beetle: "♙",
-        .spider: "♝",
-        .soldierAnt: "♜",
-        .dummy: "♚"
+    .init(name: "Letters B", patterns: [
+        .grasshopper: "𝕲",
+        .queenBee: "𝕼",
+        .beetle: "𝕭",
+        .spider: "𝕾",
+        .soldierAnt: "𝕬",
+        .dummy: "𝕯",
+        .mosquito: "𝕸",
+        .ladyBug: "𝕷"
         ]),
-    .init(name: "Chess Light", patterns: [
-        .grasshopper: "♘",
-        .queenBee: "♕",
-        .beetle: "♙",
-        .spider: "♗",
-        .soldierAnt: "♖",
-        .dummy: "♔"
+    .init(name: "Letters C", patterns: [
+        .grasshopper: "𝓖",
+        .queenBee: "𝓠",
+        .beetle: "𝓑",
+        .spider: "𝓢",
+        .soldierAnt: "𝓐",
+        .dummy: "𝓓",
+        .mosquito: "𝓜",
+        .ladyBug: "𝓛"
         ]),
     .init(name: "Currency", patterns: [
         .grasshopper: "$",
@@ -155,7 +163,9 @@ var themes: [Theme] = [
         .beetle: "¥",
         .spider: "¢",
         .soldierAnt: "£",
-        .dummy: "₽"
+        .dummy: "₽",
+        .mosquito: "₺",
+        .ladyBug: "₮"
         ]),
     .init(name: "Stars", patterns: [
         .grasshopper: "✡︎",
@@ -163,23 +173,19 @@ var themes: [Theme] = [
         .beetle: "✶",
         .spider: "★",
         .soldierAnt: "✩",
-        .dummy: "▲"
+        .dummy: "▲",
+        .mosquito: "✫",
+        .ladyBug: "✮"
         ]),
-    .init(name: "Physics", patterns: [
-        .grasshopper: "𝜞︎",
-        .queenBee: "𝜟",
-        .beetle: "𝜭",
-        .spider: "𝜮",
-        .soldierAnt: "𝜴",
-        .dummy: "𝜩"
-        ]),
-    .init(name: "Skewed", patterns: [
-        .grasshopper: "𝞝",
-        .queenBee: "𝞡",
-        .beetle: "𝞨",
-        .spider: "𝞚",
-        .soldierAnt: "𝞧",
-        .dummy: "𝞦"
+    .init(name: "Greek Letters", patterns: [
+        .grasshopper: "𝝴",
+        .queenBee: "𝝰",
+        .beetle: "𝝱",
+        .spider: "𝝲",
+        .soldierAnt: "𝝳",
+        .dummy: "𝝵",
+        .mosquito: "𝝶",
+        .ladyBug: "𝝺"
         ]),
     .init(name: "Trigrams", patterns: [
         .grasshopper: "☱",
@@ -187,7 +193,29 @@ var themes: [Theme] = [
         .beetle: "☳",
         .spider: "☵",
         .soldierAnt: "☴",
-        .dummy: "☶"
+        .dummy: "☰",
+        .mosquito: "☷",
+        .ladyBug: "☶"
+        ]),
+    .init(name: "Pictographs A", patterns: [
+        .grasshopper: "♈︎",
+        .queenBee: "♉︎",
+        .beetle: "♊︎",
+        .spider: "♋︎",
+        .soldierAnt: "♌︎",
+        .dummy: "♍︎",
+        .mosquito: "♏︎",
+        .ladyBug: "♎︎"
+        ]),
+    .init(name: "Pictographs B", patterns: [
+        .grasshopper: "⚲",
+        .queenBee: "⚢",
+        .beetle: "⚣",
+        .spider: "⚤",
+        .soldierAnt: "⚦",
+        .dummy: "⚧",
+        .mosquito: "⚨",
+        .ladyBug: "⚩"
         ]),
 ]
 
