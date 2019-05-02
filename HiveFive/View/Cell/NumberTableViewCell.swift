@@ -21,12 +21,10 @@ import UIKit
 import Foundation
 
 class NumberTableViewCell: UITableViewCell, KPAssociate {
-
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     
     var pendingText: String? = ""
-    
     var indexPath: IndexPath?
     var kpHackable: KPHackable? {
         didSet {
@@ -81,8 +79,6 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
             post(name: displayMsgNotification, object: "Invalid Input")
             self.cancelUpdate()
         })
-        
         alert.show()
     }
-
 }

@@ -20,9 +20,7 @@
 import UIKit
 
 @IBDesignable class ThemesCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var bezel: UIView!
-    
 }

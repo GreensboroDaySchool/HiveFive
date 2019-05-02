@@ -22,7 +22,6 @@ import Hive5Common
 
 /**
  This is the Controller of the MVC design pattern.
- In this case -
  >   Model:      Hive
  >   View:       BoardView
  >   Controller: ViewController
@@ -34,19 +33,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var hiveBarItem: UIBarButtonItem!
     
-    /**
-     This variable records the previous translation to detect change
-     */
+    /// Records the previous translation to detect change
     private var lastTranslation: CGPoint?
     
-    /**
-     View
-     */
+    /// View
     var board: BoardView { return view.viewWithTag(233) as! BoardView }
     
-    /**
-     Model
-     */
+    /// Model
     var hive: Hive {
         get {return Hive.sharedInstance}
     }
@@ -60,15 +53,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MARK: delegate binding
+        // Delegate binding
         hive.delegate = self // establish communication with Model
         board.delegate = self // establish communication with View
         
-        //MARK: user defaults
+        // User defaults
         toolBar.isHidden = !toolBarShouldBeVisible()
         
-        
-        //MARK: Notification binding
+        // Notification binding
         observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
         observe(didSelectNewNodeNotification, #selector(didSelectNewNode(_:)))
         observe(toolBarVisibilityNotification, #selector(toolBarVisibilityDidUpdate(_:)))
@@ -77,33 +69,29 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         observe(queen4UpdateNotification, #selector(updateQueen4))
         observe(immobilized4UpdateNotification, #selector(updateImmobilized4))
         
-        
-        //MARK: additional setup
+        // Additional setup
         board.patterns = designatedTheme().patterns
         hiveBarItem.image = [#imageLiteral(resourceName: "hive_img"),#imageLiteral(resourceName: "hive_2_img"),#imageLiteral(resourceName: "solid_honeycomb"),#imageLiteral(resourceName: "bee")].random()
         updateToolBarItemTint()
         hive.queen4 = useQueen4() // Could be better organized
         hive.immobilized4 = useImmobilized4()
         
-        //MARK: toolbar setup (make tool bar transparent)
+        // Toolbar setup (make tool bar transparent)
         toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
-        hive.delegate = self // establish communication with Model
-        board.delegate = self // establish communication with View
+        hive.delegate = self
+        board.delegate = self
     }
-    
     
     @IBAction func handlePinch(_ sender: UIPinchGestureRecognizer) {
         let focus = sender.location(in: board)
         var scale = sender.scale
         let origin = board.rootCoordinate
         
-        //Exclude these states because at these moments the change (first derivative) does not exist
+        // Exclude these states because at these moments the change (first derivative) does not exist
         switch sender.state {
         case .began: scale = 1
         case .ended:
@@ -112,27 +100,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         default: break
         }
         
-        //Change node radius based on the scale
+        // Change node radius based on the scale
         if board.nodeRadius >= board.maxNodeRadius && scale > 1
             || board.nodeRadius <= board.minNodeRadius && scale < 1 {
             return
         }
         board.nodeRadius *= scale
         
-        /*
-         Calculate the escaping direction of root coordinate to create an optical illusion.
-         This way users will be able to scale to exactly where they wanted on the screen
-         */
+        // Calculate the escaping direction of root coordinate to create an optical illusion.
+        // This way users will be able to scale to exactly where they wanted on the screen
         let escapeDir = Vec2D(point: origin)
             .sub(Vec2D(point: focus)) //translate to focus's coordinate system by subtracting it
             .mult(Float(scale)) //elongate or shrink according to the scale.
         
-        //Compensating change in coordinate, since escapeDir is now in focus's coordinate system.
+        // Compensate change in coordinate, since escapeDir is now in focus's coordinate system.
         board.rootCoordinate = escapeDir
             .add(Vec2D(point: focus))
             .cgPoint
         
-        //Reset the scale so that sender.scale is always the first derivative
+        // Reset the scale so that sender.scale is always the first derivative
         sender.scale = 1
     }
     
@@ -157,7 +143,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         lastTranslation = current
     }
     
-    
     @IBAction func barButtonPressed(_ sender: UIBarButtonItem) {
         switch sender.tag {
         case 0: container?.openLeft()
@@ -169,22 +154,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    
-    
     func restart() {
         board.clear()
         hive.reset()
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /**
-     Works flawlessly!
-     */
     override func viewDidLayoutSubviews() {
         board.centerHiveStructure()
     }
@@ -207,9 +181,7 @@ extension ViewController: BoardViewDelegate {
 
 extension ViewController: HiveDelegate {
     
-    /**
-     Transfer the updated root structure from hive to boardview for display
-     */
+    /// Transfer the updated root structure from hive to boardview for display
     func structureDidUpdate() {
         board.root = hive.root
         post(name: structureDidUpdateNotification, object: nil)
@@ -263,7 +235,7 @@ extension ViewController: HiveDelegate {
 extension ViewController: SlideMenuControllerDelegate {
     
     /**
-     Works perfect!
+     Works perfectly!
      Disable pan gesture controls when menu will become visible.
      */
     func leftWillOpen() {
@@ -275,7 +247,7 @@ extension ViewController: SlideMenuControllerDelegate {
     }
 }
 
-//MARK: Notification handling
+// MARK: Notification handling
 extension ViewController {
     @objc func didSelectNewNode(_ notification: Notification) {
         hive.select(newNode: notification.object as! HexNode)

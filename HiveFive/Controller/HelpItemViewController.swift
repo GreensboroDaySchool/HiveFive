@@ -72,10 +72,9 @@ class HelpItemViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // Configure identity node
-        demonstrationBoard.nodeRadius = [30,35,40][nodeSizeIndex()]
+        demonstrationBoard.nodeRadius = [30, 35, 40][nodeSizeIndex()]
         demonstrationBoard.centerHiveStructure()
         demonstrationBoard.rootCoordinate = demonstrationBoard.rootCoordinate.translate(-20, -26)
-//        demonstrationBoard.clipsToBounds = true
         
         // Configure demonstration board
         nodeBoard.nodeRadius = nodeBoard.bounds.midX - 5
@@ -89,24 +88,11 @@ class HelpItemViewController: UIViewController {
         let contentOffset = contentHeight - offSet
         descriptionTextView.contentOffset = CGPoint(x: 0, y: -contentOffset)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension HelpItemViewController: BoardViewDelegate {
     
-    /**
-     Small hacks make life easier! Select regardless of color
-     */
+    /// Small hacks make life easier! Select regardless of color
     private func select(node: HexNode) {
         if node.identity == .dummy {return} // Moves are not allowed.
         let preserved = node.color
@@ -134,7 +120,6 @@ extension HelpItemViewController: HiveDelegate {
     func gameHasEnded() {}
     
     func didWin(player: Color) {}
-    
 
     func structureDidUpdate() {
         demonstrationBoard.root = hive.root

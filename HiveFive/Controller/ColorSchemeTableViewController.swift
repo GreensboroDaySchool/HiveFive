@@ -31,19 +31,12 @@ class ColorSchemeTableViewController: UITableViewController {
     }
     
     var categories = [[KPHackable]]()
-    var categoryNames = ["Profile Info", "", "Colors", "Numbers & Ratios"]
+    var categoryNames = ["Profile Info", "General", "Colors", "Numbers & Ratios"]
     var pendingText: String?
-    
     var config: TextField.Config!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         // MARK: addtional setup
         updateCategories()
@@ -95,7 +88,6 @@ class ColorSchemeTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Create from current", style: .default){[unowned self] _ in
             self.saveNewProfile(name: self.pendingText, profile: currentProfile())
         })
-        
         alert.show()
     }
     
@@ -105,8 +97,9 @@ class ColorSchemeTableViewController: UITableViewController {
             return
         }
         save(id: currentProfileId, obj: name)
-        CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == name} // Delete existing profile with the same name
-        var newProfile = profile // TODO: should be overriden?
+        // Delete existing profile with the same name
+        CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == name}
+        var newProfile = profile
         newProfile.name = name
         newProfile.save()
         post(name: profileUpdatedNotification, object: profile)
@@ -132,11 +125,6 @@ class ColorSchemeTableViewController: UITableViewController {
         return [[], category.bools, category.colors, category.numbers] // Note: hacked!
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,7 +134,6 @@ class ColorSchemeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : categories[section].count // Note: hacked
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         func makeCell(_ id: String) -> UITableViewCell {
@@ -162,7 +149,6 @@ class ColorSchemeTableViewController: UITableViewController {
         case 3: cell = makeCell(numberCellId)
         default: fatalError("no such index")
         }
-        
         
         if let associate = (cell as? KPAssociate) {
             associate.kpHackable = categories[indexPath.section][indexPath.row]
@@ -186,18 +172,6 @@ class ColorSchemeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50 // TODO: figure out the best height
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ColorSchemeTableViewController: ProfileInfoDelegate {
@@ -218,11 +192,12 @@ extension ColorSchemeTableViewController: ProfileInfoDelegate {
             alert2.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             alert2.addAction(UIAlertAction(title: "Confirm", style: .default){[unowned self] _ in
                 if let newName = self.pendingText {
-                    Profile.delete(name: currentProfileName())
-                    save(id: currentProfileId, obj: newName)
+                    let oldName = currentProfileName()
                     var profile = currentProfile()
                     profile.name = newName
                     profile.save()
+                    Profile.delete(name: oldName)
+                    save(id: currentProfileId, obj: newName)
                     post(name: profileUpdatedNotification, object: profile)
                     self.refresh()
                     return
@@ -230,7 +205,6 @@ extension ColorSchemeTableViewController: ProfileInfoDelegate {
                 post(name: displayMsgNotification, object: "Invalid Name")
             })
             alert2.show()
-//            self.saveNewProfile(name: self.pendingText, profile: currentProfile())
         })
         alert.show()
     }
@@ -256,10 +230,19 @@ extension KPAssociate {
     }
     
     func handleValueUpdate(_ updatedValue: Any) {
-        let updated = currentProfile().updated(key: self.kpHackable!.key, val: updatedValue) // Generate updated profile based on existing profile
-        CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == currentProfileName()} // Delete existing profile
-        updated.save() // Save updated profile into Core Data
-        self.postUpdate(self.kpHackable!.setValue(updatedValue)) // Post update notification
+        // Generate updated profile based on existing profile
+        let updated = currentProfile().updated(key: self.kpHackable!.key, val: updatedValue)
+        
+        // Delete existing profile
+        CoreData.delete(entity: "NodeViewProfile") {
+            ($0 as! NodeViewProfile).name == currentProfileName()
+        }
+        
+        // Save updated profile into Core Data
+        updated.save()
+        
+        // Post update notification
+        self.postUpdate(self.kpHackable!.setValue(updatedValue))
         post(name: displayMsgNotification, object: ("\(kpHackable!.key) : \(updatedValue)"))
     }
 }

@@ -76,7 +76,6 @@ class HelpPageViewController: UIViewController {
             controller.view.translatesAutoresizingMaskIntoConstraints = false
             containerView.addSubview(controller.view)
             
-            
             NSLayoutConstraint.activate([
                 controller.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
                 controller.view.widthAnchor.constraint(equalTo: containerView.widthAnchor),
@@ -98,16 +97,6 @@ class HelpPageViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 //MARK: Data Source

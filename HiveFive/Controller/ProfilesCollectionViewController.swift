@@ -29,17 +29,10 @@ class ProfilesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Do any additional setup after loading the view.
         preloadRenderedProfiles()
     }
     
-    /**
-     Preloads rendered profiles into cached dictionary. This solved the issue of lagging.
-     */
+    /// Preloads rendered profiles into cached dictionary. This solved the issue of lagging.
     private func preloadRenderedProfiles() {
         profiles = Profile.savedProfiles()
         profiles.enumerated().map{(IndexPath(row: $0.offset, section: 0), $0.element)}
@@ -49,21 +42,6 @@ class ProfilesCollectionViewController: UICollectionViewController {
                 cached[indexPath] = cell.asImage()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     // MARK: UICollectionViewDataSource
     
@@ -115,6 +93,5 @@ class ProfilesCollectionViewController: UICollectionViewController {
         post(name: displayMsgNotification, object: "Profile Updated")
         navigationController?.popToRootViewController(animated: true)
     }
-    
 }
 

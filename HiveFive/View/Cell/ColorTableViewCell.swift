@@ -32,18 +32,10 @@ class ColorSegueTableViewCell: UITableViewCell, KPAssociate {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        // Initialization code
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         let color = colorView?.backgroundColor // Preserves the color of the color view.
         super.setSelected(selected, animated: animated) // this changes the background color of all subviews
         colorView?.backgroundColor = color
-        
-        // Configure the view for the selected state
     }
     
     func didSelect() {

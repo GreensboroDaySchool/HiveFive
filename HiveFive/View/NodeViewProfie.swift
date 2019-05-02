@@ -26,7 +26,7 @@ import UIKit
  */
 struct Profile {
     static let defaultProfile: Profile = {
-        if savedProfiles().count == 0 {
+        if !savedProfiles().contains(where: {$0.name == "#default"}) {
             Profile(name: "#default", keyPaths: defaultKeyPaths).save()
         }
         return load(savedProfiles{$0.name == "#default"}[0])

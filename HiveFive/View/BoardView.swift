@@ -31,9 +31,7 @@ import Hive5Common
         }
     }
     
-    /**
-     Prevent users from creating giant/tiny nodes
-     */
+    /// Prevent users from creating giant/tiny nodes
     @IBInspectable var maxNodeRadius: CGFloat = 100
     @IBInspectable var minNodeRadius: CGFloat = 10
     
@@ -49,20 +47,18 @@ import Hive5Common
         didSet {updateNodeCoordinates()}
     }
     
-    /**
-     Patterns that are drawn on top of each node.
-     */
+    /// Patterns that are drawn on top of each node.
     var patterns = Identity.defaultPatterns {
         didSet {
             redrawSubviews()
         }
     }
     
-    /**
-     The root node of the hive
-     */
-    var root: HexNode? { // the structure of the hive has changed
-        didSet {updateStructure()}
+    /// The root node of the hive
+    var root: HexNode? {
+        didSet {
+            updateStructure()
+        }
     }
     
     var availablePositions = [Position]() {
@@ -146,9 +142,7 @@ import Hive5Common
         subviews.forEach{$0.setNeedsDisplay()}
     }
     
-    /**
-     Only updates the coordinate, the node views don't need to be redrawn.
-     */
+    /// Only updates the coordinate, the node views don't need to be redrawn.
     func updateNodeCoordinates() {
         nodeViews.forEach{$0.update(rootCoordinate: rootCoordinate)}
     }
@@ -188,18 +182,15 @@ import Hive5Common
         }
     }
     
-    /**
-     Clears everything on the board!
-     */
+
+    /// Clears everything on the board!
     func clear() {
         root = nil
         availablePositions = []
         subviews.forEach{$0.removeFromSuperview()}
     }
 
-    /**
-     Update dummy nodes according to the new prompted positions provided by the Hive model
-     */
+    /// Update dummy nodes according to the new prompted positions provided by the Hive model
     func updateAvailablePositions() {
         if root == nil || root!.identity == .dummy { // special case
             root = Identity.dummy.new(color: .black)
@@ -222,9 +213,7 @@ import Hive5Common
         updateNodeCoordinates()
     }
     
-    /**
-     Adjusts the root coordinate so that the hive structure is centered in the view.
-     */
+    /// Adjusts the root coordinate so that the hive structure is centered in the view.
     func centerHiveStructure() {
         if subviews.count == 0 {
             return
@@ -242,9 +231,7 @@ import Hive5Common
         rootCoordinate = rootCoordinate - translation
     }
     
-    /**
-     - Returns: The bounds of the hive structure
-     */
+    /// - Returns: The bounds of the hive structure
     func hiveStructureBounds() -> CGRect {
         if subviews.count == 0 {
             return CGRect.zero
@@ -291,9 +278,7 @@ import Hive5Common
         redrawSubviews()
     }
     
-    /**
-     The user has finished zooming in/out, redraw node views to prevent pixelation.
-     */
+    /// The user has finished zooming in/out, redraw node views to prevent pixelation.
     func pinchGestureDidEnd() {
         redrawSubviews()
     }
@@ -306,16 +291,12 @@ import Hive5Common
         rootCoordinate = rootCoordinate + route.relativeCoordinate(radius: Float(nodeRadius)).cgPoint.flipY()
     }
     
-    /**
-     This method is called when the touch landed on one of the nodes
-     */
+    /// This method is called when the touch landed on one of the nodes
     func didTap(node: HexNode) {
         delegate?.didTap(on: node)
     }
     
-    /**
-     This method is called when the touch landed on blank spaces
-     */
+    /// This method is called when the touch landed on blank spaces
     @objc func didTapOnBoard() {
         delegate?.didTapOnBoard()
     }

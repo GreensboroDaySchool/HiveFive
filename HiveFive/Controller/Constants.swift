@@ -81,13 +81,6 @@ func currentProfile() -> Profile {
     return Profile.load(currentProfileName())
 }
 
-let tableViewCellHeightId = "tableViewCellHeight"
-let tableViewCellHeightUpdatedNotification = Notification.Name(tableViewCellHeightId)
-let defaultTableViewCellHeight: Int = 70
-func tableViewCellHeight() -> Int {
-    return get(id: tableViewCellHeightId) as? Int ?? defaultTableViewCellHeight
-}
-
 //MARK: Rules
 
 let queen4Id = "queen4"

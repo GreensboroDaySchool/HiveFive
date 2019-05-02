@@ -20,7 +20,6 @@
 import UIKit
 
 class HandCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var numLabel: UILabel!
     var indexPath: IndexPath?

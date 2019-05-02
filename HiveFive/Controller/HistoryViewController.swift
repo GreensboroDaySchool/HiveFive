@@ -38,19 +38,13 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        boardView.delegate = self // establish communication with View
+        boardView.delegate = self
         
         observe(structureDidUpdateNotification, #selector(structureDidUpdate))
         observe(selectedNodeDidUpdateNotification, #selector(selectedNodeDidUpdate))
         observe(availablePositionsDidUpdateNotification, #selector(availablePositionsDidUpdate))
         observe(rootNodeDidMoveNotification, #selector(rootNodeDidMoveNotifier(_:)))
         observe(hiveStructureRemovedNotification, #selector(hiveStructureRemoved))
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,17 +61,6 @@ class HistoryViewController: UIViewController {
         boardView.sizeStructureToFit(fillRatio: 0.9)
         boardView.centerHiveStructure()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension HistoryViewController: BoardViewDelegate {
@@ -105,9 +88,7 @@ extension HistoryViewController: HiveDelegate {
     
     func didWin(player: Color) {}
     
-    /**
-     Transfer the updated root structure from hive to boardview for display
-     */
+    /// Transfer the updated root structure from hive to boardview for display
     @objc func structureDidUpdate() {
         boardView.root = hive.root
     }

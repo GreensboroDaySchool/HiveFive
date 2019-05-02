@@ -44,7 +44,7 @@
 		320FDBB92082A25600E0F62A /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB82082A25600E0F62A /* Vec2D.swift */; };
 		320FDBBD2082B2DF00E0F62A /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBBC2082B2DF00E0F62A /* Hive.swift */; };
 		321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED2E2077D27800805F74 /* MenuIconView.swift */; };
-		321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceViewController.swift */; };
+		321CED312077D9D400805F74 /* UserInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceTableViewController.swift */; };
 		321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED322078256900805F74 /* ColorSchemeTableViewController.swift */; };
 		321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED76207838B200805F74 /* HelpPageViewController.swift */; };
 		321CED7920783D5500805F74 /* HelpItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED7820783D5500805F74 /* HelpItemViewController.swift */; };
@@ -647,7 +647,7 @@
 		320FDBB82082A25600E0F62A /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
 		320FDBBC2082B2DF00E0F62A /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		321CED2E2077D27800805F74 /* MenuIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconView.swift; sourceTree = "<group>"; };
-		321CED302077D9D400805F74 /* UserInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceViewController.swift; sourceTree = "<group>"; };
+		321CED302077D9D400805F74 /* UserInterfaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		321CED322078256900805F74 /* ColorSchemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTableViewController.swift; sourceTree = "<group>"; };
 		321CED76207838B200805F74 /* HelpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPageViewController.swift; sourceTree = "<group>"; };
 		321CED7820783D5500805F74 /* HelpItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpItemViewController.swift; sourceTree = "<group>"; };
@@ -1386,7 +1386,7 @@
 				322EF743207676EF008A98F7 /* MenuTableViewController.swift */,
 				321E1652207A91FE0053C87A /* ProfilesCollectionViewController.swift */,
 				328EE196207694FF0056CB0C /* ThemesCollectionViewController.swift */,
-				321CED302077D9D400805F74 /* UserInterfaceViewController.swift */,
+				321CED302077D9D400805F74 /* UserInterfaceTableViewController.swift */,
 				2CFCE468206B00880041EDD1 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -2709,7 +2709,7 @@
 				320FDBA720829ED700E0F62A /* UIImage.swift in Sources */,
 				322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */,
 				320FDBB520829F8D00E0F62A /* CGFloat.swift in Sources */,
-				321CED312077D9D400805F74 /* UserInterfaceViewController.swift in Sources */,
+				321CED312077D9D400805F74 /* UserInterfaceTableViewController.swift in Sources */,
 				328EE19E2076DC3C0056CB0C /* HandCollectionViewController.swift in Sources */,
 				328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */,
 				328EE1A22076EE940056CB0C /* Constants.swift in Sources */,
