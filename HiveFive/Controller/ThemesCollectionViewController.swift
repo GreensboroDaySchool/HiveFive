@@ -24,7 +24,7 @@ private let reuseIdentifier = "cell3"
 
 class ThemesCollectionViewController: UICollectionViewController {
 
-    var cached = [IndexPath:UIImage]()
+    var cached = [IndexPath: UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ThemesCollectionViewController: UICollectionViewController {
                 let cell = collectionView!.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
                 prepareCell(cell, theme: theme)
                 cached[indexPath] = cell.asImage()
-                }
+            }
     }
 
     // MARK: UICollectionViewDataSource
@@ -59,7 +59,9 @@ class ThemesCollectionViewController: UICollectionViewController {
             cell.backgroundView = UIImageView(image: cachedImg)
         } else {
             prepareCell(cell, theme: themes[indexPath.row])
-            if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
+            if !shouldUseRectangularUI() {
+                cell.layer.cornerRadius = uiCornerRadius
+            }
             cached[indexPath] = cell.asImage()
         }
         return cell
@@ -93,7 +95,7 @@ class ThemesCollectionViewController: UICollectionViewController {
 
 struct Theme {
     var name: String
-    var patterns: [Identity:String]
+    var patterns: [Identity: String]
     
     func encode() -> String {
         return name
@@ -104,87 +106,86 @@ struct Theme {
     }
 }
 
-/// Themes
-fileprivate var themes: [Theme] = [
+var themes: [Theme] = [
     .init(name: "Mathematics", patterns: [
-        .grasshopper:"𝝣",
-        .queenBee:"𝝠",
-        .beetle:"𝝧",
-        .spider:"𝝮",
-        .soldierAnt:"𝝭",
-        .dummy:"𝝬"
+        .grasshopper: "𝝣",
+        .queenBee: "𝝠",
+        .beetle: "𝝧",
+        .spider: "𝝮",
+        .soldierAnt: "𝝭",
+        .dummy: "𝝬"
         ]),
     .init(name: "Chinese", patterns: [
-        .grasshopper:"蜢",
-        .queenBee:"皇",
-        .beetle:"甲",
-        .spider:"蛛",
-        .soldierAnt:"蚁",
-        .dummy:"笨"
+        .grasshopper: "蜢",
+        .queenBee: "皇",
+        .beetle: "甲",
+        .spider: "蛛",
+        .soldierAnt: "蚁",
+        .dummy: "笨"
         ]),
     .init(name: "Letters", patterns: [
-        .grasshopper:"𝔾",
-        .queenBee:"ℚ",
-        .beetle:"𝔹",
-        .spider:"𝕊",
-        .soldierAnt:"𝔸",
-        .dummy:"𝔻"
+        .grasshopper: "𝔾",
+        .queenBee: "ℚ",
+        .beetle: "𝔹",
+        .spider: "𝕊",
+        .soldierAnt: "𝔸",
+        .dummy: "𝔻"
         ]),
     .init(name: "Chess Dark", patterns: [
-        .grasshopper:"♞",
-        .queenBee:"♛",
-        .beetle:"♟",
-        .spider:"♝",
-        .soldierAnt:"♜",
-        .dummy:"♚"
+        .grasshopper: "♞",
+        .queenBee: "♛",
+        .beetle: "♙",
+        .spider: "♝",
+        .soldierAnt: "♜",
+        .dummy: "♚"
         ]),
     .init(name: "Chess Light", patterns: [
-        .grasshopper:"♘",
-        .queenBee:"♕",
-        .beetle:"♙",
-        .spider:"♗",
-        .soldierAnt:"♖",
-        .dummy:"♔"
+        .grasshopper: "♘",
+        .queenBee: "♕",
+        .beetle: "♙",
+        .spider: "♗",
+        .soldierAnt: "♖",
+        .dummy: "♔"
         ]),
     .init(name: "Currency", patterns: [
-        .grasshopper:"$",
-        .queenBee:"€",
-        .beetle:"¥",
-        .spider:"¢",
-        .soldierAnt:"£",
-        .dummy:"₽"
+        .grasshopper: "$",
+        .queenBee: "€",
+        .beetle: "¥",
+        .spider: "¢",
+        .soldierAnt: "£",
+        .dummy: "₽"
         ]),
     .init(name: "Stars", patterns: [
-        .grasshopper:"✡︎",
-        .queenBee:"✪",
-        .beetle:"✶",
-        .spider:"★",
-        .soldierAnt:"✩",
-        .dummy:"▲"
+        .grasshopper: "✡︎",
+        .queenBee: "✪",
+        .beetle: "✶",
+        .spider: "★",
+        .soldierAnt: "✩",
+        .dummy: "▲"
         ]),
     .init(name: "Physics", patterns: [
-        .grasshopper:"𝜞︎",
-        .queenBee:"𝜟",
-        .beetle:"𝜭",
-        .spider:"𝜮",
-        .soldierAnt:"𝜴",
-        .dummy:"𝜩"
+        .grasshopper: "𝜞︎",
+        .queenBee: "𝜟",
+        .beetle: "𝜭",
+        .spider: "𝜮",
+        .soldierAnt: "𝜴",
+        .dummy: "𝜩"
         ]),
     .init(name: "Skewed", patterns: [
-        .grasshopper:"𝞝",
-        .queenBee:"𝞡",
-        .beetle:"𝞨",
-        .spider:"𝞚",
-        .soldierAnt:"𝞧",
-        .dummy:"𝞦"
+        .grasshopper: "𝞝",
+        .queenBee: "𝞡",
+        .beetle: "𝞨",
+        .spider: "𝞚",
+        .soldierAnt: "𝞧",
+        .dummy: "𝞦"
         ]),
     .init(name: "Trigrams", patterns: [
-        .grasshopper:"☱",
-        .queenBee:"☲",
-        .beetle:"☳",
-        .spider:"☵",
-        .soldierAnt:"☴",
-        .dummy:"☶"
+        .grasshopper: "☱",
+        .queenBee: "☲",
+        .beetle: "☳",
+        .spider: "☵",
+        .soldierAnt: "☴",
+        .dummy: "☶"
         ]),
 ]
 
