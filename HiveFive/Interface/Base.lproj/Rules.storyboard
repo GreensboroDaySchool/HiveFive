@@ -1,109 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ym0-aH-5ks">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wMM-CY-fmh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Rules-->
-        <scene sceneID="wmR-B7-daU">
+        <scene sceneID="L0T-f8-Zmr">
             <objects>
-                <viewController storyboardIdentifier="Rules" title="Rules" id="ym0-aH-5ks" customClass="RulesViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="S29-cc-BuO">
+                <tableViewController id="wMM-CY-fmh" customClass="RulesTableViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1cw-qo-Lqb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Queen 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y1-km-VI5">
-                                <rect key="frame" x="8" y="131" width="66" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haK-9I-Zs9">
-                                <rect key="frame" x="318" y="126" width="51" height="31"/>
-                                <connections>
-                                    <action selector="queen4SwitchValueChanged:" destination="ym0-aH-5ks" eventType="valueChanged" id="PGc-om-Y0s"/>
-                                </connections>
-                            </switch>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If this is on, the queen been must be placed on the board in the first 4 pieces." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrs-sf-Akq">
-                                <rect key="frame" x="4" y="165" width="367" height="90"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="bSe-rS-caI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="After changing any of the following rules, restart the game to ensure that they get applied." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENP-Cc-ix7">
-                                <rect key="frame" x="4" y="28" width="367" height="90"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="O2R-C9-r17"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Immobilized 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7S-8c-TIg">
-                                <rect key="frame" x="8" y="268" width="108" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k8j-JR-Gdd">
-                                <rect key="frame" x="318" y="263" width="51" height="31"/>
-                                <connections>
-                                    <action selector="immobilized4SwitchValueChanged:" destination="ym0-aH-5ks" eventType="valueChanged" id="pwU-TL-SZQ"/>
-                                </connections>
-                            </switch>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If this is on, pieces on the board cannot be moved until the queen bee is placed." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tam-6y-CzL">
-                                <rect key="frame" x="4" y="302" width="367" height="90"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="1D8-Fz-D8Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="top" secondItem="LW9-th-6PT" secondAttribute="top" constant="8" id="9MF-Li-Fzi"/>
-                            <constraint firstItem="tam-6y-CzL" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="Ahd-pT-GgH"/>
-                            <constraint firstItem="B7S-8c-TIg" firstAttribute="centerY" secondItem="k8j-JR-Gdd" secondAttribute="centerY" id="CUx-4z-h5r"/>
-                            <constraint firstItem="k8j-JR-Gdd" firstAttribute="top" secondItem="Hrs-sf-Akq" secondAttribute="bottom" constant="8" id="F2i-ge-mtK"/>
-                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="tam-6y-CzL" secondAttribute="trailing" constant="4" id="G0W-97-mFY"/>
-                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="ENP-Cc-ix7" secondAttribute="trailing" constant="4" id="J0i-v3-amS"/>
-                            <constraint firstItem="4Y1-km-VI5" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="8" id="W3e-9b-jV3"/>
-                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="top" secondItem="LW9-th-6PT" secondAttribute="top" constant="8" id="WvH-XQ-h80"/>
-                            <constraint firstItem="haK-9I-Zs9" firstAttribute="top" secondItem="ENP-Cc-ix7" secondAttribute="bottom" constant="8" id="ZqZ-bA-DuP"/>
-                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="ENP-Cc-ix7" secondAttribute="trailing" constant="4" id="aAu-c3-y4K"/>
-                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="eH8-N8-wgL"/>
-                            <constraint firstItem="ENP-Cc-ix7" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="ivH-1p-k0h"/>
-                            <constraint firstItem="B7S-8c-TIg" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="8" id="jh3-aO-Ak7"/>
-                            <constraint firstItem="tam-6y-CzL" firstAttribute="top" secondItem="k8j-JR-Gdd" secondAttribute="bottom" constant="8" id="kNu-2X-2Ni"/>
-                            <constraint firstItem="Hrs-sf-Akq" firstAttribute="top" secondItem="haK-9I-Zs9" secondAttribute="bottom" constant="8" id="nc9-RM-xoO"/>
-                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="k8j-JR-Gdd" secondAttribute="trailing" constant="8" id="pUN-yF-i9M"/>
-                            <constraint firstItem="4Y1-km-VI5" firstAttribute="centerY" secondItem="haK-9I-Zs9" secondAttribute="centerY" id="pnI-Ft-r1i"/>
-                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="haK-9I-Zs9" secondAttribute="trailing" constant="8" id="qbo-Ud-zNf"/>
-                            <constraint firstItem="LW9-th-6PT" firstAttribute="trailing" secondItem="Hrs-sf-Akq" secondAttribute="trailing" constant="4" id="rF4-db-iBA"/>
-                            <constraint firstItem="Hrs-sf-Akq" firstAttribute="leading" secondItem="LW9-th-6PT" secondAttribute="leading" constant="4" id="vkT-UB-dIr"/>
-                            <constraint firstItem="haK-9I-Zs9" firstAttribute="top" secondItem="ENP-Cc-ix7" secondAttribute="bottom" constant="8" id="wIp-gS-Jvi"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="LW9-th-6PT"/>
-                    </view>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Rules" footerTitle="The queen been must be placed on the board in the first 4 pieces." id="XJB-qe-5Bm">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uR6-Ad-wQY">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uR6-Ad-wQY" id="mvv-3p-B7a">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Queen 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igi-WV-dkx">
+                                                    <rect key="frame" x="16" y="11.5" width="286" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g64-Ca-Bij">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="queen4SwitchValueChanged:" destination="wMM-CY-fmh" eventType="valueChanged" id="EXw-LA-sGg"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="igi-WV-dkx" firstAttribute="leading" secondItem="mvv-3p-B7a" secondAttribute="leadingMargin" id="9xc-wk-7WQ"/>
+                                                <constraint firstItem="g64-Ca-Bij" firstAttribute="trailing" secondItem="mvv-3p-B7a" secondAttribute="trailingMargin" id="FFk-Ua-uiW"/>
+                                                <constraint firstItem="g64-Ca-Bij" firstAttribute="centerY" secondItem="mvv-3p-B7a" secondAttribute="centerY" id="a1c-XT-h8P"/>
+                                                <constraint firstItem="igi-WV-dkx" firstAttribute="centerY" secondItem="mvv-3p-B7a" secondAttribute="centerY" id="pwl-sl-e7u"/>
+                                                <constraint firstItem="g64-Ca-Bij" firstAttribute="leading" secondItem="igi-WV-dkx" secondAttribute="trailing" constant="8" id="tbW-Bq-pdn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection footerTitle="Pieces on the board cannot be moved until the queen bee is placed." id="nNb-vR-RhG">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v0b-70-ATz">
+                                        <rect key="frame" x="0.0" y="163.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v0b-70-ATz" id="oSf-Kc-99t">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Immobilized 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXf-HV-thy">
+                                                    <rect key="frame" x="16" y="11.5" width="286" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QAq-xe-WAs">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="immobilized4SwitchValueChanged:" destination="wMM-CY-fmh" eventType="valueChanged" id="5WP-Xs-2mo"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QAq-xe-WAs" firstAttribute="centerY" secondItem="oSf-Kc-99t" secondAttribute="centerY" id="F3O-k5-8g1"/>
+                                                <constraint firstItem="QAq-xe-WAs" firstAttribute="trailing" secondItem="oSf-Kc-99t" secondAttribute="trailingMargin" id="Oh5-2G-woU"/>
+                                                <constraint firstItem="FXf-HV-thy" firstAttribute="leading" secondItem="oSf-Kc-99t" secondAttribute="leadingMargin" id="P6P-cA-UDc"/>
+                                                <constraint firstItem="QAq-xe-WAs" firstAttribute="leading" secondItem="FXf-HV-thy" secondAttribute="trailing" constant="8" id="jj7-Jg-xlg"/>
+                                                <constraint firstItem="FXf-HV-thy" firstAttribute="centerY" secondItem="oSf-Kc-99t" secondAttribute="centerY" id="vRH-RF-W5V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="wMM-CY-fmh" id="EKp-n5-Onj"/>
+                            <outlet property="delegate" destination="wMM-CY-fmh" id="yOE-3P-8kS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Rules" id="56g-9c-31m"/>
                     <connections>
-                        <outlet property="immobilized4Switch" destination="k8j-JR-Gdd" id="lo8-ae-tmQ"/>
-                        <outlet property="queen4Switch" destination="haK-9I-Zs9" id="S4c-9Z-nEj"/>
+                        <outlet property="immobilized4Switch" destination="QAq-xe-WAs" id="1Bt-PI-F83"/>
+                        <outlet property="queen4Switch" destination="g64-Ca-Bij" id="0ZH-Sc-weJ"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tet-CC-H2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r7d-27-Odi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="143"/>
+            <point key="canvasLocation" x="650" y="143"/>
         </scene>
     </scenes>
 </document>

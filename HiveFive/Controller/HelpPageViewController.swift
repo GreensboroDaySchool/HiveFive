@@ -25,16 +25,14 @@ class HelpPageViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     
-    var padding: CGFloat = 20
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let width = scrollView.frame.size.width
         let height = scrollView.frame.size.height
+        let padding: CGFloat = 20
         
-        scrollView.contentSize = CGSize(width: width * CGFloat(nodeDescriptions.count), height: height)
-        scrollView.isPagingEnabled = true
+        scrollView.contentSize = CGSize(width: padding + (width + padding) * CGFloat(nodeDescriptions.count), height: height)
         
         // Generate content for scroll view using the frame height and width as the reference point
         nodeDescriptions.enumerated().forEach { (i, element) in
@@ -44,21 +42,22 @@ class HelpPageViewController: UIViewController {
             containerView.backgroundColor = .white
             containerView.tag = i
             
-            let currentX = width * CGFloat(i) + padding
+            let currentX = padding + (width + padding) * CGFloat(i)
             
             NSLayoutConstraint.activate([
                 containerView.leadingAnchor.constraint(
                     equalTo: scrollView.leadingAnchor,
                     constant: currentX
                 ),
-                containerView.widthAnchor.constraint(
-                    equalToConstant: width - padding * 2
+                containerView.trailingAnchor.constraint(
+                    equalTo: scrollView.leadingAnchor,
+                    constant: currentX + width
                 ),
                 containerView.centerYAnchor.constraint(
                     equalTo: scrollView.centerYAnchor
                 ),
                 containerView.heightAnchor.constraint(
-                    equalToConstant: height - padding
+                    equalToConstant: height
                 )
             ])
             

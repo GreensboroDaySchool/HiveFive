@@ -1,1 +1,2 @@
 # Dependencies for Hive5
+github "mchoe/SwiftSVG" ~> 2.0
