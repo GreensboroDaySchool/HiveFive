@@ -55,7 +55,8 @@ public class Hive: Codable {
             .queenBee: 1,
             .beetle: 2,
             .spider: 2,
-            .soldierAnt: 3
+            .soldierAnt: 3,
+            .mosquito: 1
         ]
     
     /**
