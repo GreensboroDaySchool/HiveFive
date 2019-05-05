@@ -27,7 +27,7 @@ public class Beetle: HexNode {
         }
         
         let base = Hive.traverse(from: self, toward: .bottom)
-        moves.append(contentsOf: base.neighbors.available()
+        moves.append(contentsOf: base.neighbors.present()
             .filter{$0.dir.rawValue < 6}
             .map{getTopNode(of: $0.node)}
             .map{Position(node: $0, dir: .top)})

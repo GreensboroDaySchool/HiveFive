@@ -202,7 +202,7 @@ class HiveFive_Tests: XCTestCase {
         let destination = Position(node: grasshopper, dir: .upperRight)
         beetle2.move(to: destination)
         XCTAssert(grasshopper.numConnected() == 7)
-        XCTAssert(beetle2.neighbors.available().count == 3)
+        XCTAssert(beetle2.neighbors.present().count == 3)
 
         spider.move(to: Position(node: beetle, dir: .lowerLeft))
         XCTAssert(spider.hasNeighbor(beetle) == .upperRight)
@@ -210,25 +210,25 @@ class HiveFive_Tests: XCTestCase {
         XCTAssert(spider2.canDisconnect())
         
         grasshopper.move(to: Position(node: beetle2, dir: .upperRight))
-        XCTAssert(spider2.neighbors.available().count == 3)
-        XCTAssert(beetle2.neighbors.available().count == 2)
+        XCTAssert(spider2.neighbors.present().count == 3)
+        XCTAssert(beetle2.neighbors.present().count == 2)
         XCTAssert(beetle.numConnected() == 7)
         XCTAssert(spider.derivePaths().count == 6)
         
         //test Beetle!!!
         beetle.move(to: Position(node: spider2, dir: .top))
         XCTAssert(queenBee.availableMoves().count == 0)
-        XCTAssert(soldierAnt.neighbors.available().count == 2)
+        XCTAssert(soldierAnt.neighbors.present().count == 2)
         
         //at this point, the only available neighbor of beetle is the piece that is below it
-        XCTAssert(beetle.neighbors.available().count == 1)
+        XCTAssert(beetle.neighbors.present().count == 1)
         XCTAssert(queenBee.derivePaths().count == 6)
         
         let beetle3 = Beetle(color: .white) // add another beetle, beetle3, to the lowerRight of beetle and above soldierAnt
         beetle3.move(to: Position(node: soldierAnt, dir: .top))
         //beetle and beetle3 have the same z coordinate, thus they should be automatically connected
-        XCTAssert(beetle.neighbors.available().count == 2)
-        XCTAssert(beetle3.neighbors.available().count == 2) // both beetles are on the plane z = 1
+        XCTAssert(beetle.neighbors.present().count == 2)
+        XCTAssert(beetle3.neighbors.present().count == 2) // both beetles are on the plane z = 1
         XCTAssert(beetle.neighbors.contains(beetle3) == .lowerLeft) // works like a charm without modification to existing move(to:) algorithm!
         XCTAssert(beetle3.derivePaths().count == 7)
         XCTAssert(queenBee.availableMoves().count == 0)
@@ -236,14 +236,14 @@ class HiveFive_Tests: XCTestCase {
         
         beetle.move(to: Position(node: spider2, dir: .upperLeft))
         XCTAssert(beetle.derivePaths().count == 7)
-        XCTAssert(beetle.neighbors.available().count == 3)
+        XCTAssert(beetle.neighbors.present().count == 3)
         XCTAssert(beetle.availableMoves().count == 5)
         XCTAssert(beetle3.availableMoves().count == 6)
         
         //test Grasshopper::availableMoves
         XCTAssert(grasshopper.availableMoves()[0] == Position(node: beetle2, dir: .lowerLeft))
         grasshopper.move(to: grasshopper.availableMoves()[0])
-        XCTAssert(grasshopper.neighbors.available().count == 4)
+        XCTAssert(grasshopper.neighbors.present().count == 4)
         XCTAssert(grasshopper.availableMoves().count == 4)
     }
     
@@ -253,7 +253,7 @@ class HiveFive_Tests: XCTestCase {
         XCTAssert(availableMoves.contains(Position(node: queenBee, dir: .upperRight))) // yes!!
         XCTAssert(availableMoves.contains(Position(node: soldierAnt, dir: .lowerLeft))) // yes!!!
 
-        XCTAssert(spider2.neighbors.available().count == 4)
+        XCTAssert(spider2.neighbors.present().count == 4)
         XCTAssert(spider2.numConnected() == 7)
     }
     
@@ -295,14 +295,14 @@ class HiveFive_Tests: XCTestCase {
         beetle3.disconnect()
         XCTAssert(soldierAnt.availableMoves().count == 13) // yes !!
         soldierAnt.move(to: Position(node: queenBee, dir: .up))
-        XCTAssert(soldierAnt.neighbors.available().count == 5)
+        XCTAssert(soldierAnt.neighbors.present().count == 5)
         XCTAssert(soldierAnt.availableMoves().count == 0)
     }
     
     func testCanMoveToAndCanPlaceAt() {
         XCTAssert(beetle2.canMove(to: Position(node: spider, dir: .lowerRight)))
         XCTAssert(beetle2.canMove(to: Position(node: spider, dir: .top)))
-        XCTAssert(beetle2.neighbors.available().count == 1)
+        XCTAssert(beetle2.neighbors.present().count == 1)
         XCTAssert(beetle2.availableMoves().count == 3)
         
         //test canPlace(at:)
@@ -318,7 +318,7 @@ class HiveFive_Tests: XCTestCase {
         XCTAssert(blackGrasshopper.hasNeighbor(queenBee) == .lowerLeft && blackGrasshopper.neighbors.available().count == 1)
         
         whiteSoldierAnt.place(at: Position(node: beetle, dir: .upperLeft))
-        XCTAssert(whiteSoldierAnt.neighbors.available().count == 1)
+        XCTAssert(whiteSoldierAnt.neighbors.present().count == 1)
         XCTAssert(whiteSoldierAnt.numConnected() == 9)
         XCTAssert(whiteSoldierAnt.canMove(to: Position(node: beetle2, dir: .upperRight)))
         XCTAssert(!whiteSoldierAnt.canMove(to: Position(node: beetle2, dir: .down)))

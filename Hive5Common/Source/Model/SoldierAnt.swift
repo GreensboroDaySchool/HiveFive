@@ -27,7 +27,7 @@ public class SoldierAnt: HexNode {
     }
 
     private func resolvePositions(_ traversed: inout [Position], _ destinations: inout [Position]) {
-        traversed.append(contentsOf: neighbors.available()
+        traversed.append(contentsOf: neighbors.present()
             .map{Position(node: $0.node, dir: $0.dir.opposite())})
         let firstRoutes = oneStepMoves()
         let firstPositions = firstRoutes.map{Position.resolve(from: self, following: $0)}
@@ -37,7 +37,7 @@ public class SoldierAnt: HexNode {
         }
         destinations.append(contentsOf: filtered) // add current destinations
         filtered.forEach{destination in
-            let neighbor = neighbors.available()[0]
+            let neighbor = neighbors.present()[0]
             let anchor = Position(node: neighbor.node, dir: neighbor.dir.opposite())
             self.move(to: destination) // move to next destination
             resolvePositions(&traversed, &destinations) // derive next step

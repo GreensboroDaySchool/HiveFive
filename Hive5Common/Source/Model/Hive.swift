@@ -56,7 +56,8 @@ public class Hive: Codable {
             .beetle: 2,
             .spider: 2,
             .soldierAnt: 3,
-            .mosquito: 1
+            .mosquito: 1,
+            .ladyBug: 1
         ]
     
     /**
@@ -147,7 +148,7 @@ public class Hive: Codable {
         switch node.identity {
         case .dummy:
             if let selected = selectedNode {
-                let available = node.neighbors.available()
+                let available = node.neighbors.present()
                 if available.count == 0 { // Special case, first piece!
                     root = selectedNode
                 } else {
@@ -162,7 +163,7 @@ public class Hive: Codable {
                     }
                     
                     // Record the move
-                    let origins = selected.neighbors.available()
+                    let origins = selected.neighbors.present()
                         .map{Position(node: $0.node, dir: $0.dir.opposite())}
                     history.push(move: Move(selected, from: origins.first, to: position))
 
@@ -243,7 +244,7 @@ public class Hive: Codable {
         if let root = root {
             let candidates = root.connectedNodes()
                 .filter{$0.identity == .queenBee
-                    && $0.neighbors.available().filter{
+                    && $0.neighbors.present().filter{
                             $0.dir.is2D
                         }.count == 6
                 }

@@ -30,7 +30,7 @@ public struct Neighbors: Equatable, Hashable {
     /**
      - Returns: The direction & node tuples in which there is a neighbor present.
      */
-    public func available() -> [(dir: Direction, node: HexNode)] {
+    public func present() -> [(dir: Direction, node: HexNode)] {
         return nodes.enumerated().filter {$0.element != nil}
                 .map {Direction(rawValue: $0.offset)!}
                 .map {($0, self[$0]!)}

@@ -70,7 +70,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Warning: This is a helper method for QueenBee::availableMoves, Beetle, and Spider, don't use it!
      */
     public func oneStepMoves() -> [Route] {
-        return neighbors.available().filter{$0.dir.rawValue < 6} // only horizontal nodes
+        return neighbors.present().filter{$0.dir.rawValue < 6} // only horizontal nodes
             .map{($0.dir, $0.node.neighbors
                 .adjacent(of: $0.dir.opposite())
                 .filter{$0.node == nil} // ensure that the spot is vacant
@@ -104,7 +104,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Returns: Paths to the rest of the nodes in the hive from the current node
      */
     private func derivePaths(_ paths: inout [Path], _ root: Route) {
-        let available = neighbors.available().filter {
+        let available = neighbors.present().filter {
             pair in !paths.contains(where: { pair.node === $0.destination })
         }
         
@@ -131,7 +131,7 @@ public class HexNode: IdentityProtocol, Hashable {
         move(to: position)
         var canMove = false
         for move in availableMoves {
-            let contains = neighbors.available()
+            let contains = neighbors.present()
                 .map{(node: $0.node, dir: $0.dir.opposite())}
                 .contains{Position(node: $0.node, dir: $0.dir) == move}
             if contains {
@@ -168,7 +168,7 @@ public class HexNode: IdentityProtocol, Hashable {
         if node.neighbors[dir] != nil {return false}
         let dummy = Identity.dummy.new(color: color)
         dummy.move(to: position)
-        let opponents = dummy.neighbors.available()
+        let opponents = dummy.neighbors.present()
             .map{Hive.traverse(from: $0.node, toward: .top)}
             .filter{$0.color != color}
             .count
@@ -182,7 +182,7 @@ public class HexNode: IdentityProtocol, Hashable {
      */
     public func place(at position: Position) {
         if !canPlace(at: position) {fatalError("Cannot place at \(position)")}
-        if neighbors.available().count != 0 {fatalError("Still connected to the hive. Please disconnect first")}
+        if neighbors.present().count != 0 {fatalError("Still connected to the hive. Please disconnect first")}
         move(to: position)
     }
     
@@ -269,7 +269,7 @@ public class HexNode: IdentityProtocol, Hashable {
         let numConnected = self.numConnected() // the number of pieces that are currently connected.
         self.disconnect() // temporarily disconnect with all neighbors
 
-        let available = neighbors.available() // extract all available neighbors
+        let available = neighbors.present() // extract all present neighbors
         let connected = available.map {$0.node.numConnected()}
         var canMove = true
         for i in (0..<connected.count) {
@@ -290,7 +290,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Attention: Disconnect with all neighbors, i.e. remove from the hive
      */
     public func disconnect() {
-        neighbors.available().map {$0.node}.forEach {$0.disconnect(with: self)}
+        neighbors.present().map {$0.node}.forEach {$0.disconnect(with: self)}
     }
 
     /**
@@ -310,7 +310,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Returns: An integer representing the number of nodesincluding self
      */
     private func deriveConnectedNodes(_ pool: inout [HexNode]) -> Int {
-        let pairs = neighbors.available() // neighbors that are present
+        let pairs = neighbors.present() // neighbors that are present
         if pool.contains(where: { $0 === self }) {return 0}
         pool.append(self) // add self to pool of accounted node such that it won't get counted again
         return pairs.map {$0.node}.filter { node in !pool.contains(where: { $0 === node })}

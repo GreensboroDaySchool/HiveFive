@@ -19,7 +19,7 @@ public class Mosquito: HexNode {
     
     /// Find available moves by mimicing all of its neighbors
     override public func availableMoves() -> [Position] {
-        let neighbors = self.neighbors.available()
+        let neighbors = self.neighbors.present()
         
         // If the mosquito is currently on top of the hive, then it moves as a beetle until it gets down.
         if let base = self.neighbors[.bottom] {

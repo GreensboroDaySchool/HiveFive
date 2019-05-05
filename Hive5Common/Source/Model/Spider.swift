@@ -31,11 +31,11 @@ public class Spider: HexNode {
     private func resolvePositions(_ traversed: inout [Position], _ remaining: Int) -> [Position] {
         registerTraversed(&traversed, self)
         let firstRoutes = oneStepMoves()
-        let firstPositions = firstRoutes.map{Position.resolve(from: self, following: $0)}
+        let firstPositions = firstRoutes.map {Position.resolve(from: self, following: $0)}
         
         // Base case
         if remaining == 0 {
-            let location = neighbors.available()[0]
+            let location = neighbors.present()[0]
             return [Position(node: location.node, dir: location.dir.opposite())]
         }
         
@@ -43,7 +43,7 @@ public class Spider: HexNode {
             // Cannot go back to previous location
             !traversed.contains($0)
             }.map {position -> [Position] in
-                let neighbor = neighbors.available()[0]
+                let neighbor = neighbors.present()[0]
                 let anchor = Position(node: neighbor.node, dir: neighbor.dir.opposite())
                 
                 // Move to next destination
@@ -63,7 +63,7 @@ public class Spider: HexNode {
     }
     
     private func registerTraversed(_ traversed: inout [Position], _ node: HexNode) {
-        traversed.append(contentsOf: node.neighbors.available()
+        traversed.append(contentsOf: node.neighbors.present()
             .map{Position(node: $0.node, dir: $0.dir.opposite())})
     }
 }
