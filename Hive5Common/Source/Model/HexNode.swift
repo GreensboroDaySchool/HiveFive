@@ -45,7 +45,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Note: Empty implementation for HexNode because it is just a dummy.
      - Returns: All possible positions
      */
-    public func availableMoves() -> [Position] {
+    public func _availableMoves() -> [Position] {
         return []
     }
     
@@ -55,14 +55,18 @@ public class HexNode: IdentityProtocol, Hashable {
      - Returns: An array containing physically non-repeating available destinations
      - Todo: Debug & test
      */
-    public func uniqueAvailableMoves() -> [Position] {
-        let moves = availableMoves()
+    final public func uniqueAvailableMoves() -> [Position] {
+        // Check one-hive rule
+        if (!canDisconnect()) {
+            return []
+        }
+        let moves = _availableMoves()
         let paths = derivePaths()
-        return moves.map{position in
-                let route = paths.filter{$0.destination === position.node}[0].route
+        return moves.map {position in
+                let route = paths.filter {$0.destination === position.node}[0].route
                 return route.append([position.dir])
             }.filterDuplicates(isDuplicate: ==)
-            .map{Position.resolve(from: self, following: $0)}
+            .map {Position.resolve(from: self, following: $0)}
     }
     
     /**
@@ -118,7 +122,7 @@ public class HexNode: IdentityProtocol, Hashable {
      - Returns: Whether the current node could move
      */
     public func canMove() -> Bool {
-        return canDisconnect() && availableMoves().count > 0
+        return canDisconnect() && _availableMoves().count > 0
     }
     
     /**
@@ -126,7 +130,7 @@ public class HexNode: IdentityProtocol, Hashable {
      */
     public func canMove(to position: Position) -> Bool {
         if !canDisconnect() {return false}
-        let availableMoves = self.availableMoves()
+        let availableMoves = self._availableMoves()
         let preserved = neighbors
         move(to: position)
         var canMove = false

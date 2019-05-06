@@ -30,14 +30,14 @@ class ContainerViewController: SlideMenuController {
         super.viewDidLoad()
         
         //MARK: Notification binding
-        observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
-        observe(displayMsgNotification, #selector(receivedNotificationRequest(_:)))
+        observe(.themeUpdated, #selector(themeDidUpdate(_:)))
+        observe(.displayMessage, #selector(receivedNotificationRequest(_:)))
        
         
         // Do any additional setup after loading the view.
         visualEffectView.isHidden = true
         visualEffectView.clipsToBounds = true
-        visualEffectView.layer.cornerRadius = uiCornerRadius
+        visualEffectView.layer.cornerRadius = 10
     }
     
     @objc func receivedNotificationRequest(_ notification: Notification) {
@@ -48,7 +48,7 @@ class ContainerViewController: SlideMenuController {
      Flashes a notification in the center of the screen
      */
     private func displayNotification(msg: String) {
-        if !shouldShowAlerts() {return}
+        if !UserDefaults.showsAlerts() {return}
         visualEffectView.isHidden = false
         notificationLabel.text = msg
         
@@ -94,16 +94,4 @@ class ContainerViewController: SlideMenuController {
         }
         super.awakeFromNib()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

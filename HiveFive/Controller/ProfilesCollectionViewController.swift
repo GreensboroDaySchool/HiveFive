@@ -61,7 +61,7 @@ class ProfilesCollectionViewController: UICollectionViewController {
             cell.backgroundView = UIImageView(image: cachedImg)
         } else {
             prepareCell(cell, profile: profiles[indexPath.row])
-            if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
+            if !UserDefaults.useRectangularUI() {cell.layer.cornerRadius = 10}
             cached[indexPath] = cell.asImage()
         }
         return cell
@@ -69,12 +69,14 @@ class ProfilesCollectionViewController: UICollectionViewController {
     
     private func prepareCell(_ cell: ThemesCollectionViewCell, profile: NodeViewProfile) {
         cell.boardView.isUserInteractionEnabled = false
-        cell.boardView.nodeRadius = currentNodeSize() / 2
+        cell.boardView.nodeRadius = CGFloat(UserDefaults.nodeSize()) / 2
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
         cell.boardView.apply(profile: Profile.load(profile)) // This has to happen last
         cell.nameLabel.text = profile.name!
-        if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
+        if !UserDefaults.useRectangularUI() {
+            cell.layer.cornerRadius = 10
+        }
     }
     
     
@@ -88,9 +90,9 @@ class ProfilesCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let profile = profiles[indexPath.row]
-        save(id: currentProfileId, obj: profile.name!)
-        post(name: profileUpdatedNotification, object: profile)
-        post(name: displayMsgNotification, object: "Profile Updated")
+        UserDefaults.set(profile.name!, forKey: .currentProfile)
+        post(key: .profileUpdated, object: profile)
+        post(key: .displayMessage, object: "Profile Updated")
         navigationController?.popToRootViewController(animated: true)
     }
 }

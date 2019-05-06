@@ -30,12 +30,12 @@ class HandCollectionViewController: UICollectionViewController {
     
     var hand = Hive.defaultHand
     var color: Color = .black
-    var patterns = designatedTheme().patterns
+    var patterns = UserDefaults.currentTheme().patterns
     var isIpad: Bool {
         return traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
     }
 
-    var nodeSize = preferredNodeSizes[nodeSizeIndex()] {
+    var nodeSize = CGFloat(UserDefaults.nodeSize()) {
         didSet {
             updateBoundsAccordingToNodeSize()
             updateFlowLayout()
@@ -69,11 +69,11 @@ class HandCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         //MARK: Notification Binding
-        observe(handUpdateNotification, #selector(handDidUpdate(_:)))
-        observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
-        observe(didCancelNewPiece, #selector(didCancelSelection(_:)))
-        observe(didPlaceNewPiece, #selector(didPlaceSelection(_:)))
-        observe(preferredNodeSizeNotification, #selector(preferredNodeSizeDidChange(_:)))
+        observe(.handUpdated, #selector(handDidUpdate(_:)))
+        observe(.themeUpdated, #selector(themeDidUpdate(_:)))
+        observe(.didCancelSelection, #selector(didCancelSelection(_:)))
+        observe(.didPlaceSelection, #selector(didPlaceSelection(_:)))
+        observe(.nodeSizeUpdated, #selector(preferredNodeSizeDidChange(_:)))
         
         // Detect orientation change
         observe(UIDevice.orientationDidChangeNotification, #selector(deviceOrientationDidChange(_:)))
@@ -112,7 +112,7 @@ class HandCollectionViewController: UICollectionViewController {
     }
     
     @objc func preferredNodeSizeDidChange(_ notification: Notification) {
-        nodeSize = preferredNodeSizes[nodeSizeIndex()]
+        nodeSize = CGFloat(UserDefaults.nodeSize())
         updateFlowLayout()
     }
     
@@ -198,14 +198,14 @@ class HandCollectionViewController: UICollectionViewController {
         // Configure cell
         cell.indexPath = indexPath
         cell.numLabel.text = String(pair.value)
-        cell.numLabel.font = cell.numLabel.font.withSize([12,14,17][nodeSizeIndex()])
+        cell.numLabel.font = cell.numLabel.font.withSize([12,14,17][UserDefaults.nodeSizeIndex()])
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath
-        post(name: didSelectNewNodeNotification, object: hand.keyValuePairs[indexPath.row].key.new(color: color))
+        post(key: .didSelectNewNode, object: hand.keyValuePairs[indexPath.row].key.new(color: color))
     }
 }
 

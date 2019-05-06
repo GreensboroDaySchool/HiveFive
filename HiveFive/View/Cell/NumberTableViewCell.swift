@@ -76,7 +76,7 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
                     return
                 }
             }
-            post(name: displayMsgNotification, object: "Invalid Input")
+            post(key: .displayMessage, object: "Invalid Input")
             self.cancelUpdate()
         })
         alert.show()

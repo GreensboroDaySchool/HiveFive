@@ -16,7 +16,7 @@ public class LadyBug: HexNode {
         return .ladyBug
     }
     
-    override public func availableMoves() -> [Position] {
+    override public func _availableMoves() -> [Position] {
         var traversed = [Position]()
         let positions =  findPositions(&traversed, 2)
         return positions

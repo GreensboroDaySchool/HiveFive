@@ -15,11 +15,9 @@ public class QueenBee: HexNode {
         return .queenBee
     }
 
-    override public func availableMoves() -> [Position] {
-        if (!canDisconnect()) {
-            // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Position]()
+    override public func _availableMoves() -> [Position] {
+        return oneStepMoves().map {
+            Position.resolve(from: self, following: $0)
         }
-        return oneStepMoves().map{Position.resolve(from: self, following: $0)}
     }
 }

@@ -37,7 +37,7 @@ class HiveMaster_Tests: XCTestCase {
     func testHexNodeClone() {
         let hive = Hive.defaultHive
         let cloned = HexNode.clone(root: hive.root!)
-        XCTAssert(hive.root?.availableMoves().count == cloned.availableMoves().count)
+        XCTAssert(hive.root?._availableMoves().count == cloned._availableMoves().count)
         hive.root!.connectedNodes().forEach {node in
             XCTAssert(!cloned.connectedNodes() // Make sure that thre are no duplicate references
                 .map{$0.hashValue}

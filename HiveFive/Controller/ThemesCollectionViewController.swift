@@ -59,8 +59,8 @@ class ThemesCollectionViewController: UICollectionViewController {
             cell.backgroundView = UIImageView(image: cachedImg)
         } else {
             prepareCell(cell, theme: themes[indexPath.row])
-            if !shouldUseRectangularUI() {
-                cell.layer.cornerRadius = uiCornerRadius
+            if !UserDefaults.useRectangularUI() {
+                cell.layer.cornerRadius = 10
             }
             cached[indexPath] = cell.asImage()
         }
@@ -70,20 +70,19 @@ class ThemesCollectionViewController: UICollectionViewController {
     func prepareCell(_ cell: ThemesCollectionViewCell, theme: Theme) {
         cell.boardView.patterns = theme.patterns
         cell.boardView.isUserInteractionEnabled = false
-        cell.boardView.nodeRadius = currentNodeSize() / 2
+        cell.boardView.nodeRadius = CGFloat(UserDefaults.nodeSize()) / 2
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
         cell.nameLabel.text = theme.name
-        if !shouldUseRectangularUI() {cell.layer.cornerRadius = uiCornerRadius}
+        if !UserDefaults.useRectangularUI() {
+            cell.layer.cornerRadius = 10
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let theme = themes[indexPath.row]
-        NotificationCenter.default.post(
-            name: themeUpdateNotification,
-            object: theme.patterns
-        )
-        save(id: themeId, obj: theme.encode())
+        post(key: .themeUpdated, object: theme.patterns)
+        UserDefaults.set(theme.encode(), forKey: .theme)
 //        collectionView.visibleCells.forEach{($0 as! ThemesCollectionViewCell).bezel.backgroundColor = nil}
 //        (collectionView.cellForItem(at: indexPath) as! ThemesCollectionViewCell).bezel.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
         navigationController?.popToRootViewController(animated: true)

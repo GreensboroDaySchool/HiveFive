@@ -13,11 +13,7 @@ public class SoldierAnt: HexNode {
         return .soldierAnt
     }
 
-    override public func availableMoves() -> [Position] {
-        if (!canDisconnect()) {
-            // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Position]()
-        }
+    override public func _availableMoves() -> [Position] {
 
         // can go to anywhere outside the hive, can't squeeze into tiny openings though
         var traversed = [Position]()

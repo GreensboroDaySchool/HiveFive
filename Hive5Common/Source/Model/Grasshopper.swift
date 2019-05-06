@@ -15,11 +15,7 @@ public class Grasshopper: HexNode {
     }
     
     
-    override public func availableMoves() -> [Position] {
-        if (!canDisconnect()) {
-            // if disconnecting the piece breaks the structure, then there are no available moves.
-            return [Position]()
-        }
+    override public func _availableMoves() -> [Position] {
         
         return Direction.xyDirections
             .map{explore(dir: $0)}

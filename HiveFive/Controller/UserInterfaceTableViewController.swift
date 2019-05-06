@@ -29,31 +29,31 @@ class UserInterfaceTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // MARK: additional setup
-        tabBarVisibilitySwitch.isOn = toolBarShouldBeVisible()
-        preferredNodeSizeSegmentedControl.selectedSegmentIndex = nodeSizeIndex()
-        rectangularUiSwitch.isOn = shouldUseRectangularUI()
+        tabBarVisibilitySwitch.isOn = UserDefaults.toolBarVisible()
+        preferredNodeSizeSegmentedControl.selectedSegmentIndex = UserDefaults.nodeSizeIndex()
+        rectangularUiSwitch.isOn = UserDefaults.useRectangularUI()
     }
     
     @IBAction func tabBarVisibilitySwitchToggled(_ sender: UISwitch) {
         let isOn = sender.isOn
-        save(id: toolBarVisibilityId, obj: isOn)
-        post(name: toolBarVisibilityNotification, object: isOn)
+        UserDefaults.set(isOn, forKey: .toolBarVisible)
+        post(key: .toolBarVisibleUpdated, object: isOn)
     }
     
     @IBAction func preferredNodeSizeSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
-        save(id: preferredNodeSizeId, obj: index)
-        post(name: preferredNodeSizeNotification, object: index)
+        UserDefaults.set(index, forKey: .nodeSize)
+        post(key: .nodeSizeUpdated, object: index)
     }
     
     @IBAction func rectangularUiSwitchToggled(_ sender: UISwitch) {
-        save(id: rectangularUiId, obj: sender.isOn)
+        UserDefaults.set(sender.isOn, forKey: .rectangularUI)
     }
     
     @IBAction func showAlertsSwitchToggled(_ sender: UISwitch) {
         let isOn = sender.isOn
-        post(name: displayMsgNotification, object: isOn ? "Alerts On" : "Alerts Off") // Minor bug
-        save(id: showAlertsId, obj: isOn)
-        post(name: shouldShowAlertsChangedNotification, object: isOn)
+        post(key: .displayMessage, object: isOn ? "Alerts On" : "Alerts Off")
+        UserDefaults.set(isOn, forKey: .showAlerts)
+        post(key: .showAlertsUpdated, object: isOn)
     }
 }

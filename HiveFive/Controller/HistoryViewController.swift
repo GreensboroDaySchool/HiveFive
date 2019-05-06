@@ -20,13 +20,6 @@
 import UIKit
 import Hive5Common
 
-// MARK: hive delegation
-let structureDidUpdateNotification = Notification.Name("structureDidUpdate")
-let selectedNodeDidUpdateNotification = Notification.Name("selectedNodeDidUpdate")
-let availablePositionsDidUpdateNotification = Notification.Name("availablePositionsDidUpdate")
-let rootNodeDidMoveNotification = Notification.Name("rootNodeDidMove")
-let hiveStructureRemovedNotification = Notification.Name("hiveStructureRemoved")
-
 class HistoryViewController: UIViewController {
 
     @IBOutlet weak var boardView: BoardView!
@@ -40,15 +33,20 @@ class HistoryViewController: UIViewController {
         
         boardView.delegate = self
         
-        observe(structureDidUpdateNotification, #selector(structureDidUpdate))
-        observe(selectedNodeDidUpdateNotification, #selector(selectedNodeDidUpdate))
-        observe(availablePositionsDidUpdateNotification, #selector(availablePositionsDidUpdate))
-        observe(rootNodeDidMoveNotification, #selector(rootNodeDidMoveNotifier(_:)))
-        observe(hiveStructureRemovedNotification, #selector(hiveStructureRemoved))
+        observe(.structureUpdated, #selector(structureDidUpdate))
+        observe(.selectedNodeUpdated, #selector(selectedNodeDidUpdate))
+        observe(.availablePositionsUpdated, #selector(availablePositionsDidUpdate))
+        observe(.rootNodeMoved, #selector(rootNodeDidMove(_:)))
+        observe(.hiveStructureRemoved, #selector(hiveStructureRemoved))
+        observe(.themeUpdated, #selector(themeUpdated))
+    }
+    
+    @objc func themeUpdated(_ notification: Notification) {
+        boardView.patterns = notification.object! as! [Identity:String]
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        boardView.sizeStructureToFit(fillRatio: 0.9)
+        boardView.sizeStructureToFit(fillRatio: 0.6)
         boardView.centerHiveStructure()
     }
     
@@ -58,7 +56,7 @@ class HistoryViewController: UIViewController {
         case 1: hive.restore()
         default: break
         }
-        boardView.sizeStructureToFit(fillRatio: 0.9)
+        boardView.sizeStructureToFit(fillRatio: 0.6)
         boardView.centerHiveStructure()
     }
 }
@@ -66,7 +64,7 @@ class HistoryViewController: UIViewController {
 extension HistoryViewController: BoardViewDelegate {
     func didTap(on node: HexNode) {
         if node.color != hive.currentPlayer && node.identity != .dummy {
-            post(name: displayMsgNotification, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
+            post(key: .displayMessage, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
         }
         let _ = hive.select(node: node)
     }
@@ -101,7 +99,7 @@ extension HistoryViewController: HiveDelegate {
         boardView.availablePositions = hive.availablePositions
     }
     
-    @objc func rootNodeDidMoveNotifier(_ notification: Notification) {
+    @objc func rootNodeDidMove(_ notification: Notification) {
         rootNodeDidMove(by: notification.object as! Route)
     }
     

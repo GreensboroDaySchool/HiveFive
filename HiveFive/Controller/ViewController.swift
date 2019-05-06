@@ -58,23 +58,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         board.delegate = self // establish communication with View
         
         // User defaults
-        toolBar.isHidden = !toolBarShouldBeVisible()
+        toolBar.isHidden = !UserDefaults.toolBarVisible()
         
         // Notification binding
-        observe(themeUpdateNotification, #selector(themeDidUpdate(_:)))
-        observe(didSelectNewNodeNotification, #selector(didSelectNewNode(_:)))
-        observe(toolBarVisibilityNotification, #selector(toolBarVisibilityDidUpdate(_:)))
-        observe(profileUpdatedNotification, #selector(updateToolBarItemTint))
-        observe(kpHackableUpdateNotification, #selector(updateToolBarItemTint))
-        observe(queen4UpdateNotification, #selector(updateQueen4))
-        observe(immobilized4UpdateNotification, #selector(updateImmobilized4))
+        observe(.themeUpdated, #selector(themeDidUpdate(_:)))
+        observe(.didSelectNewNode, #selector(didSelectNewNode(_:)))
+        observe(.toolBarVisibleUpdated, #selector(toolBarVisibilityDidUpdate(_:)))
+        observe(.profileUpdated, #selector(updateToolBarItemTint))
+        observe(.kpHackableUpdated, #selector(updateToolBarItemTint))
+        observe(.queen4Updated, #selector(updateQueen4))
+        observe(.immobilized4Updated, #selector(updateImmobilized4))
         
         // Additional setup
-        board.patterns = designatedTheme().patterns
         hiveBarItem.image = [#imageLiteral(resourceName: "hive_img"),#imageLiteral(resourceName: "hive_2_img"),#imageLiteral(resourceName: "solid_honeycomb"),#imageLiteral(resourceName: "bee")].random()
         updateToolBarItemTint()
-        hive.queen4 = useQueen4() // Could be better organized
-        hive.immobilized4 = useImmobilized4()
+        hive.queen4 = UserDefaults.useQueen4()
+        hive.immobilized4 = UserDefaults.useImmobilized4()
         
         // Toolbar setup (make tool bar transparent)
         toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
@@ -168,8 +167,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 extension ViewController: BoardViewDelegate {
     func didTap(on node: HexNode) {
         switch hive.select(node: node) {
-        case .tappedWrongNode: post(name: displayMsgNotification, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
-        case .violatedImmobilized4: post(name: displayMsgNotification, object: "Cannot Move")
+        case .tappedWrongNode: post(key: .displayMessage, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
+        case .violatedImmobilized4: post(key: .displayMessage, object: "Cannot Move")
         default: return
         }
     }
@@ -184,50 +183,50 @@ extension ViewController: HiveDelegate {
     /// Transfer the updated root structure from hive to boardview for display
     func structureDidUpdate() {
         board.root = hive.root
-        post(name: structureDidUpdateNotification, object: nil)
+        post(key: .structureUpdated)
     }
     
     func selectedNodeDidUpdate() {
         board.updateSelectedNode(hive.selectedNode)
-        post(name: selectedNodeDidUpdateNotification, object: nil)
+        post(key: .selectedNodeUpdated)
     }
     
     func availablePositionsDidUpdate() {
         board.availablePositions = hive.availablePositions
-        post(name: availablePositionsDidUpdateNotification, object: nil)
+        post(key: .availablePositionsUpdated)
     }
 
     func rootNodeDidMove(by route: Route) {
         board.rootNodeMoved(by: route)
-        post(name: rootNodeDidMoveNotification, object: route)
+        post(key: .rootNodeMoved, object: route)
     }
     
     func hiveStructureRemoved() {
         board.clear()
-        post(name: hiveStructureRemovedNotification, object: nil)
+        post(key: .hiveStructureRemoved)
     }
     
     func handDidUpdate(hand: Hand, color: Color) {
-        post(name: handUpdateNotification, object: (hand,color))
+        post(key: .handUpdated, object: (hand,color))
     }
     
     func didPlace(newNode: HexNode) {
         // Play piece moved/placed sound effect
         Sound.play(file: "落子#1", fileExtension: "mp3", numberOfLoops: 0)
-        post(name: didPlaceNewPiece, object: nil)
+        post(key: .didPlaceSelection)
     }
     
     func didDeselect() {
-        post(name: didCancelNewPiece, object: nil)
+        post(key: .didCancelSelection)
     }
     
     func gameHasEnded() {
-        post(name: displayMsgNotification, object: "Hit Restart ↻")
+        post(key: .displayMessage, object: "Hit Restart ↻")
     }
     
     func didWin(player: Color) {
         let msg = "\(player == .black ? "Black" : "White") Wins!"
-        post(name: displayMsgNotification, object: msg)
+        post(key: .displayMessage, object: msg)
     }
     
 }
@@ -258,19 +257,24 @@ extension ViewController {
     }
     
     @objc func toolBarVisibilityDidUpdate(_ notification: Notification) {
-        toolBar.isHidden = !toolBarShouldBeVisible()
+        toolBar.isHidden = !UserDefaults.toolBarVisible()
     }
     
+    // Hack... bad practice
     @objc private func updateToolBarItemTint() {
-        toolBar.items?.forEach{$0.tintColor = currentProfile().keyPaths.filter{$0.key == "Theme"}[0].getValue() as? UIColor} // Hack... bad practice
+        toolBar.items?.forEach {
+            $0.tintColor = UserDefaults.currentProfile()
+            .keyPaths.filter {$0.key == "Theme"}[0]
+            .getValue() as? UIColor
+        }
     }
 
     @objc func updateQueen4() {
-        hive.queen4 = useQueen4()
+        hive.queen4 = UserDefaults.useQueen4()
     }
     
     @objc func updateImmobilized4() {
-        hive.immobilized4 = useImmobilized4()
+        hive.immobilized4 = UserDefaults.useImmobilized4()
     }
     
 }

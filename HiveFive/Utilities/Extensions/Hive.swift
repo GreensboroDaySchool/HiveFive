@@ -43,10 +43,10 @@ extension Hive {
         structure.name = name
         
         var id: Int16 = 0
-        if let retrivedID = Utils.retrieveFromUserDefualt(key: "hiveStructId") as? Int16 {
+        if let retrivedID = UserDefaults.object(forKey: .hiveStructure) as? Int16 {
             id = retrivedID + 1
         }
-        Utils.saveToUserDefault(obj: id, key: "hiveStructId")
+        UserDefaults.set(id, forKey: .hiveStructure)
         structure.id = id
         
         do {

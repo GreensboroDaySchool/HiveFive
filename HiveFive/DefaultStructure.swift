@@ -35,7 +35,7 @@ extension Hive {
     }()
     
     static func makeNewDefaultHive() -> Hive {
-        let beetle2 = Beetle(color: .black)
+        let ladyBug = LadyBug(color: .black)
         let grasshopper = Grasshopper(color: .white)
         let soldierAnt = SoldierAnt(color: .black)
         let beetle = Beetle(color: .black)
@@ -43,7 +43,7 @@ extension Hive {
         let spider = Spider(color: .white)
         let spider2 = Spider(color: .black)
         
-        beetle2.move(to: .lowerRight, of: spider)
+        ladyBug.move(to: .lowerRight, of: spider)
         
         grasshopper.move(to: .down, of: spider) // grasshopper is beneath the spider
         soldierAnt.move(to: .lowerRight, of: grasshopper) // queen bee is to the lower right of grasshopper

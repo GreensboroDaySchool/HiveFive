@@ -48,7 +48,7 @@ import Hive5Common
     }
     
     /// Patterns that are drawn on top of each node.
-    var patterns = Identity.defaultPatterns {
+    var patterns = UserDefaults.currentTheme().patterns {
         didSet {
             redrawSubviews()
         }
@@ -65,7 +65,7 @@ import Hive5Common
         didSet {updateAvailablePositions()}
     }
     
-    var profile: Profile = currentProfile()
+    var profile: Profile = UserDefaults.currentProfile()
     
     var nodeViews: [NodeView] {
         get {
@@ -81,12 +81,12 @@ import Hive5Common
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupTapRecognizer()
-        observe(profileUpdatedNotification, #selector(profileDidUpdate(_:))) // The current profile as changed
-        observe(kpHackableUpdateNotification, #selector(profileDidUpdate(_:))) // A single property in the current profile has changed
+        observe(.profileUpdated, #selector(profileDidUpdate(_:))) // The current profile as changed
+        observe(.kpHackableUpdated, #selector(profileDidUpdate(_:))) // A single property in the current profile has changed
     }
     
     @objc private func profileDidUpdate(_ notification: Notification) {
-        let profile = currentProfile()
+        let profile = UserDefaults.currentProfile()
         self.profile = profile
         apply(profile: profile) // This might be quite expensive, retriving from Core Data
     }

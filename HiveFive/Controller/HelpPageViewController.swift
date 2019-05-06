@@ -62,9 +62,8 @@ class HelpPageViewController: UIViewController {
             ])
             
             containerView.clipsToBounds = true
-            if !shouldUseRectangularUI() {
-                
-                containerView.layer.cornerRadius = uiCornerRadius
+            if !UserDefaults.useRectangularUI() {
+                containerView.layer.cornerRadius = 10
             }
             
             // Add child view controller view to container view
@@ -146,6 +145,11 @@ var nodeDescriptions: [NodeDescription] = [
     .init(
         identity: .mosquito,
         description: "When the mosquito is connected on the first level of the hive, it can mimic any of the pieces that it touches. A mosquito cannot mimic another mosquito, however. For example, when a mosquito is only touching another mosquito, it cannot move. When a mosquito mimics a beetle and gets on top of the hive structure, it stays as a beetle until it gets down.",
+        demonstration: Hive.makeNewDefaultHive().root!
+    ),
+    .init(
+        identity: .ladyBug,
+        description: "The lady bug moves 2 steps on top of the hive, then moves down in the final step.",
         demonstration: Hive.makeNewDefaultHive().root!
     )
 ]

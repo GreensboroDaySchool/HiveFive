@@ -25,9 +25,9 @@ private let boolCellId = "boolCell"
 private let profileNameCellId = "profileNameCell"
 
 class ColorSchemeTableViewController: UITableViewController {
-
+    
     var profile: Profile {
-        get {return currentProfile()}
+        get {return UserDefaults.currentProfile()}
     }
     
     var categories = [[KPHackable]]()
@@ -59,15 +59,13 @@ class ColorSchemeTableViewController: UITableViewController {
         }
         
         // MARK: notification binding
-        observe(kpHackableUpdateCancelledNotification, #selector(kpHackableUpdateDidCancel(_:)))
-        observe(kpHackableUpdateNotification, #selector(kpHackableDidUpdate(_:)))
+        observe(.kpHackableUpdateCancelled, #selector(kpHackableUpdateDidCancel(_:)))
+        observe(.kpHackableUpdated, #selector(kpHackableDidUpdate(_:)))
     }
     
     @objc private func kpHackableDidUpdate(_ notification: Notification) {
         updateCategories()
-        if let indexPath = notification.userInfo?["IndexPath"] as? IndexPath {
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
+        tableView.reloadData()
         deselectAll()
     }
     
@@ -86,24 +84,24 @@ class ColorSchemeTableViewController: UITableViewController {
             self.saveNewProfile(name: self.pendingText, profile: Profile.defaultProfile)
         })
         alert.addAction(UIAlertAction(title: "Create from current", style: .default){[unowned self] _ in
-            self.saveNewProfile(name: self.pendingText, profile: currentProfile())
+            self.saveNewProfile(name: self.pendingText, profile: UserDefaults.currentProfile())
         })
         alert.show()
     }
     
     private func saveNewProfile(name: String?, profile: Profile) {
         guard let name = name else {
-            post(name: displayMsgNotification, object: "Invalid Name")
+            post(key: .displayMessage, object: "Invalid Name")
             return
         }
-        save(id: currentProfileId, obj: name)
+        UserDefaults.set(name, forKey: .currentProfile)
         // Delete existing profile with the same name
         CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == name}
         var newProfile = profile
         newProfile.name = name
         newProfile.save()
-        post(name: profileUpdatedNotification, object: profile)
-        post(name: displayMsgNotification, object: "New Profile Created")
+        post(key: .profileUpdated, object: profile)
+        post(key: .displayMessage, object: "New Profile Created")
         refresh()
     }
     
@@ -118,19 +116,27 @@ class ColorSchemeTableViewController: UITableViewController {
     }
     
     private func deselectAll() {
-        tableView.indexPathsForSelectedRows?.forEach{tableView.deselectRow(at: $0, animated: true)}
+        tableView.indexPathsForSelectedRows?.forEach{
+            tableView.deselectRow(at: $0, animated: true)
+        }
     }
     
     private func deconstruct(_ category: Profile.Category) -> [[KPHackable]] {
-        return [[], category.bools, category.colors, category.numbers] // Note: hacked!
+        return [[], sort(category.bools), sort(category.colors), sort(category.numbers)] // Note: hacked!
     }
-
+    
+    private func sort(_ arr: [KPHackable]) -> [KPHackable] {
+        return arr.sorted {
+            $0.key < $1.key
+        }
+    }
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 1 : categories[section].count // Note: hacked
     }
@@ -154,7 +160,7 @@ class ColorSchemeTableViewController: UITableViewController {
             associate.kpHackable = categories[indexPath.section][indexPath.row]
             associate.indexPath = indexPath
         } else if let profileCell = (cell as? ProfileNameTableViewCell) {
-            profileCell.profileNameLabel.text = currentProfileName()
+            profileCell.profileNameLabel.text = UserDefaults.currentProfileName()
             profileCell.profileInfoDelegate = self
         }
         
@@ -176,13 +182,13 @@ class ColorSchemeTableViewController: UITableViewController {
 
 extension ColorSchemeTableViewController: ProfileInfoDelegate {
     func profileInfoRequested() {
-        let _name = currentProfileName()
+        let _name = UserDefaults.currentProfileName()
         let alert = UIAlertController(style: .actionSheet, title: "Name: \(_name)")
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive){[unowned self] _ in
-            save(id: currentProfileId, obj: "#default") // Revert back to default profile
+            UserDefaults.set("#default", forKey: .currentProfile) // Revert back to default profile
             Profile.delete(name: _name)
-            post(name: profileUpdatedNotification, object: Profile.defaultProfile)
+            post(key: .profileUpdated, object: Profile.defaultProfile)
             self.refresh()
         })
         alert.addAction(UIAlertAction(title: "Rename", style: .default){[unowned self] _ in
@@ -192,17 +198,17 @@ extension ColorSchemeTableViewController: ProfileInfoDelegate {
             alert2.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             alert2.addAction(UIAlertAction(title: "Confirm", style: .default){[unowned self] _ in
                 if let newName = self.pendingText {
-                    let oldName = currentProfileName()
-                    var profile = currentProfile()
+                    let oldName = UserDefaults.currentProfileName()
+                    var profile = UserDefaults.currentProfile()
                     profile.name = newName
                     profile.save()
                     Profile.delete(name: oldName)
-                    save(id: currentProfileId, obj: newName)
-                    post(name: profileUpdatedNotification, object: profile)
+                    UserDefaults.set(newName, forKey: .currentProfile)
+                    post(key: .profileUpdated, object: profile)
                     self.refresh()
                     return
                 }
-                post(name: displayMsgNotification, object: "Invalid Name")
+                post(key: .displayMessage, object: "Invalid Name")
             })
             alert2.show()
         })
@@ -222,20 +228,21 @@ protocol KPAssociate: class {
 extension KPAssociate {
     
     func postUpdate(_ kpHackable: KPHackable) {
-        post(name: kpHackableUpdateNotification, object: kpHackable, userInfo: ["IndexPath":indexPath! as Any])
+        post(key: .kpHackableUpdated, object: kpHackable, userInfo: ["IndexPath": indexPath! as Any])
     }
     
     func cancelUpdate() {
-        post(name: kpHackableUpdateCancelledNotification, object: (kpHackable,indexPath), userInfo: ["IndexPath":indexPath! as Any])
+        post(key: .kpHackableUpdateCancelled, object: (kpHackable,indexPath), userInfo: ["IndexPath": indexPath! as Any])
     }
     
     func handleValueUpdate(_ updatedValue: Any) {
         // Generate updated profile based on existing profile
-        let updated = currentProfile().updated(key: self.kpHackable!.key, val: updatedValue)
+        let updated = UserDefaults.currentProfile()
+            .updated(key: self.kpHackable!.key, val: updatedValue)
         
         // Delete existing profile
         CoreData.delete(entity: "NodeViewProfile") {
-            ($0 as! NodeViewProfile).name == currentProfileName()
+            ($0 as! NodeViewProfile).name == UserDefaults.currentProfileName()
         }
         
         // Save updated profile into Core Data
@@ -243,6 +250,7 @@ extension KPAssociate {
         
         // Post update notification
         self.postUpdate(self.kpHackable!.setValue(updatedValue))
-        post(name: displayMsgNotification, object: ("\(kpHackable!.key) : \(updatedValue)"))
+        post(key: .displayMessage, object: ("\(kpHackable!.key) : \(updatedValue)"))
     }
 }
+

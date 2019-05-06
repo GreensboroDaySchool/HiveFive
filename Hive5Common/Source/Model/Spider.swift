@@ -15,12 +15,7 @@ public class Spider: HexNode {
     
     private let numMoves = 3
     
-    override public func availableMoves() -> [Position] {
-        if (!canDisconnect()) {
-            // If disconnecting the piece breaks the structure, then there are no available moves.
-            return [Position]()
-        }
-        
+    override public func _availableMoves() -> [Position] {
         var traversed = [Position]()
         let destinations = resolvePositions(&traversed, numMoves)
         

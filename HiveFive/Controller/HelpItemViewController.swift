@@ -52,15 +52,16 @@ class HelpItemViewController: UIViewController {
             descriptionTextView.text = nodeDescription.description
             
             // Synchronize theme
-            nodeBoard.patterns = designatedTheme().patterns
-            demonstrationBoard.patterns = designatedTheme().patterns
+            let patterns = UserDefaults.currentTheme().patterns
+            nodeBoard.patterns = patterns
+            demonstrationBoard.patterns = patterns
             
             let color = Color(rawValue: Int(Double.random() * 2))! // 是不是有点做作了？😂
             nodeBoard.root = nodeDescription.identity.new(color: color)
             nameLabel.text = nodeDescription.identity.rawValue
             hive.root?.connectedNodes()
                 .filter{$0.identity == nodeDescription.identity}
-                .sorted{$0.availableMoves().count < $1.availableMoves().count}
+                .sorted{$0._availableMoves().count < $1._availableMoves().count}
                 .forEach{select(node: $0)}
         }
     }
@@ -72,7 +73,7 @@ class HelpItemViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // Configure identity node
-        demonstrationBoard.nodeRadius = [30, 35, 40][nodeSizeIndex()]
+        demonstrationBoard.nodeRadius = [30, 35, 40][UserDefaults.nodeSizeIndex()]
         demonstrationBoard.centerHiveStructure()
         demonstrationBoard.rootCoordinate = demonstrationBoard.rootCoordinate.translate(-20, -26)
         

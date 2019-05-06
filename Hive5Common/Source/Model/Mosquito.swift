@@ -18,7 +18,7 @@ public class Mosquito: HexNode {
     }
     
     /// Find available moves by mimicing all of its neighbors
-    override public func availableMoves() -> [Position] {
+    override public func _availableMoves() -> [Position] {
         let neighbors = self.neighbors.present()
         
         // If the mosquito is currently on top of the hive, then it moves as a beetle until it gets down.
@@ -26,7 +26,7 @@ public class Mosquito: HexNode {
             self.disconnect()
             let beetle = Identity.beetle.new(color: color)
             beetle.move(to: .top, of: base)
-            let positions = beetle.availableMoves()
+            let positions = beetle._availableMoves()
             beetle.disconnect()
             self.move(to: .top, of: base)
             return positions
@@ -42,7 +42,7 @@ public class Mosquito: HexNode {
             }
             let mimic = target.identity.new(color: color)
             mimic.move(to: dir.opposite(), of: target)
-            positions.append(contentsOf: mimic.availableMoves())
+            positions.append(contentsOf: mimic._availableMoves())
             mimic.disconnect()
         }
         let (dir, neighbor) = neighbors.first!

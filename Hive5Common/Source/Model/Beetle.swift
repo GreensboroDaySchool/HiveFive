@@ -19,12 +19,8 @@ public class Beetle: HexNode {
         return .beetle
     }
     
-    override public func availableMoves() -> [Position] {
+    override public func _availableMoves() -> [Position] {
         var moves = [Position]()
-        if (!canDisconnect()) {
-            // if disconnecting the piece breaks the structure, then there are no available moves.
-            return moves
-        }
         
         let base = Hive.traverse(from: self, toward: .bottom)
         moves.append(contentsOf: base.neighbors.present()

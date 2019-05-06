@@ -17,18 +17,18 @@ class RulesTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Set up initial states
-        queen4Switch.isOn = useQueen4()
-        immobilized4Switch.isOn = useImmobilized4()
+        queen4Switch.isOn = UserDefaults.useQueen4()
+        immobilized4Switch.isOn = UserDefaults.useImmobilized4()
     }
     
     @IBAction func queen4SwitchValueChanged(_ sender: UISwitch) {
-        save(id: queen4Id, obj: sender.isOn)
-        post(name: queen4UpdateNotification, object: nil)
+        UserDefaults.set(sender.isOn, forKey: .queen4)
+        post(key: .queen4Updated)
     }
     
     @IBAction func immobilized4SwitchValueChanged(_ sender: UISwitch) {
-        save(id: immobilized4Id, obj: sender.isOn)
-        post(name: immobilized4UpdateNotification, object: nil)
+        UserDefaults.set(sender.isOn, forKey: .immobilized4)
+        post(key: .immobilized4Updated)
     }
 
 }
