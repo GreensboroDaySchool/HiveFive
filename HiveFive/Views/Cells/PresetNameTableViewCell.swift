@@ -17,35 +17,22 @@
  *
  */
 
-import Foundation
 import UIKit
 
-class ToggleTableViewCell: UITableViewCell, KPAssociate {
-    @IBOutlet weak var `switch`: UISwitch!
-    @IBOutlet weak var nameLabel: UILabel!
-    var indexPath: IndexPath?
-    var kpHackable: KPHackable? {
-        didSet {
-            `switch`.isOn = kpHackable?.getValue() as! Bool
-            nameLabel.text = kpHackable?.key
-        }
-    }
+class PresetNameTableViewCell: UITableViewCell {
+    @IBOutlet weak var presetNameLabel: UILabel!
+    var presetInfoDelegate: PresetInfoDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        presetInfoDelegate?.presetInfoRequested()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
-    
-    func didSelect() {
-    }
-    
-    @IBAction func switchToggled(_ sender: UISwitch) {
-        handleValueUpdate(sender.isOn)
-    }
+
+}
+
+protocol PresetInfoDelegate {
+    func presetInfoRequested()
 }

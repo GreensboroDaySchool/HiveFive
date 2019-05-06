@@ -26,7 +26,7 @@ class NumberTableViewCell: UITableViewCell, KPAssociate {
     
     var pendingText: String? = ""
     var indexPath: IndexPath?
-    var kpHackable: KPHackable? {
+    var kpHackable: Property? {
         didSet {
             let ratio = kpHackable?.getValue() as! CGFloat
             numberLabel.text = String(ratio.description)

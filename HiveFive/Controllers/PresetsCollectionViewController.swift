@@ -22,23 +22,23 @@ import Hive5Common
 
 private let reuseIdentifier = "cell3"
 
-class ProfilesCollectionViewController: UICollectionViewController {
+class PresetsCollectionViewController: UICollectionViewController {
     
-    var profiles = [NodeViewProfile]()
+    var presets = [NodeViewPreset]()
     var cached = [IndexPath:UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        preloadRenderedProfiles()
+        loadRenderedPresets()
     }
     
-    /// Preloads rendered profiles into cached dictionary. This solved the issue of lagging.
-    private func preloadRenderedProfiles() {
-        profiles = Profile.savedProfiles()
-        profiles.enumerated().map{(IndexPath(row: $0.offset, section: 0), $0.element)}
-            .forEach { (indexPath, profile) in
+    /// Preloads rendered presets into cached dictionary. This solved the issue of lagging.
+    private func loadRenderedPresets() {
+        presets = Preset.savedPresets()
+        presets.enumerated().map{(IndexPath(row: $0.offset, section: 0), $0.element)}
+            .forEach { (indexPath, preset) in
                 let cell = collectionView!.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemesCollectionViewCell
-                prepareCell(cell, profile: profile)
+                prepareCell(cell, preset: preset)
                 cached[indexPath] = cell.asImage()
         }
     }
@@ -49,9 +49,8 @@ class ProfilesCollectionViewController: UICollectionViewController {
         return 1
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profiles.count
+        return presets.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,25 +59,24 @@ class ProfilesCollectionViewController: UICollectionViewController {
             cell.contentView.isHidden = true
             cell.backgroundView = UIImageView(image: cachedImg)
         } else {
-            prepareCell(cell, profile: profiles[indexPath.row])
+            prepareCell(cell, preset: presets[indexPath.row])
             if !UserDefaults.useRectangularUI() {cell.layer.cornerRadius = 10}
             cached[indexPath] = cell.asImage()
         }
         return cell
     }
     
-    private func prepareCell(_ cell: ThemesCollectionViewCell, profile: NodeViewProfile) {
+    private func prepareCell(_ cell: ThemesCollectionViewCell, preset: NodeViewPreset) {
         cell.boardView.isUserInteractionEnabled = false
         cell.boardView.nodeRadius = CGFloat(UserDefaults.nodeSize()) / 2
         cell.boardView.root = Hive.defaultHive.root
         cell.boardView.centerHiveStructure()
-        cell.boardView.apply(profile: Profile.load(profile)) // This has to happen last
-        cell.nameLabel.text = profile.name!
+        cell.boardView.apply(Preset.load(preset)) // This has to happen last
+        cell.nameLabel.text = preset.name!
         if !UserDefaults.useRectangularUI() {
             cell.layer.cornerRadius = 10
         }
     }
-    
     
     // MARK: UICollectionViewDelegate
     
@@ -89,11 +87,10 @@ class ProfilesCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let profile = profiles[indexPath.row]
-        UserDefaults.set(profile.name!, forKey: .currentProfile)
-        post(key: .profileUpdated, object: profile)
-        post(key: .displayMessage, object: "Profile Updated")
+        let preset = presets[indexPath.row]
+        UserDefaults.set(preset.name!, forKey: .currentPreset)
+        post(key: .presetUpdated, object: preset)
+        post(key: .displayMessage, object: "Preset Updated")
         navigationController?.popToRootViewController(animated: true)
     }
 }
-

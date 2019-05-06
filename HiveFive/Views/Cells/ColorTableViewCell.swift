@@ -25,7 +25,7 @@ class ColorSegueTableViewCell: UITableViewCell, KPAssociate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var colorView: UIView!
     var indexPath: IndexPath?
-    var kpHackable: KPHackable? {
+    var kpHackable: Property? {
         didSet {
             colorView.backgroundColor = kpHackable?.getValue() as? UIColor
             nameLabel.text = kpHackable?.key

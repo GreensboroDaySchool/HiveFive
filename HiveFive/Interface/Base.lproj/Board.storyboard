@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hy-9z-FRh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Hy-9z-FRh">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Board View Controller-->
         <scene sceneID="xle-kI-w26">
             <objects>
-                <viewController storyboardIdentifier="Main" id="3Hy-9z-FRh" customClass="ViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" id="3Hy-9z-FRh" customClass="BoardViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rKW-N9-3Ui" userLabel="RootView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,7 +225,7 @@
             <objects>
                 <collectionViewController id="cxX-k1-DIp" customClass="HandCollectionViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SaB-AM-gDT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="NDu-uO-0IQ">
@@ -300,9 +300,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backward_arrow" width="33" height="33"/>
-        <image name="forward_arrow" width="33" height="33"/>
-        <image name="hive_2_img" width="33" height="33"/>
-        <image name="menu_img" width="33" height="33"/>
+        <image name="backward_arrow" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="forward_arrow" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="hive_2_img" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="menu_img" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
 </document>

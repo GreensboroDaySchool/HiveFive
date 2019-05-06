@@ -74,7 +74,6 @@ extension HistoryViewController: BoardViewDelegate {
     }
 }
 
-// Bad quality code...
 extension HistoryViewController: HiveDelegate {
     func handDidUpdate(hand: Hand, color: Color) {}
     

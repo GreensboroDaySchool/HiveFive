@@ -42,23 +42,33 @@ public class Hive: Codable {
      */
     public var queen4 = true
     
-    /**
-     Whether the pieces can move in the first 4 moves.
-     */
+    /// Whether the pieces can move in the first 4 moves.
     public var immobilized4 = true
     
-    /**
-     Default hand of a player by Hive's rule
-     */
-    public static let defaultHand: Hand = [
-            .grasshopper: 3,
-            .queenBee: 1,
-            .beetle: 2,
-            .spider: 2,
-            .soldierAnt: 3,
-            .mosquito: 1,
-            .ladyBug: 1
-        ]
+    public var expansionPackEnabled = true
+    
+    /// Hand of the player by Hive's standard rule
+    public static let standardHand: Hand = [
+        .queenBee: 1,
+        .beetle: 2,
+        .spider: 2,
+        .grasshopper: 3,
+        .soldierAnt: 3,
+    ]
+    
+    public static let expandedHand: Hand = [
+        .queenBee: 1,
+        .mosquito: 1,
+        .ladyBug: 1,
+        .beetle: 2,
+        .spider: 2,
+        .grasshopper: 3,
+        .soldierAnt: 3
+    ]
+    
+    public var defaultHand: Hand {
+        return expansionPackEnabled ? Hive.expandedHand : Hive.standardHand
+    }
     
     /**
      Assistive positions that indicated the spacial layout of the physical
@@ -104,8 +114,9 @@ public class Hive: Codable {
     
     public init() {
         history = History()
-        blackHand = Hive.defaultHand
-        whiteHand = Hive.defaultHand
+        let defaultHand = expansionPackEnabled ? Hive.expandedHand : Hive.standardHand
+        blackHand = defaultHand
+        whiteHand = defaultHand
     }
     
     /**
@@ -114,8 +125,8 @@ public class Hive: Codable {
      */
     public func reset() {
         history = History()
-        blackHand = Hive.defaultHand
-        whiteHand = Hive.defaultHand
+        blackHand = defaultHand
+        whiteHand = defaultHand
         root = nil
         currentPlayer = .black
         selectedNewNode = false
@@ -414,10 +425,9 @@ public protocol HiveDelegate {
     func didWin(player: Color)
 }
 
-/**
- This struct is used to represent the available pieces at each player's disposal.
- */
-public typealias Hand = [Identity:Int]
+
+/// This struct is used to represent the available pieces at each player's disposal.
+public typealias Hand = [Identity: Int]
 
 public enum Identity: String, CodingKey, Codable {
     

@@ -26,7 +26,7 @@ import Hive5Common
  >   View:       BoardView
  >   Controller: ViewController
  */
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
+class BoardViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet var pan: UIPanGestureRecognizer!
     @IBOutlet var pinch: UIPinchGestureRecognizer!
@@ -64,16 +64,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         observe(.themeUpdated, #selector(themeDidUpdate(_:)))
         observe(.didSelectNewNode, #selector(didSelectNewNode(_:)))
         observe(.toolBarVisibleUpdated, #selector(toolBarVisibilityDidUpdate(_:)))
-        observe(.profileUpdated, #selector(updateToolBarItemTint))
+        observe(.presetUpdated, #selector(updateToolBarItemTint))
         observe(.kpHackableUpdated, #selector(updateToolBarItemTint))
         observe(.queen4Updated, #selector(updateQueen4))
         observe(.immobilized4Updated, #selector(updateImmobilized4))
+        observe(.expansionPackUpdated, #selector(updateExpansionPack))
         
         // Additional setup
         hiveBarItem.image = [#imageLiteral(resourceName: "hive_img"),#imageLiteral(resourceName: "hive_2_img"),#imageLiteral(resourceName: "solid_honeycomb"),#imageLiteral(resourceName: "bee")].random()
         updateToolBarItemTint()
         hive.queen4 = UserDefaults.useQueen4()
         hive.immobilized4 = UserDefaults.useImmobilized4()
+        hive.expansionPackEnabled = UserDefaults.useExpansionPack()
         
         // Toolbar setup (make tool bar transparent)
         toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
@@ -164,7 +166,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
 }
 
-extension ViewController: BoardViewDelegate {
+extension BoardViewController: BoardViewDelegate {
     func didTap(on node: HexNode) {
         switch hive.select(node: node) {
         case .tappedWrongNode: post(key: .displayMessage, object: "\(hive.currentPlayer == .black ? "Black" : "White")'s turn")
@@ -178,7 +180,7 @@ extension ViewController: BoardViewDelegate {
     }
 }
 
-extension ViewController: HiveDelegate {
+extension BoardViewController: HiveDelegate {
     
     /// Transfer the updated root structure from hive to boardview for display
     func structureDidUpdate() {
@@ -231,7 +233,7 @@ extension ViewController: HiveDelegate {
     
 }
 
-extension ViewController: SlideMenuControllerDelegate {
+extension BoardViewController: SlideMenuControllerDelegate {
     
     /**
      Works perfectly!
@@ -247,7 +249,7 @@ extension ViewController: SlideMenuControllerDelegate {
 }
 
 // MARK: Notification handling
-extension ViewController {
+extension BoardViewController {
     @objc func didSelectNewNode(_ notification: Notification) {
         hive.select(newNode: notification.object as! HexNode)
     }
@@ -263,8 +265,8 @@ extension ViewController {
     // Hack... bad practice
     @objc private func updateToolBarItemTint() {
         toolBar.items?.forEach {
-            $0.tintColor = UserDefaults.currentProfile()
-            .keyPaths.filter {$0.key == "Theme"}[0]
+            $0.tintColor = UserDefaults.currentPreset()
+            .properties.filter {$0.key == "Theme"}[0]
             .getValue() as? UIColor
         }
     }
@@ -275,6 +277,10 @@ extension ViewController {
     
     @objc func updateImmobilized4() {
         hive.immobilized4 = UserDefaults.useImmobilized4()
+    }
+    
+    @objc func updateExpansionPack() {
+        hive.expansionPackEnabled = UserDefaults.useExpansionPack()
     }
     
 }

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Rules" footerTitle="The queen been must be placed on the board in the first 4 moves." id="XJB-qe-5Bm">
+                            <tableViewSection headerTitle="Opening" footerTitle="The queen been must be placed on the board in the first 4 moves." id="XJB-qe-5Bm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uR6-Ad-wQY">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -84,6 +84,40 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Expansion" id="XEz-SO-GUk">
+                                <string key="footerTitle">The standard pack does not have mosquitos and ladybugs whereas the expansion pack adds one mosquito and one ladybug to each player's disposal, respectively.</string>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e3b-53-Mt5">
+                                        <rect key="frame" x="0.0" y="299" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3b-53-Mt5" id="gsl-np-usT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expansion Pack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOr-wt-lMi">
+                                                    <rect key="frame" x="16" y="11.5" width="286" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUT-o0-gS7">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="expansionPackSwitchValueChanged:" destination="wMM-CY-fmh" eventType="valueChanged" id="Xez-CA-Zf1"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rUT-o0-gS7" firstAttribute="trailing" secondItem="gsl-np-usT" secondAttribute="trailingMargin" id="4Vy-au-yxm"/>
+                                                <constraint firstItem="vOr-wt-lMi" firstAttribute="leading" secondItem="gsl-np-usT" secondAttribute="leadingMargin" id="TCL-gX-mJE"/>
+                                                <constraint firstItem="rUT-o0-gS7" firstAttribute="leading" secondItem="vOr-wt-lMi" secondAttribute="trailing" constant="8" id="Wfe-LH-DSQ"/>
+                                                <constraint firstItem="vOr-wt-lMi" firstAttribute="centerY" secondItem="gsl-np-usT" secondAttribute="centerY" id="YgS-Uv-jHH"/>
+                                                <constraint firstItem="rUT-o0-gS7" firstAttribute="centerY" secondItem="gsl-np-usT" secondAttribute="centerY" id="ilY-jK-4iT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="wMM-CY-fmh" id="EKp-n5-Onj"/>
@@ -92,6 +126,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Rules" id="56g-9c-31m"/>
                     <connections>
+                        <outlet property="expansionPackSwitch" destination="rUT-o0-gS7" id="acv-5c-Sfh"/>
                         <outlet property="immobilized4Switch" destination="QAq-xe-WAs" id="1Bt-PI-F83"/>
                         <outlet property="queen4Switch" destination="g64-Ca-Bij" id="0ZH-Sc-weJ"/>
                     </connections>

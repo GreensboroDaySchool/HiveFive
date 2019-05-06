@@ -169,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="214" y="1102"/>
         </scene>
-        <!--Profiles-->
+        <!--Presets-->
         <scene sceneID="PRo-xa-f0f">
             <objects>
-                <collectionViewController id="pJs-Ve-4ia" customClass="ProfilesCollectionViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="pJs-Ve-4ia" customClass="PresetsCollectionViewController" customModule="Hive_Five" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tgD-Mp-xCt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@
                             <outlet property="delegate" destination="pJs-Ve-4ia" id="duo-Fh-P0d"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Profiles" id="RbG-BU-nOA"/>
+                    <navigationItem key="navigationItem" title="Presets" id="RbG-BU-nOA"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiW-qg-3Re" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,7 +250,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="profileNameCell" id="QsJ-Av-xgB" customClass="ProfileNameTableViewCell" customModule="Hive_Five" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="presetNameCell" id="QsJ-Av-xgB" customClass="PresetNameTableViewCell" customModule="Hive_Five" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QsJ-Av-xgB" id="57f-rv-VGr">
@@ -263,7 +263,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ice-wY-pgc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ice-wY-pgc">
                                             <rect key="frame" x="81" y="11.5" width="97" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -288,7 +288,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="profileNameLabel" destination="Ice-wY-pgc" id="5MX-Xe-sLV"/>
+                                    <outlet property="presetNameLabel" destination="Ice-wY-pgc" id="5MX-Xe-sLV"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCell" id="npx-VU-WLU" customClass="ColorSegueTableViewCell" customModule="Hive_Five" customModuleProvider="target">

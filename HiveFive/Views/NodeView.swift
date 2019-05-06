@@ -201,12 +201,12 @@ class NodeView: UIView {
     /**
      Each node view must be paired with a path.
      */
-    init(path: Path, profile: Profile?) {
+    init(path: Path, preset: Preset?) {
         self.path = path
         super.init(frame: CGRect.zero)
         self.isOpaque = false
         
-        (profile ?? Profile.defaultProfile).apply(on: self)
+        (preset ?? Preset.defaultPreset).apply(on: self)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
         addGestureRecognizer(tap)

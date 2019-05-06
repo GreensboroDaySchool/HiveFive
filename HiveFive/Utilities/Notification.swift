@@ -22,8 +22,9 @@ extension Notification {
         case toolBarVisibleUpdated
         case nodeSizeUpdated
         case showAlertsUpdated
-        case profileUpdated
+        case presetUpdated
         case queen4Updated
+        case expansionPackUpdated
         case immobilized4Updated
         case structureUpdated
         case selectedNodeUpdated

@@ -22,16 +22,16 @@ import UIKit
 private let colorCellId = "colorCell"
 private let numberCellId = "numberCell"
 private let boolCellId = "boolCell"
-private let profileNameCellId = "profileNameCell"
+private let presetNameCellId = "presetNameCell"
 
 class ColorSchemeTableViewController: UITableViewController {
     
-    var profile: Profile {
-        get {return UserDefaults.currentProfile()}
+    var preset: Preset {
+        get {return UserDefaults.currentPreset()}
     }
     
-    var categories = [[KPHackable]]()
-    var categoryNames = ["Profile Info", "General", "Colors", "Numbers & Ratios"]
+    var categories = [[Property]]()
+    var categoryNames = ["Preset Info", "General", "Colors", "Numbers & Ratios"]
     var pendingText: String?
     var config: TextField.Config!
     
@@ -75,33 +75,33 @@ class ColorSchemeTableViewController: UITableViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         pendingText = nil
-        let alert = UIAlertController(style: .alert, title: "Profile Name")
+        let alert = UIAlertController(style: .alert, title: "Preset Name")
         alert.addOneTextField(configuration: config)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel){[unowned self] _ in
             self.deselectAll()
         })
         alert.addAction(UIAlertAction(title: "Create from default", style: .default){[unowned self] _ in
-            self.saveNewProfile(name: self.pendingText, profile: Profile.defaultProfile)
+            self.saveNewPreset(name: self.pendingText, preset: Preset.defaultPreset)
         })
         alert.addAction(UIAlertAction(title: "Create from current", style: .default){[unowned self] _ in
-            self.saveNewProfile(name: self.pendingText, profile: UserDefaults.currentProfile())
+            self.saveNewPreset(name: self.pendingText, preset: UserDefaults.currentPreset())
         })
         alert.show()
     }
     
-    private func saveNewProfile(name: String?, profile: Profile) {
+    private func saveNewPreset(name: String?, preset: Preset) {
         guard let name = name else {
             post(key: .displayMessage, object: "Invalid Name")
             return
         }
-        UserDefaults.set(name, forKey: .currentProfile)
-        // Delete existing profile with the same name
-        CoreData.delete(entity: "NodeViewProfile") {($0 as! NodeViewProfile).name == name}
-        var newProfile = profile
-        newProfile.name = name
-        newProfile.save()
-        post(key: .profileUpdated, object: profile)
-        post(key: .displayMessage, object: "New Profile Created")
+        UserDefaults.set(name, forKey: .currentPreset)
+        // Delete existing preset with the same name
+        CoreData.delete(entity: "NodeViewPreset") {($0 as! NodeViewPreset).name == name}
+        var newPreset = preset
+        newPreset.name = name
+        newPreset.save()
+        post(key: .presetUpdated, object: preset)
+        post(key: .displayMessage, object: "New Preset Created")
         refresh()
     }
     
@@ -112,7 +112,7 @@ class ColorSchemeTableViewController: UITableViewController {
     }
     
     private func updateCategories() {
-        categories = deconstruct(profile.categorize())
+        categories = deconstruct(preset.categorize())
     }
     
     private func deselectAll() {
@@ -121,11 +121,11 @@ class ColorSchemeTableViewController: UITableViewController {
         }
     }
     
-    private func deconstruct(_ category: Profile.Category) -> [[KPHackable]] {
+    private func deconstruct(_ category: Preset.Category) -> [[Property]] {
         return [[], sort(category.bools), sort(category.colors), sort(category.numbers)] // Note: hacked!
     }
     
-    private func sort(_ arr: [KPHackable]) -> [KPHackable] {
+    private func sort(_ arr: [Property]) -> [Property] {
         return arr.sorted {
             $0.key < $1.key
         }
@@ -149,7 +149,7 @@ class ColorSchemeTableViewController: UITableViewController {
         var cell: UITableViewCell
         
         switch indexPath.section {
-        case 0: cell = makeCell(profileNameCellId)
+        case 0: cell = makeCell(presetNameCellId)
         case 1: cell = makeCell(boolCellId)
         case 2: cell = makeCell(colorCellId)
         case 3: cell = makeCell(numberCellId)
@@ -159,9 +159,9 @@ class ColorSchemeTableViewController: UITableViewController {
         if let associate = (cell as? KPAssociate) {
             associate.kpHackable = categories[indexPath.section][indexPath.row]
             associate.indexPath = indexPath
-        } else if let profileCell = (cell as? ProfileNameTableViewCell) {
-            profileCell.profileNameLabel.text = UserDefaults.currentProfileName()
-            profileCell.profileInfoDelegate = self
+        } else if let presetCell = (cell as? PresetNameTableViewCell) {
+            presetCell.presetNameLabel.text = UserDefaults.currentPresetName()
+            presetCell.presetInfoDelegate = self
         }
         
         return cell
@@ -180,31 +180,31 @@ class ColorSchemeTableViewController: UITableViewController {
     }
 }
 
-extension ColorSchemeTableViewController: ProfileInfoDelegate {
-    func profileInfoRequested() {
-        let _name = UserDefaults.currentProfileName()
+extension ColorSchemeTableViewController: PresetInfoDelegate {
+    func presetInfoRequested() {
+        let _name = UserDefaults.currentPresetName()
         let alert = UIAlertController(style: .actionSheet, title: "Name: \(_name)")
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive){[unowned self] _ in
-            UserDefaults.set("#default", forKey: .currentProfile) // Revert back to default profile
-            Profile.delete(name: _name)
-            post(key: .profileUpdated, object: Profile.defaultProfile)
+            UserDefaults.set("Default", forKey: .currentPreset) // Revert back to default preset
+            Preset.delete(name: _name)
+            post(key: .presetUpdated, object: Preset.defaultPreset)
             self.refresh()
         })
         alert.addAction(UIAlertAction(title: "Rename", style: .default){[unowned self] _ in
             self.pendingText = nil
-            let alert2 = UIAlertController(style: .alert, title: "New Profile Name")
+            let alert2 = UIAlertController(style: .alert, title: "New Preset Name")
             alert2.addOneTextField(configuration: self.config)
             alert2.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             alert2.addAction(UIAlertAction(title: "Confirm", style: .default){[unowned self] _ in
                 if let newName = self.pendingText {
-                    let oldName = UserDefaults.currentProfileName()
-                    var profile = UserDefaults.currentProfile()
-                    profile.name = newName
-                    profile.save()
-                    Profile.delete(name: oldName)
-                    UserDefaults.set(newName, forKey: .currentProfile)
-                    post(key: .profileUpdated, object: profile)
+                    let oldName = UserDefaults.currentPresetName()
+                    var preset = UserDefaults.currentPreset()
+                    preset.name = newName
+                    preset.save()
+                    Preset.delete(name: oldName)
+                    UserDefaults.set(newName, forKey: .currentPreset)
+                    post(key: .presetUpdated, object: preset)
                     self.refresh()
                     return
                 }
@@ -217,17 +217,17 @@ extension ColorSchemeTableViewController: ProfileInfoDelegate {
 }
 
 protocol KPAssociate: class {
-    var kpHackable: KPHackable? {get set}
+    var kpHackable: Property? {get set}
     var indexPath: IndexPath? {get set}
     func didSelect()
-    func postUpdate(_ kpHackable: KPHackable)
+    func postUpdate(_ kpHackable: Property)
     func cancelUpdate()
     func handleValueUpdate(_ updatedValue: Any)
 }
 
 extension KPAssociate {
     
-    func postUpdate(_ kpHackable: KPHackable) {
+    func postUpdate(_ kpHackable: Property) {
         post(key: .kpHackableUpdated, object: kpHackable, userInfo: ["IndexPath": indexPath! as Any])
     }
     
@@ -236,16 +236,16 @@ extension KPAssociate {
     }
     
     func handleValueUpdate(_ updatedValue: Any) {
-        // Generate updated profile based on existing profile
-        let updated = UserDefaults.currentProfile()
+        // Generate updated preset based on existing preset
+        let updated = UserDefaults.currentPreset()
             .updated(key: self.kpHackable!.key, val: updatedValue)
         
-        // Delete existing profile
-        CoreData.delete(entity: "NodeViewProfile") {
-            ($0 as! NodeViewProfile).name == UserDefaults.currentProfileName()
+        // Delete existing preset
+        CoreData.delete(entity: "NodeViewPreset") {
+            ($0 as! NodeViewPreset).name == UserDefaults.currentPresetName()
         }
         
-        // Save updated profile into Core Data
+        // Save updated preset into Core Data
         updated.save()
         
         // Post update notification

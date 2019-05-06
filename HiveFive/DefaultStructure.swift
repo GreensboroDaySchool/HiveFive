@@ -25,10 +25,10 @@ import Hive5Common
  */
 extension Hive {
     static var defaultHive = {() -> Hive in
-            let retrieved = savedStructures{$0.name == "#default"}
+            let retrieved = savedStructures{$0.name == "Default"}
             if retrieved.count == 0 {
                 let hive = makeNewDefaultHive()
-                hive.save(name: "#default")
+                hive.save(name: "Default")
                 return hive
             }
             return load(retrieved[0])

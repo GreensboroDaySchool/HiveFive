@@ -11,9 +11,10 @@ import Foundation
 extension UserDefaults {
     
     enum Key: String {
-        case currentProfile
+        case currentPreset
         case queen4
         case immobilized4
+        case expansionPack
         case theme
         case toolBarVisible
         case nodeSize
@@ -43,12 +44,16 @@ extension UserDefaults {
         return object(forKey: .immobilized4) as? Bool ?? true
     }
     
-    static func currentProfileName() -> String {
-        return object(forKey: .currentProfile) as? String ?? "#default"
+    static func useExpansionPack() -> Bool {
+        return object(forKey: .expansionPack) as? Bool ?? true
     }
     
-    static func currentProfile() -> Profile {
-        return Profile.load(currentProfileName())
+    static func currentPresetName() -> String {
+        return object(forKey: .currentPreset) as? String ?? "Default"
+    }
+    
+    static func currentPreset() -> Preset {
+        return Preset.load(currentPresetName())
     }
     
     static func showsAlerts() -> Bool  {
@@ -72,7 +77,7 @@ extension UserDefaults {
     }
     
     static func currentTheme() -> Theme {
-        return Theme.decode(object(forKey: .theme) as? String ?? themes[0].name)
+        return Theme.decode(object(forKey: .theme) as? String ?? Theme.glossary[0].name)
     }
     
 }

@@ -98,14 +98,15 @@ class HelpPageViewController: UIViewController {
     
 }
 
-//MARK: Data Source
+// MARK: Data Source
+
 struct NodeDescription {
     var identity: Identity
     var description: String
     var demonstration: HexNode // the node of concern, selected.
 }
 
-var nodeDescriptions: [NodeDescription] = [
+fileprivate var nodeDescriptions: [NodeDescription] = [
     .init(
             identity: .grasshopper,
             description: "Grasshopper can jump across consecutive nodes in the same direction." +

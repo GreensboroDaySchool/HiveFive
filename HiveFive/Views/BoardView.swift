@@ -65,7 +65,7 @@ import Hive5Common
         didSet {updateAvailablePositions()}
     }
     
-    var profile: Profile = UserDefaults.currentProfile()
+    var preset: Preset = UserDefaults.currentPreset()
     
     var nodeViews: [NodeView] {
         get {
@@ -81,18 +81,18 @@ import Hive5Common
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupTapRecognizer()
-        observe(.profileUpdated, #selector(profileDidUpdate(_:))) // The current profile as changed
-        observe(.kpHackableUpdated, #selector(profileDidUpdate(_:))) // A single property in the current profile has changed
+        observe(.presetUpdated, #selector(presetDidUpdate(_:))) // The current preset as changed
+        observe(.kpHackableUpdated, #selector(presetDidUpdate(_:))) // A single property in the current preset has changed
     }
     
-    @objc private func profileDidUpdate(_ notification: Notification) {
-        let profile = UserDefaults.currentProfile()
-        self.profile = profile
-        apply(profile: profile) // This might be quite expensive, retriving from Core Data
+    @objc private func presetDidUpdate(_ notification: Notification) {
+        let preset = UserDefaults.currentPreset()
+        self.preset = preset
+        apply(preset) // This might be quite expensive, retriving from Core Data
     }
     
-    func apply(profile: Profile) {
-        nodeViews.forEach{profile.apply(on: $0)}
+    func apply(_ preset: Preset) {
+        nodeViews.forEach{preset.apply(on: $0)}
         redrawSubviews()
     }
     
@@ -158,7 +158,7 @@ import Hive5Common
         nodeViews.forEach{$0.removeFromSuperview()} // remove existing subviews. This is not expensive since there are not many subviews anyways.
         paths.sort{$0.route.translation.z < $1.route.translation.z} // sort according to z coordinate, toppest node get added last.
         paths.forEach {
-            addSubview(NodeView(path: $0, profile: profile))
+            addSubview(NodeView(path: $0, preset: preset))
         }
         updateNodeRadius()
         updateNodeCoordinates()
@@ -207,7 +207,7 @@ import Hive5Common
             let dummy = HexNode()
             dummy.neighbors[position.dir.opposite()] = position.node // make a uni-directional connection
             let path = Path(route: route, destination: dummy)
-            addSubview(NodeView(path: path, profile: profile))
+            addSubview(NodeView(path: path, preset: preset))
         }
         updateNodeRadius()
         updateNodeCoordinates()

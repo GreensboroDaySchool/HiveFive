@@ -17,22 +17,35 @@
  *
  */
 
+import Foundation
 import UIKit
 
-class ProfileNameTableViewCell: UITableViewCell {
-    @IBOutlet weak var profileNameLabel: UILabel!
-    var profileInfoDelegate: ProfileInfoDelegate?
+class ToggleTableViewCell: UITableViewCell, KPAssociate {
+    @IBOutlet weak var `switch`: UISwitch!
+    @IBOutlet weak var nameLabel: UILabel!
+    var indexPath: IndexPath?
+    var kpHackable: Property? {
+        didSet {
+            `switch`.isOn = kpHackable?.getValue() as! Bool
+            nameLabel.text = kpHackable?.key
+        }
+    }
     
-    @IBAction func infoButtonTapped(_ sender: Any) {
-        profileInfoDelegate?.profileInfoRequested()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
-
-}
-
-protocol ProfileInfoDelegate {
-    func profileInfoRequested()
+    
+    func didSelect() {
+    }
+    
+    @IBAction func switchToggled(_ sender: UISwitch) {
+        handleValueUpdate(sender.isOn)
+    }
 }

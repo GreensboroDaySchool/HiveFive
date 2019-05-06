@@ -28,7 +28,7 @@ class HandCollectionViewController: UICollectionViewController {
         return Hive.sharedInstance
     }
     
-    var hand = Hive.defaultHand
+    var hand = UserDefaults.useExpansionPack() ? Hive.expandedHand : Hive.standardHand
     var color: Color = .black
     var patterns = UserDefaults.currentTheme().patterns
     var isIpad: Bool {
@@ -142,7 +142,7 @@ class HandCollectionViewController: UICollectionViewController {
     }
     
     @objc func themeDidUpdate(_ notification: Notification) {
-        patterns = notification.object as! [Identity:String]
+        patterns = notification.object as! [Identity: String]
         collectionView?.reloadData()
     }
     
