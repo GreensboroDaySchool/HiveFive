@@ -7,9 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2A2AA123391A5700C16D3D /* Date+millis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A7E23391A5600C16D3D /* Date+millis.swift */; };
+		1F2A2AA223391A5700C16D3D /* Array+filterDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A7F23391A5600C16D3D /* Array+filterDuplicates.swift */; };
+		1F2A2AA323391A5700C16D3D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8023391A5600C16D3D /* Logger.swift */; };
+		1F2A2AA423391A5700C16D3D /* Decimal+intValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8123391A5600C16D3D /* Decimal+intValue.swift */; };
+		1F2A2AA623391A5700C16D3D /* Double+map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8323391A5600C16D3D /* Double+map.swift */; };
+		1F2A2AA723391A5700C16D3D /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8623391A5600C16D3D /* Spider.swift */; };
+		1F2A2AA823391A5700C16D3D /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8723391A5600C16D3D /* Navigation.swift */; };
+		1F2A2AA923391A5700C16D3D /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8823391A5600C16D3D /* SoldierAnt.swift */; };
+		1F2A2AAA23391A5700C16D3D /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8923391A5600C16D3D /* Vec2D.swift */; };
+		1F2A2AAB23391A5700C16D3D /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8A23391A5600C16D3D /* Hive.swift */; };
+		1F2A2AAC23391A5700C16D3D /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8B23391A5600C16D3D /* Hive+Encodable.swift */; };
+		1F2A2AAD23391A5700C16D3D /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8C23391A5600C16D3D /* HiveMaster.swift */; };
+		1F2A2AAE23391A5700C16D3D /* Mosquito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8D23391A5600C16D3D /* Mosquito.swift */; };
+		1F2A2AAF23391A5700C16D3D /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8E23391A5600C16D3D /* Neighbors.swift */; };
+		1F2A2AB023391A5700C16D3D /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8F23391A5600C16D3D /* Beetle.swift */; };
+		1F2A2AB123391A5700C16D3D /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9023391A5600C16D3D /* Grasshopper.swift */; };
+		1F2A2AB223391A5700C16D3D /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9123391A5600C16D3D /* QueenBee.swift */; };
+		1F2A2AB323391A5700C16D3D /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9223391A5600C16D3D /* HexNode.swift */; };
+		1F2A2AB423391A5700C16D3D /* LadyBug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9323391A5600C16D3D /* LadyBug.swift */; };
+		1F2A2AC023391BD100C16D3D /* HiveFiveCore-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2A2ABE23391BD100C16D3D /* HiveFiveCore-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F2A2AC323391BD100C16D3D /* HiveFiveCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2A2ABC23391BD100C16D3D /* HiveFiveCore.framework */; };
+		1F8C8C3623391C4E007FCD4F /* Date+millis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A7E23391A5600C16D3D /* Date+millis.swift */; };
+		1F8C8C3723391C4E007FCD4F /* Array+filterDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A7F23391A5600C16D3D /* Array+filterDuplicates.swift */; };
+		1F8C8C3823391C4E007FCD4F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8023391A5600C16D3D /* Logger.swift */; };
+		1F8C8C3923391C4E007FCD4F /* Decimal+intValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8123391A5600C16D3D /* Decimal+intValue.swift */; };
+		1F8C8C3B23391C4E007FCD4F /* Double+map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8323391A5600C16D3D /* Double+map.swift */; };
+		1F8C8C3C23391C4E007FCD4F /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8623391A5600C16D3D /* Spider.swift */; };
+		1F8C8C3D23391C4E007FCD4F /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8723391A5600C16D3D /* Navigation.swift */; };
+		1F8C8C3E23391C4E007FCD4F /* SoldierAnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8823391A5600C16D3D /* SoldierAnt.swift */; };
+		1F8C8C3F23391C4E007FCD4F /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8923391A5600C16D3D /* Vec2D.swift */; };
+		1F8C8C4023391C4E007FCD4F /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8A23391A5600C16D3D /* Hive.swift */; };
+		1F8C8C4123391C4E007FCD4F /* Hive+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8B23391A5600C16D3D /* Hive+Encodable.swift */; };
+		1F8C8C4223391C4E007FCD4F /* HiveMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8C23391A5600C16D3D /* HiveMaster.swift */; };
+		1F8C8C4323391C4E007FCD4F /* Mosquito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8D23391A5600C16D3D /* Mosquito.swift */; };
+		1F8C8C4423391C4E007FCD4F /* Neighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8E23391A5600C16D3D /* Neighbors.swift */; };
+		1F8C8C4523391C4E007FCD4F /* Beetle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A8F23391A5600C16D3D /* Beetle.swift */; };
+		1F8C8C4623391C4E007FCD4F /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9023391A5600C16D3D /* Grasshopper.swift */; };
+		1F8C8C4723391C4E007FCD4F /* QueenBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9123391A5600C16D3D /* QueenBee.swift */; };
+		1F8C8C4823391C4E007FCD4F /* HexNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9223391A5600C16D3D /* HexNode.swift */; };
+		1F8C8C4923391C4E007FCD4F /* LadyBug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A2A9323391A5600C16D3D /* LadyBug.swift */; };
+		1F8C8C4C23391CB3007FCD4F /* HiveFiveCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2A2ABC23391BD100C16D3D /* HiveFiveCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1FEA700F227FC09500BF40D4 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA700E227FC09500BF40D4 /* UserDefaults.swift */; };
 		1FEA7011227FC36300BF40D4 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA7010227FC36300BF40D4 /* Notification.swift */; };
-		2C0169A72092AAA000398D34 /* Swifter+Serializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */; };
 		2C4E7550208247190035994D /* HFInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E754F208247190035994D /* HFInterface.swift */; };
 		2C4E7553208247950035994D /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E7551208247950035994D /* History.storyboard */; };
 		2C4E755620824A300035994D /* Board.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755420824A300035994D /* Board.storyboard */; };
@@ -17,14 +57,9 @@
 		2C4E755E20824C2E0035994D /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755C20824C2E0035994D /* Help.storyboard */; };
 		2C4E756120824D310035994D /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E755F20824D310035994D /* Menu.storyboard */; };
 		2C4E756420824D6C0035994D /* Appearance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E756220824D6C0035994D /* Appearance.storyboard */; };
-		2C4E75B52082B1D10035994D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E75B42082B1D10035994D /* main.swift */; };
-		2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */; };
-		2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E761F2082C9A50035994D /* SwifterClient.swift */; };
 		2CC29E3C20AA631600C68000 /* Rules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC29E2C20AA631600C68000 /* Rules.storyboard */; };
 		2CC29E3E20AA632B00C68000 /* RulesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC29E3D20AA632B00C68000 /* RulesTableViewController.swift */; };
 		2CCE195E206E77C400733FA0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE195D206E77C400733FA0 /* NodeView.swift */; };
-		2CDD6C5D20AA4BA100124EAE /* Hive5Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */; };
-		2CDD6C5E20AA4BA100124EAE /* Hive5Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2CE6696820AA5E8A007F472D /* NSObject+observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE6696720AA5E8A007F472D /* NSObject+observe.swift */; };
 		2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE466206B00880041EDD1 /* AppDelegate.swift */; };
 		2CFCE469206B00880041EDD1 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE468206B00880041EDD1 /* BoardViewController.swift */; };
@@ -34,17 +69,16 @@
 		2CFCE4B7206C603C0041EDD1 /* HiveFive_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */; };
 		2CFCE4C5206C60590041EDD1 /* HiveFive_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */; };
 		320FDBA320829E2800E0F62A /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA220829E2800E0F62A /* CoreData.swift */; };
-		320FDBA720829ED700E0F62A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA620829ED700E0F62A /* UIImage.swift */; };
-		320FDBA920829EF000E0F62A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA820829EF000E0F62A /* UIView.swift */; };
-		320FDBAB20829F0A00E0F62A /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBAA20829F0A00E0F62A /* NSAttributedString.swift */; };
-		320FDBAD20829F2900E0F62A /* UIGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBAC20829F2900E0F62A /* UIGestureRecognizer.swift */; };
-		320FDBAF20829F4100E0F62A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBAE20829F4100E0F62A /* CGRect.swift */; };
-		320FDBB120829F5F00E0F62A /* CGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB020829F5F00E0F62A /* CGContext.swift */; };
-		320FDBB320829F7200E0F62A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB220829F7200E0F62A /* UIColor.swift */; };
-		320FDBB520829F8D00E0F62A /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB420829F8D00E0F62A /* CGFloat.swift */; };
-		320FDBB720829FAC00E0F62A /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB620829FAC00E0F62A /* CGPoint.swift */; };
-		320FDBB92082A25600E0F62A /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB82082A25600E0F62A /* Vec2D.swift */; };
-		320FDBBD2082B2DF00E0F62A /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBBC2082B2DF00E0F62A /* Hive.swift */; };
+		320FDBA720829ED700E0F62A /* UIImage+initWithView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA620829ED700E0F62A /* UIImage+initWithView.swift */; };
+		320FDBA920829EF000E0F62A /* UIView+asImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBA820829EF000E0F62A /* UIView+asImage.swift */; };
+		320FDBAB20829F0A00E0F62A /* NSAttributedString+dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBAA20829F0A00E0F62A /* NSAttributedString+dimensions.swift */; };
+		320FDBAD20829F2900E0F62A /* UIGestureRecognizer+cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBAC20829F2900E0F62A /* UIGestureRecognizer+cancel.swift */; };
+		320FDBAF20829F4100E0F62A /* CGRect+initWithCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBAE20829F4100E0F62A /* CGRect+initWithCenter.swift */; };
+		320FDBB120829F5F00E0F62A /* CGContext+circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB020829F5F00E0F62A /* CGContext+circle.swift */; };
+		320FDBB320829F7200E0F62A /* UIColor+rgb&hsb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB220829F7200E0F62A /* UIColor+rgb&hsb.swift */; };
+		320FDBB720829FAC00E0F62A /* CGPoint+vec2D&utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB620829FAC00E0F62A /* CGPoint+vec2D&utils.swift */; };
+		320FDBB92082A25600E0F62A /* Vec2D+cgPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBB82082A25600E0F62A /* Vec2D+cgPoint.swift */; };
+		320FDBBD2082B2DF00E0F62A /* Hive+save&load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FDBBC2082B2DF00E0F62A /* Hive+save&load.swift */; };
 		321CED2F2077D27800805F74 /* MenuIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED2E2077D27800805F74 /* MenuIconView.swift */; };
 		321CED312077D9D400805F74 /* UserInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED302077D9D400805F74 /* UserInterfaceTableViewController.swift */; };
 		321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321CED322078256900805F74 /* ColorSchemeTableViewController.swift */; };
@@ -564,6 +598,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F2A2AC123391BD100C16D3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CFCE45B206B00880041EDD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F2A2ABB23391BD100C16D3D;
+			remoteInfo = "HiveFiveCore-iOS";
+		};
 		2CFCE4B9206C603C0041EDD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CFCE45B206B00880041EDD1 /* Project object */;
@@ -581,22 +622,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2C4E75B02082B1D10035994D /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		2CDD6C5B20AA4B5500124EAE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2CDD6C5E20AA4BA100124EAE /* Hive5Common.framework in Embed Frameworks */,
+				1F8C8C4C23391CB3007FCD4F /* HiveFiveCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,9 +636,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F2A2A7E23391A5600C16D3D /* Date+millis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+millis.swift"; sourceTree = "<group>"; };
+		1F2A2A7F23391A5600C16D3D /* Array+filterDuplicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+filterDuplicates.swift"; sourceTree = "<group>"; };
+		1F2A2A8023391A5600C16D3D /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		1F2A2A8123391A5600C16D3D /* Decimal+intValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decimal+intValue.swift"; sourceTree = "<group>"; };
+		1F2A2A8323391A5600C16D3D /* Double+map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+map.swift"; sourceTree = "<group>"; };
+		1F2A2A8623391A5600C16D3D /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
+		1F2A2A8723391A5600C16D3D /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		1F2A2A8823391A5600C16D3D /* SoldierAnt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldierAnt.swift; sourceTree = "<group>"; };
+		1F2A2A8923391A5600C16D3D /* Vec2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
+		1F2A2A8A23391A5600C16D3D /* Hive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
+		1F2A2A8B23391A5600C16D3D /* Hive+Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Hive+Encodable.swift"; sourceTree = "<group>"; };
+		1F2A2A8C23391A5600C16D3D /* HiveMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiveMaster.swift; sourceTree = "<group>"; };
+		1F2A2A8D23391A5600C16D3D /* Mosquito.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mosquito.swift; sourceTree = "<group>"; };
+		1F2A2A8E23391A5600C16D3D /* Neighbors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neighbors.swift; sourceTree = "<group>"; };
+		1F2A2A8F23391A5600C16D3D /* Beetle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beetle.swift; sourceTree = "<group>"; };
+		1F2A2A9023391A5600C16D3D /* Grasshopper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
+		1F2A2A9123391A5600C16D3D /* QueenBee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueenBee.swift; sourceTree = "<group>"; };
+		1F2A2A9223391A5600C16D3D /* HexNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexNode.swift; sourceTree = "<group>"; };
+		1F2A2A9323391A5600C16D3D /* LadyBug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LadyBug.swift; sourceTree = "<group>"; };
+		1F2A2ABC23391BD100C16D3D /* HiveFiveCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HiveFiveCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F2A2ABE23391BD100C16D3D /* HiveFiveCore-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HiveFiveCore-iOS.h"; sourceTree = "<group>"; };
+		1F2A2ABF23391BD100C16D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FEA700E227FC09500BF40D4 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		1FEA7010227FC36300BF40D4 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifter+Serializers.swift"; sourceTree = "<group>"; };
 		2C4E754F208247190035994D /* HFInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFInterface.swift; sourceTree = "<group>"; };
 		2C4E7552208247950035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/History.storyboard; sourceTree = "<group>"; };
 		2C4E755520824A300035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Board.storyboard; sourceTree = "<group>"; };
@@ -614,15 +667,9 @@
 		2C4E755D20824C2E0035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Help.storyboard; sourceTree = "<group>"; };
 		2C4E756020824D310035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Menu.storyboard; sourceTree = "<group>"; };
 		2C4E756320824D6C0035994D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Appearance.storyboard; sourceTree = "<group>"; };
-		2C4E75B22082B1D10035994D /* HiveFive Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiveFive Server"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C4E75B42082B1D10035994D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterServerTransport.swift; sourceTree = "<group>"; };
-		2C4E761F2082C9A50035994D /* SwifterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifterClient.swift; sourceTree = "<group>"; };
 		2CC29E2D20AA631600C68000 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Rules.storyboard; sourceTree = "<group>"; };
 		2CC29E3D20AA632B00C68000 /* RulesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesTableViewController.swift; sourceTree = "<group>"; };
 		2CCE195D206E77C400733FA0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
-		2CDD6C2520AA48B600124EAE /* libHive5Common iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libHive5Common iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hive5Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE6696720AA5E8A007F472D /* NSObject+observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+observe.swift"; sourceTree = "<group>"; };
 		2CFCE463206B00880041EDD1 /* Hive Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hive Five.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFCE466206B00880041EDD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -638,17 +685,16 @@
 		2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveFive_Tests.swift; sourceTree = "<group>"; };
 		2CFCE4C6206C60590041EDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		320FDBA220829E2800E0F62A /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		320FDBA620829ED700E0F62A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		320FDBA820829EF000E0F62A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		320FDBAA20829F0A00E0F62A /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
-		320FDBAC20829F2900E0F62A /* UIGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGestureRecognizer.swift; sourceTree = "<group>"; };
-		320FDBAE20829F4100E0F62A /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
-		320FDBB020829F5F00E0F62A /* CGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGContext.swift; sourceTree = "<group>"; };
-		320FDBB220829F7200E0F62A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		320FDBB420829F8D00E0F62A /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
-		320FDBB620829FAC00E0F62A /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
-		320FDBB82082A25600E0F62A /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
-		320FDBBC2082B2DF00E0F62A /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
+		320FDBA620829ED700E0F62A /* UIImage+initWithView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+initWithView.swift"; sourceTree = "<group>"; };
+		320FDBA820829EF000E0F62A /* UIView+asImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+asImage.swift"; sourceTree = "<group>"; };
+		320FDBAA20829F0A00E0F62A /* NSAttributedString+dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+dimensions.swift"; sourceTree = "<group>"; };
+		320FDBAC20829F2900E0F62A /* UIGestureRecognizer+cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+cancel.swift"; sourceTree = "<group>"; };
+		320FDBAE20829F4100E0F62A /* CGRect+initWithCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+initWithCenter.swift"; sourceTree = "<group>"; };
+		320FDBB020829F5F00E0F62A /* CGContext+circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGContext+circle.swift"; sourceTree = "<group>"; };
+		320FDBB220829F7200E0F62A /* UIColor+rgb&hsb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+rgb&hsb.swift"; sourceTree = "<group>"; };
+		320FDBB620829FAC00E0F62A /* CGPoint+vec2D&utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+vec2D&utils.swift"; sourceTree = "<group>"; };
+		320FDBB82082A25600E0F62A /* Vec2D+cgPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vec2D+cgPoint.swift"; sourceTree = "<group>"; };
+		320FDBBC2082B2DF00E0F62A /* Hive+save&load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hive+save&load.swift"; sourceTree = "<group>"; };
 		321CED2E2077D27800805F74 /* MenuIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIconView.swift; sourceTree = "<group>"; };
 		321CED302077D9D400805F74 /* UserInterfaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		321CED322078256900805F74 /* ColorSchemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTableViewController.swift; sourceTree = "<group>"; };
@@ -1168,7 +1214,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2C4E75AF2082B1D10035994D /* Frameworks */ = {
+		1F2A2AB923391BD100C16D3D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1179,7 +1225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CDD6C5D20AA4BA100124EAE /* Hive5Common.framework in Frameworks */,
+				1F2A2AC323391BD100C16D3D /* HiveFiveCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1211,15 +1257,73 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		1F2A2A7C23391A5600C16D3D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1F2A2A8023391A5600C16D3D /* Logger.swift */,
+				1F2A2A7D23391A5600C16D3D /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1F2A2A7D23391A5600C16D3D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F2A2A7E23391A5600C16D3D /* Date+millis.swift */,
+				1F2A2A7F23391A5600C16D3D /* Array+filterDuplicates.swift */,
+				1F2A2A8123391A5600C16D3D /* Decimal+intValue.swift */,
+				1F2A2A8323391A5600C16D3D /* Double+map.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F2A2A8523391A5600C16D3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F2A2A8623391A5600C16D3D /* Spider.swift */,
+				1F2A2A8723391A5600C16D3D /* Navigation.swift */,
+				1F2A2A8823391A5600C16D3D /* SoldierAnt.swift */,
+				1F2A2A8923391A5600C16D3D /* Vec2D.swift */,
+				1F2A2A8A23391A5600C16D3D /* Hive.swift */,
+				1F2A2A8B23391A5600C16D3D /* Hive+Encodable.swift */,
+				1F2A2A8C23391A5600C16D3D /* HiveMaster.swift */,
+				1F2A2A8D23391A5600C16D3D /* Mosquito.swift */,
+				1F2A2A8E23391A5600C16D3D /* Neighbors.swift */,
+				1F2A2A8F23391A5600C16D3D /* Beetle.swift */,
+				1F2A2A9023391A5600C16D3D /* Grasshopper.swift */,
+				1F2A2A9123391A5600C16D3D /* QueenBee.swift */,
+				1F2A2A9223391A5600C16D3D /* HexNode.swift */,
+				1F2A2A9323391A5600C16D3D /* LadyBug.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F2A2AB623391A8100C16D3D /* HiveFiveCore */ = {
+			isa = PBXGroup;
+			children = (
+				1F2A2A7C23391A5600C16D3D /* Utilities */,
+				1F2A2A8523391A5600C16D3D /* Model */,
+			);
+			path = HiveFiveCore;
+			sourceTree = "<group>";
+		};
+		1F2A2ABD23391BD100C16D3D /* HiveFiveCore-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1F2A2ABE23391BD100C16D3D /* HiveFiveCore-iOS.h */,
+				1F2A2ABF23391BD100C16D3D /* Info.plist */,
+			);
+			path = "HiveFiveCore-iOS";
+			sourceTree = "<group>";
+		};
 		2C016A932092B55500398D34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CDD6C2520AA48B600124EAE /* libHive5Common iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2C4E754E2082463C0035994D /* Interface */ = {
+		2C4E754E2082463C0035994D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				2C4E754F208247190035994D /* HFInterface.swift */,
@@ -1233,44 +1337,17 @@
 				2C4E755F20824D310035994D /* Menu.storyboard */,
 				2C4E756220824D6C0035994D /* Appearance.storyboard */,
 			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
-		2C4E75B32082B1D10035994D /* HiveFive Server */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E761E2082C98F0035994D /* Server */,
-				2C4E761B2082C3AD0035994D /* Transport */,
-				2C4E75B42082B1D10035994D /* main.swift */,
-				2C0169A62092AAA000398D34 /* Swifter+Serializers.swift */,
-			);
-			path = "HiveFive Server";
-			sourceTree = "<group>";
-		};
-		2C4E761B2082C3AD0035994D /* Transport */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E76142082C1DF0035994D /* SwifterServerTransport.swift */,
-			);
-			path = Transport;
-			sourceTree = "<group>";
-		};
-		2C4E761E2082C98F0035994D /* Server */ = {
-			isa = PBXGroup;
-			children = (
-				2C4E761F2082C9A50035994D /* SwifterClient.swift */,
-			);
-			path = Server;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		2CFCE45A206B00880041EDD1 = {
 			isa = PBXGroup;
 			children = (
-				2CDD6C5C20AA4BA100124EAE /* Hive5Common.framework */,
-				2C4E75B32082B1D10035994D /* HiveFive Server */,
-				2CFCE465206B00880041EDD1 /* HiveFive */,
-				2CFCE4C3206C60590041EDD1 /* HiveFive Tests */,
-				2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */,
+				1F2A2AB623391A8100C16D3D /* HiveFiveCore */,
+				2CFCE465206B00880041EDD1 /* HiveFive iOS */,
+				2CFCE4C3206C60590041EDD1 /* HiveFiveTests */,
+				2CFCE4B5206C603C0041EDD1 /* HiveFiveUITests */,
+				1F2A2ABD23391BD100C16D3D /* HiveFiveCore-iOS */,
 				2CFCE464206B00880041EDD1 /* Products */,
 				2C016A932092B55500398D34 /* Frameworks */,
 			);
@@ -1282,59 +1359,58 @@
 				2CFCE463206B00880041EDD1 /* Hive Five.app */,
 				2CFCE4B4206C603C0041EDD1 /* HiveFive UITests.xctest */,
 				2CFCE4C2206C60590041EDD1 /* HiveFive Tests.xctest */,
-				2C4E75B22082B1D10035994D /* HiveFive Server */,
+				1F2A2ABC23391BD100C16D3D /* HiveFiveCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CFCE465206B00880041EDD1 /* HiveFive */ = {
+		2CFCE465206B00880041EDD1 /* HiveFive iOS */ = {
 			isa = PBXGroup;
 			children = (
 				328EE19B2076A7890056CB0C /* DefaultStructure.swift */,
 				320FDBA420829E4900E0F62A /* Utilities */,
 				32D1D14F206BEE71008444F4 /* Views */,
 				3291A3222073FDB300DBF9B2 /* Controllers */,
-				2C4E754E2082463C0035994D /* Interface */,
+				2C4E754E2082463C0035994D /* Storyboards */,
 				322EF74020766E98008A98F7 /* External Libraries */,
 				1F1396FB21880DD300B3673B /* Resources */,
 				2CFCE466206B00880041EDD1 /* AppDelegate.swift */,
 			);
-			path = HiveFive;
+			path = "HiveFive iOS";
 			sourceTree = "<group>";
 		};
-		2CFCE4B5206C603C0041EDD1 /* HiveFive UITests */ = {
+		2CFCE4B5206C603C0041EDD1 /* HiveFiveUITests */ = {
 			isa = PBXGroup;
 			children = (
 				2CFCE4B6206C603C0041EDD1 /* HiveFive_UITests.swift */,
 				2CFCE4B8206C603C0041EDD1 /* Info.plist */,
 			);
-			path = "HiveFive UITests";
+			path = HiveFiveUITests;
 			sourceTree = "<group>";
 		};
-		2CFCE4C3206C60590041EDD1 /* HiveFive Tests */ = {
+		2CFCE4C3206C60590041EDD1 /* HiveFiveTests */ = {
 			isa = PBXGroup;
 			children = (
 				2CFCE4C4206C60590041EDD1 /* HiveFive_Tests.swift */,
 				2CFCE4C6206C60590041EDD1 /* Info.plist */,
 				32F2A9DB2097E14A008E2407 /* HiveMaster_Tests.swift */,
 			);
-			path = "HiveFive Tests";
+			path = HiveFiveTests;
 			sourceTree = "<group>";
 		};
 		320FDB9420829C9D00E0F62A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				320FDBA620829ED700E0F62A /* UIImage.swift */,
-				320FDBA820829EF000E0F62A /* UIView.swift */,
-				320FDBAA20829F0A00E0F62A /* NSAttributedString.swift */,
-				320FDBAC20829F2900E0F62A /* UIGestureRecognizer.swift */,
-				320FDBAE20829F4100E0F62A /* CGRect.swift */,
-				320FDBB020829F5F00E0F62A /* CGContext.swift */,
-				320FDBB220829F7200E0F62A /* UIColor.swift */,
-				320FDBB420829F8D00E0F62A /* CGFloat.swift */,
-				320FDBB620829FAC00E0F62A /* CGPoint.swift */,
-				320FDBB82082A25600E0F62A /* Vec2D.swift */,
-				320FDBBC2082B2DF00E0F62A /* Hive.swift */,
+				320FDBA620829ED700E0F62A /* UIImage+initWithView.swift */,
+				320FDBA820829EF000E0F62A /* UIView+asImage.swift */,
+				320FDBAA20829F0A00E0F62A /* NSAttributedString+dimensions.swift */,
+				320FDBAC20829F2900E0F62A /* UIGestureRecognizer+cancel.swift */,
+				320FDBAE20829F4100E0F62A /* CGRect+initWithCenter.swift */,
+				320FDBB020829F5F00E0F62A /* CGContext+circle.swift */,
+				320FDBB220829F7200E0F62A /* UIColor+rgb&hsb.swift */,
+				320FDBB620829FAC00E0F62A /* CGPoint+vec2D&utils.swift */,
+				320FDBB82082A25600E0F62A /* Vec2D+cgPoint.swift */,
+				320FDBBC2082B2DF00E0F62A /* Hive+save&load.swift */,
 				2CE6696720AA5E8A007F472D /* NSObject+observe.swift */,
 			);
 			path = Extensions;
@@ -2057,23 +2133,35 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1F2A2AB723391BD100C16D3D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F2A2AC023391BD100C16D3D /* HiveFiveCore-iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		2C4E75B12082B1D10035994D /* HiveFive Server */ = {
+		1F2A2ABB23391BD100C16D3D /* HiveFiveCore-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C4E75B82082B1D10035994D /* Build configuration list for PBXNativeTarget "HiveFive Server" */;
+			buildConfigurationList = 1F2A2AC523391BD100C16D3D /* Build configuration list for PBXNativeTarget "HiveFiveCore-iOS" */;
 			buildPhases = (
-				2C4E75AE2082B1D10035994D /* Sources */,
-				2C4E75AF2082B1D10035994D /* Frameworks */,
-				2C4E75B02082B1D10035994D /* CopyFiles */,
+				1F2A2AB723391BD100C16D3D /* Headers */,
+				1F2A2AB823391BD100C16D3D /* Sources */,
+				1F2A2AB923391BD100C16D3D /* Frameworks */,
+				1F2A2ABA23391BD100C16D3D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "HiveFive Server";
-			productName = "HiveFive Server";
-			productReference = 2C4E75B22082B1D10035994D /* HiveFive Server */;
-			productType = "com.apple.product-type.tool";
+			name = "HiveFiveCore-iOS";
+			productName = "HiveFiveCore-iOS";
+			productReference = 1F2A2ABC23391BD100C16D3D /* HiveFiveCore.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		2CFCE462206B00880041EDD1 /* Hive Five */ = {
 			isa = PBXNativeTarget;
@@ -2087,6 +2175,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1F2A2AC223391BD100C16D3D /* PBXTargetDependency */,
 			);
 			name = "Hive Five";
 			productName = Five;
@@ -2139,8 +2228,8 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Greensboro Day School";
 				TargetAttributes = {
-					2C4E75B12082B1D10035994D = {
-						CreatedOnToolsVersion = 9.3;
+					1F2A2ABB23391BD100C16D3D = {
+						CreatedOnToolsVersion = 11.0;
 						ProvisioningStyle = Automatic;
 					};
 					2CFCE462206B00880041EDD1 = {
@@ -2178,12 +2267,19 @@
 				2CFCE462206B00880041EDD1 /* Hive Five */,
 				2CFCE4B3206C603C0041EDD1 /* HiveFive UITests */,
 				2CFCE4C1206C60590041EDD1 /* HiveFive Tests */,
-				2C4E75B12082B1D10035994D /* HiveFive Server */,
+				1F2A2ABB23391BD100C16D3D /* HiveFiveCore-iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F2A2ABA23391BD100C16D3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CFCE461206B00880041EDD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2671,14 +2767,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2C4E75AE2082B1D10035994D /* Sources */ = {
+		1F2A2AB823391BD100C16D3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4E76152082C1DF0035994D /* SwifterServerTransport.swift in Sources */,
-				2C4E75B52082B1D10035994D /* main.swift in Sources */,
-				2C4E76202082C9A50035994D /* SwifterClient.swift in Sources */,
-				2C0169A72092AAA000398D34 /* Swifter+Serializers.swift in Sources */,
+				1F8C8C3623391C4E007FCD4F /* Date+millis.swift in Sources */,
+				1F8C8C3723391C4E007FCD4F /* Array+filterDuplicates.swift in Sources */,
+				1F8C8C3823391C4E007FCD4F /* Logger.swift in Sources */,
+				1F8C8C3923391C4E007FCD4F /* Decimal+intValue.swift in Sources */,
+				1F8C8C3B23391C4E007FCD4F /* Double+map.swift in Sources */,
+				1F8C8C3C23391C4E007FCD4F /* Spider.swift in Sources */,
+				1F8C8C3D23391C4E007FCD4F /* Navigation.swift in Sources */,
+				1F8C8C3E23391C4E007FCD4F /* SoldierAnt.swift in Sources */,
+				1F8C8C3F23391C4E007FCD4F /* Vec2D.swift in Sources */,
+				1F8C8C4023391C4E007FCD4F /* Hive.swift in Sources */,
+				1F8C8C4123391C4E007FCD4F /* Hive+Encodable.swift in Sources */,
+				1F8C8C4223391C4E007FCD4F /* HiveMaster.swift in Sources */,
+				1F8C8C4323391C4E007FCD4F /* Mosquito.swift in Sources */,
+				1F8C8C4423391C4E007FCD4F /* Neighbors.swift in Sources */,
+				1F8C8C4523391C4E007FCD4F /* Beetle.swift in Sources */,
+				1F8C8C4623391C4E007FCD4F /* Grasshopper.swift in Sources */,
+				1F8C8C4723391C4E007FCD4F /* QueenBee.swift in Sources */,
+				1F8C8C4823391C4E007FCD4F /* HexNode.swift in Sources */,
+				1F8C8C4923391C4E007FCD4F /* LadyBug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2697,30 +2808,39 @@
 				321CED332078256900805F74 /* ColorSchemeTableViewController.swift in Sources */,
 				322EF73F20766E91008A98F7 /* SlideMenuController.swift in Sources */,
 				2CFCE469206B00880041EDD1 /* BoardViewController.swift in Sources */,
-				320FDBAF20829F4100E0F62A /* CGRect.swift in Sources */,
+				320FDBAF20829F4100E0F62A /* CGRect+initWithCenter.swift in Sources */,
 				328EE1992076955A0056CB0C /* ThemesCollectionViewCell.swift in Sources */,
 				3291A329207524C400DBF9B2 /* Utils.swift in Sources */,
+				1F2A2AB023391A5700C16D3D /* Beetle.swift in Sources */,
+				1F2A2AAA23391A5700C16D3D /* Vec2D.swift in Sources */,
 				321CED7920783D5500805F74 /* HelpItemViewController.swift in Sources */,
 				321CED77207838B200805F74 /* HelpPageViewController.swift in Sources */,
 				1FEA700F227FC09500BF40D4 /* UserDefaults.swift in Sources */,
-				320FDBB120829F5F00E0F62A /* CGContext.swift in Sources */,
+				320FDBB120829F5F00E0F62A /* CGContext+circle.swift in Sources */,
+				1F2A2AAD23391A5700C16D3D /* HiveMaster.swift in Sources */,
 				2CFCE467206B00880041EDD1 /* AppDelegate.swift in Sources */,
 				3281AC2E2079365C00DE7EDA /* NodeViewPreset.swift in Sources */,
-				320FDBB320829F7200E0F62A /* UIColor.swift in Sources */,
+				1F2A2AA123391A5700C16D3D /* Date+millis.swift in Sources */,
+				320FDBB320829F7200E0F62A /* UIColor+rgb&hsb.swift in Sources */,
+				1F2A2AB223391A5700C16D3D /* QueenBee.swift in Sources */,
 				322EF744207676EF008A98F7 /* MenuTableViewController.swift in Sources */,
 				32F7EA1120804BF200BCBDDD /* Sound.swift in Sources */,
+				1F2A2AAC23391A5700C16D3D /* Hive+Encodable.swift in Sources */,
 				320FDBA320829E2800E0F62A /* CoreData.swift in Sources */,
-				320FDBA720829ED700E0F62A /* UIImage.swift in Sources */,
+				1F2A2AA823391A5700C16D3D /* Navigation.swift in Sources */,
+				320FDBA720829ED700E0F62A /* UIImage+initWithView.swift in Sources */,
 				322EF74220767058008A98F7 /* ContainerViewController.swift in Sources */,
-				320FDBB520829F8D00E0F62A /* CGFloat.swift in Sources */,
 				321CED312077D9D400805F74 /* UserInterfaceTableViewController.swift in Sources */,
 				328EE19E2076DC3C0056CB0C /* HandCollectionViewController.swift in Sources */,
 				328EE19C2076A7890056CB0C /* DefaultStructure.swift in Sources */,
 				33F75E170A5700F149EB63A8 /* Label.swift in Sources */,
-				320FDBAB20829F0A00E0F62A /* NSAttributedString.swift in Sources */,
+				320FDBAB20829F0A00E0F62A /* NSAttributedString+dimensions.swift in Sources */,
+				1F2A2AA423391A5700C16D3D /* Decimal+intValue.swift in Sources */,
 				33F75A7BAF7A4F3CDD42F60F /* Button.swift in Sources */,
 				33F75562FA9B0F0F2493B3D8 /* TextField.swift in Sources */,
+				1F2A2AB123391A5700C16D3D /* Grasshopper.swift in Sources */,
 				33F7525D3C7806E8D1441866 /* GradientSlider.swift in Sources */,
+				1F2A2AA723391A5700C16D3D /* Spider.swift in Sources */,
 				2CE6696820AA5E8A007F472D /* NSObject+observe.swift in Sources */,
 				33F758A7BB8D64FDA6D629DD /* SegmentedControl.swift in Sources */,
 				3281AC322079A15F00DE7EDA /* ColorTableViewCell.swift in Sources */,
@@ -2728,14 +2848,15 @@
 				33F758FB688623BEC1FAFD68 /* ColorPickerViewController.swift in Sources */,
 				33F7598F05400F330CECDEFA /* ItemWithImage.swift in Sources */,
 				33F756956CF04E182399D20B /* ImagePickerViewController.swift in Sources */,
-				320FDBB720829FAC00E0F62A /* CGPoint.swift in Sources */,
+				320FDBB720829FAC00E0F62A /* CGPoint+vec2D&utils.swift in Sources */,
 				33F7572908B2C72735ACE390 /* CountryCell.swift in Sources */,
 				33F752002AE7BCA83FBFB8B7 /* CurrencyCell.swift in Sources */,
 				33F756A17DD95E9284A67DC0 /* PhoneCodeCell.swift in Sources */,
+				1F2A2AA923391A5700C16D3D /* SoldierAnt.swift in Sources */,
 				33F757A52B1F1C44006BAD63 /* LocaleInfo.swift in Sources */,
 				33F7569FFAB681717C306B7F /* LocaleStore.swift in Sources */,
 				33F7501C8B1E0A89B49721AC /* LocalePickerViewController.swift in Sources */,
-				320FDBB92082A25600E0F62A /* Vec2D.swift in Sources */,
+				320FDBB92082A25600E0F62A /* Vec2D+cgPoint.swift in Sources */,
 				33F750C7811BFDD0BB1DD06D /* PickerViewViewController.swift in Sources */,
 				33F75CE9325AB811EAB6C0F2 /* OneTextFieldViewController.swift in Sources */,
 				3281AC342079A1C300DE7EDA /* NumberTableViewCell.swift in Sources */,
@@ -2743,31 +2864,39 @@
 				33F753B0E7951944B280D37E /* AttributedTextBlock.swift in Sources */,
 				1FEA7011227FC36300BF40D4 /* Notification.swift in Sources */,
 				33F75CDDB905DA477DB9A9F8 /* TextViewController.swift in Sources */,
+				1F2A2AAF23391A5700C16D3D /* Neighbors.swift in Sources */,
 				33F751BE127262D1BE5C3D9D /* Date+Extension.swift in Sources */,
 				3281AC302079A0CD00DE7EDA /* ToggleTableViewCell.swift in Sources */,
 				33F75DEC8B8092B23B774DBF /* Array+Extensions.swift in Sources */,
-				320FDBAD20829F2900E0F62A /* UIGestureRecognizer.swift in Sources */,
+				320FDBAD20829F2900E0F62A /* UIGestureRecognizer+cancel.swift in Sources */,
 				2C4E7550208247190035994D /* HFInterface.swift in Sources */,
 				33F75748490186AB0E6B0C61 /* Common+Extensions.swift in Sources */,
 				33F754D6114E635E7A96AFAB /* Locale+Extensions.swift in Sources */,
 				321E1655207AB43F0053C87A /* PresetNameTableViewCell.swift in Sources */,
-				320FDBA920829EF000E0F62A /* UIView.swift in Sources */,
+				320FDBA920829EF000E0F62A /* UIView+asImage.swift in Sources */,
 				33F755EE5A07C9ED6375B6FD /* String+Extensions.swift in Sources */,
 				33F751C0028669CD8BA9657C /* UIView+Extensions.swift in Sources */,
 				33F7584C49D596CA1504FFFF /* UIColor+Extensions.swift in Sources */,
 				33F752932D5A9CEEBE693B97 /* UIImage+Extensions.swift in Sources */,
-				320FDBBD2082B2DF00E0F62A /* Hive.swift in Sources */,
+				1F2A2AA323391A5700C16D3D /* Logger.swift in Sources */,
+				320FDBBD2082B2DF00E0F62A /* Hive+save&load.swift in Sources */,
 				33F75405FD53F7127CE2D50A /* Optional+Extensions.swift in Sources */,
 				321E1657207B0D5B0053C87A /* HistoryViewController.swift in Sources */,
 				33F751153A05A17FC8A45EC5 /* UITextView+Extensions.swift in Sources */,
+				1F2A2AB323391A5700C16D3D /* HexNode.swift in Sources */,
 				33F75AED5EF3481B5E5716EF /* UIImageView+Extensions.swift in Sources */,
+				1F2A2AAE23391A5700C16D3D /* Mosquito.swift in Sources */,
+				1F2A2AA623391A5700C16D3D /* Double+map.swift in Sources */,
 				33F751F79A47EA550EA8707C /* UISearchBar+Extensions.swift in Sources */,
+				1F2A2AB423391A5700C16D3D /* LadyBug.swift in Sources */,
 				33F75F9B9E2978BD16183CEC /* UITextField+Extensions.swift in Sources */,
+				1F2A2AA223391A5700C16D3D /* Array+filterDuplicates.swift in Sources */,
 				33F755736FB68BE48944030F /* UIApplication+Extensions.swift in Sources */,
 				33F7584AB2E74E534E173945 /* UIViewController+Extensions.swift in Sources */,
 				33F75E5F106D9B41087B1BE0 /* UIAlertController+Extensions.swift in Sources */,
 				2CC29E3E20AA632B00C68000 /* RulesTableViewController.swift in Sources */,
 				33F754BE11B2DE9FA63663CC /* UISegmentedControl+Extensions.swift in Sources */,
+				1F2A2AAB23391A5700C16D3D /* Hive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2791,6 +2920,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F2A2AC223391BD100C16D3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F2A2ABB23391BD100C16D3D /* HiveFiveCore-iOS */;
+			targetProxy = 1F2A2AC123391BD100C16D3D /* PBXContainerItemProxy */;
+		};
 		2CFCE4BA206C603C0041EDD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2CFCE462206B00880041EDD1 /* Hive Five */;
@@ -2881,33 +3015,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2C4E75B62082B1D10035994D /* Debug */ = {
+		1F2A2AC623391BD100C16D3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = AM89ND2ZY7;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "HiveFiveCore-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jiachenren.HiveFiveCore-iOS";
+				PRODUCT_NAME = HiveFiveCore;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		2C4E75B72082B1D10035994D /* Release */ = {
+		1F2A2AC723391BD100C16D3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = AM89ND2ZY7;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "HiveFiveCore-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jiachenren.HiveFiveCore-iOS";
+				PRODUCT_NAME = HiveFiveCore;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -3029,7 +3190,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AM89ND2ZY7;
-				INFOPLIST_FILE = "$(SRCROOT)/HiveFive/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HiveFive iOS/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
@@ -3047,7 +3208,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AM89ND2ZY7;
-				INFOPLIST_FILE = "$(SRCROOT)/HiveFive/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HiveFive iOS/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiachenren.hivefive;
@@ -3123,11 +3284,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C4E75B82082B1D10035994D /* Build configuration list for PBXNativeTarget "HiveFive Server" */ = {
+		1F2A2AC523391BD100C16D3D /* Build configuration list for PBXNativeTarget "HiveFiveCore-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2C4E75B62082B1D10035994D /* Debug */,
-				2C4E75B72082B1D10035994D /* Release */,
+				1F2A2AC623391BD100C16D3D /* Debug */,
+				1F2A2AC723391BD100C16D3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
